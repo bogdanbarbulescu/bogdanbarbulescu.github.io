@@ -3,7 +3,7 @@ html,body,h1,h2,h3,h4,h5,h6 {
 }
 
 .w3-light-grey {
-  background-color: #f1f1f1;
+  background-color: #202A44;
 }
 
 .w3-margin-top {
@@ -141,8 +141,8 @@ html,body,h1,h2,h3,h4,h5,h6 {
 }
 
 .footer {
-  background-color: teal;
-  color: #ffffff;
+  background-color: #202A44;
+  color: #917153;
   padding: 16px;
   text-align: center;
 }
