@@ -9,7 +9,7 @@
 
 - 📄 Know about my experiences [https://bogdanbarbulescu.github.io/about.html](https://bogdanbarbulescu.github.io/about.html)
 
--  <g-emoji class="g-emoji" alias="medal_sports" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c5.png">🏅</g-emoji> Certifications: <a href="[https://www.credly.com/badges/02bbb253-d62a-49c2-962f-2035b6f7f605]([https://www.credly.com/badges/60d7a784-4c3b-46f8-b0f3-524ba67af221](https://www.credly.com/badges/60d7a784-4c3b-46f8-b0f3-524ba67af221))" rel="nofollow">CompTIA Security+</a>
+-  <g-emoji class="g-emoji" alias="medal_sports" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c5.png">🏅</g-emoji> Certifications: <a href="[https://www.credly.com/badges/02bbb253-d62a-49c2-962f-2035b6f7f605]" rel="nofollow">CompTIA Security+</a>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
