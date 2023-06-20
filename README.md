@@ -9,6 +9,8 @@
 
 - 📄 Know about my experiences [https://bogdanbarbulescu.github.io/about.html](https://bogdanbarbulescu.github.io/about.html)
 
+-  Certifications: <g-emoji class="g-emoji" alias="medal_sports" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3c5.png">🏅</g-emoji> <a href="https://www.credly.com/badges/02bbb253-d62a-49c2-962f-2035b6f7f605" rel="nofollow">CompTIA Security+</a>
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 <a href="https://www.linkedin.com/in/bogdan-barbulescu/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="https://www.linkedin.com/in/bogdan-barbulescu/" height="30" width="40" /></a>
