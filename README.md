@@ -5,9 +5,9 @@
 
 - 🌱 I’m currently learning **PNPT**
 
-- 👨‍💻 All of my projects are available at [https://bogdanbarbulescu.github.io/home-labs.html](https://bogdanbarbulescu.github.io/home-labs.html)
+- 👨‍💻 My projects are available at [https://bogdanbarbulescu.github.io/home-labs.html](https://bogdanbarbulescu.github.io/home-labs.html)
 
-- 📄 Know about my experiences [https://bogdanbarbulescu.github.io/cv.html](https://bogdanbarbulescu.github.io/about.html)
+- 📄 Know about my experiences [https://bogdanbarbulescu.github.io/about.html](https://bogdanbarbulescu.github.io/about.html)
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
