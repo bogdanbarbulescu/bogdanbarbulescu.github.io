@@ -4,7 +4,9 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bogdanbarbulescu&label=Profile%20views&color=0e75b6&style=flat" alt="bogdanbarbulescu" /> </p>
 
 - 🌱 I’m currently learning **PNPT**
-
+  
+- 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html#learningresources](https://bogdanbarbulescu.github.io/index.html#learningresources)
+  
 - 👨‍💻 My projects: [https://bogdanbarbulescu.github.io/index.html#homelabs](https://bogdanbarbulescu.github.io/index.html#homelabs)
 
 - 📄 Know about my experiences [https://bogdanbarbulescu.github.io/index.html#about](https://bogdanbarbulescu.github.io/index.html#about)
