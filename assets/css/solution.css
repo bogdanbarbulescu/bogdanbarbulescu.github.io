@@ -14,7 +14,10 @@ h2 {
   font-size: 1rem;
   margin: 1rem; /* Remove default h1 margin */
   text-align: center;
-  
+}
+
+a {
+  color: #778BEB;
 }
 
 .poster {
