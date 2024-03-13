@@ -1,0 +1,157 @@
+body {
+  background-color: #1b1f22;
+  margin: 0; /* Remove default body margin */
+}
+h1 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 1rem; /* Remove default h1 margin */
+  text-align: center;
+}
+
+h2 {
+ 
+  font-size: 1rem;
+  margin: 1rem; /* Remove default h1 margin */
+  text-align: center;
+  
+}
+
+a {
+  color: #00bbf0;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #00204a;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #fdb44b;
+  color: black;
+}
+
+
+.navbar-color-loggedin {
+  font-size: 1.2em;
+  background-color: #1c2538;
+  z-index: 100;
+}
+
+.navbar-main {
+  min-height: var(--navbar-main-height);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.nav-wrapper{
+  position: sticky;
+  top: 0px;
+  background-color: #1b1f22;
+}
+
+
+.poster {
+  width: 75%;
+  margin: 50px auto; /* Center the poster horizontally and add top margin */
+  color: white;
+  font-family: "Libre Baskerville", serif;
+  text-align: left;
+}
+
+.motivation-img {
+  border: 5px solid white;
+  width: 50%;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  padding: 10px; /* Adjust the padding as needed */
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #393e46;
+}
+
+.active {
+  background-color: #04AA6D;
+}
+
+/* Basic styling for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+thead {
+  
+  color: white;
+}
+
+/* Hover effect for table rows */
+tbody tr:hover {
+  background-color: #1B262C;
+}
+
+/* Code style for the command column */
+td code {
+  padding: 4px 8px;
+  background-color: #0F4C75;
+  border-radius: 4px;
+}
+
+/* Strong style for the header */
+th strong {
+  font-weight: normal;
+}
+
+/* Strong style for the description */
+td strong {
+  font-weight: normal;
+}
