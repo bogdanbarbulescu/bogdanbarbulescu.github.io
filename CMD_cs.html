@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>CMD Cheatsheet</title>
+        <link rel="stylesheet" href="./assets/css/solution.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+      </head>
+<body>
+
+    <div class="poster">
+        <img class="motivation-img" src="./images/kevin-horvat-Pyjp2zmxuLk-unsplash.jpg" alt="CMD Image" />
+
+    		<!-- Windows CMD-cheetsheet -->
+            <h1>CMD Cheatsheet</h1>
+            <h2>Files and Folders Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>man &lt;tool&gt;</code></td>
+                        <td>Opens man pages for the specified tool.</td>
+                    </tr>
+                    <tr>
+                        <td><code>&lt;tool&gt; -h</code></td>
+                        <td>Prints the help page of the tool.</td>
+                    </tr>
+                    <tr>
+                        <td><code>apropos &lt;keyword&gt;</code></td>
+                        <td>Searches through man pages' descriptions for instances of a given keyword.</td>
+                    </tr>
+                    <tr>
+                        <td><code>cat</code></td>
+                        <td>Concatenate and print files.</td>
+                    </tr>
+                    <tr>
+                        <td><code>whoami</code></td>
+                        <td>Displays current username.</td>
+                    </tr>
+                    <tr>
+                        <td><code>id</code></td>
+                        <td>Returns users identity.</td>
+                    </tr>
+                    <tr>
+                        <td><code>hostname</code></td>
+                        <td>Sets or prints the name of the current host system.</td>
+                    </tr>
+                    <tr>
+                        <td><code>uname</code></td>
+                        <td>Prints operating system name.</td>
+                    </tr>
+                    <tr>
+                        <td><code>pwd</code></td>
+                        <td>Returns working directory name.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ifconfig</code></td>
+                        <td>The <code>ifconfig</code> utility is used to assign or view an address to a network interface and/or configure network interface parameters.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ip</code></td>
+                        <td>Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels.</td>
+                    </tr>
+                    <tr>
+                        <td><code>netstat</code></td>
+                        <td>Shows network status.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ss</code></td>
+                        <td>Another utility to investigate sockets.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ps</code></td>
+                        <td>Shows process status.</td>
+                    </tr>
+                    <tr>
+                        <td><code>who</code></td>
+                        <td>Displays who is logged in.</td>
+                    </tr>
+                    <tr>
+                        <td><code>env</code></td>
+                        <td>Prints environment or sets and executes a command.</td>
+                    </tr>
+                    <tr>
+                        <td><code>lsblk</code></td>
+                        <td>Lists block devices.</td>
+                    </tr>
+                    <tr>
+                        <td><code>lsusb</code></td>
+                        <td>Lists USB devices.</td>
+                    </tr>
+                    <tr>
+                        <td><code>lsof</code></td>
+                        <td>Lists opened files.</td>
+                    </tr>
+                    <tr>
+                        <td><code>lspci</code></td>
+                        <td>Lists PCI devices.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sudo</code></td>
+                        <td>Execute command as a different user.</td>
+                    </tr>
+                    <tr>
+                        <td><code>su</code></td>
+                        <td>The <code>su</code> utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser). A shell is then executed.</td>
+                    </tr>
+                    <tr>
+                        <td><code>useradd</code></td>
+                        <td>Creates a new user or update default new user information.</td>
+                    </tr>
+                </tbody>
+            </table>
+          
+            <!-- Applications and Processes -->
+            <h2 id="applications-and-processes">Applications and Processes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>SCHTASKS</code></td>
+                        <td>Executes a command or starts a scheduled application (Task Scheduler)</td>
+                    </tr>
+                    <tr>
+                        <td><code>SHUTDOWN</code></td>
+                        <td>Shutdowns or reboots your computer</td>
+                    </tr>
+                    <tr>
+                        <td><code>TASKLIST</code></td>
+                        <td>Lists the tasks being performed</td>
+                    </tr>
+                    <tr>
+                        <td><code>TASKKILL</code></td>
+                        <td>Stops or halts a task (to stop a task you use a PID which you can find out from TASKLIST)</td>
+                    </tr>
+                    <tr>
+                        <td><code>REG</code></td>
+                        <td>Starts registry editor</td>
+                    </tr>
+                    <tr>
+                        <td><code>RUNAS</code></td>
+                        <td>Launches the task as another user</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Disks Management -->
+            <h2 id="disks-management">Disks Management</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>CHKDISK</code></td>
+                        <td>Checks disk and shows statistics</td>
+                    </tr>
+                    <tr>
+                        <td><code>DEFRAG</code></td>
+                        <td>Starts disk defragmentation</td>
+                    </tr>
+                    <tr>
+                        <td><code>CHKNTFS</code></td>
+                        <td>Displays or changes execution of disk check at boot</td>
+                    </tr>
+                    <tr>
+                        <td><code>COMPACT</code></td>
+                        <td>Displays and changes the compression of files in NTFS partitions</td>
+                    </tr>
+                    <tr>
+                        <td><code>CONVERT</code></td>
+                        <td>Converts FAT disk volume to NTFS</td>
+                    </tr>
+                    <tr>
+                        <td><code>DISKPART</code></td>
+                        <td>Displays and adjusts disk partition properties</td>
+                    </tr>
+                    <tr>
+                        <td><code>FORMAT</code></td>
+                        <td>Formats the disk</td>
+                    </tr>
+                    <tr>
+                        <td><code>FSUTIL</code></td>
+                        <td>Displays and configures file system properties</td>
+                    </tr>
+                    <tr>
+                        <td><code>LABEL</code></td>
+                        <td>Creates, changes, or deletes a disk volume label</td>
+                    </tr>
+                    <tr>
+                        <td><code>RECOVER</code></td>
+                        <td>Recovers data from a bad or damaged disk</td>
+                    </tr>
+                    <tr>
+                        <td><code>VOL</code></td>
+                        <td>Displays volume label and serial number for the disk</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- System Information -->
+            <h2 id="system-information">System Information</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>DATE</code></td>
+                        <td>Outputs or sets the current date</td>
+                    </tr>
+                    <tr>
+                        <td><code>TIME</code></td>
+                        <td>Displays or sets the system time</td>
+                    </tr>
+                    <tr>
+                        <td><code>DRIVERQUERY</code></td>
+                        <td>Displays the current state and properties of the device driver</td>
+                    </tr>
+                    <tr>
+                        <td><code>HOSTNAME</code></td>
+                        <td>Displays the name of the computer</td>
+                    </tr>
+                    <tr>
+                        <td><code>SYSTEMINFO</code></td>
+                        <td>Shows configuration information about your computer</td>
+                    </tr>
+                    <tr>
+                        <td><code>VER</code></td>
+                        <td>Allows you to view the Windows version</td>
+                    </tr>
+                    <tr>
+                        <td><code>GPRESULT</code></td>
+                        <td>Displays current applied group policies (RSoP)</td>
+                    </tr>
+                    <tr>
+                        <td><code>GPUPDATE</code></td>
+                        <td>Updates group policies</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Network -->
+            <h2 id="network">Network</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>IPCONFIG</code></td>
+                        <td>Shows information about network interfaces</td>
+                    </tr>
+                    <tr>
+                        <td><code>PING</code></td>
+                        <td>Sends ICMP requests to the target host, checks host availability</td>
+                    </tr>
+                    <tr>
+                        <td><code>TRACERT</code></td>
+                        <td>Finds the path for packets traveling over the network</td>
+                    </tr>
+                    <tr>
+                        <td><code>NSLOOKUP</code></td>
+                        <td>Finds IP address by resource name</td>
+                    </tr>
+                    <tr>
+                        <td><code>ROUTE</code></td>
+                        <td>Displays network route tables</td>
+                    </tr>
+                    <tr>
+                        <td><code>ARP</code></td>
+                        <td>Shows a table with IP addresses converted into physical addresses</td>
+                    </tr>
+                    <tr>
+                        <td><code>NETSH</code></td>
+                        <td>Starts a network settings control program</td>
+                    </tr>
+                    <tr>
+                        <td><code>GETMAC</code></td>
+                        <td>Shows the MAC address of the network adapter</td>
+                    </tr>
+                    <tr>
+                        <td><code>TFTP</code></td>
+                        <td>Starts TFTP client in console</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Command Line Setup -->
+            <h2 id="command-line-setup">Command Line Setup</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Command</strong></th>
+                        <th><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>CLS</code></td>
+                        <td>Clears the screen</td>
+                    </tr>
+                    <tr>
+                        <td><code>CMD</code></td>
+                        <td>Displays another command prompt</td>
+                    </tr>
+                    <tr>
+                        <td><code>COLOR</code></td>
+                        <td>Sets the text and background color</td>
+                    </tr>
+                    <tr>
+                        <td><code>PROMPT</code></td>
+                        <td>Changes the command line prompt</td>
+                    </tr>
+                    <tr>
+                        <td><code>TITLE</code></td>
+                        <td>Assigns a title for the current session</td>
+                    </tr>
+                    <tr>
+                        <td><code>HELP</code></td>
+                        <td>Launches CMD help</td>
+                    </tr>
+                    <tr>
+                        <td><code>EXIT</code></td>
+                        <td>Exits the command line</td>
+                    </tr>
+                </tbody>
+            </table>
+
+    
+    </div>
+    
+</body>
+</html>
