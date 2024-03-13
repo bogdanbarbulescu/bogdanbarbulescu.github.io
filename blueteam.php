@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css'>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="main.js"></script>
+
+</head>
+
+<body>
+
+  <?php
+
+  # including navigation bar here
+  include './include/navbar.php';
+
+  ?>
+
+  <div class="container">
+  <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Introduction to Blue Teaming</h4>
+        <p>What is it and why is it important?</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Security Operations Center (SOC)</h4>
+        <p>Setting up and optimizing a SOC for effective blue team operations.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Security Automation and Orchestration</h4>
+        <p>Streamlining security processes through automation.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Network Security Monitoring</h4>
+        <p>Techniques for monitoring network traffic and detecting anomalies.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Endpoint Security</h4>
+        <p>Protecting individual devices from cyber threats.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Vulnerability Management</h4>
+        <p>Identifying and mitigating vulnerabilities in systems and applications.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Security Information and Event Management (SIEM)</h4>
+        <p>Implementing and using SIEM tools for enhanced security monitoring.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/119560590-f7f91500-bd58-11eb-8fa4-57ba89fd58da.png" alt="card__image" class="card__image" width="500">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Technology</span>
+        <h4>Open Source Security Guide</h4>
+        <p>A guide covering Security including the applications, libraries and tools that will make you better and more efficient at securing your system operations and networks.</p>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://certstation.com/blog/wp-content/uploads/2020/02/Target-hacker-blog.jpg" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-brown">Threat Hunting</span>
+        <h4>Cyber Threat Hunting</h4>
+        <p>A collection of tools and other resources for threat hunters.</p>
+      </div>
+      <div class="card__footer">
+        <div class="user">
+          <img src="https://i.pravatar.cc/40?img=2" alt="user__image" class="user__image">
+          <div class="user__info">
+            <h5>Jony Doe</h5>
+            <small>Yesterday</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/44196051/120006585-f0dc3c00-bfd0-11eb-98d9-da3eb59edbda.png" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-red">Blue Team</span>
+        <h4>Blue Team Notes</h4>
+        <p>A collection of one-liners, small scripts, and some useful tips for blue team work.</p>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://certstation.com/blog/wp-content/uploads/2020/02/Target-hacker-blog.jpg" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-red">Blue Team</span>
+        <h4>Awesome Cybersecurity Blue Team</h4>
+        <p>A collection of awesome resources, tools, and other shiny things for cybersecurity blue teams.</p>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://github.com/TheresAFewConors/Sooty/blob/master/readmeimages/sooty_logo.png?raw=true" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Sooty</h4>
+        <p>The SOC Analysts all-in-one CLI tool to automate and speed up workflow.</p>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/128566069-72aec035-4c2c-47cc-b3eb-6114d10689ec.png" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Digital Forensics Guide</h4>
+        <p>Learn all about Digital Forensics, Computer Forensics, Mobile device Forensics, Network Forensics, and Database Forensics.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card__header">
+        <img src="https://user-images.githubusercontent.com/45159366/128566069-72aec035-4c2c-47cc-b3eb-6114d10689ec.png" alt="card__image" class="card__image" width="600">
+      </div>
+      <div class="card__body">
+        <span class="tag tag-blue">Blue Team</span>
+        <h4>Malware Analysis</h4>
+        <p>Learn all about Digital Forensics, Computer Forensics, Mobile device Forensics, Network Forensics, and Database Forensics.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
