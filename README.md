@@ -3,7 +3,6 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bogdanbarbulescu&label=Profile%20views&color=0e75b6&style=flat" alt="bogdanbarbulescu" /> </p>
 
-- 🌱 I’m currently learning **PNPT**
   
 - 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html#learningresources](https://bogdanbarbulescu.github.io/index.html#learningresources)
   
