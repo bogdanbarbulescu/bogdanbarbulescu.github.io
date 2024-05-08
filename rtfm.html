@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Command Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" />
+    <style>
+        body {
+            background-color: #31363F;
+            color: #FC4100;
+        }
+
+        .command {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            background-color: #222831;
+            color: #4CCD99;
+            padding: 0.2rem;
+            border-radius: 5px;
+            font-family: "Courier New", Courier, monospace;
+            width: 100%;
+        }
+
+        pre {
+            color: #FFC100;
+        }
+
+        .command-text {
+            display: flex;
+            align-items: center;
+            margin-right: 1rem;
+            color: #00d0ff;
+        }
+
+        .copy-icon {
+            cursor: pointer;
+            color: #4CCD99;
+            margin-right: 0.5rem;
+        }
+
+        .command-desc {
+            flex-grow: 1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #FC4100;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* New styles for nav links */
+        .nav-link {
+            color: #FFC100;
+            /* Change to your desired color */
+        }
+
+        .nav-link.active,
+        .nav-link:hover {
+            color: #ffffff;
+            /* Active and hover state color */
+            background-color: #222831;
+            /* Background color for active state */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="my-4 text-center">Red Team Field Manual</h1>
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="linux-tab" data-toggle="tab" href="#linux" role="tab"
+                    aria-controls="linux" aria-selected="true">Linux</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="windows-tab" data-toggle="tab" href="#windows" role="tab"
+                    aria-controls="windows" aria-selected="false">Windows</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="networking-tab" data-toggle="tab" href="#networking" role="tab"
+                    aria-controls="networking" aria-selected="false">Networking</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tips-tab" data-toggle="tab" href="#tips" role="tab" aria-controls="tips"
+                    aria-selected="false">Tips and Tricks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="tool-tab" data-toggle="tab" href="#tool" role="tab" aria-controls="tool"
+                    aria-selected="false">Tool Syntax</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="web-tab" data-toggle="tab" href="#web" role="tab" aria-controls="web"
+                    aria-selected="false">Web</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="databases-tab" data-toggle="tab" href="#databases" role="tab"
+                    aria-controls="databases" aria-selected="false">Databases</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="programming-tab" data-toggle="tab" href="#programming" role="tab"
+                    aria-controls="programming" aria-selected="false">Programming</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="wireless-tab" data-toggle="tab" href="#wireless" role="tab"
+                    aria-controls="wireless" aria-selected="false">Wireless</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="linux" role="tabpanel" aria-labelledby="linux-tab">
+                <div class="subtitle">Linux Network Commands</div>
+                <div id="commands-linux-network"></div>
+                <div class="subtitle">Linux System Info</div>
+                <div id="commands-linux-system"></div>
+                <div class="subtitle">Linux Utility Commands</div>
+                <div id="commands-linux-utility"></div>
+                <div class="subtitle">Linux Files</div>
+                <div id="commands-linux-files"></div>
+            </div>
+
+            <div class="tab-pane fade" id="windows" role="tabpanel" aria-labelledby="windows-tab">
+                <div class="subtitle">Windows Versions</div>
+                <div id="commands-windows"></div>
+                <div class="subtitle">Windows Files</div>
+            </div>
+
+            <div class="tab-pane fade" id="networking" role="tabpanel" aria-labelledby="networking-tab">
+                <div class="subtitle">Common Ports</div>
+                <div id="commands-networking"></div>
+                <div class="subtitle">TTL Fingerprinting</div>
+            </div>
+
+            <div class="tab-pane fade" id="tips" role="tabpanel" aria-labelledby="tips-tab">
+                <div class="subtitle">File Transfer</div>
+                <div id="commands-tips"></div>
+                <div class="subtitle">Open Mail Relay</div>
+                <div id="commands-tips"></div>
+                <div class="subtitle">Reverse Shells</div>
+
+                <div class="subtitle">Persistence</div>
+
+                <div class="subtitle">Tunneling</div>
+
+                <div class="subtitle">Google Hacking</div>
+
+                <div class="subtitle">Video Teleconferencing</div>
+            </div>
+
+            <div class="tab-pane fade" id="tool" role="tabpanel" aria-labelledby="tool-tab">
+                <div class="subtitle">NMAP</div>
+                <div id="commands-tool"></div>
+                <div class="subtitle">Wireshark</div>
+
+                <div class="subtitle">Netcat</div>
+
+                <div class="subtitle">VLC Streaming</div>
+
+                <div class="subtitle">SSH</div>
+
+                <div class="subtitle">Metasploit</div>
+
+                <div class="subtitle">Meterpreter</div>
+
+                <div class="subtitle">Ettercap</div>
+
+                <div class="subtitle">SEttercap Filter</div>
+
+                <div class="subtitle">Mimicatz</div>
+
+                <div class="subtitle">Hping3</div>
+
+                <div class="subtitle">Arping</div>
+
+                <div class="subtitle">Wine</div>
+
+                <div class="subtitle">Grub</div>
+
+                <div class="subtitle">Hydra</div>
+
+                <div class="subtitle">John the Ripper</div>
+
+                <div class="subtitle">Password Wordlist</div>
+
+                <div class="subtitle">Vssown</div>
+
+                <div class="subtitle">File Hashing</div>
+            </div>
+
+            <div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="web-tab">
+                <div id="commands-web"></div>
+            </div>
+
+            <div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="databases-tab">
+                <div id="commands-databases"></div>
+            </div>
+
+            <div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="programming-tab">
+                <div id="commands-programming"></div>
+            </div>
+
+            <div class="tab-pane fade" id="web" role="tabpanel" aria-labelledby="wireless-tab">
+                <div id="commands-wireless"></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="">
+        <!-- Footer -->
+        <footer class="text-center text-white" style="background-color: #222831;">
+
+            <!-- Grid container -->
+
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                2024 Copyright:
+                <a class="text-muted"></a>Bogdan Barbulescu</a>
+            </div>
+            <!-- Copyright -->
+        </footer>
+        <!-- Footer -->
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var commands = [
+
+            { command: "watch ss -tp", description: "Network connections", tab: "linux-network" },
+            { command: "netstat -ant", description: "Tcp connections -an=udp", tab: "linux-network" },
+            { command: "netstat -tulnpn", description: "Connections with PIDs", tab: "linux-network" },
+            { command: "lsof -i", description: "Established connections", tab: "linux-network" },
+            { command: "smb://<ip>/share", description: "Access windows smb share", tab: "linux-network" },
+            { command: "share user x.x.x.x c$", description: "Mount Windows share", tab: "linux-network" },
+            { command: "smbclient -U user \\\\<ip>\\\\<share>", description: "SMB connect", tab: "linux-network" },
+            { command: "ifconfig eth0 <ip>/<cidr>", description: "Set IP and netmask", tab: "linux-network" },
+            { command: "ifconfig eth0:1 <ip>/<cidr>", description: "Set virtual interface", tab: "linux-network" },
+            { command: "route add default gw <gw_ip>", description: "Set GW", tab: "linux-network" },
+            { command: "ifconfig eth+ mtu [size]", description: "Change MTU size", tab: "linux-network" },
+            { command: "export MAC=xx:xx:xx:xx:xx:xx", description: "Change MAC", tab: "linux-network" },
+            { command: "ifconfig <int> hw ether <MAC>", description: "Change MAC", tab: "linux-network" },
+            { command: "macchanger -m <MAC> <int>", description: "Backtrack MAC changer", tab: "linux-network" },
+            { command: "iwlist <int> scan", description: "Built-in wifi scanner", tab: "linux-network" },
+            { command: "dig -x <ip>", description: "Domain lookup for IP", tab: "linux-network" },
+            { command: "host <ip>", description: "Domain lookup for IP", tab: "linux-network" },
+            { command: "host -t SRV _<service>.tcp.url.com", description: "Domain SRV lookup", tab: "linux-network" },
+            { command: "dig @<ip> domain -t AXFR", description: "DNS Zone Xfer", tab: "linux-network" },
+            { command: "host -l <domain><namesrv>", description: "DNS Zone Xfer", tab: "linux-network" },
+            { command: "x ip xfrm state list", description: "Print existing VPN keys", tab: "linux-network" },
+            { command: "ip addr add <ip>/<cidr> dev eth0", description: "Adds 'hidden' interface", tab: "linux-network" },
+            { command: "/var/log/messages | grep DHCP", description: "List DHCP assignments", tab: "linux-network" },
+            { command: "tcpkill host <ip> and port <port>", description: "Block ip:port", tab: "linux-network" },
+            { command: "echo '1' > /proc/sys/net/ipv4/ip_forward", description: "Turn on IP Forwarding", tab: "linux-network" },
+            { command: "echo 'nameserver x.x.x.x' > /etc/resolv.conf", description: "Add DNS Server", tab: "linux-network" },
+
+            { command: "nbstat -A <ip>", description: "Get hostname for <ip>", tab: "linux-system" },
+            { command: "id", description: "Show current username", tab: "linux-system" },
+            { command: "w", description: "Display logged-on users", tab: "linux-system" },
+            { command: "ps -ef", description: "List processes (top)", tab: "linux-system" },
+            { command: "df -h", description: "Show disk usage (free)", tab: "linux-system" },
+            { command: "uname -a", description: "Display kernel version/CPU info", tab: "linux-system" },
+            { command: "mount", description: "List mounted file systems", tab: "linux-system" },
+            { command: "getent passwd", description: "Show list of users", tab: "linux-system" },
+            { command: "kill <pid>", description: "Terminate process with <pid>", tab: "linux-system" },
+            { command: "cat /etc/issue", description: "Show OS info", tab: "linux-system" },
+            { command: "cat /etc/*release*", description: "Display OS version info", tab: "linux-system" },
+            { command: "cat /proc/version", description: "Show kernel info", tab: "linux-system" },
+            { command: "rpm --query --all", description: "List installed packages (Redhat)", tab: "linux-system" },
+            { command: "rpm -ivh *.rpm", description: "Install RPM package (-remove)", tab: "linux-system" },
+            { command: "dpkg --get-selections", description: "List installed packages (Ubuntu)", tab: "linux-system" },
+            { command: "dpkg -i *.deb", description: "Install DEB package (-remove)", tab: "linux-system" },
+            { command: "pkginfo", description: "List installed packages (Solaris)", tab: "linux-system" },
+            { command: "which 'ctcsh/csh/ksh/bash'", description: "Show location of executable", tab: "linux-system" },
+            { command: "chmod 750 /ctcsh/csh/ksh", description: "Disable 'shell,'' force bash", tab: "linux-system" },
+
+            { command: "smbclient -U user \\<ip>\\<share>", description: "Grab url", tab: "linux-utility" },
+            { command: "rdesktop <ip>", description: "Remote Desktop to <ip>", tab: "linux-utility" },
+            { command: "scp /tmp/file user@x.x.x.x:/tmp/file", description: "Put file", tab: "linux-utility" },
+            { command: "scp user@<remoteip>:/tmp/file /tmp/file", description: "Get file", tab: "linux-utility" },
+            { command: "useradd -m <user>", description: "Add user", tab: "linux-utility" },
+            { command: "passwd <user>", description: "Change user password", tab: "linux-utility" },
+            { command: "rmuser uname", description: "Remove user", tab: "linux-utility" },
+            { command: "script -a <outfile>", description: "Record shell: Ctrl-D stops", tab: "linux-utility" },
+            { command: "apropos <subject>", description: "View related command", tab: "linux-utility" },  
+            { command: "!<num>", description: "Executes line # in history", tab: "linux-utility" },  
+
+            { command: "/etc/shadow", description: "Local users' hashes", tab: "linux-files" },
+            { command: "/etc/passwd", description: "Local users", tab: "linux-files" },
+            { command: "/etc/group", description: "Local users", tab: "linux-files" },
+            { command: "/etc/rc.d", description: "Local users", tab: "linux-files" },
+            { command: "/etc/init.d", description: "Local users", tab: "linux-files" },
+            { command: "/etc/hosts", description: "Local users", tab: "linux-files" },
+            { command: "/etc/HOSTNAME", description: "Local users", tab: "linux-files" },
+            { command: "/etc/network/interfaces", description: "Local users", tab: "linux-files" },
+            { command: "/etc/profile", description: "Local users", tab: "linux-files" },
+            { command: "/etc/apt/sources.list", description: "Local users", tab: "linux-files" },
+            { command: "/etc/resolv.conf", description: "Local users", tab: "linux-files" },
+            { command: "/home/<user>/.bash_history", description: "Local users", tab: "linux-files" },
+            { command: "/usr/share/wireshark/manuf", description: "Local users", tab: "linux-files" },
+            { command: "~/.ssh/", description: "Local users", tab: "linux-files" },
+            { command: "/var/log", description: "Local users", tab: "linux-files" },
+            { command: "/var/adm", description: "Local users", tab: "linux-files" },
+            { command: "/var/spool/cron", description: "Local users", tab: "linux-files" },
+            { command: "/var/log/apache/access.log", description: "Local users", tab: "linux-files" },
+            { command: "/etc/fstab", description: "Local users", tab: "linux-files" },
+        ];
+        $(document).ready(function () {
+            commands.forEach(function (cmd) {
+                var commandDiv = $('<div class="command"></div>');
+                var commandText = $('<div class="command-text"></div>');
+                var commandDesc = $('<p class="command-desc"></p>').text(cmd.description);
+                var copyIcon = $('<i class="bi bi-clipboard copy-icon" data-toggle="tooltip" title="Copied!"></i>');
+                commandText.append(copyIcon, $("<pre></pre>").text(cmd.command)); // Add command within <pre> tag
+                commandDiv.append(commandText, commandDesc);
+                $("#commands-" + cmd.tab).append(commandDiv); // Append to the correct tab
+            });
+            $(".copy-icon").tooltip({ trigger: "click", placement: "bottom" });
+            $(".copy-icon").click(function () {
+                var command = $(this).siblings("pre").text(); // Get command from sibling <pre> tag
+                navigator.clipboard.writeText(command);
+                var _this = this;
+                setTimeout(function () {
+                    $(_this).tooltip("hide");
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+
+</html>
