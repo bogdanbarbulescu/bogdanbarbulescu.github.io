@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learning Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add responsive styles for both desktop and mobile */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            header p {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Header background styling */
+        header {
+            background-image: url('photo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+
+        header .card {
+            background: rgba(0, 0, 0, 0.5);
+            /* semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Blurring the background */
+            border: none;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        header .card h1,
+        header .card p {
+            color: white;
+        }
+
+        /* Card styling */
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+            /* Ensure the image stays within the card */
+        }
+
+        /* Centering and positioning text */
+        header .container {
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Overlay effect */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            z-index: 1;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+            filter: grayscale(100%);
+            /* Make image grayscale by default */
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+            /* Zoom-in the image */
+            filter: none;
+            /* Remove grayscale when hovering */
+        }
+
+
+        /* Yellow hover color for all links */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#">Bogdan Bărbulescu</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Learning Resources Section -->
+    <section id="learning-resources" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-dark mb-4">Learning Resources</h2>
+            <p class="lead text-center">Explore a curated collection of resources for enhancing your skills in cybersecurity, programming, and web development.</p>
+            <div class="row">
+                <!-- Card 1: Red Team -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Red Team</h5>
+                            <p class="card-text">Comprehensive guides and tools for offensive security and ethical hacking.</p>
+                            <a href="https://example.com/red-team" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2: Blue Team -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Blue Team</h5>
+                            <p class="card-text">Defensive security strategies, monitoring, analysis, and incident response tools.</p>
+                            <a href="https://example.com/blue-team" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3: Networking -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Networking</h5>
+                            <p class="card-text">Guides for mastering network infrastructure, protocols, and advanced networking concepts.</p>
+                            <a href="https://example.com/networking" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Card 4: DevOps -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">DevOps</h5>
+                            <p class="card-text">Resources on CI/CD pipelines, containerization, and automation practices.</p>
+                            <a href="https://example.com/devops" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 5: Web Development -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Development</h5>
+                            <p class="card-text">Learn to create modern and secure web applications with HTML, CSS, and JS.</p>
+                            <a href="https://example.com/web-development" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 6: Programming -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Programming</h5>
+                            <p class="card-text">Programming tutorials, best practices, and language-specific guides.</p>
+                            <a href="https://example.com/programming" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Card 7: Mobile Security -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Mobile Security</h5>
+                            <p class="card-text">Guides for securing mobile apps and devices against common vulnerabilities.</p>
+                            <a href="https://example.com/mobile-security" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 8: OSINT -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">OSINT</h5>
+                            <p class="card-text">Tools and techniques for open-source intelligence gathering and analysis.</p>
+                            <a href="https://example.com/osint" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 9: Certifications -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Certifications</h5>
+                            <p class="card-text">Study guides and prep materials for certifications like CEH, CISSP, and Security+.</p>
+                            <a href="https://example.com/certifications" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Card 10: Cheat Sheets -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Cheat Sheets</h5>
+                            <p class="card-text">Guides for securing mobile apps and devices against common vulnerabilities.</p>
+                            <a href="https://example.com/mobile-security" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 11: Youtube Channels -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Youtube Channels</h5>
+                            <p class="card-text">Tools and techniques for open-source intelligence gathering and analysis.</p>
+                            <a href="https://example.com/osint" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 12: Electronics -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Electronics</h5>
+                            <p class="card-text">Study guides and prep materials for certifications like CEH, CISSP, and Security+.</p>
+                            <a href="https://example.com/certifications" target="_blank" class="btn btn-warning">Explore</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
