@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Network Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        header {
+            background-image: url('about.jpg');
+            background-size: cover;
+            /* This ensures the image covers the full section without being stretched */
+            background-position: center center;
+            /* This centers the image */
+            background-attachment: fixed;
+            /* Optional: makes the background image fixed during scrolling */
+            color: white;
+            position: relative;
+            height: 80vh;
+            /* Ensures the hero section takes full viewport height */
+        }
+
+
+        /* Make carousel images look professional and responsive with a 'paspartu' effect */
+        .carousel-item img {
+            max-height: 500px;
+            /* Limit the image height */
+            object-fit: cover;
+            /* Make sure the images cover the entire area without stretching */
+            width: 100%;
+            /* Ensure the images are fully responsive */
+            border-radius: 10px;
+            /* Rounded corners for a smooth look */
+            padding: 15px;
+            /* Padding around the images to simulate a frame */
+            background-color: #fff;
+            /* White background for the 'frame' effect */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            /* Optional: subtle shadow around the image */
+        }
+
+        /* Customize carousel indicators */
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel-indicators li {
+            background-color: #fff;
+            /* White dots for better visibility */
+            border-radius: 50%;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+        }
+
+        .carousel-indicators .active {
+            background-color: #f39c12;
+            /* Highlight active indicator with a gold color */
+        }
+
+        /* Style for the navigation buttons */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background for arrows */
+            border-radius: 50%;
+            padding: 10px;
+            /* Padding for better clickability */
+        }
+
+        .carousel-control-prev-icon:hover,
+        .carousel-control-next-icon:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Darker background on hover */
+        }
+
+
+        .certification-badge img {
+            max-width: 30%;
+            /* Reduce badge size */
+            margin: 0 auto;
+            /* Center the badge */
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Projects</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-center text-light py-5">
+        <div class="container">
+            <h1 class="display-4">About Me</h1>
+            <p class="lead">A glimpse into my skills, experiences, and passions.</p>
+        </div>
+    </header>
+
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Introduction</h2>
+            <p class="text-center">Hi, I'm Bogdan, a network engineer from Romania. With over 8 years of experience in
+                both academia and the industry, I've honed a strong understanding of network security, ethical hacking,
+                and front-end development. My portfolio reflects my technical expertise, the challenges I've overcome,
+                and my passion for creating secure and scalable systems.</p>
+        </div>
+    </section>
+
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-dark mb-4">Skills</h2>
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>Networking</h5>
+                    <ul>
+                        <li>Network Configuration</li>
+                        <li>Routing and Switching</li>
+                        <li>Network Automation with Python</li>
+                        <li>Network Monitoring and Troubleshooting</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Cybersecurity</h5>
+                    <ul>
+                        <li>Penetration Testing</li>
+                        <li>Ethical Hacking</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Security Tools and Techniques</li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <h5>Web Development</h5>
+                    <ul>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Bootstrap, jQuery</li>
+                        <li>Front-End Frameworks (React, Vue.js)</li>
+                        <li>API Integration and Web Services</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">Hobbies</h2>
+            <p class="text-center">When I'm not working, I enjoy hiking, photography, and exploring the beauty of
+                nature. I have a passion for capturing landscapes and wildlife, which has also inspired my interest in
+                machine learning and image processing.</p>
+
+            <!-- Carousel for Hobbies Images -->
+            <div id="hobbiesCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="nature1.jpg" class="d-block w-100" alt="Nature 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature2.jpg" class="d-block w-100" alt="Nature 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature3.jpg" class="d-block w-100" alt="Nature 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature4.jpg" class="d-block w-100" alt="Nature 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature5.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature6.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature7.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature8.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature9.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="nature10.jpg" class="d-block w-100" alt="Nature 5">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#hobbiesCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#hobbiesCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-dark mb-4">Certifications</h2>
+            <div class="row">
+                <div class="col-md-6 mb-3 certification-badge">
+                    <h5>CompTIA Security+</h5>
+                    <img src="badge2.png" alt="CompTIA Security+ Certificate">
+                    <p>Comprehensive knowledge of networking concepts, protocols, and operations.</p>
+                </div>
+                <div class="col-md-6 mb-3 certification-badge">
+                    <h5>Microsoft Certified Azure Fundamentals</h5>
+                    <img src="badge1.png" alt="Microsoft Azure Fundamentals Certificate">
+                    <p>Proven skills in networking fundamentals, IP routing, and switching technologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+</body>
+
+</html>
