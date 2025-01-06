@@ -1,1173 +1,246 @@
-
-<!DOCTYPE HTML>
-
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Portofolio</title>
-		<link rel="icon" type="image/x-icon" href="images\favicon.png">
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Bogdan Barbulescu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-		<style>
-			.collapsible {
-			  background-color: #212327;
-			  color: white;
-			  cursor: pointer;
-			  padding: 10px;
-			  width: 96%;
-			  border: none;
-			  text-align: center;
-			  outline: none;
-			  font-size: 15px;
-			}
-			
-			.active, .collapsible:hover {
-			  background-color: #555;
-			}
-			
-			.content {
-			  padding: 0 18px;
-			  display: none;
-			  overflow: hidden;
-			  background-color: #212327;
-			}
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add responsive styles for both desktop and mobile */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
 
-			.code-container {
-      			position: relative;
-    			}
+            header h1 {
+                font-size: 2rem;
+            }
 
-			pre {
-      			background-color: #555;
-      			padding: 10px;
-      			border: 1px solid #ccc;
-      			border-radius: 4px;
-    			}
+            header p {
+                font-size: 1rem;
+            }
+        }
 
-			.copy-button {
-     			 position: absolute;
-      			 top: 5px;
-      			 right: 5px;
-    			}
+        @media (min-width: 769px) {
+            header h1 {
+                font-size: 3rem;
+            }
 
+            header p {
+                font-size: 1.25rem;
+            }
+        }
 
-			code {
-  				font-family: Consolas,"courier new";
-  				color: rgb(255, 255, 255);
-  				background-color: #555;
-  				padding: 2px;
-  				font-size: 105%;
-			}
-		</style>
-		
-	</head>
+        /* Header background styling */
+        header {
+            background-image: url('photo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
 
-	<body class="is-preload">
+        header .card {
+            background: rgba(0, 0, 0, 0.5);
+            /* semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Blurring the background */
+            border: none;
+            padding: 2rem;
+            border-radius: 15px;
+        }
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        header .card h1,
+        header .card p {
+            color: white;
+        }
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
-							<span class="icon fa-user"></span>
-						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>My Portofolio</h1>
+        /* Card styling */
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+            /* Ensure the image stays within the card */
+        }
 
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="#about">About</a></li>
-								<li><a href="#learningresources">Learning</a></li>
-								<li><a href="#homelabs">Home Labs</a></li>
-								<li><a href="#writeups">Writeups</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+        /* Centering and positioning text */
+        header .container {
+            z-index: 2;
+            position: relative;
+        }
 
-				<!-- Main -->
-					<div id="main">
+        /* Overlay effect */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            z-index: 1;
+        }
 
-						<!-- About -->
-							<article id="about">
-								<h2 class="major">About</h2>
-								<a href="https://www.credly.com/users/bogdan-barbulescu.914cdc46/badges" rel="nofollow"> <img src="https://img.shields.io/badge/-Credly-%23FF6B00?logo=credly&amp;logoColor=white&amp;style=flat" alt="Credly" data-canonical-src="https://img.shields.io/badge/-Credly-%23FF6B00?logo=credly&amp;logoColor=white&amp;style=flat" style="max-width: 100%;"></a> <a href="https://tryhackme.com/p/V.B." rel="nofollow"><img src="https://img.shields.io/badge/-TryHackMe-%23212C42?style=flat&amp;logo=tryhackme&amp;logoColor=white" alt="TryHackMe" data-canonical-src="https://img.shields.io/badge/-TryHackMe-%23212C42?style=flat&amp;logo=tryhackme&amp;logoColor=white" style="max-width: 100%;"></a> 
-								<a href="https://www.linkedin.com/in/bogdan-barbulescu/">
-									<img src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="LinkedIn" height="20" width="40" style="max-width: 100%;">
-								  </a>
-								  
-								<span class="image main"><img src="images/DSC_0197-Pano - Copy.jpg" alt="" /></span>
-								<p>Hi, 
-									I'm Bogdan, an engineer based in Bucharest, with 8 years of experience in the academic industry. I am a curious individual, always on the pursuit of knowledge, continuously cultivating a deep passion for ethical hacking, penetration testing, and network security.
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
 
-								<p>Throughout my professional career, I have embarked on an enriching learning journey. This portfolio serves as a testament to my ongoing commitment to expanding my knowledge and refining my skills. It showcases the diverse range of projects I have undertaken, the challenges I have overcome, and the valuable lessons I have learned along the way.</p>	 
-								<p>In my free time, I find joy outdoors, immersing myself in the beauty of nature through hiking and capturing its essence through the lens of my camera. <br>By the way, check out my <a href="https://www.instagram.com/bogdanbarbulescu/">awesome work</a>.</p>
-								   
-							</article>
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+            filter: grayscale(100%);
+            /* Make image grayscale by default */
+        }
 
-						<!-- Learning resources -->
-
-						
-						<!-- Linux-cheetsheet -->
-							<article id="linux">
-								<h2 class="major">Linux</h2>  
-								<span class="image main"><img src="images/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg" alt="" /></span>
-								<table>
-									<thead>
-									<tr>
-									<th><strong>Command</strong></th>
-									<th><strong>Description</strong></th>
-									</tr>
-									</thead>
-									<tbody>
-									<tr>
-									<td><code>man &lt;tool&gt;</code></td>
-									<td>Opens man pages for the specified tool.</td>
-									</tr>
-									<tr>
-									<td><code>&lt;tool&gt; -h</code></td>
-									<td>Prints the help page of the tool.</td>
-									</tr>
-									<tr>
-									<td><code>apropos &lt;keyword&gt;</code></td>
-									<td>Searches through man pages&#39; descriptions for instances of a given keyword.</td>
-									</tr>
-									<tr>
-									<td><code>cat</code></td>
-									<td>Concatenate and print files.</td>
-									</tr>
-									<tr>
-									<td><code>whoami</code></td>
-									<td>Displays current username.</td>
-									</tr>
-									<tr>
-									<td><code>id</code></td>
-									<td>Returns users identity.</td>
-									</tr>
-									<tr>
-									<td><code>hostname</code></td>
-									<td>Sets or prints the name of the current host system.</td>
-									</tr>
-									<tr>
-									<td><code>uname</code></td>
-									<td>Prints operating system name.</td>
-									</tr>
-									<tr>
-									<td><code>pwd</code></td>
-									<td>Returns working directory name.</td>
-									</tr>
-									<tr>
-									<td><code>ifconfig</code></td>
-									<td>The <code>ifconfig</code> utility is used to assign or view an address to a network interface and/or configure network interface parameters.</td>
-									</tr>
-									<tr>
-									<td><code>ip</code></td>
-									<td>Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels.</td>
-									</tr>
-									<tr>
-									<td><code>netstat</code></td>
-									<td>Shows network status.</td>
-									</tr>
-									<tr>
-									<td><code>ss</code></td>
-									<td>Another utility to investigate sockets.</td>
-									</tr>
-									<tr>
-									<td><code>ps</code></td>
-									<td>Shows process status.</td>
-									</tr>
-									<tr>
-									<td><code>who</code></td>
-									<td>Displays who is logged in.</td>
-									</tr>
-									<tr>
-									<td><code>env</code></td>
-									<td>Prints environment or sets and executes a command.</td>
-									</tr>
-									<tr>
-									<td><code>lsblk</code></td>
-									<td>Lists block devices.</td>
-									</tr>
-									<tr>
-									<td><code>lsusb</code></td>
-									<td>Lists USB devices.</td>
-									</tr>
-									<tr>
-									<td><code>lsof</code></td>
-									<td>Lists opened files.</td>
-									</tr>
-									<tr>
-									<td><code>lspci</code></td>
-									<td>Lists PCI devices.</td>
-									</tr>
-									<tr>
-									<td><code>sudo</code></td>
-									<td>Execute command as a different user.</td>
-									</tr>
-									<tr>
-									<td><code>su</code></td>
-									<td>The <code>su</code> utility requests appropriate user credentials via PAM and switches to that user ID (the default user is the superuser).  A shell is then executed.</td>
-									</tr>
-									<tr>
-									<td><code>useradd</code></td>
-									<td>Creates a new user or update default new user information.</td>
-									</tr>
-									<tr>
-									<td><code>userdel</code></td>
-									<td>Deletes a user account and related files.</td>
-									</tr>
-									<tr>
-									<td><code>usermod</code></td>
-									<td>Modifies a user account.</td>
-									</tr>
-									<tr>
-									<td><code>addgroup</code></td>
-									<td>Adds a group to the system.</td>
-									</tr>
-									<tr>
-									<td><code>delgroup</code></td>
-									<td>Removes a group from the system.</td>
-									</tr>
-									<tr>
-									<td><code>passwd</code></td>
-									<td>Changes user password.</td>
-									</tr>
-									<tr>
-									<td><code>dpkg</code></td>
-									<td>Install, remove and configure Debian-based packages.</td>
-									</tr>
-									<tr>
-									<td><code>apt</code></td>
-									<td>High-level package management command-line utility.</td>
-									</tr>
-									<tr>
-									<td><code>aptitude</code></td>
-									<td>Alternative to <code>apt</code>.</td>
-									</tr>
-									<tr>
-									<td><code>snap</code></td>
-									<td>Install, remove and configure snap packages.</td>
-									</tr>
-									<tr>
-									<td><code>gem</code></td>
-									<td>Standard package manager for Ruby.</td>
-									</tr>
-									<tr>
-									<td><code>pip</code></td>
-									<td>Standard package manager for Python.</td>
-									</tr>
-									<tr>
-									<td><code>git</code></td>
-									<td>Revision control system command-line utility.</td>
-									</tr>
-									<tr>
-									<td><code>systemctl</code></td>
-									<td>Command-line based service and systemd control manager.</td>
-									</tr>
-									<tr>
-									<td><code>ps</code></td>
-									<td>Prints a snapshot of the current processes.</td>
-									</tr>
-									<tr>
-									<td><code>journalctl</code></td>
-									<td>Query the systemd journal.</td>
-									</tr>
-									<tr>
-									<td><code>kill</code></td>
-									<td>Sends a signal to a process.</td>
-									</tr>
-									<tr>
-									<td><code>bg</code></td>
-									<td>Puts a process into background.</td>
-									</tr>
-									<tr>
-									<td><code>jobs</code></td>
-									<td>Lists all processes that are running in the background.</td>
-									</tr>
-									<tr>
-									<td><code>fg</code></td>
-									<td>Puts a process into the foreground.</td>
-									</tr>
-									<tr>
-									<td><code>curl</code></td>
-									<td>Command-line utility to transfer data from or to a server.</td>
-									</tr>
-									<tr>
-									<td><code>wget</code></td>
-									<td>An alternative to <code>curl</code> that downloads files from FTP or HTTP(s) server.</td>
-									</tr>
-									<tr>
-									<td><code>python3 -m http.server</code></td>
-									<td>Starts a Python3 web server on TCP port 8000.</td>
-									</tr>
-									<tr>
-									<td><code>ls</code></td>
-									<td>Lists directory contents.</td>
-									</tr>
-									<tr>
-									<td><code>cd</code></td>
-									<td>Changes the directory.</td>
-									</tr>
-									<tr>
-									<td><code>clear</code></td>
-									<td>Clears the terminal.</td>
-									</tr>
-									<tr>
-									<td><code>touch</code></td>
-									<td>Creates an empty file.</td>
-									</tr>
-									<tr>
-									<td><code>mkdir</code></td>
-									<td>Creates a directory.</td>
-									</tr>
-									<tr>
-									<td><code>tree</code></td>
-									<td>Lists the contents of a directory recursively.</td>
-									</tr>
-									<tr>
-									<td><code>mv</code></td>
-									<td>Move or rename files or directories.</td>
-									</tr>
-									<tr>
-									<td><code>cp</code></td>
-									<td>Copy files or directories.</td>
-									</tr>
-									<tr>
-									<td><code>nano</code></td>
-									<td>Terminal based text editor.</td>
-									</tr>
-									<tr>
-									<td><code>which</code></td>
-									<td>Returns the path to a file or link.</td>
-									</tr>
-									<tr>
-									<td><code>find</code></td>
-									<td>Searches for files in a directory hierarchy.</td>
-									</tr>
-									<tr>
-									<td><code>updatedb</code></td>
-									<td>Updates the locale database for existing contents on the system.</td>
-									</tr>
-									<tr>
-									<td><code>locate</code></td>
-									<td>Uses the locale database to find contents on the system.</td>
-									</tr>
-									<tr>
-									<td><code>more</code></td>
-									<td>Pager that is used to read STDOUT or files.</td>
-									</tr>
-									<tr>
-									<td><code>less</code></td>
-									<td>An alternative to <code>more</code> with more features.</td>
-									</tr>
-									<tr>
-									<td><code>head</code></td>
-									<td>Prints the first ten lines of STDOUT or a file.</td>
-									</tr>
-									<tr>
-									<td><code>tail</code></td>
-									<td>Prints the last ten lines of STDOUT or a file.</td>
-									</tr>
-									<tr>
-									<td><code>sort</code></td>
-									<td>Sorts the contents of STDOUT or a file.</td>
-									</tr>
-									<tr>
-									<td><code>grep</code></td>
-									<td>Searches for specific results that contain given patterns.</td>
-									</tr>
-									<tr>
-									<td><code>cut</code></td>
-									<td>Removes sections from each line of files.</td>
-									</tr>
-									<tr>
-									<td><code>tr</code></td>
-									<td>Replaces certain characters.</td>
-									</tr>
-									<tr>
-									<td><code>column</code></td>
-									<td>Command-line based utility that formats its input into multiple columns.</td>
-									</tr>
-									<tr>
-									<td><code>awk</code></td>
-									<td>Pattern scanning and processing language.</td>
-									</tr>
-									<tr>
-									<td><code>sed</code></td>
-									<td>A stream editor for filtering and transforming text.</td>
-									</tr>
-									<tr>
-									<td><code>wc</code></td>
-									<td>Prints newline, word, and byte counts for a given input.</td>
-									</tr>
-									<tr>
-									<td><code>chmod</code></td>
-									<td>Changes permission of a file or directory.</td>
-									</tr>
-									<tr>
-									<td><code>chown</code></td>
-									<td>Changes the owner and group of a file or directory.</td>
-									</tr>
-									</tbody>
-									</table>
-									
-							</article>
-
-							<!-- Metasploit-cheetsheet -->
-							<article id="metasploit">
-								<h2 class="major">Metasploit</h2>  
-								<span class="image main"><img src="images/kevin-horvat-Pyjp2zmxuLk-unsplash.jpg" alt="" /></span>
-								<h2 id="msfconsole-commands">MSFconsole Commands</h2>
-								<table>
-								<thead>
-								<tr>
-								<th style="text-align:left"><strong>Command</strong></th>
-								<th style="text-align:left"><strong>Description</strong></th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-								<td style="text-align:left"><code>show exploits</code></td>
-								<td style="text-align:left">Show all exploits within the Framework.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>show payloads</code></td>
-								<td style="text-align:left">Show all payloads within the Framework.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>show auxiliary</code></td>
-								<td style="text-align:left">Show all auxiliary modules within the Framework.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>search &lt;name&gt;</code></td>
-								<td style="text-align:left">Search for exploits or modules within the Framework.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>info</code></td>
-								<td style="text-align:left">Load information about a specific exploit or module.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>use &lt;name&gt;</code></td>
-								<td style="text-align:left">Load an exploit or module (example: use windows/smb/psexec).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>use &lt;number&gt;</code></td>
-								<td style="text-align:left">Load an exploit by using the index number displayed after the search <name> command.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>LHOST</code></td>
-								<td style="text-align:left">Your local host's IP address reachable by the target, often the public IP address when not on a local network. Typically used for reverse shells.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>RHOST</code></td>
-								<td style="text-align:left">The remote host or the target. set function Set a specific value (for example, LHOST or RHOST).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>setg &lt;function&gt;</code></td>
-								<td style="text-align:left">Set a specific value globally (for example, LHOST or RHOST).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>show options</code></td>
-								<td style="text-align:left">Show the options available for a module or exploit.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>show targets</code></td>
-								<td style="text-align:left">Show the platforms supported by the exploit.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>set target &lt;number&gt;</code></td>
-								<td style="text-align:left">Specify a specific target index if you know the OS and service pack.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>set payload &lt;payload&gt;</code></td>
-								<td style="text-align:left">Specify the payload to use.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>set payload &lt;number&gt;</code></td>
-								<td style="text-align:left">Specify the payload index number to use after the show payloads command.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>show advanced</code></td>
-								<td style="text-align:left">Show advanced options.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>set autorunscript migrate -f</code></td>
-								<td style="text-align:left">Automatically migrate to a separate process upon exploit completion.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>check</code></td>
-								<td style="text-align:left">Determine whether a target is vulnerable to an attack.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>exploit</code></td>
-								<td style="text-align:left">Execute the module or exploit and attack the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>exploit -j</code></td>
-								<td style="text-align:left">Run the exploit under the context of the job. (This will run the exploit in the background.)</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>exploit -z</code></td>
-								<td style="text-align:left">Do not interact with the session after successful exploitation.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>exploit -e &lt;encoder&gt;</code></td>
-								<td style="text-align:left">Specify the payload encoder to use (example: exploit –e shikata_ga_nai).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>exploit -h</code></td>
-								<td style="text-align:left">Display help for the exploit command.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -l</code></td>
-								<td style="text-align:left">List available sessions (used when handling multiple shells).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -l -v</code></td>
-								<td style="text-align:left">List all available sessions and show verbose fields, such as which vulnerability was used when exploiting the system.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -s &lt;script&gt;</code></td>
-								<td style="text-align:left">Run a specific Meterpreter script on all Meterpreter live sessions.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -K</code></td>
-								<td style="text-align:left">Kill all live sessions.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -c &lt;cmd&gt;</code></td>
-								<td style="text-align:left">Execute a command on all live Meterpreter sessions.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sessions -u &lt;sessionID&gt;</code></td>
-								<td style="text-align:left">Upgrade a normal Win32 shell to a Meterpreter console.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>db_create &lt;name&gt;</code></td>
-								<td style="text-align:left">Create a database to use with database-driven attacks (example: db_create autopwn).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>db_connect &lt;name&gt;</code></td>
-								<td style="text-align:left">Create and connect to a database for driven attacks (example: db_connect autopwn).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>db_nmap</code></td>
-								<td style="text-align:left">Use Nmap and place results in a database. (Normal Nmap syntax is supported, such as –sT –v –P0.)</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>db_destroy</code></td>
-								<td style="text-align:left">Delete the current database.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>db_destroy  &lt;user:password@host:port/database&gt;</code></td>
-								<td style="text-align:left">Delete database using advanced options.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"></td>
-								</tr>
-								</tbody>
-								</table>
-								<hr>
-								<h2 id="meterpreter-commands">Meterpreter Commands</h2>
-								<table>
-								<thead>
-								<tr>
-								<th style="text-align:left"><strong>Command</strong></th>
-								<th style="text-align:left"><strong>Description</strong></th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr>
-								<td style="text-align:left"><code>help</code></td>
-								<td style="text-align:left">Open Meterpreter usage help.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>run &lt;scriptname&gt;</code></td>
-								<td style="text-align:left">Run Meterpreter-based scripts; for a full list check the scripts/meterpreter directory.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sysinfo</code></td>
-								<td style="text-align:left">Show the system information on the compromised target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>ls</code></td>
-								<td style="text-align:left">List the files and folders on the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>use priv</code></td>
-								<td style="text-align:left">Load the privilege extension for extended Meterpreter libraries.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>ps</code></td>
-								<td style="text-align:left">Show all running processes and which accounts are associated with each process.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>migrate &lt;proc. id&gt;</code></td>
-								<td style="text-align:left">Migrate to the specific process ID (PID is the target process ID gained from the ps command).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>use incognito</code></td>
-								<td style="text-align:left">Load incognito functions. (Used for token stealing and impersonation on a target machine.)</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>list_tokens -u</code></td>
-								<td style="text-align:left">List available tokens on the target by user.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>list_tokens -g</code></td>
-								<td style="text-align:left">List available tokens on the target by group.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>impersonate_token &lt;DOMAIN_NAMEUSERNAME&gt;</code></td>
-								<td style="text-align:left">Impersonate a token available on the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>steal_token &lt;proc. id&gt;</code></td>
-								<td style="text-align:left">Steal the tokens available for a given process and impersonate that token.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>drop_token</code></td>
-								<td style="text-align:left">Stop impersonating the current token.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>getsystem</code></td>
-								<td style="text-align:left">Attempt to elevate permissions to SYSTEM-level access through multiple attack vectors.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>shell</code></td>
-								<td style="text-align:left">Drop into an interactive shell with all available tokens.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>execute -f &lt;cmd.exe&gt; -i</code></td>
-								<td style="text-align:left">Execute cmd.exe and interact with it.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>execute -f &lt;cmd.exe&gt; -i -t</code></td>
-								<td style="text-align:left">Execute cmd.exe with all available tokens.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>execute -f &lt;cmd.exe&gt; -i -H -t</code></td>
-								<td style="text-align:left">Execute cmd.exe with all available tokens and make it a hidden process.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>rev2self</code></td>
-								<td style="text-align:left">Revert back to the original user you used to compromise the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>reg &lt;command&gt;</code></td>
-								<td style="text-align:left">Interact, create, delete, query, set, and much more in the target’s registry.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>setdesktop &lt;number&gt;</code></td>
-								<td style="text-align:left">Switch to a different screen based on who is logged in.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>screenshot</code></td>
-								<td style="text-align:left">Take a screenshot of the target's screen.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>upload &lt;filename&gt;</code></td>
-								<td style="text-align:left">Upload a file to the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>download &lt;filename&gt;</code></td>
-								<td style="text-align:left">Download a file from the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>keyscan_start</code></td>
-								<td style="text-align:left">Start sniffing keystrokes on the remote target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>keyscan_dump</code></td>
-								<td style="text-align:left">Dump the remote keys captured on the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>keyscan_stop</code></td>
-								<td style="text-align:left">Stop sniffing keystrokes on the remote target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>getprivs</code></td>
-								<td style="text-align:left">Get as many privileges as possible on the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>uictl enable &lt;keyboard/mouse&gt;</code></td>
-								<td style="text-align:left">Take control of the keyboard and/or mouse.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>background</code></td>
-								<td style="text-align:left">Run your current Meterpreter shell in the background.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>hashdump</code></td>
-								<td style="text-align:left">Dump all hashes on the target. use sniffer Load the sniffer module.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sniffer_interfaces</code></td>
-								<td style="text-align:left">List the available interfaces on the target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sniffer_dump &lt;interfaceID&gt; pcapname</code></td>
-								<td style="text-align:left">Start sniffing on the remote target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sniffer_start &lt;interfaceID&gt; packet-buffer</code></td>
-								<td style="text-align:left">Start sniffing with a specific range for a packet buffer.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sniffer_stats &lt;interfaceID&gt;</code></td>
-								<td style="text-align:left">Grab statistical information from the interface you are sniffing.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>sniffer_stop &lt;interfaceID&gt;</code></td>
-								<td style="text-align:left">Stop the sniffer.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>add_user &lt;username&gt; &lt;password&gt; -h &lt;ip&gt;</code></td>
-								<td style="text-align:left">Add a user on the remote target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>add_group_user &lt;&quot;Domain Admins&quot;&gt; &lt;username&gt; -h &lt;ip&gt;</code></td>
-								<td style="text-align:left">Add a username to the Domain Administrators group on the remote target.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>clearev</code></td>
-								<td style="text-align:left">Clear the event log on the target machine.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>timestomp</code></td>
-								<td style="text-align:left">Change file attributes, such as creation date (antiforensics measure).</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"><code>reboot</code></td>
-								<td style="text-align:left">Reboot the target machine.</td>
-								</tr>
-								<tr>
-								<td style="text-align:left"></td>
-								<td style="text-align:left"></td>
-								</tr>
-								</tbody>
-								</table>
-								
-							</article>
-
-							
-							<!-- Windows CMD-cheetsheet -->
-							<article id="cmd">
-								<h2 class="major">Windows CMD</h2>  
-								<span class="image main"><img src="images/kevin-horvat-Pyjp2zmxuLk-unsplash.jpg" alt="" /></span>
-								<p>Files and Folders Management</p>
-								<ul>
-								<li><strong>COPY</strong> - Copies files to another location</li>
-								<li><strong>DIR</strong> - Displays files and folders in current directory</li>
-								<li><strong>DEL or ERASE</strong> - Deletes files</li>
-								<li><strong>EDIT</strong> - Starts file editor</li>
-								<li><strong>CD</strong> - Changes directory</li>
-								<li><strong>EXPAND</strong> - Decompresses compressed files</li>
-								<li><strong>FC</strong> - Compares files and shows the differences between them</li>
-								<li><strong>FIND</strong> - Finds a text string in the file</li>
-								<li><strong>MD or MAKEDIR</strong> - Creates a folder</li>
-								<li><strong>MOVE</strong> - Moves files from one folder to another</li>
-								<li><strong>PRINT</strong> - Prints out the text file contents</li>
-								<li><strong>RD or RMDIR</strong> - Deletes a folder</li>
-								<li><strong>REN or RENAME</strong> - Renames a file or folder</li>
-								<li><strong>REPLACE</strong> - Replaces files in one directory with files of the same name in another directory (overwrite)</li>
-								<li><strong>ROBOCOPY</strong> - Uses an advanced tool to copy files and directories</li>
-								<li><strong>TREE</strong> - Shows directory structure of a disk or folder</li>
-								<li><strong>TYPE</strong> - Displays the contents of text files</li>
-								<li><strong>OPENFILES</strong> - Manages opened local or network files</li>
-								<li><strong>XCOPY</strong> - Copies files and directory trees</li>
-								</ul>
-								<h2 id="applications-and-processes">Applications and Processes</h2>
-								<ul>
-								<li><strong>SCHTASKS</strong> - Executes a command or start a scheduled application (Task Scheduler)</li>
-								<li><strong>SHUTDOWN</strong> - Shutdowns or reboots your computer</li>
-								<li><strong>TASKLIST</strong> - Lists the tasks being performed</li>
-								<li><strong>TASKKILL</strong> - Stops or halts a task (to stop a task you use a PID which you can find out from TASKLIST)</li>
-								<li><strong>REG</strong> - Starts registry editor</li>
-								<li><strong>RUNAS</strong> - Launches the task as another user</li>
-								</ul>
-								<h2 id="disks-management">Disks Management</h2>
-								<ul>
-								<li><strong>CHKDISK</strong> - Checks disk and shows statistics</li>
-								<li><strong>DEFRAG</strong> - Starts disk defragmentation</li>
-								<li><strong>CHKNTFS</strong> - Displays or changes execution of disk check at boot</li>
-								<li><strong>COMPACT</strong> - Displays and change the compression of files in NTFS partitions</li>
-								<li><strong>CONVERT</strong> - Converts FAT disk volume to NTFS</li>
-								<li><strong>DISKPART</strong> - Displays and adjusts disk partition properties</li>
-								<li><strong>FORMAT</strong> - Formats the disk</li>
-								<li><strong>FSUTIL</strong> - Displays and configures file system properties</li>
-								<li><strong>LABEL</strong> - Creates, changes, or deletes a disk volume label</li>
-								<li><strong>RECOVER</strong> - Recovers data from a bad or damaged disk</li>
-								<li><strong>VOL</strong> - Displays volume label and serial number for the disk</li>
-								</ul>
-								<h2 id="system-information">System Information</h2>
-								<ul>
-								<li><strong>DATE</strong> - Outputs or sets the current date</li>
-								<li><strong>TIME</strong> - Displays or sets the system time</li>
-								<li><strong>DRIVERQUERY</strong> - Displays the current state and properties of the device driver</li>
-								<li><strong>HOSTNAME</strong> - Displays name of the computer</li>
-								<li><strong>SYSTEMINFO</strong> - Shows configuration information about your computer</li>
-								<li><strong>VER</strong> - Allows you to view the Windows version</li>
-								<li><strong>GPRESULT</strong> - Displays current applied group policies (RSoP)</li>
-								<li><strong>GPUPDATE</strong> - Updates group policies</li>
-								</ul>
-								<h2 id="network">Network</h2>
-								<ul>
-								<li><strong>IPCONFIG</strong> - Shows information about network interfaces</li>
-								<li><strong>PING</strong> - Sends ICMP requests to the target host, checks host availability</li>
-								<li><strong>TRACERT</strong> - Finds the path for packets traveling over the network</li>
-								<li><strong>NSLOOKUP</strong> - Finds IP address by resource name</li>
-								<li><strong>ROUTE</strong> - Displays network route tables</li>
-								<li><strong>ARP</strong>- Shows a table with IP addresses converted into physical addresses</li>
-								<li><strong>NETSH</strong> - Starts is a network settings control program</li>
-								<li><strong>GETMAC</strong> - Shows the MAC address of the network adapter</li>
-								<li><strong>TFTP</strong> - Starts TFTP client in console</li>
-								</ul>
-								<h2 id="command-line-setup">Command Line Setup</h2>
-								<ul>
-								<li><strong>CLS</strong> - Clears screen</li>
-								<li><strong>CMD</strong> - Displays another command prompt</li>
-								<li><strong>COLOR</strong> - Sets the text and background color</li>
-								<li><strong>PROMPT</strong> - Changes the command line prompt</li>
-								<li><strong>TITLE</strong> - Assigns a title for the current session</li>
-								<li><strong>HELP</strong> - Launches CMD help</li>
-								<li><strong>EXIT</strong> - Exits the command line</li>
-								</ul>
+        .card:hover img {
+            transform: scale(1.05);
+            /* Zoom-in the image */
+            filter: none;
+            /* Remove grayscale when hovering */
+        }
 
 
-							</article>
+        /* Yellow hover color for all links */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
+        a:hover {
+            color: yellow;
+        }
+    </style>
+</head>
 
-							<article id="learningresources">
-								<h2 class="major">Learning resources</h2>
-								<span class="image main"><img src="images/markus-spiske-FXFz-sW0uwo-unsplash.jpg" alt="" /></span>
-								<nav>
-									<ul>
-										<button type="button" class="collapsible">Red Team</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\destaque-site-red-team.png" alt="" /></span> -->
-											 <p>  </p>
- 										<!--	 <p> <a href="#" target="_blank">Introduction to Red Teaming</a><br> 
-											 <a href=" " target="_blank">Techniques and Tools</a><br>
-											 <a href=" " target="_blank">Adversary Emulation</a><br>	 
-											 <a href=" " target="_blank">Exploitation and Vulnerability Assessment</a><br>	
-											 <a href=" " target="_blank">Post-Exploitation and Lateral Movement</a><br>
-											 <a href=" " target="_blank">Active Directory attacks</a><br>
-											 <a href=" " target="_blank">Case Studies</a><br>	 -->
-											 <a href="https://handbook.gitlab.com/handbook/security/threat-management/red-team/" target="_blank">Reporting and Documentation</a><br>
-											 <a href="os_tools.html" target="_blank">Open Source Tools</a><br>
-											 </p>
-										</div>
+<body>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="text-center text-light py-5">
+        <div class="container">
+            <h1 class="display-4">Building Secure and Scalable Systems</h1>
+            <p class="lead">Discover projects that address real-world challenges in networking and cybersecurity,
+                focusing on performance, security, and automation.</p>
+            <div id="countdown" class="fs-3 mt-4"></div>
+            <a href="#projects" class="btn btn-outline-warning mt-3">View My Work</a>
+        </div>
+    </header>
+
+    <section id="about" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-4">About Me</h2>
+            <p class="text-center">Hi, I'm Bogdan, an engineer from Romania with 8 years of academic industry
+                experience. I'm passionate about <b>network security</b>, <b>ethical hacking</b>, and <b>front-end development</b>.</p>
+            <p class="text-center">This portfolio reflects my journey, showcasing diverse projects, challenges overcome, and lessons learned.</p>
+            <p class="text-center">Outside work, I enjoy hiking and capturing nature's beauty through photography. By the way, check out <b><a href="https://instagram.com/bogdanbarbulescu" target="_blank">my work</a></b>.</p>
+        </div>
+    </section>
+    
+    
+
+    <section id="projects" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-dark mb-4">Projects</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="network.png" alt="Project 1" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Networking</h5>
+                            <p class="card-text">Automating configurations and monitoring using Python and APIs.</p>
+                            <a href="network-automation.html" class="btn btn-warning">See more</a>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="head.jpg" alt="Project 2" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Cybersecurity</h5>
+                            <p class="card-text">Building custom labs to study and practice cybersecurity tools.</p>
+                            <a href="cybersecurity.html" class="btn btn-warning">See more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="web.jpg" alt="Project 3" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Web Design</h5>
+                            <p class="card-text">Creating responsive and modern interfaces using HTML, CSS and JS.</p>
+                            <a href="web-development-projects.html" class="btn btn-warning">See more</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img src="learning.jpg" alt="Learning Resources" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Learning Resources</h5>
+                            <p class="card-text">Collection of resources spanning Networking, Certifications, and more.</p>
+                            <a href="learning.html" class="btn btn-warning">See more</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5 bg-dark text-light text-center">
+        <div class="container">
+            <h2 class="mb-4">Contact Me</h2>
+            <p>Follow me on my social media profiles or send me a message directly.</p>
+            <div class="social-icons">
+                <a href="https://github.com/bogdanbarbulescu" target="_blank" class="text-light me-3"
+                    aria-label="GitHub">
+                    <i class="bi bi-github fs-3"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bogdan-barbulescu/" target="_blank" class="text-light me-3" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin fs-3"></i>
+                </a>
+                <a href="https://instagram.com/bogdanbarbulescu" target="_blank" class="text-light me-3" aria-label="Instagram">
+                    <i class="bi bi-instagram fs-3"></i>
+                </a>
+                <a href="https://www.youtube.com/@bogdanbarbulescu800" target="_blank" class="text-light" aria-label="YouTube">
+                    <i class="bi bi-youtube fs-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
 
 
 
-										<button type="button" class="collapsible">Blue Team</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\blue.jpg" alt="" /></span> -->
-											 <p>  </p>
- 									<!--	<a href=" " target="_blank">Reporting and Documentation</a><br>	 <p> <a href="#" target="_blank">Introduction to Blue Teaming</a><br>
-											 <a href=" " target="_blank">Security Monitoring and Incident Response</a><br>
-											 <a href=" " target="_blank">Security Operations Center (SOC)</a><br>	 
-											 <a href=" " target="_blank">Threat Intelligence and Threat Hunting</a><br>	
-											 <a href=" " target="_blank">Security Information and Event Management (SIEM)</a><br>
-											 <a href=" " target="_blank">Incident Response and Forensics</a><br>	 -->
-											 <a href=" " target="_blank">Resources and Tools</a><br>
-											 </p>
-										</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    <script src="script.js"></script>
+</body>
 
-										<button type="button" class="collapsible">Cheatsheets</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\photo-cheat-sheet-distressed-red-stamp.jpg" alt="" /></span> -->
-											<p>  </p>
-											<a href="https://github.com/RehanSaeed/Bash-Cheat-Sheet">Bash</a><br>
-											<a href="https://sansorg.egnyte.com/dl/x19ByeTOpS">Burp Suite</a><br>
-											<a href="https://sansorg.egnyte.com/dl/cOBcwZSosv">Eric Zimmerman tools</a><br>
-											<a href="https://sansorg.egnyte.com/dl/f4TCYNMgN6">Google dorking</a><br>
-											<a href="https://sansorg.egnyte.com/dl/ZvGHqvRS3X">Hex and Regex Forensics</a><br>
-											<a href="#linux">Linux</a><br>
-											<a href="https://sansorg.egnyte.com/dl/suRa4RLonp">Malware Analysis $ Reverse Engineering</a><br> 
-											<a href="#metasploit">Metasploit</a><br>
-											<a href="https://github.com/tanprathan/MobileApp-Pentest-Cheatsheet">Mobile Application Pentest</a><br>
-											<a href="https://sansorg.egnyte.com/dl/Rop1b0ElWo">Netcat</a><br>
-											<a href="https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blte37ba962036d487b/5eb08aae26a7212f2db1c1da/NmapCheatSheetv1.1.pdf">Nmap</a><br>
-											<a href="https://github.com/ChronosPk/pentesting-cheatsheets">Pentesting</a><br>
-											<a href="https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/bltf146e4f361db3938/5e34a7bc946d717e2eab6139/power-shell-cheat-sheet-v41.pdf?msc=Cheat+Sheet+Blog">PowerShell</a><br>
-											<a href="https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blt81d030ecd27e1e5d/5e50122503d2600dc053d3ee/Python3-Cheat-Sheet.pdf">Python 3</a><br>
-											<a href="rtfm.html" target="_blank">RTFM</a><br>
-											<a href="https://assets.contentstack.io/v3/assets/blt36c2e63521272fdc/blta6a2ae64ec0ed535/5eb08aaeead3926127b4df44/SMB-Access-from-Linux.pdf">SMB Access from Linux</a><br>
-											<a href="#cmd">Windows CMD</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">Networking</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\networking.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p> <a href="https://www.ibm.com/topics/networking" target="_blank">What is networking?</a><br>
-											    <a href="https://networkverge.com/wp-content/uploads/2022/06/Top-100-Common-Ports.pdf" target="_blank">Well known ports</a><br>
-											    <a href=" " target="_blank">Network Protocols and Services</a><br>  
-											    <a href=" " target="_blank">Resources and Tools</a><br>
-										</p>	
-										</div>
-
-										<button type="button" class="collapsible">DevOps</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\networking.jpg" alt="" /></span> -->
-											<p>  </p>
-
-											    <a href="devops_tools.html" target="_blank">List on DevOps Tools</a><br>  
-											    <a href=" " target="_blank">Learning Resources</a><br>
-										</p>	
-										</div>
-										
-										
-
-
-										<button type="button" class="collapsible">Web</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\web.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p> <a href="https://www.golinuxcloud.com/install-dvwa-kali-linux/" target="_blank">Install DVWA on Kali Linux (Step-by-Step)</a><br>
-											    <a href="https://www.hacker101.com/" target="_blank">Hacker101</a><br>
-											    <a href="https://portswigger.net/web-security" target="_blank">Web Security Academy</a><br>
-											    <a href="https://trailofbits.github.io/ctf/" target="_blank">CTF Field Guide</a><br>
-											    <a href="https://github.com/juice-shop/juice-shop" target="_blank">OWASP Juice Shop</a><br>
-											    <a href="https://github.com/juice-shop/juice-shop" target="_blank">WebGoat</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">OSINT</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\OSINT.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p>
-											<a href="OSINT_tools.html" target="_blank">Techniques and Tools</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">Programming</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\programming.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p>
-											 <a href=" " target="_blank">Programming Languages</a><br>
-											 <a href=" " target="_blank">Scripting and Automation</a><br>
-											 <a href=" " target="_blank">Secure Coding Practices</a><br>	
-											 <a href=" " target="_blank">Web Scraping and Data Extraction</a><br>		
-											 <a href=" " target="_blank">Data Manipulation and Analysis</a><br>	
-										         <a href=" " target="_blank">Version Control and Collaboration</a><br>	
-											 <a href=" " target="_blank">Resources and Tools</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">Mobile Security</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\mobile.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p>
-											<a href="https://github.com/vaib25vicky/awesome-mobile-security" target="_blank">Awesome Mobile Security</a><br>		
-											 <a href="https://github.com/charles2gan/GDA-android-reversing-Tool" target="_blank">GDA Android Reversing Tool</a><br>	
-											 <a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank">Mobile Security Framework (MobSF)</a><br>
-											 <a href="https://github.com/OWASP/owasp-mastg" target="_blank">OWASP Mobile Application Security Testing Guide (MASTG)</a><br>	
-											 <a href="https://github.com/m0bilesecurity/RMS-Runtime-Mobile-Security" target="_blank">Runtime Mobile Security (RMS)</a><br>
-											</p>
-										</div>
-
-
-										<button type="button" class="collapsible">Hardware Security</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\hardware.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p>
-											 <a href="drone.html" target="_blank">Drone</a><br>
-											 <a href="electronics.html" target="_blank">Electronics</a><br>
-											 <a href="ics.html" target="_blank">Industrial Control Systems (ICS)</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">CTF</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\flag.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p> 
-											 <a href=" " target="_blank">CTF Platforms</a><br>
-											 <a href=" " target="_blank">Cryptography</a><br>
-											 <a href=" " target="_blank">Reverse Engineering</a><br>
-											 <a href=" " target="_blank">Web Application Security</a><br>
-										         <a href=" " target="_blank">Resources and Tools</a><br>
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">YouTube channels</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\youtube.jpg" alt="" /></span> -->
-											<p>  </p>
-											<p> 
-												<a href="https://www.youtube.com/@BlackHillsInformationSecurity/playlists" target="_blank">Black Hills Information Security</a><br> 
-												<a href="https://www.youtube.com/@CristiVladZ/playlists" target="_blank">Cristi Vlad</a><br>
-												<a href="https://www.youtube.com/@_CryptoCat/playlists" target="_blank">CryptoCat</a><br>
-												<a href="https://www.youtube.com/@davidbombal/playlists" target="_blank">David Bombal</a><br>
-												<a href="https://www.youtube.com/@garyruddellofficial/playlists" target="_blank">Gary Ruddell</a><br> 
-												<a href="https://www.youtube.com/@SimplyCyber/playlists" target="_blank">Gerard Auger, PhD - Simply Cyber</a><br>
-												<a href="https://www.youtube.com/@_JohnHammond/playlists" target="_blank">John Hammond</a><br>
-												<a href="https://www.youtube.com/HackerSploit/playlists" target="_blank">HackerSploit</a><br>
-												<a href="https://www.youtube.com/@InfoSecPat/playlists" target="_blank">InfoSec Pat</a><br> 
-												<a href="https://www.youtube.com/@ippsec/playlists" target="_blank">IppSec</a><br>
-												<a href="https://www.youtube.com/@ItproTv/playlists" target="_blank">ITProTV</a><br> 
-												<a href="https://www.youtube.com/@JackRhysider/playlists" target="_blank">Jack Rhysider</a><br> 
-												<a href="https://www.youtube.com/@MotasemHamdan/playlists" target="_blank">Motasem Hamdan</a><br> 
-												<a href="https://www.youtube.com/@NetworkChuck/playlists" target="_blank">NetworkChuck</a><br>
-												<a href="https://www.youtube.com/@professormesser/playlists" target="_blank">Professor Messer</a><br>
-												<a href="https://www.youtube.com/@STOKfredrik/playlists" target="_blank">STÖK</a><br> 
-												<a href="https://www.youtube.com/@TCMSecurityAcademy/playlists" target="_blank">The Cyber Menthor</a><br>
-												<a href="https://www.youtube.com/@TheXSSrat/playlists " target="_blank">The XSS rat</a><br> 
-												<a href="https://www.youtube.com/@TylerRamsbey/playlists" target="_blank">Tyler Ramsbey</a><br> 
-											</p>
-										</div>
-
-										<button type="button" class="collapsible">Certifications</button>
-										<div class="content">
-											<!-- <span class="image main"><img src="images\A Guide to Information Security Certifications.jpg" alt="" /></span> -->
-											<p>  </p>
-											<h3>Cisco</h3>
-											<a href="https://www.cisco.com/c/en/us/training-events/training-certifications/certifications/associate/ccna.html" target="_blank">Cisco Certified Network Associate (CCNA)</a>
-											<p></p>
-
-											<h3>Microsoft</h3>
-											<a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" target="_blank">Microsoft Azure Fundamentals (AZ-900)</a></br>
-											<p></p>
-
-											<h3>eLearnSecurity</h3>
-											
-											  <a href="https://elearnsecurity.com/product/ejpt-certification/" target="_blank">eLearnSecurity Junior Penetration Tester (eJPT)</a><br>
-											  <a href="https://elearnsecurity.com/product/ewpt-certification/" target="_blank"> eLearnSecurity Web Application Penetration Tester (eWPT)</a></br>
-											  <p></p>
-
-											<h3>TCM Security</h3>
-											<p> <a href="https://certifications.tcm-sec.com/pnpt/" target="_blank">Practical Network Penetration Tester (PNPT)</p>
-
-											<h3>OffSec</h3>
-											<p> <a href="https://www.offsec.com/courses/pen-200/" target="_blank">OffSec Certified Professional (OSCP)</p>
-
-											<h3>ISACA</h3>
-											   <a href="https://www.isaca.org/credentialing/cisa" target="_blank">Certified Information Systems Auditor (CISA)<br>
-											   <a href="https://www.isaca.org/credentialing/cism" target="_blank">Certified Information Security Manager (CISM)<br></br>
-											
-											<h3>ISC2</h3>
-											<p> <a href="https://www.isc2.org/Certifications/CISSP" target="_blank">Certified Information Systems Security Professional (CISSP)</p>
-
-											<h3>GIAC</h3>
-											<p> <a href="https://www.giac.org/certifications/penetration-tester-gpen/" target="_blank">GIAC Penetration Tester Certification (GPEN)</a><br>
-											   <a href="https://www.giac.org/certifications/web-application-penetration-tester-gwapt/" target="_blank">GIAC Web Application Penetration Tester (GWAPT)</a></p>
-
-											<h3>Security Blue Team</h3>
-											   <a href="https://securityblue.team/why-btl1/" target="_blank">Blue Team Level 1 (BTL1)</a><br>
-											   <a href="https://securityblue.team/btl2/" target="_blank">Blue Team Level 2 (BTL2)</a>
-											   <p></p>
-											
-										</div>
-
-
-											<!--
-												<button type="button" class="collapsible-button">Careers</button>
-												<div class="content">
-													<span class="image main"><img src="images\careers.jpg" alt="" /></span>
-													<ul>
-														<li><a href="#" target="_blank">SOC Analyst</a></li>
-														<li><a href="#" target="_blank">Security Engineer</a></li>
-														<li><a href="#" target="_blank">Cloud Security Engineer</a></li>
-														<li><a href="#" target="_blank">Digital Forensics & Incident Responder</a></li>
-														<li><a href="#" target="_blank">Penetration Tester</a></li>
-													</ul>
-												</div>
-											-->
-											
-											
-										
-									
-								</nav>
-								
-							</article>
-										
-
-
-
-						<!-- Home Labs -->
-							<article id="homelabs">
-								<h2 class="major">Home Labs</h2>
-								<span class="image main"><img src="images/boitumelo-phetla-fP9VEkZ-L0s-unsplash.jpg" alt="" /></span>
-								<p>This is a collection of some personal projects I’ve worked on.</p>
-								
-								<p>Coming soon!</p>
-							</article>
-
-						<!-- Writeups -->
-							<article id="writeups">
-								<h2 class="major">Writeups</h2>
-								<span class="image main"><img src="images/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg" alt="" /></span>
-								<nav>
-									<ul>
-										<button type="button" class="collapsible">TryHackMe</button>
-										<div class="content">
-										</div>
- 											
-										<button type="button" class="collapsible">HackTheBox Academy</button>
-										<div class="content">
-										</div>
-
-										<button type="button" class="collapsible">LetsDefend</button>
-										<div class="content">
-										</div>
- 											
-									</ul>
-								</nav>
-								
-							</article>
-
-						
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">&copy; Connect with me: <a href="https://www.linkedin.com/in/bogdan-barbulescu/">LinkedIn</a>.</p>
-					</footer>
-
-			</div>
-
-		<!-- BG -->
-			<div id="bg"></div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script>
-				var coll = document.getElementsByClassName("collapsible");
-				var i;
-				
-				for (i = 0; i < coll.length; i++) {
-				  coll[i].addEventListener("click", function() {
-					this.classList.toggle("active");
-					var content = this.nextElementSibling;
-					if (content.style.display === "block") {
-					  content.style.display = "none";
-					} else {
-					  content.style.display = "block";
-					}
-				  });
-				}
-				</script>
-
-	</body>
 </html>
