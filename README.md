@@ -4,11 +4,11 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bogdanbarbulescu&label=Profile%20views&color=0e75b6&style=flat" alt="bogdanbarbulescu" /> </p>
 
   
-- 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html#learningresources](https://bogdanbarbulescu.github.io/index.html#learningresources)
+- 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html/learning](https://bogdanbarbulescu.github.io/index.html/learning)
   
-- 👨‍💻 My projects: [https://bogdanbarbulescu.github.io/index.html#homelabs](https://bogdanbarbulescu.github.io/index.html#homelabs)
+- 👨‍💻 My projects: [https://bogdanbarbulescu.github.io/index.html#projects](https://bogdanbarbulescu.github.io/index.html#projects)
 
-- 📄 Know about my experiences [https://bogdanbarbulescu.github.io/index.html#about](https://bogdanbarbulescu.github.io/index.html#about)
+- 📄 Know about my experiences [https://bogdanbarbulescu.github.io/index.html/about-me.html](https://bogdanbarbulescu.github.io/index.html/about-me.html)
 
 - 🏅 Certifications: <a href="https://www.credly.com/badges/60d7a784-4c3b-46f8-b0f3-524ba67af221" rel="nofollow">CompTIA Security+</a>, <a href="https://www.credly.com/badges/394cdaf5-322b-41e2-a1c6-9f62fd2b03e4" rel="nofollow">Microsoft Certified: Azure Fundamentals</a>, <a href="https://www.credly.com/earner/earned/badge/23dd7251-11d3-4143-8667-4d8f8ed16b62" rel="nofollow">Fortinet NSE 1-3
 
