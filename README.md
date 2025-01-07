@@ -4,7 +4,7 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bogdanbarbulescu&label=Profile%20views&color=0e75b6&style=flat" alt="bogdanbarbulescu" /> </p>
 
   
-- 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html/learning](https://bogdanbarbulescu.github.io/index.html/learning)
+- 👨‍💻 Learning resources: [https://bogdanbarbulescu.github.io/index.html/learning](https://bogdanbarbulescu.github.io/index.html/learning.html)
   
 - 👨‍💻 My projects: [https://bogdanbarbulescu.github.io/index.html#projects](https://bogdanbarbulescu.github.io/index.html#projects)
 
