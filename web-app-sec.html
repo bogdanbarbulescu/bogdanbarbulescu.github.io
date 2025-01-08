@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Application Security Learning Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BVB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="overview" class="py-5">
+            <div class="container">
+                <h2 class="text-center text-dark mb-4">Web Application Security Learning Resources</h2>
+                <p class="lead text-center">A structured roadmap for mastering web application security, starting with the basics and progressing to advanced concepts, tools, and methodologies.</p>
+
+                <!-- Overview and Fundamentals -->
+                <h3>1. Overview and Fundamentals</h3>
+                <p><strong>What is Web Application Security?</strong></p>
+                <p>The practice of protecting web applications from vulnerabilities and cyber threats.</p>
+                <ul>
+                    <li>Authentication, authorization, input validation, session management, and secure APIs.</li>
+                    <li>Understanding web application architecture (frontend, backend, database).</li>
+                    <li>Threat modeling and risk assessment.</li>
+                    <li>Common vulnerabilities: Injection, XSS, CSRF, etc.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- OWASP -->
+        <section id="owasp" class="bg-light py-5">
+            <div class="container">
+                <h3>2. OWASP (Open Web Application Security Project)</h3>
+                <p>The most important initiative for web application security standards and practices.</p>
+
+                <h4>Top 10 Web Application Security Risks</h4>
+                <ul>
+                    <li>Injection</li>
+                    <li>Broken Authentication</li>
+                    <li>Sensitive Data Exposure</li>
+                    <li>XML External Entities (XXE)</li>
+                    <li>Broken Access Control</li>
+                    <li>Security Misconfiguration</li>
+                    <li>Cross-Site Scripting (XSS)</li>
+                    <li>Insecure Deserialization</li>
+                    <li>Using Components with Known Vulnerabilities</li>
+                    <li>Insufficient Logging and Monitoring</li>
+                </ul>
+
+                <h4>Key OWASP Projects</h4>
+                <ul>
+                    <li>OWASP Cheat Sheets</li>
+                    <li>OWASP ZAP (Zed Attack Proxy)</li>
+                    <li>OWASP Dependency-Check</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Vulnerable VMs and Labs for Practice -->
+        <section id="practice" class="py-5">
+            <div class="container">
+                <h3>3. Vulnerable VMs and Labs for Practice</h3>
+                <p>Hands-on practice is essential for mastering web application security.</p>
+
+                <h4>Vulnerable Virtual Machines</h4>
+                <ul>
+                    <li>DVWA (Damn Vulnerable Web Application)</li>
+                    <li>bWAPP (Buggy Web Application)</li>
+                    <li>WebGoat</li>
+                    <li>Juice Shop</li>
+                </ul>
+
+                <h4>Online Labs</h4>
+                <ul>
+                    <li>PortSwigger Web Security Academy</li>
+                    <li>Hack The Box</li>
+                    <li>TryHackMe</li>
+                    <li>VulnHub</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Tools -->
+        <section id="tools" class="bg-light py-5">
+            <div class="container">
+                <h3>4. Open Source Tools</h3>
+                <p>Key tools for discovering and mitigating vulnerabilities in web applications.</p>
+
+                <h4>Static Application Security Testing (SAST)</h4>
+                <ul>
+                    <li>SonarQube</li>
+                    <li>Checkmarx</li>
+                </ul>
+
+                <h4>Dynamic Application Security Testing (DAST)</h4>
+                <ul>
+                    <li>OWASP ZAP</li>
+                    <li>Burp Suite</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Recommended Books -->
+        <section id="books" class="py-5">
+            <div class="container">
+                <h3>5. Recommended Books</h3>
+                <ul>
+                    <li><strong>Beginner Level:</strong> "Web Application Security: A Beginner's Guide"</li>
+                    <li><strong>Intermediate Level:</strong> "Real-World Bug Hunting"</li>
+                    <li><strong>Advanced Level:</strong> "Black Hat Python"</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Certifications -->
+        <section id="certifications" class="bg-light py-5">
+            <div class="container">
+                <h3>6. Certifications</h3>
+                <ul>
+                    <li><strong>Entry-Level:</strong> CompTIA Security+</li>
+                    <li><strong>Intermediate:</strong> GIAC Web Application Penetration Tester</li>
+                    <li><strong>Advanced:</strong> Offensive Security Web Expert (OSWE)</li>
+                </ul>
+            </div>
+                            <!-- Call to Action -->
+                            <div class="row">
+                                <div class="col-md-12 text-center mt-4">
+                                    <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+                                </div>
+                            </div>
+        </section>
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
