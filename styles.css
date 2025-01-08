@@ -25,7 +25,7 @@
 
 /* Header background styling */
 header {
-    background-image: url('photo.jpg');
+    background-image: url('images/photo.jpg');
     background-size: cover;
     background-position: center;
     color: white;
