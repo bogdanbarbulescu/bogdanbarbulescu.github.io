@@ -1,165 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Blue Team Learning Roadmap</title>
+    <title>Blue Team Learning Resources</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        h2, h3, h4 {
-            color: #0d6efd;
-        }
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        ul li::before {
-            content: "• ";
-            color: #0d6efd;
-            font-weight: bold;
-        }
-        a {
-            text-decoration: none;
-            color: #0d6efd;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
     <!-- Header -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Blue Team Roadmap</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="index.html">BVB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#tools">Tools</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#practice">Practice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#applications">Applications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main class="py-5">
-        <div class="container">
-            <!-- Overview and Fundamentals -->
-            <section id="overview">
-                <h2 class="mb-4">Blue Team Learning Resources</h2>
-                <p class="lead">A structured roadmap to mastering Blue Team practices, focusing on defense strategies, monitoring, and incident response to secure systems against cyber threats.</p>
+    <main>
+        <section id="overview" class="py-5">
+            <div class="container">
+                <h2 class="text-center text-dark mb-4">Blue Team Learning Resources</h2>
+                <p class="lead text-center">A structured roadmap to mastering Blue Team practices, focusing on defense
+                    strategies, monitoring, and incident response to secure systems against cyber threats.</p>
+
+                <!-- Overview and Fundamentals -->
                 <h3>1. Overview and Fundamentals</h3>
                 <p><strong>What is Blue Teaming?</strong></p>
-                <p>Blue Teaming involves defending an organization’s assets and networks by monitoring, detecting, and responding to cybersecurity threats.</p>
+                <p>Blue Teaming involves defending an organization’s assets and networks by monitoring, detecting, and
+                    responding to cybersecurity threats.</p>
                 <ul>
-                    <li>Core Concepts to Learn:
-                        <ul>
-                            <li>Defense in Depth: Layered security strategies.</li>
-                            <li>Threat Hunting: Proactive search for malicious activity.</li>
-                            <li>Incident Response: Processes to handle and mitigate cyber incidents.</li>
-                            <li>Log Analysis and Monitoring.</li>
-                            <li>Understanding the MITRE ATT&CK Framework.</li>
-                        </ul>
-                    </li>
+                    <p><strong>Core Concepts to Learn:</strong></p>
+                    <li>Defense in Depth: Layered security strategies.</li>
+                    <li>Threat Hunting: Proactive search for malicious activity.</li>
+                    <li>Incident Response: Processes to handle and mitigate cyber incidents.</li>
+                    <li>Log Analysis and Monitoring.</li>
+                    <li>Understanding the MITRE ATT&CK Framework.</li>
                 </ul>
-            </section>
+            </div>
+        </section>
 
-            <!-- Tools -->
-            <section id="tools" class="mt-5">
+        <!-- Tools -->
+        <section id="tools" class="bg-light py-5">
+            <div class="container">
                 <h3>2. Key Blue Team Tools</h3>
-                <p>Familiarize yourself with tools and platforms critical for defense and monitoring:</p>
-                <h4>SIEM (Security Information and Event Management)</h4>
+                <h6>SIEM (Security Information and Event Management)</h6>
                 <ul>
-                    <li><strong>Splunk:</strong> Advanced log management and analytics.</li>
-                    <li><strong>ELK Stack (Elasticsearch, Logstash, Kibana):</strong> Open-source log analysis platform.</li>
-                    <li><strong>QRadar:</strong> IBM’s enterprise SIEM solution.</li>
+                    <li>Splunk: Advanced log management and analytics.</li>
+                    <li>ELK Stack (Elasticsearch, Logstash, Kibana): Open-source log analysis platform.</li>
+                    <li>QRadar: IBM’s enterprise SIEM solution.</li>
                 </ul>
-                <h4>Endpoint Detection and Response (EDR)</h4>
-                <ul>
-                    <li><strong>CrowdStrike Falcon:</strong> Threat hunting and endpoint protection.</li>
-                    <li><strong>Carbon Black:</strong> Incident detection and prevention.</li>
-                    <li><strong>Microsoft Defender ATP:</strong> Integrated EDR for Windows systems.</li>
-                </ul>
-                <h4>Threat Intelligence Platforms</h4>
-                <ul>
-                    <li><strong>AlienVault OTX:</strong> Open threat intelligence sharing.</li>
-                    <li><strong>ThreatConnect:</strong> Threat data management and collaboration.</li>
-                </ul>
-                <h4>Network Defense Tools</h4>
-                <ul>
-                    <li><strong>Wireshark:</strong> Network packet analysis.</li>
-                    <li><strong>Suricata:</strong> Open-source network threat detection.</li>
-                    <li><strong>Zeek:</strong> Network security monitoring framework.</li>
-                </ul>
-                <h4>Forensics and Incident Response</h4>
-                <ul>
-                    <li><strong>Volatility:</strong> Memory forensics framework.</li>
-                    <li><strong>FTK (Forensic Toolkit):</strong> Comprehensive forensics suite.</li>
-                    <li><strong>Autopsy:</strong> Digital forensics platform.</li>
-                </ul>
-            </section>
 
-            <!-- Practice -->
-            <section id="practice" class="mt-5">
+                <h6>Endpoint Detection and Response (EDR)</h6>
+                <ul>
+                    <li>CrowdStrike Falcon: Threat hunting and endpoint protection.</li>
+                    <li>Carbon Black: Incident detection and prevention.</li>
+                    <li>Microsoft Defender ATP: Integrated EDR for Windows systems.</li>
+                </ul>
+
+                <h6>Threat Intelligence Platforms</h6>
+                <ul>
+                    <li>AlienVault OTX: Open threat intelligence sharing.</li>
+                    <li>ThreatConnect: Threat data management and collaboration.</li>
+
+                </ul>
+
+                <h6>Network Defense Tools</h6>
+                <ul>
+                    <li>Wireshark: Network packet analysis.</li>
+                    <li>Suricata: Open-source network threat detection.</li>
+                    <li>Zeek: Network security monitoring framework.</li>
+
+                </ul>
+
+                <h6>Forensics and Incident Response</h6>
+                <ul>
+                    <li>Volatility: Memory forensics framework.</li>
+                    <li>FTK (Forensic Toolkit): Comprehensive forensics suite.</li>
+                    <li>Autopsy: Digital forensics platform.</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Hands-On Practice Platforms -->
+        <section id="hands-on" class="py-5">
+            <div class="container">
                 <h3>3. Hands-On Practice Platforms</h3>
-                <p>Develop practical skills and test your defense strategies:</p>
-                <h4>Cyber Range Platforms</h4>
+                <h6>Cyber Range Platforms</h6>
                 <ul>
-                    <li><strong>Blue Team Labs Online:</strong> Practical labs for defenders.</li>
-                    <li><strong>TryHackMe:</strong> Defensive-focused rooms and scenarios.</li>
-                    <li><strong>Hack The Box (Blue Teaming):</strong> Hands-on challenges in defense.</li>
+                    <li>Blue Team Labs Online: Practical labs for defenders.</li>
+                    <li>TryHackMe: Defensive-focused rooms and scenarios.</li>
+                    <li>Hack The Box (Blue Teaming): Hands-on challenges in defense.</li>
                 </ul>
-                <h4>Threat Hunting Labs</h4>
-                <ul>
-                    <li><strong>Splunk Boss of the SOC (BOTS):</strong> Interactive SIEM challenges.</li>
-                    <li><strong>ThreatHunter-Playground:</strong> Simulated environments for practice.</li>
-                </ul>
-                <h4>Certifications Labs</h4>
-                <ul>
-                    <li><strong>Cyber Defender Training Center:</strong> Real-world Blue Team scenarios.</li>
-                    <li><strong>Immersive Labs:</strong> Labs for SOC and incident response.</li>
-                </ul>
-            </section>
 
-            <!-- Applications -->
-            <section id="applications" class="mt-5">
+                <h6>Threat Hunting Labs</h6>
+                <ul>
+                    <li>Splunk Boss of the SOC (BOTS): Interactive SIEM challenges.</li>
+                    <li>ThreatHunter-Playground: Simulated environments for practice.</li>
+                </ul>
+
+                <h6>Certifications Labs</h6>
+                <ul>
+                    <li>Cyber Defender Training Center: Real-world Blue Team scenarios.</li>
+                    <li>Immersive Labs: Labs for SOC and incident response.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Real-Life Applications -->
+        <section id="real-life" class="bg-light py-5">
+            <div class="container">
                 <h3>4. Real-Life Applications of Blue Teaming</h3>
-                <h4>Enterprise Security</h4>
+                <h6>Enterprise Security</h6>
                 <ul>
                     <li>Implementing and maintaining SIEM solutions.</li>
                     <li>Monitoring network traffic for anomalous activity.</li>
                 </ul>
-                <h4>Incident Response</h4>
+
+                <h6>Incident Response</h6>
                 <ul>
                     <li>Investigating and containing cyber incidents.</li>
                     <li>Root cause analysis and reporting.</li>
                 </ul>
-                <h4>Threat Hunting</h4>
+
+                <h6>Threat Hunting</h6>
                 <ul>
                     <li>Proactively identifying threats before detection tools trigger alerts.</li>
                     <li>Analyzing patterns to discover new attack vectors.</li>
                 </ul>
-            </section>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="text-center py-4">
+            <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2025 Blue Team Learning Roadmap | All Rights Reserved</p>
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
