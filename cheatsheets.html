@@ -1,86 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cheat Sheets</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="#">Bogdan Bărbulescu</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#projects">Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Cheat Sheets Section -->
-    <section id="cheat-sheets" class="py-5">
+    <!-- Header -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container">
-            <h2 class="text-center text-dark mb-4">Cheat Sheets</h2>
-            <p class="lead text-center">Explore a curated collection of quick reference guides to boost your productivity in various domains of programming, cybersecurity, and development.</p>
-
-
-            <!-- Cybersecurity Cheat Sheets -->
-            <h3 class="text-center mb-4">Cybersecurity Cheat Sheets</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="https://example.com/networking-cheat-sheet" target="_blank">Networking Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/wireshark-cheat-sheet" target="_blank">Wireshark Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/nmap-cheat-sheet" target="_blank">Nmap Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/metasploit-cheat-sheet" target="_blank">Metasploit Cheat Sheet</a></li>
-            </ul>
-
-            <!-- Programming Cheat Sheets -->
-            <h3 class="text-center mb-4 mt-5">Programming Cheat Sheets</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="https://example.com/python-cheat-sheet" target="_blank">Python Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/javascript-cheat-sheet" target="_blank">JavaScript Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/linux-command-line-cheat-sheet" target="_blank">Linux Command Line Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/git-cheat-sheet" target="_blank">Git Cheat Sheet</a></li>
-            </ul>
-
-            <!-- Web Development Cheat Sheets -->
-            <h3 class="text-center mb-4 mt-5">Web Development Cheat Sheets</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="https://example.com/html-css-cheat-sheet" target="_blank">HTML/CSS Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/bootstrap-cheat-sheet" target="_blank">Bootstrap Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/js-frameworks-cheat-sheet" target="_blank">JavaScript Frameworks Cheat Sheet</a></li>
-            </ul>
-
-            <!-- Cloud Services Cheat Sheets -->
-            <h3 class="text-center mb-4 mt-5">Cloud Services Cheat Sheets</h3>
-            <ul class="list-group">
-                <li class="list-group-item"><a href="https://example.com/aws-cheat-sheet" target="_blank">AWS Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/azure-cheat-sheet" target="_blank">Azure Cheat Sheet</a></li>
-                <li class="list-group-item"><a href="https://example.com/google-cloud-cheat-sheet" target="_blank">Google Cloud Cheat Sheet</a></li>
-            </ul>
+            <a class="navbar-brand" href="index.html">BVB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </section>
+    </nav>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Main Content -->
+    <main>
+        <section id="overview" class="py-5">
+            <div class="container">
+                <h2 class="text-center text-dark mb-4">Cheat Sheets</h2>
+                <p class="lead text-center">Explore a curated collection of quick reference guides to boost your productivity in various domains of programming, cybersecurity, and development.</p>
+
+                <!-- Cheat Sheet Categories -->
+                <h3>1. Cybersecurity Cheat Sheets</h3>
+                <ul>
+                    <li><a href="#">Networking Cheat Sheet</a></li>
+                    <li><a href="#">Wireshark Cheat Sheet</a></li>
+                    <li><a href="#">Nmap Cheat Sheet</a></li>
+                    <li><a href="#">Metasploit Cheat Sheet</a></li>
+                </ul>
+
+                <h3 class="mt-5">2. Programming Cheat Sheets</h3>
+                <ul>
+                    <li><a href="#">Python Cheat Sheet</a></li>
+                    <li><a href="#">JavaScript Cheat Sheet</a></li>
+                    <li><a href="#">Linux Command Line Cheat Sheet</a></li>
+                    <li><a href="#">Git Cheat Sheet</a></li>
+                </ul>
+
+                <h3 class="mt-5">3. Web Development Cheat Sheets</h3>
+                <ul>
+                    <li><a href="#">HTML/CSS Cheat Sheet</a></li>
+                    <li><a href="#">Bootstrap Cheat Sheet</a></li>
+                    <li><a href="#">JavaScript Frameworks Cheat Sheet</a></li>
+                </ul>
+
+                <h3 class="mt-5">4. Cloud Services Cheat Sheets</h3>
+                <ul>
+                    <li><a href="#">AWS Cheat Sheet</a></li>
+                    <li><a href="#">Azure Cheat Sheet</a></li>
+                    <li><a href="#">Google Cloud Cheat Sheet</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <div class="text-center py-4">
+            <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
+
 </html>
