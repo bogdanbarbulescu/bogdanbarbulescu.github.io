@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTB Object Writeup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BVB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Main Content -->
+    <main>
+        <section class="py-5">
+            <div class="container">
+                <!-- Insert text here -->
+                <h1>TOP 25 RECON TOOLS (Expanded Descriptions)</h1>
+                <p>This list provides an overview of popular reconnaissance tools used in cybersecurity, particularly
+                    for information gathering and attack surface mapping.</p>
+                <hr>
+                <h2>Subdomain Enumeration &amp; DNS</h2>
+                <ol>
+                    <li>
+                        <p><em>Amass (Attack Surface Discovery)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A comprehensive tool for subdomain enumeration and external asset
+                                discovery. It leverages a wide range of techniques, including:<ul>
+                                    <li>DNS resolution and brute-forcing</li>
+                                    <li>API integrations (e.g., Shodan, VirusTotal)</li>
+                                    <li>Web scraping of search engines and certificate transparency logs</li>
+                                    <li>Reverse whois lookups</li>
+                                </ul>
+                            </li>
+                            <li><em>Key Features:</em> Aggressive mode for deeper scans, output in multiple formats,
+                                graph visualization of the attack surface.</li>
+                            <li><em>Use Case:</em> Mapping an organization's entire external footprint to identify
+                                potential attack vectors.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Subfinder (Passive Subdomain Enumeration)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A fast and efficient tool that passively gathers subdomains from
+                                various online sources. It avoids direct interaction with the target's infrastructure,
+                                reducing the risk of detection.</li>
+                            <li><em>Key Features:</em> High speed, large number of data sources (search engines, DNS
+                                servers, certificate transparency), simple command-line interface.</li>
+                            <li><em>Use Case:</em> Quickly identifying a large number of subdomains without actively
+                                probing the target.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>ReconFTW (Reconnaissance Framework)</em></p>
+                        <ul>
+                            <li><em>Description:</em> It is a tool designed to automate the entire reconnaissance
+                                process, providing a comprehensive and efficient way to gather information about a
+                                target.</li>
+                            <li><em>Key Features:</em> Offers a modular design that allows users to customize the
+                                reconnaissance workflow by enabling or disabling specific modules.</li>
+                            <li><em>Use Case:</em> Is useful for penetration testers, bug bounty hunters, and security
+                                researchers.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Dnsx (DNS Toolkit)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A versatile DNS toolkit for executing various DNS queries,
+                                including resolving subdomains and identifying different record types (A, MX, CNAME,
+                                TXT, SOA, etc.).</li>
+                            <li><em>Key Features:</em> Fast, multi-threaded, supports custom resolvers, allows for
+                                wildcard resolution, and can handle large input lists.</li>
+                            <li><em>Use Case:</em> Investigating DNS configurations, identifying mail servers, and
+                                performing detailed subdomain analysis.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Puredns (Fast DNS Resolver/Bruteforcer)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A high-performance DNS resolver and subdomain bruteforcer built
+                                for speed. It's particularly useful for resolving a massive list of potential
+                                subdomains.</li>
+                            <li><em>Key Features:</em> Optimized for speed, uses massdns under the hood, supports custom
+                                wordlists for bruteforcing.</li>
+                            <li><em>Use Case:</em> Quickly validating a large number of potential subdomains generated
+                                by other tools.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Dnsvalidator (DNS Misconfiguration Checker)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Identifies and reports on DNS server misconfigurations,
+                                vulnerabilities, and other DNS-related issues.</li>
+                            <li><em>Key Features:</em> Detects open recursion, zone transfer vulnerabilities, DNSSEC
+                                issues, and other common problems.</li>
+                            <li><em>Use Case:</em> Auditing DNS infrastructure for security weaknesses.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Gotator (Subdomain Permutation Generator)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Generates a large number of potential subdomains by applying
+                                various mutations (additions, removals, replacements of characters) to a given base
+                                domain.</li>
+                            <li><em>Key Features:</em> Highly customizable mutation rules, supports different
+                                permutation strategies.</li>
+                            <li><em>Use Case:</em> Finding "hidden" or less obvious subdomains that might not be
+                                discovered through standard enumeration techniques.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>DnsGen (Subdomain Permutation Generator)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Generates permutations and combinations of subdomains and DNS
+                                records, aiding in the discovery of less obvious or forgotten subdomains.</li>
+                            <li><em>Key Features:</em> It combines permutations of a given domain list with a wordlist.
+                            </li>
+                            <li><em>Use Case:</em> It can be used to generate predictable domain names for targeted
+                                attacks.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <hr>
+                <h2>Port Scanning</h2>
+                <ol start="9">
+                    <li>
+                        <p><em>Naabu (Fast Port Scanner)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A modern, fast port scanner written in Go, focusing on speed and
+                                reliability.</li>
+                            <li><em>Key Features:</em> Optimized for performance, supports various scan types (SYN,
+                                connect), integrates well with other tools.</li>
+                            <li><em>Use Case:</em> Rapidly identifying open ports on target hosts as a first step in
+                                vulnerability assessment.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Nmap (Network Mapper)</em></p>
+                        <ul>
+                            <li><em>Description:</em> The industry-standard network scanner, offering a vast array of
+                                features beyond basic port scanning.</li>
+                            <li><em>Key Features:</em>
+                                <ul>
+                                    <li><em>Port scanning:</em> Multiple scan techniques (SYN, TCP connect, UDP, etc.)
+                                    </li>
+                                    <li><em>Service and version detection:</em> Identifies the services running on open
+                                        ports.</li>
+                                    <li><em>OS detection:</em> Attempts to determine the operating system of the target
+                                        host.</li>
+                                    <li><em>Nmap Scripting Engine (NSE):</em> Allows for custom scripts to automate
+                                        tasks and extend Nmap's functionality.</li>
+                                    <li><em>Output in various formats:</em> XML, grepable, normal.</li>
+                                </ul>
+                            </li>
+                            <li><em>Use Case:</em> Comprehensive network reconnaissance, vulnerability scanning, network
+                                auditing.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Masscan (Internet-Scale Port Scanner)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Designed for extremely high-speed, large-scale port scanning,
+                                capable of scanning the entire internet in a short time.</li>
+                            <li><em>Key Features:</em> Asynchronous transmission for maximum speed, supports banner
+                                grabbing (limited), less detailed analysis than Nmap.</li>
+                            <li><em>Use Case:</em> Identifying open ports across a vast number of IP addresses, often
+                                used for internet-wide surveys. Use with extreme caution and respect for network
+                                resources.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <hr>
+                <h2>Web Application Reconnaissance</h2>
+                <ol start="12">
+                    <li>
+                        <p><em>Httpx (HTTP Prober)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A fast and versatile HTTP toolkit for probing web servers and
+                                performing various HTTP-based checks.</li>
+                            <li><em>Key Features:</em> Supports multiple request methods, custom headers, follow
+                                redirects, technology detection, status code checks.</li>
+                            <li><em>Use Case:</em> Identifying live web servers, checking for virtual hosts, and
+                                performing initial web application reconnaissance.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Aquatone (Website Screenshot Taker)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Automates the process of taking screenshots of a large number of
+                                websites.</li>
+                            <li><em>Key Features:</em> Handles multiple URLs concurrently, generates HTML reports with
+                                embedded screenshots, integrates with headless browsers (e.g., Chromium).</li>
+                            <li><em>Use Case:</em> Visual reconnaissance of web applications, identifying login pages,
+                                outdated software, and other visual clues.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Gowitness (Website Screenshot Taker)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Another tool for taking website screenshots, often preferred for
+                                its modern interface and workflow integration.</li>
+                            <li><em>Key Features:</em> Uses a headless Chrome instance, provides a user-friendly web
+                                interface for viewing results, supports various output formats.</li>
+                            <li><em>Use Case:</em> Similar to Aquatone, but often easier to use and integrate into
+                                automated workflows.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Waybackurls (URL Discovery from Wayback Machine)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Fetches URLs from the Internet Archive's Wayback Machine, allowing
+                                you to discover historical content and potentially hidden endpoints.</li>
+                            <li><em>Key Features:</em> Retrieves URLs from past snapshots of websites, can reveal
+                                forgotten assets or sensitive information.</li>
+                            <li><em>Use Case:</em> Finding old versions of websites, discovering URLs that are no longer
+                                publicly accessible.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Gau (Get All URLs)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Gathers URLs from multiple sources, including AlienVault's Open
+                                Threat Exchange, Wayback Machine, and Common Crawl.</li>
+                            <li><em>Key Features:</em> Provides a comprehensive list of known URLs for a target,
+                                integrates with various data providers.</li>
+                            <li><em>Use Case:</em> Building a complete list of URLs associated with a target domain,
+                                useful for further analysis and crawling.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Waymore (Get More URLs)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Similar in functionality to gau, fetching known URLs from
+                                AlienVault's Open Threat Exchange, Wayback Machine, Common Crawl, and URLScan for a
+                                given domain.</li>
+                            <li><em>Key Features:</em> Fetches URLs from various sources.</li>
+                            <li><em>Use Case:</em> Gathering comprehensive URL data for reconnaissance.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Katana (Web Crawler/Spider)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A next-generation web crawler and spidering framework for
+                                discovering hidden paths, parameters, and files on web applications.</li>
+                            <li><em>Key Features:</em> Highly configurable crawling rules, supports authentication, can
+                                identify forms and input parameters.</li>
+                            <li><em>Use Case:</em> Mapping the structure of a web application, finding hidden content,
+                                and identifying potential injection points.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <hr>
+                <h2>Directory &amp; File Brute-Forcing</h2>
+                <ol start="19">
+                    <li>
+                        <p><em>Ffuf (Fast Web Fuzzer)</em></p>
+                        <ul>
+                            <li><em>Description:</em> "Fuzz Faster U Fool" - A high-speed web fuzzer written in Go,
+                                designed for directory and file brute-forcing.</li>
+                            <li><em>Key Features:</em> Exceptional speed, supports various fuzzing techniques, custom
+                                wordlists, recursion.</li>
+                            <li><em>Use Case:</em> Discovering hidden files and directories by trying common names and
+                                patterns.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Dirsearch (Directory Brute-Forcer)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A Python-based directory brute-forcing tool with a large, built-in
+                                wordlist.</li>
+                            <li><em>Key Features:</em> Easy to use, supports multiple extensions, recursive searching,
+                                various output formats.</li>
+                            <li><em>Use Case:</em> Basic directory and file discovery on web applications.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Gobuster (Directory/File/DNS Brute-Forcer)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Another Go-based tool for brute-forcing directories, files, DNS
+                                subdomains, and virtual hosts.</li>
+                            <li><em>Key Features:</em> Fast performance, supports multiple modes (dir, dns, vhost),
+                                custom wordlists.</li>
+                            <li><em>Use Case:</em> Versatile tool for various brute-forcing tasks in web application
+                                reconnaissance.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Feroxbuster (Recursive Content Discovery)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A fast, recursive content discovery tool written in Rust, designed
+                                for efficiency and flexibility. It goes beyond simple brute-forcing by recursively
+                                exploring discovered directories.</li>
+                            <li><em>Key Features:</em> High performance, recursive scanning, filtering options, supports
+                                various output formats.</li>
+                            <li><em>Use Case:</em> Thorough content discovery on web applications, finding deeply nested
+                                directories and files.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <hr>
+                <h2>Other Recon Tools</h2>
+                <ol start="23">
+                    <li>
+                        <p><em>Whatweb (Technology Identification)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Identifies the technologies used on a website, including CMS,
+                                JavaScript libraries, web servers, and more.</li>
+                            <li><em>Key Features:</em> Large database of technology signatures, provides detailed
+                                information about detected components.</li>
+                            <li><em>Use Case:</em> Understanding the technology stack of a web application, identifying
+                                potential vulnerabilities based on known software versions.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Trufflehog (Secret Scanning)</em></p>
+                        <ul>
+                            <li><em>Description:</em> Searches through Git repositories (and other sources) for secrets
+                                (API keys, passwords, credentials) that may have been accidentally committed.</li>
+                            <li><em>Key Features:</em> High entropy detection, supports various secret types, integrates
+                                with Git.</li>
+                            <li><em>Use Case:</em> Finding exposed credentials in code repositories, preventing
+                                accidental leakage of sensitive information.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p><em>Nuclei (Vulnerability Scanner)</em></p>
+                        <ul>
+                            <li><em>Description:</em> A fast and highly configurable vulnerability scanner that uses
+                                templates to define checks for a wide range of vulnerabilities.</li>
+                            <li><em>Key Features:</em>
+                                <ul>
+                                    <li><em>Template-based:</em> Easily customizable and extensible with
+                                        community-contributed templates.</li>
+                                    <li><em>Supports various protocols:</em> HTTP, DNS, TCP, etc.</li>
+                                    <li><em>Fast scanning:</em> Optimized for speed and efficiency.</li>
+                                    <li><em>Low false positives:</em> Templates are designed to minimize false alarms.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><em>Use Case:</em> Automated vulnerability scanning, identifying misconfigurations,
+                                known vulnerabilities (CVEs), and other security issues.</li>
+                        </ul>
+                    </li>
+                </ol>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3">
+        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
