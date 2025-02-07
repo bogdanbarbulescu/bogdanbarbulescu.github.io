@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Articles Graph</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Your Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+  <!-- (Optional) Syntax highlighting if needed -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/monokai.min.css" />
+  <style>
+    /* Inline style for the graph container (you can also place this in your styles.css) */
+    #graph-container {
+      height: 500px;
+      border: 1px solid lightgray;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">BVB</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <section class="py-5">
+      <div class="container">
+        <h1>Articles Graph</h1>
+        <p>Click on a node to view the corresponding article.</p>
+        <!-- Graph Container -->
+        <div id="graph-container"></div>
+      </div>
+    </section>
+    <!-- Back to Home Button -->
+    <div class="text-center py-4">
+      <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light text-center py-3">
+    <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <!-- Vis-network library for graph visualization -->
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <!-- Optional: Bootstrap Popper and Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <!-- (Optional) Syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script>
+    // Define the nodes representing your articles.
+    const nodes = new vis.DataSet([
+      {
+        id: 1,
+        label: "Asemănarea dintre Fotografie și Networking",
+        url: "article1.html"
+      },
+      {
+        id: 2,
+        label: "CompTIA Security+",
+        url: "article2.html"
+      }
+    ]);
+
+    // Define an edge connecting the two nodes.
+    const edges = new vis.DataSet([
+      { from: 1, to: 2 }
+    ]);
+
+    // Get the graph container
+    const container = document.getElementById("graph-container");
+
+    // Create the data object for the vis network.
+    const data = {
+      nodes: nodes,
+      edges: edges
+    };
+
+    // Customize options for appearance and physics.
+    const options = {
+      layout: {
+        // For a simple layout, you may disable hierarchical or try different layout settings.
+        // hierarchical: false
+      },
+      nodes: {
+        shape: "box",
+        color: {
+          background: "#0d6efd",
+          border: "#0a58ca",
+          highlight: {
+            background: "#0a58ca",
+            border: "#0a58ca"
+          }
+        },
+        font: {
+          color: "#ffffff"
+        }
+      },
+      edges: {
+        color: "#000000"
+      },
+      physics: {
+        // Enable physics for dynamic layout. Adjust as needed.
+        stabilization: true
+      }
+    };
+
+    // Initialize the network (graph)
+    const network = new vis.Network(container, data, options);
+
+    // Add a click event to redirect to the article when a node is clicked.
+    network.on("click", function (params) {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        const nodeData = nodes.get(nodeId);
+        if (nodeData.url) {
+          window.location.href = nodeData.url;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
