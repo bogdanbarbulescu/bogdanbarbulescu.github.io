@@ -36,12 +36,14 @@
         <section id="overview" class="py-5">
             <div class="container">
                 <h2 class="text-center text-dark mb-4">Red Team Learning Resources</h2>
-                <p class="lead text-center">A structured roadmap to mastering Red Team techniques, tools, and methodologies for simulating real-world cyberattacks.</p>
+                <p class="lead text-center">A structured roadmap to mastering Red Team techniques, tools, and
+                    methodologies for simulating real-world cyberattacks.</p>
 
                 <!-- Overview and Fundamentals -->
                 <h3>1. Overview and Fundamentals</h3>
-                <p><strong>What is  Red Teaming?</strong></p>
-                <p>Red Teaming involves simulating real-world adversarial attacks to test an organization’s cybersecurity defenses.</p>
+                <p><strong>What is Red Teaming?</strong></p>
+                <p>Red Teaming involves simulating real-world adversarial attacks to test an organization’s
+                    cybersecurity defenses.</p>
                 <ul>
                     <p><strong>Core Concepts to Learn:</strong></p>
                     <li>Attack Lifecycle: Reconnaissance, exploitation, lateral movement, and exfiltration.</li>
@@ -57,40 +59,82 @@
         <section id="tools" class="bg-light py-5">
             <div class="container">
                 <h3>2. Key Red Team Tools</h3>
+                <p>This section presents a range of essential tools used in Red Team operations, grouped into categories
+                    to cover different phases of a simulated attack.</p>
+
                 <h6>Reconnaissance</h6>
                 <ul>
-                    <li><a href="https://www.shodan.io/" target="_blank"><b>Shodan</b></a>: Search engine for Internet-facing devices.</li>
-                    <li><a href="https://www.maltego.com/" target="_blank"><b>Maltego</b></a>: Visual link analysis for OSINT.</li>
-                    <li><a href="https://github.com/laramies/theHarvester" target="_blank"><b>theHarvester</b></a>: Gathering emails, subdomains, and more.</li>
+                    <li><a href="https://www.shodan.io/" target="_blank"><b>Shodan</b></a>: Search engine for
+                        Internet-connected devices.</li>
+                    <li><a href="https://www.maltego.com/" target="_blank"><b>Maltego</b></a>: Visual link analysis tool
+                        for OSINT (Open Source Intelligence).</li>
+                    <li><a href="https://github.com/laramies/theHarvester" target="_blank"><b>theHarvester</b></a>:
+                        Gathers emails, subdomains, and other relevant information.</li>
+                    <li><a href="https://nmap.org/" target="_blank"><b>Nmap</b></a>: Powerful and versatile network
+                        scanner, used for host and service discovery.</li>
                 </ul>
-        
+
                 <h6>Exploitation</h6>
                 <ul>
-                    <li><a href="https://www.metasploit.com/" target="_blank"><b>Metasploit</b></a>: Exploitation framework.</li>
-                    <li><a href="https://www.cobaltstrike.com/" target="_blank"><b>Cobalt Strike</b></a>: Advanced post-exploitation tool.</li>
-                    <li><a href="https://github.com/fortra/impacket" target="_blank"><b>Impacket</b></a>: SMB and Active Directory exploitation.</li>
+                    <li><a href="https://www.metasploit.com/" target="_blank"><b>Metasploit</b></a>: Vulnerability
+                        exploitation framework.</li>
+                    <li><a href="https://www.cobaltstrike.com/" target="_blank"><b>Cobalt Strike</b></a>: Advanced tool
+                        for post-exploitation and threat emulation.</li>
+                    <li><a href="https://github.com/fortra/impacket" target="_blank"><b>Impacket</b></a>: Collection of
+                        Python classes for working with network protocols, useful for SMB and Active Directory
+                        exploitation.</li>
                 </ul>
-        
+
                 <h6>Privilege Escalation</h6>
                 <ul>
-                    <li><a href="https://github.com/carlospolop/PEASS-ng" target="_blank"><b>LinPEAS and WinPEAS</b></a>: Local privilege escalation scripts.</li>
-                    <li><a href="https://github.com/PowerShellMafia/PowerSploit" target="_blank"><b>PowerSploit</b></a>: Post-exploitation framework for PowerShell.</li>
+                    <li><a href="https://github.com/carlospolop/PEASS-ng" target="_blank"><b>LinPEAS and
+                                WinPEAS</b></a>: Scripts for local privilege escalation on Linux and Windows systems.
+                    </li>
+                    <li><a href="https://github.com/PowerShellMafia/PowerSploit" target="_blank"><b>PowerSploit</b></a>:
+                        PowerShell-based post-exploitation framework.</li>
                 </ul>
-        
+
                 <h6>Lateral Movement</h6>
                 <ul>
-                    <li><a href="https://github.com/BloodHoundAD/BloodHound" target="_blank"><b>BloodHound</b></a>: Active Directory attack path mapping.</li>
-                    <li><a href="https://github.com/Porchetta-Industries/CrackMapExec" target="_blank"><b>CrackMapExec</b></a>: Post-exploitation for lateral movement.</li>
+                    <li><a href="https://github.com/BloodHoundAD/BloodHound" target="_blank"><b>BloodHound</b></a>:
+                        Graphical tool for visualizing and analyzing relationships in Active Directory, identifying
+                        attack paths.</li>
+                    <li><a href="https://github.com/Porchetta-Industries/CrackMapExec"
+                            target="_blank"><b>CrackMapExec</b></a>: Post-exploitation tool for lateral movement in
+                        Windows networks, useful for credential testing and command execution.</li>
                 </ul>
-        
+
                 <h6>Exfiltration</h6>
                 <ul>
-                    <li><a href="https://rclone.org/" target="_blank"><b>Rclone</b></a>: Sync and transfer data with cloud services.</li>
-                    <li>PowerShell Scripts: Custom scripts for data exfiltration.</li>
+                    <li><a href="https://rclone.org/" target="_blank"><b>Rclone</b></a>: Command-line utility for
+                        syncing and transferring data to and from various cloud services.</li>
+                    <li><b>PowerShell Scripts</b>: Custom PowerShell scripts for data exfiltration.</li>
                 </ul>
+
+                <h6>Other Offensive Tools (Red Team)</h6>
+                <ul>
+                    <li><a href="https://virustotal.github.io/yara/" target="_blank"><b>YARA</b></a>: Tool for
+                        identifying and classifying malware based on rules (pattern matching).</li>
+                    <li><a href="https://www.wireguard.com/" target="_blank"><b>WireGuard</b></a>: Modern, fast, and
+                        secure VPN (Virtual Private Network).</li>
+                    <li><a href="https://www.kali.org/" target="_blank"><b>Kali Linux</b></a>: Linux distribution
+                        specialized for penetration testing and security auditing.</li>
+                    <li><a href="https://phish.report/" target="_blank"><b>Phish.Report</b></a>: Phishing simulation and
+                        security awareness training platform.</li>
+
+                </ul>
+                <h6>Tools for SOAR and Analysis</h6>
+                <ul>
+                    <li><a href="https://thehive-project.org/" target="_blank"><b>TheHive & Cortex</b></a>: SOAR
+                        (Security Orchestration, Automation, and Response) platform for incident management. (Including
+                        TheHive as Cortex is an extension of it)</li>
+                    <li><a href="https://www.velocidex.com/" target="_blank"><b>Velociraptor</b></a>: Advanced tool for
+                        data collection and analysis in security investigations and incident response.</li>
+                </ul>
+
             </div>
         </section>
-        
+
 
         <!-- Hands-On Practice Platforms -->
         <section id="hands-on" class="py-5">
