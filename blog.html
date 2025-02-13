@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-        <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-V90EZVCGP8"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-V90EZVCGP8');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-V90EZVCGP8');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,6 +125,33 @@
         a:hover {
             color: yellow;
         }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Pagination link styling */
+        .page-link {
+            color: #343a40;
+            /* Dark text color */
+            background-color: #fff;
+            border-color: #dee2e6;
+        }
+
+        .page-link:hover {
+            color: #000;
+            /* Even darker on hover */
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+        }
+
+        .page-item.active .page-link {
+            z-index: 3;
+            color: #fff;
+            background-color: #343a40;
+            /* Dark background for active */
+            border-color: #343a40;
+        }
     </style>
 </head>
 
@@ -161,99 +188,233 @@
         <div class="container">
             <h2 class="text-center text-dark mb-4">Blog</h2>
 
+            <!-- Container for cards and pagination - ADDED THIS -->
+            <div id="card-container">
+                <div class="row"> <!-- All cards within a SINGLE row -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Asemănarea dintre Fotografie și Networking</h5>
+                                <p class="card-text">Comprehensive guides and tools for offensive security and ethical
+                                    hacking.</p>
+                                <a href="article1.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">How I Earned My CompTIA Security+ Certification</h5>
+                                <p class="card-text">Defensive security strategies, monitoring, analysis, and incident
+                                    response tools.</p>
+                                <a href="article2.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">HTB Object Writeup</h5>
+                                <p class="card-text">A comprehensive walkthrough of the HTB "Object" machine, detailing
+                                    enumeration, exploitation, and root escalation.</p>
+                                <a href="article3.html" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 4</h5>
+                                <p class="card-text">Content for card 4...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 5</h5>
+                                <p class="card-text">Content for card 5...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 6</h5>
+                                <p class="card-text">Content for card 6...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more cards here -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 7</h5>
+                                <p class="card-text">Content for card 7...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 8</h5>
+                                <p class="card-text">Content for card 8...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">Card 9</h5>
+                                <p class="card-text">Content for card 9...</p>
+                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End of card-container -->
+
+            <!-- Pagination (Initially empty) -->
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center" id="pagination-list">
+                    <!-- Pagination links will be added here by JavaScript -->
+                </ul>
+            </nav>
+
+            <!-- Call to Action  -->
             <div class="row">
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Asemănarea dintre Fotografie și Networking</h5>
-                            <p class="card-text">Comprehensive guides and tools for offensive security and ethical
-                                hacking.</p>
-                            <a href="article1.html" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">How I Earned My CompTIA Security+ Certification: A Complete Guide</h5>
-                            <p class="card-text">Defensive security strategies, monitoring, analysis, and incident
-                                response tools.</p>
-                            <a href="article2.html" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">HTB Object Writeup</h5>
-                            <p class="card-text">A comprehensive walkthrough of the HTB "Object" machine, detailing
-                                enumeration, exploitation, and root escalation.</p>
-                            <a href="article3.html" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
+                <div class="col-md-12 text-center mt-4">
+                    <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
                 </div>
             </div>
-
-
-
-
-            <div class="row">
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Certifications</h5>
-                            <p class="card-text">Study guides and prep materials for certifications like CEH, CISSP, and
-                                Security+.</p>
-                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">Cheat Sheets</h5>
-                            <p class="card-text">Quick reference guides for key cybersecurity tools and techniques.</p>
-                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title">YouTube Channels</h5>
-                            <p class="card-text">Curated list of channels offering educational content on cybersecurity,
-                                programming, and development.</p>
-                            <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Call to Action  -->
-                <div class="row">
-                    <div class="col-md-12 text-center mt-4">
-                        <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
 
     <!-- Footer -->
     <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+        <p>© 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS, Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('#card-container .col-md-4');
+            const paginationList = document.getElementById('pagination-list'); // Get the UL
+            const cardsPerPage = 6;
+            let currentPage = 1;
+
+            function createPagination(totalPages) {
+                paginationList.innerHTML = ''; // Clear existing links
+
+                // Previous Button
+                const prevLi = document.createElement('li');
+                prevLi.classList.add('page-item');
+                if (currentPage === 1) {
+                    prevLi.classList.add('disabled');
+                }
+                const prevLink = document.createElement('a');
+                prevLink.classList.add('page-link');
+                prevLink.href = '#';
+                prevLink.textContent = '«';
+                prevLink.setAttribute('data-page', 'prev');
+                prevLi.appendChild(prevLink);
+                paginationList.appendChild(prevLi);
+
+
+                // Page Number Buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    const li = document.createElement('li');
+                    li.classList.add('page-item');
+                    if (i === currentPage) {
+                        li.classList.add('active');
+                    }
+                    const link = document.createElement('a');
+                    link.classList.add('page-link');
+                    link.href = '#';
+                    link.textContent = i;
+                    link.setAttribute('data-page', i);
+                    li.appendChild(link);
+                    paginationList.appendChild(li);
+                }
+
+                // Next Button
+                const nextLi = document.createElement('li');
+                nextLi.classList.add('page-item');
+                if (currentPage === totalPages) {
+                    nextLi.classList.add('disabled');
+                }
+                const nextLink = document.createElement('a');
+                nextLink.classList.add('page-link');
+                nextLink.href = '#';
+                nextLink.textContent = '»';
+                nextLink.setAttribute('data-page', 'next');
+                nextLi.appendChild(nextLink);
+                paginationList.appendChild(nextLi);
+
+
+
+                // Add event listeners to the *newly created* links
+                const newPaginationLinks = document.querySelectorAll('.pagination a.page-link'); //select all links
+                newPaginationLinks.forEach(link => {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        const page = this.getAttribute('data-page');
+                        handlePageClick(page);
+                    });
+                });
+
+            }
+
+
+            function showPage(page) {
+                const startIndex = (page - 1) * cardsPerPage;
+                const endIndex = startIndex + cardsPerPage;
+
+                cards.forEach((card, index) => {
+                    if (index >= startIndex && index < endIndex) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
+
+
+            function handlePageClick(page) {
+                const totalPages = Math.ceil(cards.length / cardsPerPage);
+                if (page === 'prev') {
+                    if (currentPage > 1) currentPage--;
+                } else if (page === 'next') {
+                    if (currentPage < totalPages) currentPage++;
+                } else {
+                    currentPage = parseInt(page, 10);
+                }
+
+                createPagination(totalPages); // Re-create pagination
+                showPage(currentPage);        // Show the correct page
+            }
+
+
+
+            // Initial setup
+            const totalPages = Math.ceil(cards.length / cardsPerPage);
+            createPagination(totalPages);
+            showPage(currentPage);
+
+        });
+    </script>
 </body>
 
 </html>
