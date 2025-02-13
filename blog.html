@@ -19,184 +19,213 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Add responsive styles for both desktop and mobile */
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
+/* Add responsive styles for both desktop and mobile */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
 
-            header h1 {
-                font-size: 2rem;
-            }
+    header h1 {
+        font-size: 2rem;
+    }
 
-            header p {
-                font-size: 1rem;
-            }
-        }
+    header p {
+        font-size: 1rem;
+    }
+}
 
-        @media (min-width: 769px) {
-            header h1 {
-                font-size: 3rem;
-            }
+@media (min-width: 769px) {
+    header h1 {
+        font-size: 3rem;
+    }
 
-            header p {
-                font-size: 1.25rem;
-            }
-        }
+    header p {
+        font-size: 1.25rem;
+    }
+}
 
-        /* Header background styling */
-        header {
-            background-image: url('photo.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-        }
+/* Header background styling */
+header {
+    background-image: url('photo.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    position: relative;
+}
 
-        header .card {
-            background: rgba(0, 0, 0, 0.5);
-            /* semi-transparent background */
-            backdrop-filter: blur(10px);
-            /* Blurring the background */
-            border: none;
-            padding: 2rem;
-            border-radius: 15px;
-        }
+header .card {
+    background: rgba(0, 0, 0, 0.5);
+    /* semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Blurring the background */
+    border: none;
+    padding: 2rem;
+    border-radius: 15px;
+}
 
-        header .card h1,
-        header .card p {
-            color: white;
-        }
+header .card h1,
+header .card p {
+    color: white;
+}
 
-        /* Card styling */
-        .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: box-shadow 0.3s;
-            overflow: hidden;
-            /* Ensure the image stays within the card */
-        }
+/* Card styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+    overflow: hidden;
+    border-radius: 15px; /* Rounded corners for cards */
+    /* Ensure the image stays within the card */
+}
 
-        /* Centering and positioning text */
-        header .container {
-            z-index: 2;
-            position: relative;
-        }
+/* Centering and positioning text */
+header .container {
+    z-index: 2;
+    position: relative;
+}
 
-        /* Overlay effect */
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            /* Dark overlay */
-            z-index: 1;
-        }
+/* Overlay effect */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
+    z-index: 1;
+}
 
-        .card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
 
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
-            filter: grayscale(100%);
-            /* Make image grayscale by default */
-        }
+.card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    filter: grayscale(100%);
+    /* Make image grayscale by default */
+}
 
-        .card:hover img {
-            transform: scale(1.05);
-            /* Zoom-in the image */
-            filter: none;
-            /* Remove grayscale when hovering */
-        }
+.card:hover img {
+    transform: scale(1.05);
+    /* Zoom-in the image */
+    filter: none;
+    /* Remove grayscale when hovering */
+}
 
 
-        /* Yellow hover color for all links */
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+/* Yellow hover color for all links */
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        a:hover {
-            color: yellow;
-        }
+a:hover {
+    color: yellow;
+}
 
-        .hidden {
-            display: none !important;
-        }
+.hidden {
+    display: none !important;
+}
 
-        /* Pagination link styling */
-        .page-link {
-            color: #343a40;
-            /* Dark text color */
-            background-color: #fff;
-            border-color: #dee2e6;
-        }
+/* Pagination link styling */
+.page-link {
+    color: #343a40;
+    /* Dark text color */
+    background-color: #fff;
+    border-color: #dee2e6;
+    border-radius: 8px; /* Slightly more rounded */
+}
 
-        .page-link:hover {
-            color: #000;
-            /* Even darker on hover */
-            background-color: #e9ecef;
-            border-color: #dee2e6;
-        }
+.page-link:hover {
+    color: #000;
+    /* Even darker on hover */
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+}
 
-        .page-item.active .page-link {
-            z-index: 3;
-            color: #fff;
-            background-color: #343a40;
-            /* Dark background for active */
-            border-color: #343a40;
-        }
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #343a40;
+    /* Dark background for active */
+    border-color: #343a40;
+    border-radius: 8px; /* Slightly more rounded */
+}
 
-        /* Filter Navigation Styles (Light Theme) */
-        .filter-nav {
-            display: flex;
-            justify-content: center;
-            background-color: #f8f9fa;
-            /* Light background */
-            padding: 1rem 0;
-            margin-bottom: 2rem;
-            margin-top: 1rem;
-            border-bottom: 1px solid #ddd;
-            /* Subtle bottom border */
+/* Tag Styles */
+.card-tags {
+    margin-top: 10px;
+}
 
-        }
+.card-tag {
+    display: inline-block;
+    background-color: #6c757d; /* Gray - less harsh than black */
+    color: white;
+    padding: 0.3em 0.6em;  /* Slightly more padding */
+    border-radius: 15px; /* More rounded tags */
+    margin-right: 6px;  /* More spacing */
+    margin-bottom: 6px;
+    font-size: 0.75em; /* Slightly smaller font */
+    font-weight: 500; /* Semi-bold font */
+    transition: background-color 0.2s ease-in-out; /* Smooth transition */
+}
 
-        .filter-nav a {
-            color: #333;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
-            transition: color 0.2s ease-in-out;
-        }
+.card-tag:hover {
+    background-color: #495057; /* Darker gray on hover */
+    cursor: pointer; /* Indicate clickable */
+}
 
-        .filter-nav a:hover {
-            color: #ffc107;
-            /* Yellow hover color */
-        }
+/* Filter Navigation Styles (Light Theme) */
+.filter-nav {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;  /* White background */
+    padding: 1.2rem 0;       /* More vertical padding */
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    border-radius: 15px;     /* Match card radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    flex-wrap: wrap;        /* Wrap on smaller screens */
+}
 
-        .filter-nav a.active {
-            color: #333;
-            position: relative;
-            /* For underline */
-        }
+.filter-nav a {
+    color: #343a40;         /* Dark text */
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;  /* More horizontal padding */
+    margin: 0.25rem 0.5rem;  /* Spacing around links */
+    border-radius: 15px;     /* Match card radius */
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out; /* Smooth transition */
+    font-weight: 500;       /* Semi-bold font */
+    white-space: nowrap;    /* Prevent text wrapping */
+}
 
-        .filter-nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            /* Positioned just below the text */
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background-color: #ffc107;
-            /* Yellow underline */
-        }
+.filter-nav a:hover {
+    background-color: #ffc107; /* Yellow hover */
+    color: #212529;            /* Dark text on hover */
+}
+
+.filter-nav a.active {
+    background-color: #ffc107; /* Yellow active */
+    color: #212529;            /* Dark text */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow on active */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .filter-nav {
+        padding: 0.8rem 0; /* Reduce padding on small screens */
+    }
+
+    .filter-nav a {
+        padding: 0.4rem 1rem;  /* Reduce padding */
+        margin: 0.2rem 0.3rem;
+        font-size: 0.9em;  /* Slightly smaller font */
+    }
+}
     </style>
 </head>
 
@@ -236,8 +265,11 @@
             <!-- Filter Navigation -->
             <div class="filter-nav">
                 <a href="#" data-filter="all" class="active">ALL</a>
-                <a href="#" data-filter="walkthroughs">WALKTHROUGHS</a>
-                <a href="#" data-filter="labs">LABS</a>
+                <a href="#" data-filter="OSINT">OSINT</a>
+                <a href="#" data-filter="Web_Security">WEB SECURITY</a>
+                <a href="#" data-filter="CTF">CTF</a>
+                <a href="#" data-filter="THM">TRY HACK ME</a>
+                <a href="#" data-filter="HTB">HACK THE BOX</a>
             </div>
 
             <!-- Container for cards and pagination - ADDED THIS -->
@@ -271,46 +303,66 @@
                                 <h5 class="card-title">HTB Object Writeup</h5>
                                 <p class="card-text">A comprehensive walkthrough of the HTB "Object" machine, detailing
                                     enumeration, exploitation, and root escalation.</p>
+                                    <div class="card-tags">
+                                        <span class="card-tag">CTF</span>
+                                        <span class="card-tag">Pentest</span>
+                                    </div>
                                 <a href="article3.html" target="_blank" class="btn btn-outline-warning">Read</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4" data-tags="OSINT,Web Security">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Card 4</h5>
                                 <p class="card-text">Content for card 4...</p>
-                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                                <div class="card-tags">
+                                    <span class="card-tag">OSINT</span>
+                                    <span class="card-tag">Web Security</span>
+                                </div>
+                                <a href="#" class="btn btn-outline-warning">Read</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4" data-tags="CTF,THM">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Card 5</h5>
-                                <p class="card-text">Content for card 5...</p>
-                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                                <p class="card-text">Content for card 5.</p>
+                                <div class="card-tags">
+                                    <span class="card-tag">CTF</span>
+                                    <span class="card-tag">Try Hack Me</span>
+                                </div>
+                                <a href="#" class="btn btn-outline-warning">Read</a>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4" data-tags="Hack The Box,Firewalls">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Card 6</h5>
-                                <p class="card-text">Content for card 6...</p>
-                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                                <p class="card-text">Content for card 6.</p>
+                                <div class="card-tags">
+                                    <span class="card-tag">Hack The Box</span>
+                                    <span class="card-tag">Firewalls</span>
+                                </div>
+                                <a href="#" class="btn btn-outline-warning">Read</a>
                             </div>
                         </div>
                     </div>
                     <!-- Add more cards here -->
-                    <div class="col-md-4 mb-4">
+                    <div class="col-md-4 mb-4" data-tags="Zero Trust,Honeypots">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">Card 7</h5>
-                                <p class="card-text">Content for card 7...</p>
-                                <a href="" target="_blank" class="btn btn-outline-warning">Read</a>
+                                <p class="card-text">Content for card 7.</p>
+                                <div class="card-tags">
+                                    <span class="card-tag">Zero Trust</span>
+                                    <span class="card-tag">Honeypots</span>
+                                </div>
+                                <a href="#" class="btn btn-outline-warning">Read</a>
                             </div>
                         </div>
                     </div>
