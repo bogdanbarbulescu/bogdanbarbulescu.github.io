@@ -152,6 +152,51 @@
             /* Dark background for active */
             border-color: #343a40;
         }
+
+        /* Filter Navigation Styles (Light Theme) */
+        .filter-nav {
+            display: flex;
+            justify-content: center;
+            background-color: #f8f9fa;
+            /* Light background */
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            border-bottom: 1px solid #ddd;
+            /* Subtle bottom border */
+
+        }
+
+        .filter-nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .filter-nav a:hover {
+            color: #ffc107;
+            /* Yellow hover color */
+        }
+
+        .filter-nav a.active {
+            color: #333;
+            position: relative;
+            /* For underline */
+        }
+
+        .filter-nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            /* Positioned just below the text */
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffc107;
+            /* Yellow underline */
+        }
     </style>
 </head>
 
@@ -187,6 +232,13 @@
     <section id="learning-resources" class="py-5">
         <div class="container">
             <h2 class="text-center text-dark mb-4">Blog</h2>
+
+            <!-- Filter Navigation -->
+            <div class="filter-nav">
+                <a href="#" data-filter="all" class="active">ALL</a>
+                <a href="#" data-filter="walkthroughs">WALKTHROUGHS</a>
+                <a href="#" data-filter="labs">LABS</a>
+            </div>
 
             <!-- Container for cards and pagination - ADDED THIS -->
             <div id="card-container">
@@ -311,9 +363,22 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const cards = document.querySelectorAll('#card-container .col-md-4');
-            const paginationList = document.getElementById('pagination-list'); // Get the UL
+            const paginationList = document.getElementById('pagination-list');
             const cardsPerPage = 6;
             let currentPage = 1;
+            let currentFilter = 'all'; // Keep track of the current filter
+
+            // --- Helper Functions ---
+
+            function applyFilter(filter) {
+                cards.forEach(card => {
+                    if (filter === 'all' || card.classList.contains(filter)) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            }
 
             function createPagination(totalPages) {
                 paginationList.innerHTML = ''; // Clear existing links
@@ -321,6 +386,7 @@
                 // Previous Button
                 const prevLi = document.createElement('li');
                 prevLi.classList.add('page-item');
+                prevLi.classList.add('page-link-prev'); // Add a specific class
                 if (currentPage === 1) {
                     prevLi.classList.add('disabled');
                 }
@@ -331,7 +397,6 @@
                 prevLink.setAttribute('data-page', 'prev');
                 prevLi.appendChild(prevLink);
                 paginationList.appendChild(prevLi);
-
 
                 // Page Number Buttons
                 for (let i = 1; i <= totalPages; i++) {
@@ -352,6 +417,7 @@
                 // Next Button
                 const nextLi = document.createElement('li');
                 nextLi.classList.add('page-item');
+                nextLi.classList.add('page-link-next'); // Add a specific class
                 if (currentPage === totalPages) {
                     nextLi.classList.add('disabled');
                 }
@@ -363,10 +429,8 @@
                 nextLi.appendChild(nextLink);
                 paginationList.appendChild(nextLi);
 
-
-
-                // Add event listeners to the *newly created* links
-                const newPaginationLinks = document.querySelectorAll('.pagination a.page-link'); //select all links
+                // Add event listeners *after* creating the links
+                const newPaginationLinks = document.querySelectorAll('.pagination a.page-link');
                 newPaginationLinks.forEach(link => {
                     link.addEventListener('click', function (event) {
                         event.preventDefault();
@@ -374,15 +438,16 @@
                         handlePageClick(page);
                     });
                 });
-
             }
 
 
             function showPage(page) {
+                // Use *visible* cards for pagination
+                const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
                 const startIndex = (page - 1) * cardsPerPage;
                 const endIndex = startIndex + cardsPerPage;
 
-                cards.forEach((card, index) => {
+                visibleCards.forEach((card, index) => {
                     if (index >= startIndex && index < endIndex) {
                         card.classList.remove('hidden');
                     } else {
@@ -393,7 +458,10 @@
 
 
             function handlePageClick(page) {
-                const totalPages = Math.ceil(cards.length / cardsPerPage);
+                // Calculate totalPages based on *visible* cards
+                const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
+                const totalPages = Math.ceil(visibleCards.length / cardsPerPage);
+
                 if (page === 'prev') {
                     if (currentPage > 1) currentPage--;
                 } else if (page === 'next') {
@@ -401,17 +469,40 @@
                 } else {
                     currentPage = parseInt(page, 10);
                 }
+                // Re-create and show with correct totalPages
+                createPagination(totalPages);
+                showPage(currentPage);
+            }
 
-                createPagination(totalPages); // Re-create pagination
-                showPage(currentPage);        // Show the correct page
+            // --- Event Listener for Filter Links (Assuming you have filter links) ---
+            const filterLinks = document.querySelectorAll('.filter-nav a'); // Make sure this selector is correct
+            if (filterLinks.length > 0) { // Check if filter links exist
+                filterLinks.forEach(link => {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        filterLinks.forEach(fl => fl.classList.remove('active'));
+                        this.classList.add('active');
+                        currentFilter = this.getAttribute('data-filter');
+                        applyFilter(currentFilter);
+
+                        // Reset to page 1 and update pagination
+                        currentPage = 1;
+                        const visibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden'));
+                        const totalPages = Math.ceil(visibleCards.length / cardsPerPage);
+                        createPagination(totalPages);
+                        showPage(currentPage);
+
+                    });
+                });
             }
 
 
-
-            // Initial setup
-            const totalPages = Math.ceil(cards.length / cardsPerPage);
-            createPagination(totalPages);
-            showPage(currentPage);
+            // --- Initial Setup ---
+            applyFilter(currentFilter); // Apply initial filter (usually 'all')
+            const initialVisibleCards = Array.from(cards).filter(card => !card.classList.contains('hidden')); // Get initially visible cards.
+            const initialTotalPages = Math.ceil(initialVisibleCards.length / cardsPerPage); // Calculate based on visible
+            createPagination(initialTotalPages); // Create initial pagination
+            showPage(currentPage); // Show the first page
 
         });
     </script>
