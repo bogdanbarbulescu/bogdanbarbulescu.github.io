@@ -215,18 +215,59 @@ body.dark {
     color: #9e9ea4;
 }
 
-/* Code Block Styles (for Highlight.js) */
-/* These styles will be applied *in addition to* the Monokai theme */
+/* --- Code Block Styles (for Highlight.js) --- */
+/*  These are placed *after* the general styles, so they override */
 pre {
-    background-color: #f0f0f0; /* Light gray background for the entire block */
+    background-color: #f0f0f0; /* Light gray background */
     padding: 1rem;
     border-radius: 5px;
-    overflow-x: auto; /* Add horizontal scrolling for long lines */
-    margin-bottom: 1rem; /* Add some space below code blocks */
-    border: 1px solid #ddd; /* Add a subtle border */
-    font-size: 0.9rem; /* Slightly smaller font size */
+    overflow-x: auto; /* Horizontal scrolling for long lines */
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
 }
 
 code {
-    font-family: 'Courier New', Courier, monospace; /* Use a monospace font */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+}
+
+/*  Highlight.js Monokai Theme Overrides (Optional, but good for consistency) */
+.hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #23241f; /* Monokai background */
+    color: #f8f8f2; /* Monokai text color */
+}
+
+.hljs-string {
+    color: #e6db74;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name, .hljs-built_in {
+    color: #f92672;
+}
+
+/* --- Responsive Adjustments (Media Queries) --- */
+
+/* Small devices (phones) */
+@media (max-width: 575.98px) {
+    .card img {
+        height: auto; /* Let images resize naturally */
+    }
+    pre {
+        font-size: 0.8rem; /* Smaller font size in code blocks */
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+      .card img{
+        height: 120px;
+      }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) {
+    /* No specific changes needed, uses base styles */
 }
