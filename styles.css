@@ -235,7 +235,6 @@ body.dark {
 /*  These are placed *after* the general styles, so they override */
 pre {
     background-color: #f0f0f0; /* Light gray background */
-    padding: 1rem;
     border-radius: 1px;
     overflow-x: auto; /* Horizontal scrolling for long lines */
     margin-bottom: 1rem;
