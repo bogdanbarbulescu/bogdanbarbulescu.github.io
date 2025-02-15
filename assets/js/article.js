@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const markdown = await mdResponse.text();
 
             // Fetch blog-data.json to get article metadata
-            const jsonResponse = await fetch("blog-data.json");
+            const jsonResponse = await fetch("assets/js/blog-data.json");
             if (!jsonResponse.ok) {
               throw new Error(`Failed to load blog data: ${jsonResponse.status}`);
             }
