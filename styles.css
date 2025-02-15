@@ -139,18 +139,18 @@ a:hover {
 
 /* Main content adjustment */
 .main-content {
-    margin-left: 50px; /* Width of the sidebar + spacing */
+    margin-left: 20px; /* Width of the sidebar + spacing */
     padding: 2rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar {
-        width: 50px;
+        width: 20px;
     }
 
     .main-content {
-        margin-left: 50px;
+        margin-left: 10px;
     }
 }
 
