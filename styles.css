@@ -146,11 +146,11 @@ a:hover {
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        width: 50px;
     }
 
     .main-content {
-        margin-left: 220px;
+        margin-left: 50px;
     }
 }
 
