@@ -1,11 +1,4 @@
-/* General Body Styles */
-body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa; /* Light gray background */
-    color: #333; /* Dark text for readability */
-}
-
-/* Responsive Styles */
+/* Add responsive styles for both desktop and mobile */
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 1.5rem;
@@ -30,20 +23,20 @@ body {
     }
 }
 
-/* Header Styling */
+/* Header background styling */
 header {
-    background-image: url('images/photo.webp'); /*  Make sure this path is correct! */
+    background-image: url('images/photo.webp');
     background-size: cover;
     background-position: center;
-    color: #333; /* Dark text for header */
+    color: white;
     position: relative;
-    padding-top: 4rem; /* Add some padding */
-    padding-bottom: 4rem;
 }
 
 header .card {
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
-    backdrop-filter: blur(5px); /* Reduced blur */
+    background: rgba(0, 0, 0, 0.5);
+    /* semi-transparent background */
+    backdrop-filter: blur(10px);
+    /* Blurring the background */
     border: none;
     padding: 2rem;
     border-radius: 15px;
@@ -51,10 +44,24 @@ header .card {
 
 header .card h1,
 header .card p {
-    color: #333; /* Dark text within the header card */
+    color: white;
 }
 
-/* Overlay Effect (Lighter) */
+/* Card styling */
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s;
+    overflow: hidden;
+    /* Ensure the image stays within the card */
+}
+
+/* Centering and positioning text */
+header .container {
+    z-index: 2;
+    position: relative;
+}
+
+/* Overlay effect */
 header::before {
     content: '';
     position: absolute;
@@ -62,26 +69,13 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.2); /* Lighter overlay */
+    background: rgba(0, 0, 0, 0.5);
+    /* Dark overlay */
     z-index: 1;
 }
 
-header .container {
-    z-index: 2;
-    position: relative;
-}
-
-/* Card Styling */
-.card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Lighter shadow */
-    transition: box-shadow 0.3s;
-    overflow: hidden;
-    border-radius: 15px; /* Consistent border-radius */
-    background-color: white; /* White card background */
-}
-
 .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .card img {
@@ -90,64 +84,66 @@ header .container {
     object-fit: cover;
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
     filter: grayscale(100%);
+    /* Make image grayscale by default */
 }
 
 .card:hover img {
     transform: scale(1.05);
+    /* Zoom-in the image */
     filter: none;
+    /* Remove grayscale when hovering */
 }
 
-/* Link Styles */
+
+/* Yellow hover color for all links */
 a {
     text-decoration: none;
-    color: inherit; /* Inherit color from parent */
+    color: inherit;
 }
 
 a:hover {
-    color: rgb(22, 92, 223); /* Blue hover color */
+    color: rgb(22, 92, 223);
 }
 
-/* Sidebar Styling (Light Theme) */
+/* Sidebar styling */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 250px;
-    background-color: #f8f9fa; /* Light gray sidebar */
+    background-color: #343a40;
     padding: 1rem;
     overflow-y: auto;
     z-index: 1000;
-    border-right: 1px solid #dee2e6; /* Add a subtle border */
 }
 
 .sidebar a {
-    color: #333; /* Dark text for sidebar links */
+    color: white;
     display: block;
     padding: 0.5rem;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s; /* Add color transition */
+    transition: background-color 0.3s;
 }
 
 .sidebar a:hover {
-    background-color: #e9ecef; /* Lighter gray on hover */
-    color: #212529;       /* Slightly darker text on hover*/
+    background-color: #495057;
 }
 
 .sidebar a.active {
-    background-color: #ffc107; /* Yellow active link */
+    background-color: #ffc107;
     color: black;
 }
 
-/* Main Content Adjustment */
+/* Main content adjustment */
 .main-content {
-    margin-left: 270px;
+    margin-left: 270px; /* Width of the sidebar + spacing */
     padding: 2rem;
 }
 
-/* Responsive Adjustments for Sidebar */
+/* Responsive adjustments */
 @media (max-width: 768px) {
     .sidebar {
         width: 200px;
@@ -158,135 +154,63 @@ a:hover {
     }
 }
 
-/* -----  Previous styles from the other answer (Blog-Specific) ----- */
-
-/* Blog Page Styling */
-/* These are already covered by the general styles above, so they are
-   not strictly needed, but I'm including them for completeness and to
-   allow for easy customization.  They will override the general styles
-   if you change them.
-*/
-
-/* Blog container */
-.blog-container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-}
-
-/* Blog title */
-.blog-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #212529;
-}
-
-/* Filter buttons */
-.filter-buttons {
+.theme-toggle {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 30px;
+    align-items: center;
+    position: absolute;
+    right: 30px;
+    top: 20px;
 }
 
-.filter-buttons button {
-    border: none;
-    background: none;
-    font-size: 1rem;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    color: #333;
-    border: 2px solid transparent;
+.checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-label {
+    background-color: #111;
+    width: 50px;
+    height: 26px;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
     cursor: pointer;
-}
-
-.filter-buttons button.active,
-.filter-buttons button:hover {
-    background-color: #ffc107;
-    border-color: #ffc107;
-    color: #000;
-}
-
-
-.card-body {
-    flex-grow: 1;
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #212529;
+.fa-moon {
+    color: #f1c40f;
 }
 
-.card-text {
-    color: #555;
-    font-size: 1rem;
-    margin-bottom: 15px;
-    flex-grow: 1;
+.fa-sun {
+    color: #f39c12;
 }
 
-/* Tags */
-.card-tags {
-    margin-top: auto;
-    margin-bottom: 1rem;
+.checkbox-label .ball {
+    background-color: #fff;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 2px;
+    top: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
 }
 
-.tag {
-    display: inline-block;
-    background: #6c757d;
-    color: white;
-    font-size: 0.85rem;
-    font-weight: 500;
-    padding: 5px 10px;
-    border-radius: 15px;
-    margin: 3px 2px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    text-decoration: none;
+.checkbox:checked + .checkbox-label .ball {
+    transform: translateX(24px);
 }
 
-.tag:hover {
-    background-color: #ffc107;
-    color: #000;
+/* Light Mode */
+body.light {
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Read button */
-.read-btn {
-    display: inline-block;
-    margin-top: auto;
-    background-color: transparent;
-    color: #ffc107;
-    font-weight: bold;
-    border: 1px solid #ffc107;
-    padding: 4px 10px;
-    font-size: 0.9rem;
-    border-radius: 20px;
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
-    text-decoration: none;
-}
-
-.read-btn:hover {
-    background-color: #ffc107;
-    color: black;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-    padding: 20px;
-    background: #212529;
-    color: white;
-    margin-top: 40px;
-}
-
-/* Error Message */
-.alert-danger {
-    margin-top: 20px;
-    text-align: center;
+/* Dark Mode */
+body.dark {
+    background-color: #1d2634;
+    color: #9e9ea4;
 }
