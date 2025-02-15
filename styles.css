@@ -111,7 +111,7 @@ a:hover {
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width: 200px;
     background-color: #343a40;
     padding: 1rem;
     overflow-y: auto;
@@ -139,7 +139,7 @@ a:hover {
 
 /* Main content adjustment */
 .main-content {
-    margin-left: 270px; /* Width of the sidebar + spacing */
+    margin-left: 50px; /* Width of the sidebar + spacing */
     padding: 2rem;
 }
 
