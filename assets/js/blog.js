@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let allCards = []; // Store all cards for pagination
 
     try {
-        const response = await fetch("blog-data.json");
+        const response = await fetch("assets/js/blog-data.json");
         if (!response.ok) {
             throw new Error(`Failed to load blog data: ${response.status}`);
         }
