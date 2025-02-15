@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const markdown = await mdResponse.text();
 
             // Fetch blog-data.json to get article metadata
-            const jsonResponse = await fetch("assets/js/blog-data.json");
+            const jsonResponse = await fetch("blog-data.json");
             if (!jsonResponse.ok) {
               throw new Error(`Failed to load blog data: ${jsonResponse.status}`);
             }
@@ -40,6 +40,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <div class="article-body">${htmlContent}</div>
                 <p><strong>Tags:</strong> ${articleData.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join(" ")}</p>
             `;
+
+            // Initialize Highlight.js *after* Markdown is parsed
+            hljs.highlightAll();
 
 
         } catch (error) {
