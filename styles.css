@@ -214,3 +214,19 @@ body.dark {
     background-color: #1d2634;
     color: #9e9ea4;
 }
+
+/* Code Block Styles (for Highlight.js) */
+/* These styles will be applied *in addition to* the Monokai theme */
+pre {
+    background-color: #f0f0f0; /* Light gray background for the entire block */
+    padding: 1rem;
+    border-radius: 5px;
+    overflow-x: auto; /* Add horizontal scrolling for long lines */
+    margin-bottom: 1rem; /* Add some space below code blocks */
+    border: 1px solid #ddd; /* Add a subtle border */
+    font-size: 0.9rem; /* Slightly smaller font size */
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace; /* Use a monospace font */
+}
