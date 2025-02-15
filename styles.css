@@ -236,7 +236,7 @@ body.dark {
 pre {
     background-color: #f0f0f0; /* Light gray background */
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 1px;
     overflow-x: auto; /* Horizontal scrolling for long lines */
     margin-bottom: 1rem;
     border: 1px solid #ddd;
