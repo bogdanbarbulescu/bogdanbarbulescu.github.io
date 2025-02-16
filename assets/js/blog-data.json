@@ -14,10 +14,10 @@
     "url": "article.html?id=article2"
   },
   {
-    "title": "HTB Object Writeup",
-    "description": "A comprehensive walkthrough of the HTB 'Object' machine.",
+    "title": "Metasploit Cheatsheet",
+    "description": "A list of useful commands for Metasploit.",
     "category": "CTF",
-    "tags": ["THM", "CTF"],
+    "tags": ["Cheat Sheet"],
     "url": "article.html?id=article3"
   }
 ]
