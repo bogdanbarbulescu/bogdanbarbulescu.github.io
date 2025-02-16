@@ -14,26 +14,26 @@ document.addEventListener("DOMContentLoaded", async function () {
             const markdown = await mdResponse.text();
 
             // Fetch blog-data.json to get article metadata
-            const jsonResponse = await fetch("assets/js/blog-data.json");
+            const jsonResponse = await fetch("assets/js/blog-data.json"); // Corrected path
             if (!jsonResponse.ok) {
-              throw new Error(`Failed to load blog data: ${jsonResponse.status}`);
+                throw new Error(`Failed to load blog data: ${jsonResponse.status}`);
             }
             const blogData = await jsonResponse.json();
 
             // Find the corresponding article in blog-data.json
-            const articleData = blogData.find(a => `article${blogData.indexOf(a) + 1}` === articleId); //Correct id
+            const articleData = blogData.find(a => `article${blogData.indexOf(a) + 1}` === articleId);
 
             if (!articleData) {
-              throw new Error(`Article data not found for ID: ${articleId}`);
+                throw new Error(`Article data not found for ID: ${articleId}`);
             }
 
             // --- MARKED RENDERER CUSTOMIZATION ---
             const renderer = new marked.Renderer();
-            renderer.table = function(header, body) {
+            renderer.table = function (header, body) {
                 if (body) body = '<tbody>' + body + '</tbody>';
 
                 return '<div class="table-responsive">\n'
-                    + '<table>\n'
+                    + '<table class="table table-striped table-bordered">\n' // Added Bootstrap classes
                     + '<thead>\n'
                     + header
                     + '</thead>\n'
@@ -45,23 +45,18 @@ document.addEventListener("DOMContentLoaded", async function () {
             // Configure Marked to use our custom renderer
             marked.use({ renderer });
 
-
             // Convert Markdown to HTML using marked.js
             const htmlContent = marked.parse(markdown);
 
             // Combine metadata and HTML content
             articleContainer.innerHTML = `
                 <h1 class="article-title">${articleData.title}</h1>
-                <div class="article-meta">
-                  <!-- Removed author and date as they don't exist in the data -->
-                </div>
                 <div class="article-body">${htmlContent}</div>
-                <p><strong>Tags:</strong> ${articleData.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join(" ")}</p>
+                <p class="mt-4"><strong>Tags:</strong> ${articleData.tags.map(tag => `<span class="badge bg-secondary">${tag}</span>`).join(" ")}</p>
             `;
 
             // Initialize Highlight.js *after* Markdown is parsed
             hljs.highlightAll();
-
 
         } catch (error) {
             console.error("Error:", error);
