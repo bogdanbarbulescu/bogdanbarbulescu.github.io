@@ -286,3 +286,9 @@ code {
 @media (min-width: 992px) {
     /* No specific changes needed, uses base styles */
 }
+
+/* Responsive Table Container */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%; /* Ensure it takes full width of its parent */
+}
