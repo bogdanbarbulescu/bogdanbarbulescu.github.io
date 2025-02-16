@@ -1,4 +1,4 @@
-# How I Earned My CompTIA Security+ Certification: A Complete Guide
+
 
 Earning the CompTIA Security+ certification was a game-changer in my career. In this article, I’ll walk you through how I prepared, the resources I used, and tips to help you succeed in your own journey.
 
