@@ -27,6 +27,24 @@ document.addEventListener("DOMContentLoaded", async function () {
               throw new Error(`Article data not found for ID: ${articleId}`);
             }
 
+            // --- MARKED RENDERER CUSTOMIZATION ---
+            const renderer = new marked.Renderer();
+            renderer.table = function(header, body) {
+                if (body) body = '<tbody>' + body + '</tbody>';
+
+                return '<div class="table-responsive">\n'
+                    + '<table>\n'
+                    + '<thead>\n'
+                    + header
+                    + '</thead>\n'
+                    + body
+                    + '</table>\n'
+                    + '</div>\n';
+            };
+
+            // Configure Marked to use our custom renderer
+            marked.use({ renderer });
+
 
             // Convert Markdown to HTML using marked.js
             const htmlContent = marked.parse(markdown);
