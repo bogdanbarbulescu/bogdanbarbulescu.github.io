@@ -33,5 +33,13 @@
     "category": "Article",
     "tags": ["Article"],
     "url": "article.html?id=article5"
+  },
+  {
+    "title": "Purple Teaming Exercises: Collaborative Defense Improvement",
+    "description": "The Benefits of Collaboration",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article6"
   }
 ]
+
