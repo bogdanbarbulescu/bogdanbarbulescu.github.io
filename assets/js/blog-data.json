@@ -68,5 +68,12 @@
     "category": "Article",
     "tags": ["Article"],
     "url": "article.html?id=article10"
+  },
+  {
+    "title": "Things We'll Keep Ignoring in Security",
+    "description": "Briefing Document: 'Five Things We Are Going to Continue to Ignore in 2025 | John Strand'",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article10"
   }
 ]
