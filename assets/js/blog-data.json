@@ -26,5 +26,12 @@
     "category": "Article",
     "tags": ["Article"],
     "url": "article.html?id=article4"
-  }
+  },
+  {
+    "title": "MITRE ATT&CK Tactics",
+    "description": "A High-Level Overview.",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article4"
+  },
 ]
