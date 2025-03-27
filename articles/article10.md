@@ -43,9 +43,11 @@ A pretext is the fabricated scenario or backstory used by a social engineer to j
 5.  **Detail Integration:** Incorporating specific details gathered during research (names, project codes, recent events) makes the pretext much more convincing.
 6.  **Contingency Planning:** Anticipating potential questions or challenges from the target and preparing plausible responses.
 
-<!-- Image Placeholder 2: Image representing planning, research, or building a story (e.g., whiteboard with notes, person researching online, puzzle pieces) -->
-![Planning and Research Concept](https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-*(Image Suggestion: People collaborating over notes or a whiteboard)*
+<!-- Image Placeholder 2: Planning and Research -->
+<img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
+     alt="Planning and Research Concept" 
+     style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+
 
 ## Advanced Tactics: Vishing & Impersonation
 
