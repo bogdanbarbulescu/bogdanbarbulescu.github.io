@@ -1,5 +1,3 @@
-# MITRE ATT&CK Tactics: A High-Level Overview
-
 The MITRE ATT&CK® framework is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. It's used as a foundation for threat modeling and methodology development in the private sector, government, and cybersecurity product/service community.
 
 **Tactics** represent the *why* behind an adversary's action – their tactical objective or goal. They are the high-level categories under which specific **Techniques** (the *how*) are grouped. Understanding these tactics helps organizations anticipate adversary actions and build better defenses.
