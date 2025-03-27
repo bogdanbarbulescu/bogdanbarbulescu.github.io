@@ -1,9 +1,30 @@
 /* General Body Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f8f9fa; /* Light gray background */
-    color: #333; /* Dark text for readability */
+    background-color: #f8f9fa;
+    /* Light gray background */
+    color: #333;
+    /* Dark text for readability */
 }
+
+/* Alternating section backgrounds */
+.section:nth-child(odd) {
+    background-color: #ffffff;
+    /* White */
+    padding: 60px 0;
+}
+
+.section:nth-child(even) {
+    background-color: #f8f9fa;
+    /* Light grey */
+    padding: 60px 0;
+}
+
+/* Optional: Add smooth transition effect */
+.section {
+    transition: background-color 0.3s ease-in-out;
+}
+
 
 /* Add responsive styles for both desktop and mobile */
 @media (max-width: 768px) {
@@ -12,7 +33,13 @@ body {
     }
 
     .loader {
-        font-size: 1.5rem;    
+        font-size: 2rem;
+        /* Crește dimensiunea fontului */
+    }
+
+    .loader span {
+        letter-spacing: 2px;
+        /* Reduce spațierea */
     }
 
     header h1 {
@@ -43,40 +70,49 @@ header {
     position: relative;
 }
 
+
 .loader {
-    position: relative;
-  }
-  
-  .loader span {
+    width: 100px;
+    /* Asigură un spațiu fix */
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.loader span {
     position: absolute;
     color: #fff;
     transform: translate(-50%, -50%);
     font-size: 24px;
     letter-spacing: 5px;
-  }
-  
-  .loader span:nth-child(1) {
+}
+
+.loader span:nth-child(1) {
     color: transparent;
     -webkit-text-stroke: 0.3px #ffc107;
-  }
-  
-  .loader span:nth-child(2) {
+}
+
+.loader span:nth-child(2) {
     color: #ffc107;
     -webkit-text-stroke: 1px #ffc107;
     animation: uiverse723 3s ease-in-out infinite;
-  }
-  
-  @keyframes uiverse723 {
-    0%, 100% {
-      clip-path: polygon(0% 45%, 15% 44%, 32% 50%, 
-       54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+}
+
+@keyframes uiverse723 {
+
+    0%,
+    100% {
+        clip-path: polygon(0% 45%, 15% 44%, 32% 50%,
+                54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
     }
-  
+
     50% {
-      clip-path: polygon(0% 60%, 16% 65%, 34% 66%, 
-       51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+        clip-path: polygon(0% 60%, 16% 65%, 34% 66%,
+                51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
     }
-  }
+}
 
 header .card {
     background: rgba(0, 0, 0, 0.5);
@@ -183,7 +219,8 @@ a:hover {
     color: black;
 }
 
-.blog-container {  /* This class isn't used in your HTML, but I'll keep it */
+.blog-container {
+    /* This class isn't used in your HTML, but I'll keep it */
     max-width: 1100px;
     margin: auto;
     padding: 20px;
@@ -254,7 +291,7 @@ a:hover {
     transition: transform 0.2s linear;
 }
 
-.checkbox:checked + .checkbox-label .ball {
+.checkbox:checked+.checkbox-label .ball {
     transform: translateX(24px);
 }
 
@@ -273,16 +310,19 @@ body.dark {
 /* --- Code Block Styles (for Highlight.js) --- */
 /*  These are placed *after* the general styles, so they override */
 pre {
-    background-color: #f0f0f0; /* Light gray background */
+    background-color: #f0f0f0;
+    /* Light gray background */
     border-radius: 1px;
-    overflow-x: auto; /* Horizontal scrolling for long lines */
+    overflow-x: auto;
+    /* Horizontal scrolling for long lines */
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     font-size: 0.9rem;
 }
 
 code {
-    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-family: 'Courier New', Courier, monospace;
+    /* Monospace font */
 }
 
 /*  Highlight.js Monokai Theme Overrides (Optional, but good for consistency) */
@@ -290,15 +330,21 @@ code {
     display: block;
     overflow-x: auto;
     padding: 0.5em;
-    background: #23241f; /* Monokai background */
-    color: #f8f8f2; /* Monokai text color */
+    background: #23241f;
+    /* Monokai background */
+    color: #f8f8f2;
+    /* Monokai text color */
 }
 
 .hljs-string {
     color: #e6db74;
 }
 
-.hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-name, .hljs-built_in {
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal,
+.hljs-name,
+.hljs-built_in {
     color: #f92672;
 }
 
@@ -307,18 +353,21 @@ code {
 /* Small devices (phones) */
 @media (max-width: 575.98px) {
     .card img {
-        height: auto; /* Let images resize naturally */
+        height: auto;
+        /* Let images resize naturally */
     }
+
     pre {
-        font-size: 0.8rem; /* Smaller font size in code blocks */
+        font-size: 0.8rem;
+        /* Smaller font size in code blocks */
     }
 }
 
 /* Medium devices (tablets) */
 @media (min-width: 576px) and (max-width: 991.98px) {
-      .card img{
+    .card img {
         height: 120px;
-      }
+    }
 }
 
 /* Large devices (desktops) */
@@ -329,5 +378,6 @@ code {
 /* Responsive Table Container */
 .table-responsive {
     overflow-x: auto;
-    width: 100%; /* Ensure it takes full width of its parent */
+    width: 100%;
+    /* Ensure it takes full width of its parent */
 }
