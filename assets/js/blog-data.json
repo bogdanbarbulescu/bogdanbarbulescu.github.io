@@ -40,5 +40,33 @@
     "category": "Article",
     "tags": ["Article"],
     "url": "article.html?id=article6"
+  },
+  {
+    "title": "Purple Teaming Exercises: Collaborative Defense Improvement",
+    "description": "The Benefits of Collaboration",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article7"
+  },
+  {
+    "title": "Purple Teaming Exercises: Collaborative Defense Improvement",
+    "description": "The Benefits of Collaboration",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article8"
+  },
+  {
+    "title": "Purple Teaming Exercises: Collaborative Defense Improvement",
+    "description": "The Benefits of Collaboration",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article9"
+  },
+  {
+    "title": "Social Engineering: The Psychology of Deception",
+    "description": "How to defend yourself",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article10"
   }
 ]
