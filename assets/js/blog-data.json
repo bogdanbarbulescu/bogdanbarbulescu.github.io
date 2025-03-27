@@ -19,5 +19,12 @@
     "category": "CTF",
     "tags": ["Cheat Sheet"],
     "url": "article.html?id=article3"
+  },
+  {
+    "title": "MITRE ATT&CK Tactics",
+    "description": "A High-Level Overview.",
+    "category": "Article",
+    "tags": ["Article"],
+    "url": "article.html?id=article3"
   }
 ]
