@@ -3,9 +3,6 @@
 
 In the realm of cybersecurity, vulnerabilities aren't just found in code or configurations; often, the most exploitable weakness is human nature itself. Social Engineering (SE) is the art of manipulating people into performing actions or divulging confidential information. Unlike technical hacking, SE targets the mind – leveraging psychological biases, trust, and inherent human tendencies. This masterclass delves beyond basic phishing emails, exploring the core psychological principles, the craft of pretext development, and advanced tactics used in sophisticated vishing and impersonation attacks. Understanding these elements is crucial for both ethical testers assessing defenses and defenders building resilience.
 
-<!-- Image Placeholder 1: Conceptual image representing manipulation or psychology (e.g., chess pieces, masks, human silhouette with gears) -->
-![Psychological Manipulation Concept](https://images.pexels.com/photos/7170680/pexels-photo-7170680.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-*(Image Suggestion: A visually striking image representing influence or the human mind)*
 
 ## The Foundation: Psychological Principles Exploited by Social Engineers
 
@@ -63,9 +60,6 @@ Leveraging the telephone adds urgency and perceived legitimacy. Advanced tactics
 *   **Exploiting IVR Systems:** Navigating Interactive Voice Response systems to gather information or reach specific internal departments.
 *   **Time Pressure & Authority:** Using an authoritative tone and emphasizing urgency ("We need to verify this *now* to secure your account!").
 
-<!-- Image Placeholder 3: Image representing phone calls or communication (e.g., person on phone looking concerned, abstract sound waves, call center) -->
-![Vishing Concept](https://images.pexels.com/photos/8938626/pexels-photo-8938626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-*(Image Suggestion: Close-up of someone talking on a phone, perhaps looking slightly stressed or focused)*
 
 ### Impersonation (Beyond Voice)
 
@@ -88,9 +82,6 @@ This encompasses a broader range of identity deception:
 *   **Technical Controls:** While SE targets humans, technical controls help: Email filtering, Caller ID validation (where possible), endpoint security, restricting unnecessary information exposure online.
 *   **Foster a Security Culture:** Encourage employees to report suspicious activity *without fear of blame*. Make reporting easy and ensure feedback is provided.
 
-<!-- Image Placeholder 4: Image representing security awareness or defense (e.g., shield, lock, group training session, 'report suspicion' icon) -->
-![Security Awareness and Defense](https://images.pexels.com/photos/5969931/pexels-photo-5969931.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
-*(Image Suggestion: Diverse group of people in a training setting or an abstract shield icon)*
 
 ## Conclusion
 
