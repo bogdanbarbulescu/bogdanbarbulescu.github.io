@@ -28,10 +28,10 @@
     "url": "article.html?id=article4"
   },
   {
-    "title": "MITRE ATT&CK Tactics",
-    "description": "A High-Level Overview.",
+    "title": "Cyber Threat Intelligence (CTI) Integration: Beyond the IoC Feed",
+    "description": "A practical approach",
     "category": "Article",
     "tags": ["Article"],
-    "url": "article.html?id=article4"
+    "url": "article.html?id=article5"
   },
 ]
