@@ -75,5 +75,12 @@
     "category": "Article",
     "tags": ["Article"],
     "url": "article.html?id=article11"
+  },
+  {
+    "title": "Google Dork Cheatsheet",
+    "description": "Awesome commands",
+    "category": "Article",
+    "tags": ["Cheat Sheet"],
+    "url": "article.html?id=article12"
   }
 ]
