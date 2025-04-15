@@ -5,16 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Updated Title -->
-    <title>Learning Resources - BVB</title>
+    <title>Awesome Tech Resources & Cheat Sheets - BVB</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Make sure to include Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Assuming you have styles.css -->
+    <link rel="stylesheet" href="styles.css"> <!-- Your custom styles -->
+    <style>
+        /* Add some custom styles for better spacing and visual appeal */
+        .card {
+            margin-bottom: 1.5rem;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        .card-title {
+            font-weight: bold;
+        }
+        .card-link i { /* Style icons next to links */
+            margin-right: 0.3rem;
+        }
+        .badge {
+             margin-right: 0.3rem;
+             margin-bottom: 0.3rem; /* Ensure badges wrap nicely */
+             font-size: 0.75em; /* Slightly smaller badges */
+        }
+        /* Style for accordion buttons */
+        .accordion-button:not(.collapsed) {
+            color: #0dcaf0; /* Or your preferred highlight color */
+            background-color: #e7f1ff; /* Light background when open */
+        }
+         /* Section headings */
+        h3.section-title {
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem; /* More space between sections */
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- Header (Keep as is) -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">BVB</a>
@@ -26,8 +60,7 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
-                    <!-- Add a link to this page if needed -->
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Resources</a></li> 
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
@@ -38,177 +71,363 @@
     <main>
         <section id="resources" class="py-5">
             <div class="container">
-                <!-- Updated Heading and Intro -->
-                <h2 class="text-center text-dark mb-4">Learning Resources</h2>
-                <p class="lead text-center">Explore a curated collection of cheat sheets, tools, frameworks, and guides to boost your productivity and knowledge across various technical domains.</p>
+                <h2 class="text-center text-dark mb-4">Awesome Tech Resources & Cheat Sheets</h2>
+                <p class="lead text-center mb-5">Your go-to collection of curated links, tools, guides, and cheat sheets for developers, security pros, and tech enthusiasts. Boost your skills and productivity!</p>
 
-                <!-- Resource Categories -->
-
-                <h3 class="mt-5">Cheat Sheets</h3>
-                <p>Quick reference guides for various tools, languages, and concepts.</p>
+                <!-- Section: Cheat Sheets -->
+                <h3 class="section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheat Sheets Galore</h3>
+                <p class="mb-4">Quick references to speed up your workflow across various domains.</p>
                 
-                <h4>Networking</h4>
-                <ul>
-                    <li><a href="https://cheatography.com/tag/network/">94 Network Cheat Sheets - Cheatography</a> (General/Config)</li>
-                    <li><a href="https://www.packetlife.net/library/cheat-sheets/">Network Protocol Cheat Sheets - PacketLife</a></li>
-                    <li><a href="https://www.practicalnetworking.net/stand-alone/subnetting-guide/">Subnetting Guide - PracticalNetworking</a></li>
-                    <li><a href="https://www.stationx.net/wireshark-cheat-sheet/">Wireshark Cheat Sheet - StationX</a></li>
-                    <li><a href="https://www.redhat.com/sysadmin/linux-networking-cheat-sheet">Linux Networking Cheat Sheet - Red Hat</a></li>
-                    <li><a href="https://ipcisco.com/cheat-sheets/">Networking Cheat Sheets - ipCisco</a></li> 
-                </ul>
+                <!-- Using Accordion for Cheat Sheets Categories -->
+                <div class="accordion" id="cheatSheetAccordion">
 
-                <h4>Cybersecurity & Pentesting</h4>
-                <ul>
-                    <li><a href="https://cheatography.com/tag/security/">78 Security Cheat Sheets - Cheatography</a> (General Security)</li>
-                    <li><a href="https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/">The Ultimate List of SANS Cheat Sheets</a> (Multiple Topics)</li>
-                    <li><a href="https://www.stationx.net/nmap-cheat-sheet/">Nmap Cheat Sheet - StationX</a></li>
-                    <li><a href="https://www.comparitech.com/net-admin/metasploit-cheat-sheet/">Metasploit Cheat Sheet - Comparitech</a></li>
-                    <li><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets">Pentest Snippets & Commands - Kitsun3Sec</a></li>
-                    <li><a href="https://github.com/Tib3rius/Pentest-Cheatsheets">Pentest Cheatsheets - Tib3rius</a></li>
-                    <li><a href="https://github.com/SofianeHamlaoui/Pentest-Notes">Pentest Notes Collection - SofianeHamlaoui</a></li>
-                     <li><a href="https://github.com/adon90/pentest_compilation">Pentest Commands/Tips Compilation - adon90</a></li>
-                    <li><a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-policy-cheat-sheet">Windows Security Audit Policy Cheat Sheet</a></li>
-                </ul>
+                    <!-- Networking Cheatsheets -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNetworking">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNetworking" aria-expanded="false" aria-controls="collapseNetworking">
+                                <i class="bi bi-diagram-3 me-2"></i> Networking
+                            </button>
+                        </h2>
+                        <div id="collapseNetworking" class="accordion-collapse collapse" aria-labelledby="headingNetworking" data-bs-parent="#cheatSheetAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="https://cheatography.com/tag/network/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Cheatography Network Collection</a> - Huge list covering various network topics.</li>
+                                    <li><a href="https://www.packetlife.net/library/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> PacketLife Protocol Sheets</a> - Detailed protocol references.</li>
+                                    <li><a href="https://www.practicalnetworking.net/stand-alone/subnetting-guide/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Practical Subnetting Guide</a> - Clear, concise subnetting help.</li>
+                                    <li><a href="https://www.stationx.net/wireshark-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> StationX Wireshark Sheet</a> - Essential filters and tips.</li>
+                                    <li><a href="https://www.redhat.com/sysadmin/linux-networking-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Red Hat Linux Networking</a> - Key Linux network commands.</li>
+                                    <li><a href="https://ipcisco.com/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> ipCisco Cheat Sheets</a> - Various networking command references.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                <h4>Programming & Scripting</h4>
-                <ul>
-                    <li>**Python:** <a href="https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf">Python 3 Memento (PDF)</a></li>
-                    <li>**Python:** <a href="https://github.com/gto76/python-cheatsheet">Python Cheat Sheet - gto76</a></li>
-                    <li>**JavaScript:** <a href="https://htmlcheatsheet.com/js/">JavaScript Cheat Sheet - HTMLCheatSheet</a></li>
-                    <li>**Bash:** <a href="https://www.gnu.org/software/bash/manual/bash.html">Bash Reference Manual (Comprehensive)</a></li>
-                    <li>**Git:** <a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf">Git Cheat Sheet - GitHub Training</a></li>
-                </ul>
+                    <!-- Cybersecurity / Pentesting Cheatsheets -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingCyber">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCyber" aria-expanded="false" aria-controls="collapseCyber">
+                                <i class="bi bi-shield-lock me-2"></i> Cybersecurity & Pentesting
+                            </button>
+                        </h2>
+                        <div id="collapseCyber" class="accordion-collapse collapse" aria-labelledby="headingCyber" data-bs-parent="#cheatSheetAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="https://cheatography.com/tag/security/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Cheatography Security Collection</a> - Broad security topics.</li>
+                                    <li><a href="https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Ultimate SANS Cheat Sheets</a> - Highly respected sheets for various security domains.</li>
+                                    <li><a href="https://www.stationx.net/nmap-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> StationX Nmap Sheet</a> - Essential Nmap scans and options.</li>
+                                    <li><a href="https://www.comparitech.com/net-admin/metasploit-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Comparitech Metasploit Sheet</a> - Common Metasploit commands.</li>
+                                    <li><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Kitsun3Sec Pentest Snippets</a> - Practical code snippets and commands.</li>
+                                    <li><a href="https://github.com/Tib3rius/Pentest-Cheatsheets" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Tib3rius Pentest Cheatsheets</a> - Focused pentesting references.</li>
+                                    <li><a href="https://github.com/SofianeHamlaoui/Pentest-Notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> SofianeHamlaoui Pentest Notes</a> - Aggregated notes and cheatsheets.</li>
+                                    <li><a href="https://github.com/adon90/pentest_compilation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> adon90 Pentest Compilation</a> - Commands, tips, and scripts from real scenarios.</li>
+                                    <li><a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-policy-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-microsoft"></i> Windows Security Audit Policy</a> - Reference for Windows auditing.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                 <h4>DevOps & Automation</h4>
-                <ul>
-                    <li>**Ansible:** <a href="https://www.edureka.co/blog/wp-content/uploads/2018/11/Ansible-Cheat_Sheet_Edureka.pdf">Ansible Cheat Sheet (Edureka PDF)</a></li>
-                </ul>
+                    <!-- Programming / Scripting Cheatsheets -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingProg">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProg" aria-expanded="false" aria-controls="collapseProg">
+                               <i class="bi bi-code-slash me-2"></i> Programming & Scripting
+                            </button>
+                        </h2>
+                        <div id="collapseProg" class="accordion-collapse collapse" aria-labelledby="headingProg" data-bs-parent="#cheatSheetAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Python 3 Memento (PDF)</a> - Concise Python 3 syntax reference.</li>
+                                    <li><a href="https://github.com/gto76/python-cheatsheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> gto76 Python Cheatsheet</a> - Comprehensive Python reference on GitHub.</li>
+                                    <li><a href="https://htmlcheatsheet.com/js/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> JavaScript Cheat Sheet</a> - Quick reference for JS syntax and functions.</li>
+                                    <li><a href="https://www.gnu.org/software/bash/manual/bash.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> Bash Reference Manual</a> - The definitive guide for Bash scripting.</li>
+                                    <li><a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> GitHub Git Cheat Sheet (PDF)</a> - Essential Git commands.</li>
+                                </ul>
+                             </div>
+                        </div>
+                    </div>
 
-                <h4>Web Development</h4>
-                <ul>
-                    <li><a href="https://htmlcheatsheet.com/">HTML/CSS Cheat Sheet - HTMLCheatSheet</a></li>
-                    <li><a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/">Bootstrap Documentation (Reference)</a></li>
-                    <li><a href="https://vuejs.org/v2/guide/syntax.html">Vue.js Syntax (Reference)</a></li>
-                    <li><a href="https://react.dev/learn">React Learning Resources (Reference)</a></li>
-                </ul>
+                     <!-- DevOps & Automation Cheatsheets -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingDevOps">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDevOps" aria-expanded="false" aria-controls="collapseDevOps">
+                                <i class="bi bi-gear-wide-connected me-2"></i> DevOps & Automation
+                            </button>
+                        </h2>
+                        <div id="collapseDevOps" class="accordion-collapse collapse" aria-labelledby="headingDevOps" data-bs-parent="#cheatSheetAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="https://www.edureka.co/blog/wp-content/uploads/2018/11/Ansible-Cheat_Sheet_Edureka.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Edureka Ansible Cheat Sheet (PDF)</a> - Quick start for Ansible commands and modules.</li>
+                                    <!-- Add Docker, K8s etc. cheatsheets here when you have them -->
+                                </ul>
+                             </div>
+                        </div>
+                    </div>
 
-                <h4>Operating Systems</h4>
-                <ul>
-                    <li>**Windows:** <a href="https://ss64.com/nt/">Windows Command Prompt (CMD) - SS64</a></li>
-                    <li>**Windows:** <a href="https://www.nirsoft.net/articles/shell_command_cheat_sheet.html">PowerShell Core Commands - NirSoft</a></li>
-                    <li>**Linux:** <a href="https://www.gnu.org/software/bash/manual/bash.html">Linux Command Line (Bash Manual)</a></li>
-                    <li>**Linux:** <a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Essential Linux Commands - TheGeekStuff</a></li>
-                    <li>**Linux:** <a href="https://explainshell.com/">Explain Shell Command</a></li>
-                </ul>
+                    <!-- ... Add other Cheat Sheet categories (Web Dev, OS, Cloud) similarly using accordion items ... -->
+                    <!-- Example for OS -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOS">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOS" aria-expanded="false" aria-controls="collapseOS">
+                                <i class="bi bi-terminal me-2"></i> Operating Systems (Win/Linux)
+                            </button>
+                        </h2>
+                        <div id="collapseOS" class="accordion-collapse collapse" aria-labelledby="headingOS" data-bs-parent="#cheatSheetAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li><a href="https://ss64.com/nt/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Windows CMD Reference (SS64)</a> - Excellent command prompt reference.</li>
+                                    <li><a href="https://www.nirsoft.net/articles/shell_command_cheat_sheet.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> PowerShell Core Commands (NirSoft)</a> - Useful PowerShell reference.</li>
+                                    <li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> 50 Essential Linux Commands</a> - Great starting point for Linux CLI.</li>
+                                    <li><a href="https://explainshell.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Explain Shell</a> - Paste a command and see what each part does!</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-                <h4>Cloud Services</h4>
-                <ul>
-                    <li><a href="https://assets.ubuntu.com/v1/2950553c-OpenStack%20cheat%20sheet%20-%20revised%20v3.pdf">OpenStack Cheat Sheet - Ubuntu (PDF)</a></li>
-                    <li><a href="https://www.interviewbit.com/aws-cheat-sheet/">AWS Cheat Sheet - InterviewBit</a></li>
-                    <li><a href="https://github.com/milanm/azure-cheat-sheet">Azure Cheat Sheet - milanm</a></li>
-                    <li><a href="https://cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf">Google Cloud (gcloud) Cheat Sheet (PDF)</a></li>
-                </ul>
+                </div> <!-- End Accordion -->
 
-                <h3 class="mt-5">Awesome Lists & Curated Resources</h3>
-                <p>Collections of valuable links, tools, and projects for various topics.</p>
-                <ul>
-                    <li><a href="https://github.com/szabgab/awesome-lists">Awesome Lists Meta-List - szabgab</a> (List of awesome lists)</li>
-                    <li><a href="https://github.com/awesome-selfhosted/awesome-selfhosted?tab=readme-ov-file#url-shorteners">Awesome Self-Hosted - awesome-selfhosted</a> (Self-hostable software)</li>
-                    <li><a href="https://github.com/MunGell/awesome-for-beginners?tab=readme-ov-file#ansible">Awesome for Beginners - MunGell</a> (Beginner-friendly projects)</li>
-                    <li><a href="https://github.com/swapagarwal/awesome-eli5">Awesome ELI5 - swapagarwal</a> (Concepts explained simply)</li>
-                    <li><a href="https://github.com/dipakkr/A-to-Z-Resources-for-Students">A-to-Z Resources for Students - dipakkr</a></li>
-                    <li><a href="https://github.com/Aatmaj-Zephyr/A-collection-of-useful-repositories">Collection of Useful Repositories - Aatmaj-Zephyr</a></li>
-                    <li><a href="https://github.com/tastejs/awesome-app-ideas">Awesome App Ideas - tastejs</a></li>
-                    <li><a href="https://github.com/enaqx/awesome-pentest">Awesome Pentest Resources - enaqx</a></li>
-                    <li><a href="https://github.com/jhaddix/pentest-bookmarks/blob/master/wiki/BookmarksList.wiki">Pentest Bookmarks - jhaddix</a></li>
-                </ul>
 
-                <h3 class="mt-5">Pentesting & Security Tools & Guides</h3>
-                <p>Tools, guides, reports, and environments for penetration testing and security practitioners.</p>
-                <ul>
-                    <li>**Vulnerability Search:** <a href="https://github.com/cve-search/cve-search?tab=readme-ov-file">cve-search - cve-search</a> (Local CVE search tool)</li>
-                    <li>**Reports:** <a href="https://github.com/juliocesarfort/public-pentesting-reports">Public Pentesting Reports - juliocesarfort</a></li>
-                    <li>**Tools:** <a href="https://github.com/gwen001/pentest-tools">Custom Pentest Tools - gwen001</a></li>
-                    <li>**Reporting:** <a href="https://github.com/pwndoc/pwndoc">pwndoc - Pentest Report Generator</a></li>
-                    <li>**Tools (Python):** <a href="https://github.com/dloss/python-pentest-tools">Python Pentest Tools - dloss</a></li>
-                    <li>**Guides:** <a href="https://github.com/Voorivex/pentest-guide">OWASP Based Pentest Guide - Voorivex</a></li>
-                    <li>**Network Pentesting:** <a href="https://github.com/byt3bl33d3r/CrackMapExec">CrackMapExec - byt3bl33d3r</a></li>
-                    <li>**Payloads:** <a href="https://github.com/swisskyrepo/PayloadsAllTheThings">Payloads All The Things - swisskyrepo</a></li>
-                    <li>**Windows Access:** <a href="https://github.com/Hackplayers/evil-winrm">Evil-WinRM - Hackplayers</a></li>
-                    <li>**Checklists:** <a href="https://github.com/netbiosX/Checklists">Pentesting Checklists - netbiosX</a></li>
-                    <li>**Environments:** <a href="https://github.com/R3dy/capsulecorp-pentest">Capsulecorp Pentest Env (Vagrant) - R3dy</a></li>
-                    <li>**Environments:** <a href="https://github.com/Sliim/pentest-env">Pentest Environment Deployer (Vagrant/Chef) - Sliim</a></li>
-                    <li>**Environments:** <a href="https://github.com/Sliim/pentest-lab">Pentest Lab on OpenStack - Sliim</a></li>
-                    <li>**Tools/Content:** <a href="https://github.com/JohnHammond?tab=repositories">John Hammond Repositories</a></li>
-                    <li>**Automated Tools:** <a href="https://github.com/Chudry/Xerror?tab=readme-ov-file">Xerror Automated Pentest Tool - Chudry</a></li>
-                    <li>**Linux Enumeration:** <a href="https://github.com/diego-treitos/linux-smart-enumeration">Linux Smart Enumeration - diego-treitos</a></li>
-                    <li>**Guides/Notes:** <a href="https://github.com/The-Viper-One/Pentest-Everything">Pentest Everything (Notes/Guides/Writeups) - The-Viper-One</a></li>
-                    <li>**Recon:** <a href="https://github.com/gokulapap/Reconator">Reconator Automated Recon - gokulapap</a></li>
-                 </ul>
+                <!-- Section: Awesome Lists & Curated Resources -->
+                <h3 class="section-title"><i class="bi bi-star-fill me-2"></i>Awesome Lists & Curated Resources</h3>
+                <p class="mb-4">Handpicked collections of the best tools, libraries, and learning materials.</p>
+                <div class="row">
+                    <!-- Card Example 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-list-stars me-1"></i>Awesome Lists Meta-List</h5>
+                                <p class="card-text flex-grow-1">The ultimate starting point: A list of *all* the awesome lists on GitHub.</p>
+                                <div>
+                                     <span class="badge bg-secondary">Meta</span>
+                                     <span class="badge bg-info text-dark">Discovery</span>
+                                </div>
+                                <a href="https://github.com/szabgab/awesome-lists" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Example 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-server me-1"></i>Awesome Self-Hosted</h5>
+                                <p class="card-text flex-grow-1">Discover free software network services and web applications you can host yourself.</p>
+                                <div>
+                                     <span class="badge bg-success">Self-Hosting</span>
+                                     <span class="badge bg-warning text-dark">Software</span>
+                                </div>
+                                <a href="https://github.com/awesome-selfhosted/awesome-selfhosted" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Example 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-mortarboard me-1"></i>Awesome for Beginners</h5>
+                                <p class="card-text flex-grow-1">Find open-source projects that are welcoming to new contributors.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span>
+                                     <span class="badge bg-info text-dark">Open Source</span>
+                                     <span class="badge bg-warning text-dark">Beginner</span>
+                                </div>
+                                <a href="https://github.com/MunGell/awesome-for-beginners" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more cards here for other Awesome Lists, using the same pattern -->
+                    <!-- Example: ELI5 -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-lightbulb me-1"></i>Awesome ELI5</h5>
+                                <p class="card-text flex-grow-1">Technical concepts explained in simple, easy-to-understand terms.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span>
+                                     <span class="badge bg-info text-dark">Concepts</span>
+                                </div>
+                                <a href="https://github.com/swapagarwal/awesome-eli5" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Example: Pentest Resources -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-shield-shaded me-1"></i>Awesome Pentest</h5>
+                                <p class="card-text flex-grow-1">A massive collection of resources, tools, and guides for penetration testing.</p>
+                                <div>
+                                     <span class="badge bg-danger">Security</span>
+                                     <span class="badge bg-warning text-dark">Pentesting</span>
+                                     <span class="badge bg-secondary">Tools</span>
+                                </div>
+                                <a href="https://github.com/enaqx/awesome-pentest" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Example: Student Resources -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-book-half me-1"></i>A-to-Z Resources for Students</h5>
+                                <p class="card-text flex-grow-1">Curated list of resources covering various topics relevant to college students.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span>
+                                     <span class="badge bg-info text-dark">Students</span>
+                                </div>
+                                <a href="https://github.com/dipakkr/A-to-Z-Resources-for-Students" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- /row -->
 
-                <h3 class="mt-5">Development Tools & Frameworks</h3>
-                <p>Libraries, frameworks, and tools for software development across various domains.</p>
-                
-                <h4>Python Ecosystem</h4>
-                 <ul>
-                    <li><a href="https://github.com/data-8/datascience">datascience - data-8</a> (Introductory Data Science Library)</li>
-                    <li><a href="https://github.com/h2oai/wave?tab=readme-ov-file">Wave - h2oai</a> (Realtime Web Apps/Dashboards for Python/R)</li>
-                    <li><a href="https://github.com/scrapy/scrapy">Scrapy - scrapy</a> (Web Crawling & Scraping Framework)</li>
-                </ul>
 
-                <h4>JavaScript Ecosystem</h4>
-                <ul>
-                    <li><a href="https://github.com/cypress-io/cypress?tab=readme-ov-file">Cypress - cypress-io</a> (Browser Testing Framework)</li>
-                    <li><a href="https://github.com/emberjs/ember.js">Ember.js - emberjs</a> (Ambitious Web Applications Framework)</li>
-                    <li><a href="https://github.com/electron/electron">Electron - electron</a> (Cross-Platform Desktop Apps with Web Tech)</li>
-                    <li><a href="https://github.com/gatsbyjs/gatsby">Gatsby - gatsbyjs</a> (React-based Framework)</li>
-                    <li><a href="https://github.com/vercel/hyper">Hyper - vercel</a> (Terminal built on Web Technologies)</li>
-                    <li><a href="https://github.com/json-editor/json-editor">JSON Editor - json-editor</a> (JSON Schema Based Editor)</li>
-                    <li><a href="https://github.com/mui/material-ui">Material UI (MUI Core) - mui</a> (React UI Components)</li>
-                    <li><a href="https://github.com/meteor/meteor">Meteor - meteor</a> (JavaScript App Platform)</li>
-                    <li><a href="https://github.com/NativeScript/NativeScript">NativeScript - NativeScript</a> (Native Apps with JS/TS/Angular/Vue etc.)</li>
-                    <li><a href="https://github.com/processing/p5.js">p5.js - processing</a> (Creative Coding Library for the Web)</li>
-                </ul>
+                <!-- Section: Pentesting & Security Tools -->
+                 <h3 class="section-title"><i class="bi bi-bug-fill me-2"></i>Pentesting & Security Arsenal</h3>
+                <p class="mb-4">Essential tools, frameworks, and guides for ethical hacking and security analysis.</p>
+                 <div class="row">
+                     <!-- Card Example: CVE Search -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-search me-1"></i>cve-search</h5>
+                                <p class="card-text flex-grow-1">Perform local searches for known vulnerabilities (CVEs). Fast and offline access.</p>
+                                <div>
+                                    <span class="badge bg-danger">Security</span>
+                                    <span class="badge bg-warning text-dark">Vulnerability</span>
+                                    <span class="badge bg-secondary">Tool</span>
+                                </div>
+                                <a href="https://github.com/cve-search/cve-search" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card Example: CrackMapExec -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-person-bounding-box me-1"></i>CrackMapExec</h5>
+                                <p class="card-text flex-grow-1">A swiss army knife for pentesting networks, especially Windows/Active Directory.</p>
+                                <div>
+                                     <span class="badge bg-danger">Security</span>
+                                     <span class="badge bg-warning text-dark">Pentesting</span>
+                                     <span class="badge bg-info text-dark">Network</span>
+                                     <span class="badge bg-secondary">Tool</span>
+                                </div>
+                                <a href="https://github.com/byt3bl33d3r/CrackMapExec" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Example: PayloadsAllTheThings -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-file-earmark-code me-1"></i>PayloadsAllTheThings</h5>
+                                <p class="card-text flex-grow-1">Massive collection of useful payloads and bypass techniques for web app security, pentesting, and CTFs.</p>
+                                <div>
+                                    <span class="badge bg-danger">Security</span>
+                                    <span class="badge bg-warning text-dark">Web App</span>
+                                    <span class="badge bg-info text-dark">Payloads</span>
+                                    <span class="badge bg-success">CTF</span>
+                                </div>
+                                <a href="https://github.com/swisskyrepo/PayloadsAllTheThings" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Add more cards for other Pentesting tools/guides -->
+                     <!-- Example: pwndoc -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-file-earmark-text me-1"></i>pwndoc</h5>
+                                <p class="card-text flex-grow-1">Collaborative pentest reporting application to generate professional reports easily.</p>
+                                <div>
+                                    <span class="badge bg-danger">Security</span>
+                                    <span class="badge bg-warning text-dark">Reporting</span>
+                                     <span class="badge bg-secondary">Tool</span>
+                                </div>
+                                <a href="https://github.com/pwndoc/pwndoc" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div> <!-- /row -->
 
-                 <h4>DevOps & Infrastructure</h4>
-                 <ul>
-                    <li><a href="https://github.com/saltstack/salt">Salt - saltstack</a> (Infrastructure Automation & Management)</li>
-                    <li><a href="https://github.com/Zooz/predator">Predator - Zooz</a> (API Load Testing Platform)</li>
-                 </ul>
 
-                <h4>Content Management & Publishing</h4>
-                <ul>
-                    <li><a href="https://github.com/oscarmorrison/md-page?tab=readme-ov-file">md-page - oscarmorrison</a> (Create Webpage from Markdown)</li>
-                    <li><a href="https://github.com/decaporg/decap-cms">Decap CMS (formerly Netlify CMS) - decaporg</a> (Git-based CMS for Static Sites)</li>
-                </ul>
+                <!-- Section: Development Tools & Frameworks -->
+                 <h3 class="section-title"><i class="bi bi-tools me-2"></i>Development Tools & Frameworks</h3>
+                 <p class="mb-4">Libraries, frameworks, and platforms to build amazing applications.</p>
+                 <div class="row">
+                     <!-- Card Example: Scrapy -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-bug me-1"></i>Scrapy</h5>
+                                <p class="card-text flex-grow-1">A fast, high-level web crawling and scraping framework for Python.</p>
+                                <div>
+                                    <span class="badge bg-primary">Python</span>
+                                    <span class="badge bg-warning text-dark">Web Scraping</span>
+                                     <span class="badge bg-secondary">Framework</span>
+                                </div>
+                                <a href="https://github.com/scrapy/scrapy" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Example: Electron -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-display me-1"></i>Electron</h5>
+                                <p class="card-text flex-grow-1">Build cross-platform desktop applications using JavaScript, HTML, and CSS.</p>
+                                <div>
+                                    <span class="badge bg-info text-dark">JavaScript</span>
+                                    <span class="badge bg-warning text-dark">Desktop App</span>
+                                     <span class="badge bg-secondary">Framework</span>
+                                </div>
+                                <a href="https://github.com/electron/electron" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Card Example: Cypress -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-clipboard-check me-1"></i>Cypress</h5>
+                                <p class="card-text flex-grow-1">Fast, easy, and reliable testing for anything that runs in a browser.</p>
+                                <div>
+                                    <span class="badge bg-info text-dark">JavaScript</span>
+                                    <span class="badge bg-success">Testing</span>
+                                    <span class="badge bg-warning text-dark">Web Dev</span>
+                                     <span class="badge bg-secondary">Tool</span>
+                                </div>
+                                <a href="https://github.com/cypress-io/cypress" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Add more cards for other Dev tools/frameworks -->
+                 </div> <!-- /row -->
 
-                <h3 class="mt-5">Guides & Tutorials</h3>
-                <p>Specific step-by-step guides and tutorials.</p>
-                 <ul>
-                    <li><a href="https://reintech.io/blog/deploying-django-app-gunicorn-ubuntu">Deploying Django App with Gunicorn on Ubuntu 20.04 - Reintech</a></li>
-                 </ul>
-
-                 <h3 class="mt-5">Learning Platforms</h3>
-                 <p>Online platforms dedicated to education and learning.</p>
-                 <ul>
-                    <li><a href="https://github.com/oppia/oppia">Oppia - oppia</a> (Free, online learning platform)</li>
-                 </ul>
+                <!-- Suggestion Box / Contribution CTA -->
+                <div class="card text-center mt-5 bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">Help Make This Resource Better!</h5>
+                        <p class="card-text">Found an awesome link missing? Have a suggestion? Let me know!</p>
+                        <a href="index.html#contact" class="btn btn-warning">Suggest a Resource</a>
+                        <!-- Or link to a GitHub issue tracker if you host this there -->
+                    </div>
+                </div>
 
             </div> <!-- /container -->
         </section>
 
-        <!-- Call to Action -->
+        <!-- Call to Action (Keep as is) -->
         <div class="text-center py-4">
             <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (Keep as is) -->
     <footer class="bg-dark text-light text-center py-3">
-        <p>© 2025 Bogdan Bărbulescu | All rights reserved.</p> <!-- Keep year dynamic or update as needed -->
+        <p>© 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Bootstrap JS (Keep as is) -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
