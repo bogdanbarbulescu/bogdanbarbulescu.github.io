@@ -1,20 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Application Security Learning Resources</title>
+    <!-- Updated Title -->
+    <title>BVB - Web Application Security Learning Resources</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Your custom styles (optional) -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        /* Custom styles matching the Hub Theme */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+            border: none; /* Cleaner look */
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.07); /* Subtle shadow */
+            background-color: #fff; /* White cards */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+        }
+        .card-title {
+            font-weight: 600; /* Slightly bolder */
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+        .card-body {
+             min-height: 180px; /* Give cards a consistent minimum height */
+             display: flex;
+             flex-direction: column;
+        }
+        .card-text {
+            color: #495057;
+            font-size: 0.9rem;
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .card-link i, .resource-list-item i {
+            margin-right: 0.4rem;
+            vertical-align: middle; /* Align icons better */
+        }
+        .badge {
+             margin-right: 0.3rem;
+             margin-bottom: 0.5rem;
+             font-size: 0.75em;
+             padding: 0.3em 0.6em; /* Adjust padding */
+             display: inline-block; /* Ensure wrapping */
+        }
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 1rem; /* Space between accordion items */
+            border: none;
+            border-radius: 0.375rem; /* Bootstrap default */
+             box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+             background-color: #fff;
+        }
+        .accordion-header {
+            border-top-left-radius: 0.375rem;
+            border-top-right-radius: 0.375rem;
+        }
+        .accordion-button {
+             font-weight: 700;
+             font-size: 1.2rem;
+             color: #343a40;
+             background-color: #e9ecef; /* Light header */
+             border-top-left-radius: calc(0.375rem - 1px); /* Match item radius */
+             border-top-right-radius: calc(0.375rem - 1px);
+             border-bottom: 1px solid rgba(0,0,0,.08); /* Subtle separator */
+        }
+        /* Web App Sec Theme Colors (Orange/Yellow) */
+        .accordion-button:not(.collapsed) {
+            color: #856404; /* Darker Yellow/Brown when open */
+            background-color: #fff3cd; /* Lighter Yellow when open */
+            box-shadow: none; /* Remove default BS shadow */
+            border-bottom: 1px solid #ffeeba;
+        }
+         .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(255, 193, 7, 0.25); /* Yellow focus */
+            z-index: 3; /* Ensure focus outline is visible */
+        }
+        .accordion-body {
+            padding: 1.5rem; /* More padding inside */
+        }
+
+        .section-intro {
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        /* Style for resource lists within sections */
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .resource-list-item {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: list-item; /* Default display for JS */
+            transition: opacity 0.3s ease-out;
+            padding: 0.25rem 0; /* Small padding */
+        }
+        .resource-list-item strong { /* Style bold text in lists */
+            font-weight: 600;
+            color: #495057;
+        }
+        .resource-list-item a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500; /* Slightly bolder links */
+        }
+         .resource-list-item a:hover {
+            text-decoration: underline;
+         }
+        .resource-list-item .text-muted {
+             font-size: 0.85em;
+             margin-left: 0.5rem;
+             display: inline; /* Keep on same line */
+             color: #6c757d !important;
+        }
+        /* Sub-headings within sections */
+        h5.sub-section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #495057;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #dee2e6; /* Subtle separator */
+        }
+        h5.sub-section-title:first-of-type {
+            margin-top: 0.5rem; /* Less margin for first sub-heading */
+        }
+        .placeholder-card {
+            border: 2px dashed #adb5bd;
+            background-color: #f1f3f5;
+        }
+        /* Search Styles */
+        #search-wrapper {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        #suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 250px; /* Slightly taller */
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            border-bottom-left-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+        }
+        #suggestions li {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        #suggestions li:hover, #suggestions li.active-suggestion { /* Style for hover and keyboard navigation */
+            background-color: #e9ecef;
+        }
+        /* Class to hide items during search */
+        .resource-hidden {
+             display: none !important; /* Override card/list display */
+        }
+        .card.resource-hidden {
+             /* Ensure cards fully hide if using display:none */
+             padding: 0;
+             border: none;
+             margin-bottom: 0;
+             height: 0;
+             overflow: hidden;
+        }
+         /* Highlight search term */
+        .highlight {
+            background-color: #fff3cd; /* Light yellow highlight */
+            font-weight: bold;
+            padding: 0.1em 0;
+        }
+        /* Style for no results message */
+        #no-results-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Header -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">BVB</a>
+            <a class="navbar-brand fw-bold" href="index.html">BVB</a> <!-- Changed Brand -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,146 +218,646 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <!-- Link to main resources page -->
+                    <li class="nav-item"><a class="nav-link" href="main_hub_page.html">All Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <section id="overview" class="py-5">
+    <main class="py-5">
+        <section id="webappsec-resources">
             <div class="container">
-                <h2 class="text-center text-dark mb-4">Web Application Security Learning Resources</h2>
-                <p class="lead text-center">A structured roadmap for mastering web application security, starting with the basics and progressing to advanced concepts, tools, and methodologies.</p>
+                <h2 class="text-center display-5 text-dark mb-3 fw-bold"><i class="bi bi-shield-lock-fill me-2 text-warning"></i>Web Application Security Hub</h2>
+                <p class="lead text-center text-muted mb-5">A structured collection of resources for mastering web application security concepts, tools, and best practices.</p>
 
-                <!-- Overview and Fundamentals -->
-                <h3>1. Overview and Fundamentals</h3>
-                <p><strong>What is Web Application Security?</strong></p>
-                <p>The practice of protecting web applications from vulnerabilities and cyber threats.</p>
-                <ul>
-                    <li>Authentication, authorization, input validation, session management, and secure APIs.</li>
-                    <li>Understanding web application architecture (frontend, backend, database).</li>
-                    <li>Threat modeling and risk assessment.</li>
-                    <li>Common vulnerabilities: Injection, XSS, CSRF, etc.</li>
-                </ul>
-            </div>
-        </section>
+                 <!-- Search Bar -->
+                <div id="search-wrapper">
+                    <form id="search-form" role="search" autocomplete="off">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                            <input type="search" class="form-control" id="search-input" placeholder="Search Web App Sec resources..." aria-label="Search" aria-describedby="search-icon">
+                            <button class="btn btn-outline-warning" type="submit" id="search-button">Search</button> <!-- Yellow/Orange button -->
+                            <button class="btn btn-outline-secondary" type="button" id="clear-search-button" title="Clear Search" style="display: none;"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                    </form>
+                     <ul id="suggestions"></ul>
+                </div>
+                 <!-- End Search Bar -->
 
-        <!-- OWASP -->
-        <section id="owasp" class="bg-light py-5">
-            <div class="container">
-                <h3>2. OWASP (Open Web Application Security Project)</h3>
-                <p>The most important initiative for web application security standards and practices.</p>
+                <!-- Message for No Search Results -->
+                <div id="no-results-message">
+                    <p class="fs-5"><i class="bi bi-emoji-frown me-2"></i>No resources found matching your search term.</p>
+                    <button class="btn btn-sm btn-outline-secondary" id="show-all-button">Show All Resources</button>
+                </div>
 
-                <h4>Top 10 Web Application Security Risks</h4>
-                <ul>
-                    <li>Injection</li>
-                    <li>Broken Authentication</li>
-                    <li>Sensitive Data Exposure</li>
-                    <li>XML External Entities (XXE)</li>
-                    <li>Broken Access Control</li>
-                    <li>Security Misconfiguration</li>
-                    <li>Cross-Site Scripting (XSS)</li>
-                    <li>Insecure Deserialization</li>
-                    <li>Using Components with Known Vulnerabilities</li>
-                    <li>Insufficient Logging and Monitoring</li>
-                </ul>
+                <!-- Accordion for Web App Sec Sections -->
+                <div class="accordion" id="webAppSecAccordion">
 
-                <h4>Key OWASP Projects</h4>
-                <ul>
-                    <li>OWASP Cheat Sheets</li>
-                    <li>OWASP ZAP (Zed Attack Proxy)</li>
-                    <li>OWASP Dependency-Check</li>
-                </ul>
-            </div>
-        </section>
+                    <!-- Accordion Item: Overview and Fundamentals -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFundamentals">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFundamentals" aria-expanded="true" aria-controls="collapseFundamentals">
+                                <i class="bi bi-info-circle-fill me-2"></i>Overview & Fundamentals
+                            </button>
+                        </h2>
+                        <div id="collapseFundamentals" class="accordion-collapse collapse show" aria-labelledby="headingFundamentals" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Understanding the core concepts and common threats in web application security.</p>
+                                <p><strong>What is Web Application Security?</strong> The practice of protecting websites, web applications, and web services against different security threats that exploit vulnerabilities in an application's code.</p>
+                                <h5 class="sub-section-title mt-4"><i class="bi bi-key-fill me-2"></i>Core Concepts</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-auth" data-title="Web App Security Authentication & Authorization" data-keywords="web application, security, concept, authentication, authorization, access control, identity"><strong>Authentication & Authorization:</strong> Verifying user identity and controlling access to resources.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-input" data-title="Web App Security Input Validation" data-keywords="web application, security, concept, input validation, sanitization, injection prevention, xss prevention"><strong>Input Validation:</strong> Properly validating and sanitizing all user-supplied input to prevent injection attacks.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-session" data-title="Web App Security Session Management" data-keywords="web application, security, concept, session management, cookies, tokens, hijacking prevention"><strong>Session Management:</strong> Securely handling user sessions to prevent hijacking.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-api" data-title="Web App Security Secure APIs" data-keywords="web application, security, concept, api security, rest, graphql, authentication, authorization, rate limiting"><strong>Secure APIs:</strong> Protecting Application Programming Interfaces from abuse and unauthorized access.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-arch" data-title="Web App Security Architecture" data-keywords="web application, security, concept, architecture, frontend, backend, database, tiers"><strong>Web Application Architecture:</strong> Understanding the components (frontend, backend, database, APIs) and how they interact.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-threat" data-title="Web App Security Threat Modeling" data-keywords="web application, security, concept, threat modeling, risk assessment, attack vectors"><strong>Threat Modeling & Risk Assessment:</strong> Identifying potential threats and vulnerabilities early in the development lifecycle.</li>
+                                    <li class="resource-list-item searchable-resource" id="webapp-concept-common-vulns" data-title="Web App Security Common Vulnerabilities" data-keywords="web application, security, concept, vulnerabilities, injection, xss, csrf, ssrf, owasp top 10"><strong>Common Vulnerabilities:</strong> Familiarity with frequent flaws like Injection (SQLi, Command), Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), Server-Side Request Forgery (SSRF), etc. (See OWASP Top 10).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
 
-        <!-- Vulnerable VMs and Labs for Practice -->
-        <section id="practice" class="py-5">
-            <div class="container">
-                <h3>3. Vulnerable VMs and Labs for Practice</h3>
-                <p>Hands-on practice is essential for mastering web application security.</p>
+                    <!-- Accordion Item: OWASP -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOwasp">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOwasp" aria-expanded="false" aria-controls="collapseOwasp">
+                                <i class="bi bi-shield-check me-2"></i>OWASP Resources
+                            </button>
+                        </h2>
+                        <div id="collapseOwasp" class="accordion-collapse collapse" aria-labelledby="headingOwasp" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Leveraging the essential standards, tools, and documentation from the Open Web Application Security Project (OWASP).</p>
 
-                <h4>Vulnerable Virtual Machines</h4>
-                <ul>
-                    <li>DVWA (Damn Vulnerable Web Application)</li>
-                    <li>bWAPP (Buggy Web Application)</li>
-                    <li>WebGoat</li>
-                    <li>Juice Shop</li>
-                </ul>
+                                <h5 class="sub-section-title"><i class="bi bi-list-ol me-2"></i>OWASP Top 10 Web Application Security Risks</h5>
+                                <p>A standard awareness document representing a broad consensus about the most critical security risks to web applications.</p>
+                                <ul class="resource-list mb-4">
+                                    <!-- Making each Top 10 item searchable -->
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a1" data-title="OWASP Top 10: Broken Access Control" data-keywords="owasp, top 10, web application, security, risk, broken access control, authorization"><a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A01: Broken Access Control</a></li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a2" data-title="OWASP Top 10: Cryptographic Failures" data-keywords="owasp, top 10, web application, security, risk, cryptographic failures, sensitive data exposure, encryption"><a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A02: Cryptographic Failures</a> (formerly Sensitive Data Exposure)</li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a3" data-title="OWASP Top 10: Injection" data-keywords="owasp, top 10, web application, security, risk, injection, sqli, nosql, command injection, xss"><a href="https://owasp.org/Top10/A03_2021-Injection/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A03: Injection</a> (includes XSS)</li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a4" data-title="OWASP Top 10: Insecure Design" data-keywords="owasp, top 10, web application, security, risk, insecure design, threat modeling, architecture"><a href="https://owasp.org/Top10/A04_2021-Insecure_Design/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A04: Insecure Design</a></li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a5" data-title="OWASP Top 10: Security Misconfiguration" data-keywords="owasp, top 10, web application, security, risk, security misconfiguration, hardening, default settings"><a href="https://owasp.org/Top10/A05_2021-Security_Misconfiguration/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A05: Security Misconfiguration</a></li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a6" data-title="OWASP Top 10: Vulnerable and Outdated Components" data-keywords="owasp, top 10, web application, security, risk, vulnerable components, outdated components, dependencies, supply chain"><a href="https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A06: Vulnerable and Outdated Components</a></li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a7" data-title="OWASP Top 10: Identification and Authentication Failures" data-keywords="owasp, top 10, web application, security, risk, identification failures, authentication failures, broken authentication, session management"><a href="https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A07: Identification and Authentication Failures</a> (formerly Broken Authentication)</li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a8" data-title="OWASP Top 10: Software and Data Integrity Failures" data-keywords="owasp, top 10, web application, security, risk, software integrity, data integrity, insecure deserialization, ci/cd security"><a href="https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A08: Software and Data Integrity Failures</a> (includes Insecure Deserialization)</li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a9" data-title="OWASP Top 10: Security Logging and Monitoring Failures" data-keywords="owasp, top 10, web application, security, risk, logging failures, monitoring failures, insufficient logging, incident response"><a href="https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A09: Security Logging and Monitoring Failures</a></li>
+                                    <li class="resource-list-item searchable-resource" id="owasp-top10-a10" data-title="OWASP Top 10: Server-Side Request Forgery (SSRF)" data-keywords="owasp, top 10, web application, security, risk, ssrf, server side request forgery"><a href="https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_(SSRF)/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>A10: Server-Side Request Forgery (SSRF)</a></li>
+                                </ul>
 
-                <h4>Online Labs</h4>
-                <ul>
-                    <li>PortSwigger Web Security Academy</li>
-                    <li>Hack The Box</li>
-                    <li>TryHackMe</li>
-                    <li>VulnHub</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Tools -->
-        <section id="tools" class="bg-light py-5">
-            <div class="container">
-                <h3>4. Open Source Tools</h3>
-                <p>Key tools for discovering and mitigating vulnerabilities in web applications.</p>
-
-                <h4>Static Application Security Testing (SAST)</h4>
-                <ul>
-                    <li>SonarQube</li>
-                    <li>Checkmarx</li>
-                </ul>
-
-                <h4>Dynamic Application Security Testing (DAST)</h4>
-                <ul>
-                    <li>OWASP ZAP</li>
-                    <li>Burp Suite</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Recommended Books -->
-        <section id="books" class="py-5">
-            <div class="container">
-                <h3>5. Recommended Books</h3>
-                <ul>
-                    <li><strong>Beginner Level:</strong> "Web Application Security: A Beginner's Guide"</li>
-                    <li><strong>Intermediate Level:</strong> "Real-World Bug Hunting"</li>
-                    <li><strong>Advanced Level:</strong> "Black Hat Python"</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section id="certifications" class="bg-light py-5">
-            <div class="container">
-                <h3>6. Certifications</h3>
-                <ul>
-                    <li><strong>Entry-Level:</strong> CompTIA Security+</li>
-                    <li><strong>Intermediate:</strong> GIAC Web Application Penetration Tester</li>
-                    <li><strong>Advanced:</strong> Offensive Security Web Expert (OSWE)</li>
-                </ul>
-            </div>
-                            <!-- Call to Action -->
-                            <div class="row">
-                                <div class="col-md-12 text-center mt-4">
-                                    <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+                                <h5 class="sub-section-title"><i class="bi bi-journal-code me-2"></i>Key OWASP Projects</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-owasp-cheatsheets">
+                                        <div class="card h-100" data-title="OWASP Cheat Sheet Series" data-keywords="owasp, cheatsheet, web application, security, development, secure coding, reference, guide">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-journals me-1"></i>Cheat Sheet Series</h5>
+                                                <p class="card-text flex-grow-1">A collection of concise cheat sheets on specific security topics for developers and security practitioners.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Reference</span><span class="badge bg-warning text-dark">Secure Coding</span><span class="badge bg-secondary">OWASP</span>
+                                                    <a href="https://cheatsheetseries.owasp.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-owasp-zap">
+                                        <div class="card h-100" data-title="OWASP ZAP (Zed Attack Proxy)" data-keywords="owasp zap, zap, dast, dynamic analysis, web scanner, proxy, security testing, tool, open source">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-lightning me-1"></i>OWASP ZAP</h5>
+                                                <p class="card-text flex-grow-1">One of the world’s most popular free web security tools. An integrated penetration testing tool for finding vulnerabilities.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-warning text-dark">DAST</span><span class="badge bg-success">Open Source</span><span class="badge bg-secondary">Tool</span><span class="badge bg-secondary">OWASP</span>
+                                                    <a href="https://www.zaproxy.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-owasp-dependency-check">
+                                        <div class="card h-100" data-title="OWASP Dependency-Check" data-keywords="owasp, dependency check, sca, software composition analysis, vulnerabilities, libraries, components, tool, open source">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-puzzle-fill me-1"></i>Dependency-Check</h5>
+                                                <p class="card-text flex-grow-1">SCA tool that attempts to detect publicly disclosed vulnerabilities contained within a project's dependencies.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-info text-dark">SCA</span><span class="badge bg-success">Open Source</span><span class="badge bg-secondary">Tool</span><span class="badge bg-secondary">OWASP</span>
+                                                    <a href="https://owasp.org/www-project-dependency-check/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add ASVS Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-owasp-asvs">
+                                         <div class="card h-100 placeholder-card" data-title="OWASP ASVS (Application Security Verification Standard)" data-keywords="owasp, asvs, standard, verification, checklist, security requirements, testing guide">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-list-check me-1"></i>OWASP ASVS</h5>
+                                                 <p class="card-text text-muted">Standard for web app security verification requirements.</p>
+                                                 <a href="https://owasp.org/www-project-application-security-verification-standard/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Vulnerable VMs and Labs -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPractice">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePractice" aria-expanded="false" aria-controls="collapsePractice">
+                                <i class="bi bi-joystick me-2"></i>Vulnerable Apps & Practice Labs
+                            </button>
+                        </h2>
+                        <div id="collapsePractice" class="accordion-collapse collapse" aria-labelledby="headingPractice" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Hands-on practice is essential for mastering web application security concepts and tools.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-hdd-fill me-2"></i>Vulnerable Web Applications (Installable)</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="practice-dvwa" data-title="DVWA (Damn Vulnerable Web Application)" data-keywords="dvwa, vulnerable web application, practice, lab, learning, php, mysql"><a href="https://dvwa.co.uk/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>DVWA</a>: PHP/MySQL web application that is damn vulnerable.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-bwapp" data-title="bWAPP (Buggy Web Application)" data-keywords="bwapp, vulnerable web application, practice, lab, learning, owasp top 10"><a href="http://www.itsecgames.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>bWAPP</a>: An extremely buggy web app for learning security testing, covering OWASP Top 10 vulnerabilities.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-webgoat" data-title="OWASP WebGoat" data-keywords="webgoat, owasp, vulnerable web application, practice, lab, learning, java, interactive"><a href="https://owasp.org/www-project-webgoat/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>WebGoat</a>: A deliberately insecure application maintained by OWASP designed to teach web application security lessons.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-juice-shop" data-title="OWASP Juice Shop" data-keywords="juice shop, owasp, vulnerable web application, practice, lab, learning, javascript, nodejs, modern, ctf"><a href="https://owasp.org/www-project-juice-shop/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Juice Shop</a>: Probably the most modern and sophisticated insecure web application, great for training and CTFs.</li>
+                                </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-cloud-arrow-down-fill me-2"></i>Online Labs & Platforms</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="practice-portswigger" data-title="PortSwigger Web Security Academy" data-keywords="portswigger, web security academy, practice, lab, learning, burp suite, online, free"><a href="https://portswigger.net/web-security" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>PortSwigger Web Security Academy</a>: Free, online web security training from the creators of Burp Suite. Excellent quality labs.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-htb-web" data-title="Hack The Box Web Challenges" data-keywords="hack the box, htb, practice, lab, web application, challenge, ctf"><a href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Hack The Box</a>: Offers numerous web challenges of varying difficulty within its platform.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-thm-web" data-title="TryHackMe Web Fundamentals/Security" data-keywords="tryhackme, thm, practice, lab, web application, learning, path, beginner, intermediate"><a href="https://tryhackme.com/paths" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>TryHackMe</a>: Features learning paths and rooms dedicated to web fundamentals and web security vulnerabilities.</li>
+                                    <li class="resource-list-item searchable-resource" id="practice-vulnhub-web" data-title="VulnHub Web Focused VMs" data-keywords="vulnhub, practice, lab, vulnerable vm, web application, ctf"><a href="https://www.vulnhub.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>VulnHub</a>: Provides many downloadable vulnerable virtual machines, often with web application components to attack.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Tools -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingToolsWeb">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseToolsWeb" aria-expanded="false" aria-controls="collapseToolsWeb">
+                                <i class="bi bi-tools me-2"></i>Security Testing Tools (SAST/DAST)
+                            </button>
+                        </h2>
+                        <div id="collapseToolsWeb" class="accordion-collapse collapse" aria-labelledby="headingToolsWeb" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Key tools for discovering and mitigating vulnerabilities in web applications through static and dynamic analysis.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-file-earmark-code me-1"></i>Static Application Security Testing (SAST)</h5>
+                                <p>Analyzes source code, bytecode, or binary code for security vulnerabilities without executing the application.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-sonarqube">
+                                        <div class="card h-100" data-title="SonarQube Static Code Analysis" data-keywords="sonarqube, sast, static analysis, code quality, security, vulnerabilities, tool, open source">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-soundwave me-1"></i>SonarQube</h5>
+                                                <p class="card-text flex-grow-1">Open source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">SAST</span><span class="badge bg-success">Open Source</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://www.sonarqube.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-checkmarx">
+                                        <div class="card h-100" data-title="Checkmarx SAST" data-keywords="checkmarx, sast, static analysis, security, vulnerabilities, tool, commercial, enterprise">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-check-circle-fill me-1"></i>Checkmarx</h5>
+                                                <p class="card-text flex-grow-1">Commercial SAST solution providing comprehensive static code analysis to identify security flaws early in the SDLC.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">SAST</span><span class="badge bg-info text-dark">Commercial</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://checkmarx.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Semgrep Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-semgrep">
+                                         <div class="card h-100 placeholder-card" data-title="Semgrep SAST Tool" data-keywords="semgrep, sast, static analysis, security, code analysis, open source, tool, lightweight">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-search me-1"></i>Semgrep</h5>
+                                                 <p class="card-text text-muted">Lightweight, open-source static analysis tool for finding bugs and enforcing code standards.</p>
+                                                 <a href="https://semgrep.dev/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-activity me-1"></i>Dynamic Application Security Testing (DAST)</h5>
+                                <p>Tests the application during runtime by executing it and examining its responses to identify vulnerabilities.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-owasp-zap-dast">
+                                        <div class="card h-100" data-title="OWASP ZAP (Zed Attack Proxy) DAST" data-keywords="owasp zap, zap, dast, dynamic analysis, web scanner, proxy, security testing, tool, open source, intercepting proxy">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-lightning me-1"></i>OWASP ZAP</h5>
+                                                <p class="card-text flex-grow-1">Popular free, open-source web security scanner and intercepting proxy for finding vulnerabilities during runtime.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-warning text-dark">DAST</span><span class="badge bg-success">Open Source</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://www.zaproxy.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-burpsuite-dast">
+                                        <div class="card h-100" data-title="Burp Suite DAST Scanner Proxy" data-keywords="burp suite, dast, dynamic analysis, web scanner, proxy, security testing, tool, portswigger, intercepting proxy, commercial, free edition">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bug-fill me-1"></i>Burp Suite</h5>
+                                                <p class="card-text flex-grow-1">Industry-leading toolkit for web application security testing, including powerful DAST scanning and proxy capabilities (Free & Pro versions).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-warning text-dark">DAST</span><span class="badge bg-info text-dark">Proxy</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://portswigger.net/burp" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Nikto Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-nikto">
+                                         <div class="card h-100 placeholder-card" data-title="Nikto Web Server Scanner" data-keywords="nikto, dast, web scanner, vulnerability scanner, open source, tool, cli">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-broadcast-pin me-1"></i>Nikto</h5>
+                                                 <p class="card-text text-muted">Open source web server scanner which performs comprehensive tests.</p>
+                                                 <a href="https://cirt.net/Nikto2" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Recommended Books -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBooks">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBooks" aria-expanded="false" aria-controls="collapseBooks">
+                                <i class="bi bi-book-fill me-2"></i>Recommended Books
+                            </button>
+                        </h2>
+                        <div id="collapseBooks" class="accordion-collapse collapse" aria-labelledby="headingBooks" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Influential books covering web application security concepts, testing, and defense.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-webappsec-beginner">
+                                        <div class="card h-100" data-title="Web Application Security: A Beginner's Guide Book" data-keywords="book, web application security, beginner, introduction, learning, concepts">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-book me-1"></i>Web App Sec: Beginner's Guide</h5>
+                                                <p class="card-text flex-grow-1">Placeholder for a recommended beginner-level book on web application security concepts.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Beginner</span><span class="badge bg-secondary">Book</span>
+                                                    <!-- Add link to Goodreads/Amazon search -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-realworld-bug">
+                                        <div class="card h-100" data-title="Real-World Bug Hunting Book" data-keywords="book, web application security, bug bounty, bug hunting, intermediate, practical, examples, vulnerabilities">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bug me-1"></i>Real-World Bug Hunting</h5>
+                                                <p class="card-text flex-grow-1">A practical guide to finding web security vulnerabilities as done by bug bounty hunters.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Intermediate</span><span class="badge bg-warning text-dark">Bug Bounty</span><span class="badge bg-secondary">Book</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-blackhat-python">
+                                        <div class="card h-100" data-title="Black Hat Python Book" data-keywords="book, python, security, hacking, advanced, scripting, networking, automation, offensive security">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-filetype-py me-1"></i>Black Hat Python</h5>
+                                                <p class="card-text flex-grow-1">Python Programming for Hackers and Pentesters. Covers creating tools for various offensive tasks, including web-related ones.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Advanced</span><span class="badge bg-primary">Python</span><span class="badge bg-secondary">Book</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add The Web Application Hacker's Handbook Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-wahh">
+                                         <div class="card h-100 placeholder-card" data-title="The Web Application Hacker's Handbook Book" data-keywords="book, web application security, wahh, hacking, pentesting, comprehensive, reference, intermediate, advanced">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-book-half me-1"></i>Web App Hacker's Handbook</h5>
+                                                 <p class="card-text text-muted">Classic, comprehensive guide to web app security testing (Note: Getting older but fundamentals remain).</p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Certifications -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingCertifications">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCertifications" aria-expanded="false" aria-controls="collapseCertifications">
+                                <i class="bi bi-patch-check-fill me-2"></i>Certifications
+                            </button>
+                        </h2>
+                        <div id="collapseCertifications" class="accordion-collapse collapse" aria-labelledby="headingCertifications" data-bs-parent="#webAppSecAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Industry certifications relevant to Web Application Security professionals.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-secplus">
+                                        <div class="card h-100" data-title="CompTIA Security+" data-keywords="comptia, security+, certification, entry-level, foundational, cybersecurity">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-file-earmark-lock me-1"></i>CompTIA Security+</h5>
+                                                <p class="card-text flex-grow-1">Validates baseline skills necessary to perform core security functions and pursue an IT security career. Covers web concepts broadly.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Entry-Level</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://www.comptia.org/certifications/security" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-gwapt">
+                                        <div class="card h-100" data-title="GIAC Web Application Penetration Tester (GWAPT)" data-keywords="giac, gwapt, certification, intermediate, web application, pentesting, sans">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bug me-1"></i>GIAC GWAPT</h5>
+                                                <p class="card-text flex-grow-1">Validates ability to better secure organizations through penetration testing and understanding of web application security issues.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Intermediate</span><span class="badge bg-warning text-dark">Pentesting</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://www.giac.org/certifications/web-application-penetration-tester-gwapt/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-oswe">
+                                        <div class="card h-100" data-title="Offensive Security Web Expert (OSWE)" data-keywords="offensive security, offsec, oswe, certification, advanced, web application, exploitation, white box, secure code review">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-code-slash me-1"></i>Offensive Security OSWE</h5>
+                                                <p class="card-text flex-grow-1">Advanced web application security certification focusing on white box penetration testing and code review.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Advanced</span><span class="badge bg-warning text-dark">Exploitation</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://www.offensive-security.com/awae-oswe/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add eWPT Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-ewpt">
+                                         <div class="card h-100 placeholder-card" data-title="eLearnSecurity Web application Penetration Tester (eWPT)" data-keywords="ewpt, elearnsecurity, certification, intermediate, web application, pentesting, practical">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-file-earmark-check me-1"></i>eLearnSecurity eWPT</h5>
+                                                 <p class="card-text text-muted">Practical web application penetration testing certification.</p>
+                                                  <a href="https://elearnsecurity.com/product/ewpt-certification/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- /#webAppSecAccordion -->
+
+                <!-- Suggestion Box / Contribution CTA -->
+                <div class="card text-center mt-5 border-0 shadow-sm" style="background-color: #e9ecef;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold">Contribute to this Hub!</h5>
+                        <p class="card-text text-muted">Found an awesome Web App Security resource we missed? Let us know!</p>
+                        <a href="index.html#contact" class="btn btn-warning fw-bold">Suggest a Resource <i class="bi bi-arrow-right-short"></i></a> <!-- Yellow/Orange Button -->
+                    </div>
+                </div>
+
+            </div> <!-- /container -->
         </section>
     </main>
 
-
-
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2024 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Search & Autocomplete JS (Same as Hub Page) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const suggestionsList = document.getElementById('suggestions');
+            const searchForm = document.getElementById('search-form');
+            const clearSearchButton = document.getElementById('clear-search-button');
+            const showAllButton = document.getElementById('show-all-button');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const resourceItems = document.querySelectorAll('.searchable-resource');
+            const mainAccordionElement = document.getElementById('webAppSecAccordion'); // Target the specific accordion
+
+            let resourcesData = [];
+            let currentSuggestionIndex = -1;
+
+            // --- 1. Prepare Data ---
+            function prepareResourceData() {
+                resourcesData = [];
+                 resourceItems.forEach(item => {
+                    const linkElement = item.querySelector('a');
+                    const cardTitleElement = item.querySelector('.card-title');
+                    let title = item.dataset.title || '';
+                    if (!title && linkElement) title = linkElement.textContent;
+                    if (!title && cardTitleElement) title = cardTitleElement.textContent;
+                    if (!title && item.nodeName === 'LI') title = item.textContent.split(':')[0].trim();
+
+                    const keywords = (item.dataset.keywords || '').toLowerCase();
+                    const id = item.id;
+
+                    const descriptionElement = item.querySelector('.text-muted');
+                    const cardTextElement = item.querySelector('.card-text');
+                    let descriptionText = '';
+                    if (descriptionElement) descriptionText = descriptionElement.textContent;
+                    else if (cardTextElement) descriptionText = cardTextElement.textContent;
+                    else if (item.nodeName === 'LI') descriptionText = item.textContent;
+
+                    if (title && id) {
+                        resourcesData.push({
+                            id: id,
+                            title: title.trim(),
+                            keywords: keywords,
+                            fullText: (title + ' ' + keywords + ' ' + descriptionText).toLowerCase().replace(/add description here/gi, '').trim()
+                        });
+                    } else {
+                        console.warn("Missing title or ID for item:", item);
+                    }
+                 });
+                 // console.log("Prepared WebAppSec Data:", resourcesData.length);
+            }
+
+            // --- 2. Autocomplete ---
+             function highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                return text.replace(regex, `<span class="highlight">$1</span>`);
+            }
+
+            function showSuggestions(query) {
+                suggestionsList.innerHTML = '';
+                currentSuggestionIndex = -1;
+
+                if (!query) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                const lowerCaseQuery = query.toLowerCase();
+                const filtered = resourcesData.filter(resource =>
+                    resource.fullText.includes(lowerCaseQuery)
+                ).slice(0, 10);
+
+                if (filtered.length > 0) {
+                    filtered.forEach((resource, index) => {
+                        const li = document.createElement('li');
+                        li.dataset.resourceId = resource.id;
+                        li.dataset.resourceTitle = resource.title;
+                        li.innerHTML = highlightMatch(resource.title, query);
+
+                        li.addEventListener('click', () => {
+                            searchInput.value = resource.title;
+                            suggestionsList.style.display = 'none';
+                            filterResources(resource.title);
+                            scrollToResource(resource.id);
+                        });
+                        suggestionsList.appendChild(li);
+                    });
+                    suggestionsList.style.display = 'block';
+                } else {
+                    suggestionsList.style.display = 'none';
+                }
+            }
+
+             // --- 2a. Scroll ---
+            function scrollToResource(resourceId) {
+                const element = document.getElementById(resourceId);
+                if (!element) return;
+
+                let collapseElement = element.closest('.accordion-collapse');
+
+                if (collapseElement && mainAccordionElement) {
+                     const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+                     if (!collapseElement.classList.contains('show')) {
+                        bsCollapse.show();
+                        collapseElement.addEventListener('shown.bs.collapse', () => {
+                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                             element.style.transition = 'background-color 0.5s ease';
+                             element.style.backgroundColor = '#fff3cd'; // Light yellow highlight
+                             setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                        }, { once: true });
+                     } else {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          element.style.transition = 'background-color 0.5s ease';
+                          element.style.backgroundColor = '#fff3cd';
+                          setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                     }
+                } else {
+                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // --- 3. Filtering ---
+            function filterResources(query) {
+                const lowerCaseQuery = query.toLowerCase().trim();
+                let matchFound = false;
+
+                if (!lowerCaseQuery) {
+                    resourceItems.forEach(item => item.classList.remove('resource-hidden'));
+                    noResultsMessage.style.display = 'none';
+                    clearSearchButton.style.display = 'none';
+                    return;
+                }
+
+                clearSearchButton.style.display = 'inline-block';
+
+                resourceItems.forEach(item => {
+                    const resourceData = resourcesData.find(r => r.id === item.id);
+                    const textToSearch = resourceData ? resourceData.fullText : (item.textContent || '').toLowerCase();
+
+                    if (textToSearch.includes(lowerCaseQuery)) {
+                        item.classList.remove('resource-hidden');
+                        matchFound = true;
+                    } else {
+                        item.classList.add('resource-hidden');
+                    }
+                });
+
+                noResultsMessage.style.display = matchFound ? 'none' : 'block';
+            }
+
+            // --- 4. Event Listeners ---
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value;
+                showSuggestions(query);
+                clearSearchButton.style.display = query ? 'inline-block' : 'none';
+                if (!query) {
+                     filterResources('');
+                     noResultsMessage.style.display = 'none';
+                 }
+            });
+
+             searchInput.addEventListener('keydown', (e) => {
+                 const items = suggestionsList.querySelectorAll('li');
+                 if (items.length === 0 || suggestionsList.style.display === 'none') return;
+
+                 if (e.key === 'ArrowDown') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex + 1) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'ArrowUp') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex - 1 + items.length) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (currentSuggestionIndex > -1 && items[currentSuggestionIndex]) {
+                         items[currentSuggestionIndex].click();
+                      } else {
+                         searchForm.requestSubmit();
+                      }
+                 } else if (e.key === 'Escape') {
+                     suggestionsList.style.display = 'none';
+                 }
+             });
+
+            function updateSuggestionHighlight(items) {
+                 items.forEach((item, index) => {
+                     if (index === currentSuggestionIndex) {
+                         item.classList.add('active-suggestion');
+                         item.scrollIntoView({ block: 'nearest' });
+                     } else {
+                         item.classList.remove('active-suggestion');
+                     }
+                 });
+             }
+
+            document.addEventListener('click', (event) => {
+                const searchWrapper = document.getElementById('search-wrapper');
+                if (searchWrapper && !searchWrapper.contains(event.target)) {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+
+             searchForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const query = searchInput.value;
+                suggestionsList.style.display = 'none';
+                filterResources(query);
+             });
+
+             clearSearchButton.addEventListener('click', () => {
+                 searchInput.value = '';
+                 filterResources('');
+                 noResultsMessage.style.display = 'none';
+                 clearSearchButton.style.display = 'none';
+                 searchInput.focus();
+                 suggestionsList.style.display = 'none';
+             });
+
+             showAllButton.addEventListener('click', () => {
+                  searchInput.value = '';
+                  filterResources('');
+                  noResultsMessage.style.display = 'none';
+                  clearSearchButton.style.display = 'none';
+             });
+
+            // --- 5. Initial Setup ---
+            prepareResourceData();
+
+        }); // End DOMContentLoaded
+    </script>
+
 </body>
 </html>
