@@ -5,18 +5,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>AI & Machine Learning Learning Resources</title>
+    <!-- Updated Title -->
+    <title>BVB - AI & Machine Learning</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Your custom styles (optional) -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        /* Custom styles matching the Hub Theme */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+            border: none; /* Cleaner look */
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.07); /* Subtle shadow */
+            background-color: #fff; /* White cards */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+        }
+        .card-title {
+            font-weight: 600; /* Slightly bolder */
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+        .card-body {
+             min-height: 180px; /* Give cards a consistent minimum height */
+             display: flex;
+             flex-direction: column;
+        }
+        .card-text {
+            color: #495057;
+            font-size: 0.9rem;
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .card-link i, .resource-list-item i {
+            margin-right: 0.4rem;
+            vertical-align: middle; /* Align icons better */
+        }
+        .badge {
+             margin-right: 0.3rem;
+             margin-bottom: 0.5rem;
+             font-size: 0.75em;
+             padding: 0.3em 0.6em; /* Adjust padding */
+             display: inline-block; /* Ensure wrapping */
+        }
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 1rem; /* Space between accordion items */
+            border: none;
+            border-radius: 0.375rem; /* Bootstrap default */
+             box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+             background-color: #fff;
+        }
+        .accordion-header {
+            border-top-left-radius: 0.375rem;
+            border-top-right-radius: 0.375rem;
+        }
+        .accordion-button {
+             font-weight: 700;
+             font-size: 1.2rem;
+             color: #343a40;
+             background-color: #e9ecef; /* Light header */
+             border-top-left-radius: calc(0.375rem - 1px); /* Match item radius */
+             border-top-right-radius: calc(0.375rem - 1px);
+             border-bottom: 1px solid rgba(0,0,0,.08); /* Subtle separator */
+        }
+        /* AI/ML Theme Colors (Deep Blue/Indigo) */
+        .accordion-button:not(.collapsed) {
+            color: #3b2a82; /* Darker Indigo/Blue when open */
+            background-color: #e0dff3; /* Lighter Indigo/Blue when open */
+            box-shadow: none; /* Remove default BS shadow */
+            border-bottom: 1px solid #c5c1e6;
+        }
+         .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(75, 48, 171, 0.25); /* Indigo focus */
+            z-index: 3; /* Ensure focus outline is visible */
+        }
+        .accordion-body {
+            padding: 1.5rem; /* More padding inside */
+        }
+
+        .section-intro {
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        /* Style for resource lists within sections */
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .resource-list-item {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: list-item; /* Default display for JS */
+            transition: opacity 0.3s ease-out;
+            padding: 0.25rem 0; /* Small padding */
+        }
+        .resource-list-item strong { /* Style bold text in lists */
+            font-weight: 600;
+            color: #495057;
+        }
+        .resource-list-item a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500; /* Slightly bolder links */
+        }
+         .resource-list-item a:hover {
+            text-decoration: underline;
+         }
+        .resource-list-item .text-muted {
+             font-size: 0.85em;
+             margin-left: 0.5rem;
+             display: inline; /* Keep on same line */
+             color: #6c757d !important;
+        }
+        /* Sub-headings within sections */
+        h5.sub-section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #495057;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #dee2e6; /* Subtle separator */
+        }
+        h5.sub-section-title:first-of-type {
+            margin-top: 0.5rem; /* Less margin for first sub-heading */
+        }
+        .placeholder-card {
+            border: 2px dashed #adb5bd;
+            background-color: #f1f3f5;
+        }
+        /* Search Styles */
+        #search-wrapper {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        #suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 250px; /* Slightly taller */
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            border-bottom-left-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+        }
+        #suggestions li {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        #suggestions li:hover, #suggestions li.active-suggestion { /* Style for hover and keyboard navigation */
+            background-color: #e9ecef;
+        }
+        /* Class to hide items during search */
+        .resource-hidden {
+             display: none !important; /* Override card/list display */
+        }
+        .card.resource-hidden {
+             /* Ensure cards fully hide if using display:none */
+             padding: 0;
+             border: none;
+             margin-bottom: 0;
+             height: 0;
+             overflow: hidden;
+        }
+         /* Highlight search term */
+        .highlight {
+            background-color: #e0dff3; /* Light indigo highlight */
+            font-weight: bold;
+            padding: 0.1em 0;
+        }
+        /* Style for no results message */
+        #no-results-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Header -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">BVB</a>
+            <a class="navbar-brand fw-bold" href="index.html">BVB</a> <!-- Changed Brand -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -25,6 +218,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <!-- Link to main resources page -->
+                    
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
@@ -32,109 +227,589 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <section id="overview" class="py-5">
+    <main class="py-5">
+        <section id="aiml-resources">
             <div class="container">
-                <h2 class="text-center text-dark mb-4">AI & Machine Learning Learning Resources</h2>
-                <p class="lead text-center">A structured roadmap to mastering AI, Machine Learning, and Deep Learning concepts, tools, and frameworks.</p>
+                <h2 class="text-center display-5 text-dark mb-3 fw-bold"><i class="bi bi-robot me-2" style="color: #6610f2;"></i>AI & Machine Learning Resources</h2> <!-- Indigo Icon -->
+                <p class="lead text-center text-muted mb-5">A structured roadmap to mastering AI, Machine Learning, and Deep Learning concepts, tools, and frameworks.</p>
 
-                <!-- Overview and Fundamentals -->
-                <h3>1. Overview and Fundamentals</h3>
-                <p><strong>What is AI and Machine Learning?</strong></p>
-                <p>Artificial Intelligence (AI) refers to the simulation of human intelligence in machines. Machine Learning (ML) is a subset of AI that enables computers to learn patterns from data without being explicitly programmed.</p>
-                <ul>
-                    <p><strong>Core Concepts to Learn:</strong></p>
-                    <li>Supervised, Unsupervised, and Reinforcement Learning.</li>
-                    <li>Feature Engineering and Model Evaluation.</li>
-                    <li>Deep Learning and Neural Networks.</li>
-                    <li>Natural Language Processing (NLP) and Computer Vision.</li>
-                </ul>
-            </div>
+                 <!-- Search Bar -->
+                <div id="search-wrapper">
+                    <form id="search-form" role="search" autocomplete="off">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                            <input type="search" class="form-control" id="search-input" placeholder="Search AI & ML resources..." aria-label="Search" aria-describedby="search-icon">
+                            <button class="btn btn-outline-primary" type="submit" id="search-button" style="--bs-btn-border-color: #6610f2; --bs-btn-hover-bg: #6610f2; --bs-btn-hover-border-color: #6610f2; --bs-btn-active-bg: #510bc4; --bs-btn-active-border-color: #510bc4; --bs-btn-color: #6610f2; --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff;">Search</button> <!-- Indigo Outline Button -->
+                            <button class="btn btn-outline-secondary" type="button" id="clear-search-button" title="Clear Search" style="display: none;"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                    </form>
+                     <ul id="suggestions"></ul>
+                </div>
+                 <!-- End Search Bar -->
+
+                <!-- Message for No Search Results -->
+                <div id="no-results-message">
+                    <p class="fs-5"><i class="bi bi-emoji-frown me-2"></i>No resources found matching your search term.</p>
+                    <button class="btn btn-sm btn-outline-secondary" id="show-all-button">Show All Resources</button>
+                </div>
+
+                <!-- Accordion for AI/ML Sections -->
+                <div class="accordion" id="aimlAccordion">
+
+                    <!-- Accordion Item: Overview and Fundamentals -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFundamentals">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFundamentals" aria-expanded="true" aria-controls="collapseFundamentals">
+                                <i class="bi bi-info-circle-fill me-2"></i>Overview & Fundamentals
+                            </button>
+                        </h2>
+                        <div id="collapseFundamentals" class="accordion-collapse collapse show" aria-labelledby="headingFundamentals" data-bs-parent="#aimlAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Understanding the core concepts differentiating AI, Machine Learning, and Deep Learning.</p>
+                                <p><strong>What is AI and Machine Learning?</strong> Artificial Intelligence (AI) is a broad field concerning the simulation of human intelligence in machines. Machine Learning (ML) is a subset of AI focused on enabling systems to learn patterns from data and make predictions or decisions without explicit programming. Deep Learning (DL) is a further subset of ML using multi-layered neural networks.</p>
+                                <h5 class="sub-section-title mt-4"><i class="bi bi-key-fill me-2"></i>Core Concepts</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="aiml-concept-learning-types" data-title="AI/ML Learning Types Concept" data-keywords="ai, ml, concept, supervised learning, unsupervised learning, reinforcement learning, semi-supervised"><strong>Learning Paradigms:</strong> Supervised (labeled data), Unsupervised (unlabeled data, clustering, dimensionality reduction), Semi-Supervised, and Reinforcement Learning (agent, environment, rewards).</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-concept-feature-eng" data-title="AI/ML Feature Engineering & Model Evaluation Concept" data-keywords="ai, ml, concept, feature engineering, feature selection, model evaluation, metrics, accuracy, precision, recall, f1-score, overfitting, underfitting"><strong>Feature Engineering & Model Evaluation:</strong> Selecting, transforming, and creating features from raw data; evaluating model performance using appropriate metrics (accuracy, precision, recall, F1, AUC) and avoiding overfitting/underfitting.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-concept-deep-learning" data-title="AI/ML Deep Learning & Neural Networks Concept" data-keywords="ai, ml, deep learning, dl, neural networks, ann, cnn, rnn, layers, activation functions, backpropagation"><strong>Deep Learning & Neural Networks:</strong> Understanding artificial neural networks (ANNs), convolutional neural networks (CNNs for images), recurrent neural networks (RNNs for sequences), layers, activation functions, and backpropagation.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-concept-nlp-cv" data-title="AI/ML NLP & Computer Vision Concept" data-keywords="ai, ml, nlp, natural language processing, computer vision, cv, text analysis, image recognition, object detection"><strong>Key Application Areas:</strong> Natural Language Processing (NLP - understanding and processing human language) and Computer Vision (CV - enabling computers to 'see' and interpret images/videos).</li>
+                                </ul>
+                                <!-- Add links to fundamental resources/courses here -->
+                                <h5 class="sub-section-title"><i class="bi bi-book-half me-2"></i>Fundamental Learning Resources</h5>
+                                <ul class="resource-list mb-4">
+                                      <li class="resource-list-item searchable-resource" id="resource-andrew-ng-notes-fund" data-title="Andrew NG Course Notes ashishpatel26" data-keywords="ai, machine learning, ml, deep learning, andrew ng, coursera, notes, learning, stanford, foundational"><a href="https://github.com/ashishpatel26/Andrew-NG-Notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Andrew NG Course Notes</a> <span class="text-muted">- Notes for Andrew Ng's highly-regarded foundational ML/DL courses.</span></li>
+                                      <li class="resource-list-item searchable-resource" id="resource-dl-ml-tf-rcalix1-fund" data-title="Deep Learning ML TensorFlow Resources rcalix1" data-keywords="ai, machine learning, ml, deep learning, tensorflow, resources, learning, collection, python, foundational"><a href="https://github.com/rcalix1/Deep-learning-ML-and-tensorflow" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Deep Learning, ML & TensorFlow Resources</a> <span class="text-muted">- Collection focused on DL/ML/TensorFlow fundamentals.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Key Tools & Frameworks -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTools">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+                                <i class="bi bi-tools me-2"></i>Key Tools & Frameworks
+                            </button>
+                        </h2>
+                        <div id="collapseTools" class="accordion-collapse collapse" aria-labelledby="headingTools" data-bs-parent="#aimlAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Essential programming languages, libraries, and frameworks for AI and Machine Learning development.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-filetype-py me-1"></i>Programming Languages</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-lang-python">
+                                        <div class="card h-100" data-title="Python Programming Language" data-keywords="python, programming language, ai, ml, data science, versatile, libraries, ecosystem">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-filetype-py me-1"></i>Python</h5>
+                                                <p class="card-text flex-grow-1">The dominant language in AI/ML due to its simplicity, extensive libraries (NumPy, Pandas, Scikit-learn), and strong community support.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Language</span><span class="badge bg-success">AI/ML</span>
+                                                    <a href="https://www.python.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-lang-r">
+                                        <div class="card h-100" data-title="R Programming Language" data-keywords="r, programming language, statistics, data analysis, machine learning, visualization">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-filetype-r me-1"></i>R</h5>
+                                                <p class="card-text flex-grow-1">A language and environment primarily used for statistical computing and graphics, popular in academia and data analysis.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Language</span><span class="badge bg-info text-dark">Statistics</span>
+                                                    <a href="https://www.r-project.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-box me-1"></i>Machine Learning & Deep Learning Frameworks</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-framework-tensorflow">
+                                        <div class="card h-100" data-title="TensorFlow Deep Learning Framework" data-keywords="tensorflow, tf, deep learning, machine learning, framework, google, neural networks, production, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-google me-1"></i>TensorFlow</h5>
+                                                <p class="card-text flex-grow-1">An end-to-end open source platform for machine learning developed by Google. Strong in production deployment.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Deep Learning</span><span class="badge bg-secondary">Framework</span>
+                                                    <a href="https://www.tensorflow.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-framework-pytorch">
+                                        <div class="card h-100" data-title="PyTorch Deep Learning Framework" data-keywords="pytorch, deep learning, machine learning, framework, facebook, meta, research, pythonic, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-lightning-charge me-1"></i>PyTorch</h5>
+                                                <p class="card-text flex-grow-1">Open source machine learning framework known for its flexibility, Pythonic nature, and popularity in the research community.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Deep Learning</span><span class="badge bg-secondary">Framework</span>
+                                                    <a href="https://pytorch.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-framework-scikit-learn">
+                                        <div class="card h-100" data-title="Scikit-learn Machine Learning Library" data-keywords="scikit-learn, sklearn, machine learning, python, library, classification, regression, clustering, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-gear-fill me-1"></i>Scikit-learn</h5>
+                                                <p class="card-text flex-grow-1">Simple and efficient tools for predictive data analysis, built on NumPy, SciPy, and Matplotlib. Essential for traditional ML tasks.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Machine Learning</span><span class="badge bg-secondary">Library</span>
+                                                    <a href="https://scikit-learn.org/stable/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Keras Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-framework-keras">
+                                         <div class="card h-100 placeholder-card" data-title="Keras Deep Learning API" data-keywords="keras, deep learning, neural networks, api, tensorflow, pytorch, theano, high-level">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-layers me-1"></i>Keras</h5>
+                                                 <p class="card-text text-muted">High-level API for building and training neural networks (can run on top of TensorFlow, PyTorch).</p>
+                                                 <a href="https://keras.io/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                      <!-- Add Hugging Face Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-framework-huggingface">
+                                         <div class="card h-100 placeholder-card" data-title="Hugging Face Platform & Libraries" data-keywords="hugging face, nlp, transformers, models, datasets, library, platform, ai, ml">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-emoji-smile-fill me-1"></i>Hugging Face</h5>
+                                                 <p class="card-text text-muted">Platform providing tools, models (Transformers), and datasets, especially strong in NLP.</p>
+                                                 <a href="https://huggingface.co/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-calculator-fill me-1"></i>Data Science & Visualization Tools</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-pandas">
+                                        <div class="card h-100" data-title="Pandas Data Analysis Library" data-keywords="pandas, python, data analysis, data manipulation, dataframe, library, data science">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-table me-1"></i>Pandas</h5>
+                                                <p class="card-text flex-grow-1">Powerful Python library providing high-performance, easy-to-use data structures (like DataFrames) and data analysis tools.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Data Science</span><span class="badge bg-secondary">Library</span>
+                                                    <a href="https://pandas.pydata.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-numpy">
+                                        <div class="card h-100" data-title="NumPy Numerical Python Library" data-keywords="numpy, python, numerical computing, arrays, matrices, library, data science, scientific computing">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-grid-1x2-fill me-1"></i>NumPy</h5>
+                                                <p class="card-text flex-grow-1">The fundamental package for scientific computing with Python, providing support for large, multi-dimensional arrays and matrices.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Data Science</span><span class="badge bg-secondary">Library</span>
+                                                    <a href="https://numpy.org/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-matplotlib-seaborn">
+                                        <div class="card h-100" data-title="Matplotlib & Seaborn Visualization Libraries" data-keywords="matplotlib, seaborn, python, data visualization, plotting, graphs, charts, library, data science">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bar-chart-fill me-1"></i>Matplotlib & Seaborn</h5>
+                                                <p class="card-text flex-grow-1">Matplotlib is a comprehensive library for creating static, animated, and interactive visualizations. Seaborn builds on Matplotlib for more attractive statistical graphics.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Data Science</span><span class="badge bg-info text-dark">Visualization</span><span class="badge bg-secondary">Library</span>
+                                                    <a href="https://matplotlib.org/" class="btn btn-sm btn-outline-primary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Matplotlib</a>
+                                                    <a href="https://seaborn.pydata.org/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Seaborn</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Jupyter Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-jupyter">
+                                         <div class="card h-100 placeholder-card" data-title="Jupyter Notebook / Lab" data-keywords="jupyter, notebook, lab, python, data science, interactive computing, visualization, tool">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-journal-text me-1"></i>Jupyter</h5>
+                                                 <p class="card-text text-muted">Web-based interactive computing environment for notebooks, code, and data.</p>
+                                                 <a href="https://jupyter.org/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Hands-On Practice Platforms -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPractice">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePractice" aria-expanded="false" aria-controls="collapsePractice">
+                                <i class="bi bi-joystick me-2"></i>Hands-On Practice & Learning Platforms
+                            </button>
+                        </h2>
+                        <div id="collapsePractice" class="accordion-collapse collapse" aria-labelledby="headingPractice" data-bs-parent="#aimlAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Platforms offering courses, competitions, datasets, and environments for practicing AI/ML skills.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-mortarboard-fill me-2"></i>Online Learning Platforms & Courses</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-platform-coursera">
+                                        <div class="card h-100" data-title="Coursera AI & ML Courses" data-keywords="coursera, learning, course, ai, ml, deep learning, data science, online platform, stanford, andrew ng">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-mortarboard me-1"></i>Coursera</h5>
+                                                <p class="card-text flex-grow-1">Offers numerous AI & ML courses and specializations from top universities and companies (e.g., Andrew Ng's famous courses).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Platform</span><span class="badge bg-info text-dark">Courses</span>
+                                                    <a href="https://www.coursera.org/browse/data-science/machine-learning" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Browse ML Courses</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-platform-fastai">
+                                        <div class="card h-100" data-title="Fast.ai Deep Learning Courses" data-keywords="fastai, fast.ai, learning, course, deep learning, practical, free, online platform, python">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-speedometer2 me-1"></i>Fast.ai</h5>
+                                                <p class="card-text flex-grow-1">Provides free courses focused on practical deep learning, making AI accessible to more people.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Learning</span><span class="badge bg-success">Deep Learning</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://www.fast.ai/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-platform-kaggle">
+                                        <div class="card h-100" data-title="Kaggle Competitions & Datasets" data-keywords="kaggle, machine learning, data science, competition, datasets, practice, learning, community, platform">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-trophy-fill me-1"></i>Kaggle</h5>
+                                                <p class="card-text flex-grow-1">Online community of data scientists and ML practitioners. Offers competitions, datasets, notebooks, and courses.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Practice</span><span class="badge bg-warning text-dark">Competitions</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://www.kaggle.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-laptop me-2"></i>Interactive Coding & Environments</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-platform-colab">
+                                        <div class="card h-100" data-title="Google Colaboratory (Colab)" data-keywords="google colab, colab, jupyter notebook, python, cloud, free gpu, tpu, environment, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-google me-1"></i>Google Colab</h5>
+                                                <p class="card-text flex-grow-1">Free cloud-based Jupyter notebook environment that requires no setup and runs entirely in the cloud, with access to free GPU/TPU resources.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Environment</span><span class="badge bg-info text-dark">Cloud</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://colab.research.google.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-platform-datacamp">
+                                        <div class="card h-100" data-title="DataCamp Interactive Learning" data-keywords="datacamp, learning, interactive, coding, python, r, sql, data science, machine learning, platform">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-play-circle-fill me-1"></i>DataCamp</h5>
+                                                <p class="card-text flex-grow-1">Online learning platform offering interactive courses in data science, including Python, R, SQL, and machine learning topics.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Learning</span><span class="badge bg-warning text-dark">Interactive</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://www.datacamp.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Real-Life Applications -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingApplications">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplications" aria-expanded="false" aria-controls="collapseApplications">
+                                <i class="bi bi-lightbulb-fill me-2"></i>Real-Life Applications
+                            </button>
+                        </h2>
+                        <div id="collapseApplications" class="accordion-collapse collapse" aria-labelledby="headingApplications" data-bs-parent="#aimlAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Examples of how AI and Machine Learning are transforming various industries.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-heart-pulse-fill me-2"></i>Healthcare</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-healthcare-disease" data-title="AI/ML Application Disease Prediction" data-keywords="ai, ml, application, healthcare, disease prediction, diagnosis, medical">Predicting diseases based on patient data and historical trends using ML models.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-healthcare-imaging" data-title="AI/ML Application Medical Image Analysis" data-keywords="ai, ml, application, healthcare, medical imaging, computer vision, deep learning, radiology, pathology">Analyzing medical images (X-rays, CT scans, MRIs) with deep learning for faster and more accurate diagnosis.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-healthcare-drug" data-title="AI/ML Application Drug Discovery" data-keywords="ai, ml, application, healthcare, drug discovery, research, bioinformatics">Accelerating drug discovery and development processes.</li>
+                                </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-currency-dollar me-2"></i>Finance</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-finance-fraud" data-title="AI/ML Application Fraud Detection" data-keywords="ai, ml, application, finance, fraud detection, transactions, anomaly detection, security">Detecting fraudulent transactions and activities in real-time.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-finance-trading" data-title="AI/ML Application Algorithmic Trading" data-keywords="ai, ml, application, finance, algorithmic trading, quantitative trading, stock market, prediction">Developing algorithms for automated trading strategies based on market predictions.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-finance-credit" data-title="AI/ML Application Credit Scoring & Risk Assessment" data-keywords="ai, ml, application, finance, credit scoring, risk assessment, loan approval">Assessing creditworthiness and financial risk more accurately.</li>
+                                </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-car-front-fill me-2"></i>Autonomous Systems & Automation</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-auto-cars" data-title="AI/ML Application Self-Driving Cars & Robotics" data-keywords="ai, ml, application, autonomous systems, self-driving cars, robotics, computer vision, reinforcement learning">Powering autonomous vehicles, drones, and industrial robots through perception, planning, and control algorithms.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-auto-chatbots" data-title="AI/ML Application Chatbots & Virtual Assistants" data-keywords="ai, ml, application, automation, chatbots, virtual assistants, nlp, natural language processing, customer service">Creating AI-powered chatbots and virtual assistants for customer service, information retrieval, and task automation.</li>
+                                    <li class="resource-list-item searchable-resource" id="aiml-app-auto-recommendation" data-title="AI/ML Application Recommendation Systems" data-keywords="ai, ml, application, automation, recommendation systems, personalization, e-commerce, entertainment">Building recommendation engines for e-commerce, streaming services, and content platforms.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                     <!-- Add Certifications/Books sections if desired for AI/ML -->
+
+                </div> <!-- /#aimlAccordion -->
+
+                <!-- Suggestion Box / Contribution CTA -->
+                <div class="card text-center mt-5 border-0 shadow-sm" style="background-color: #e9ecef;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold">Contribute to this Hub!</h5>
+                        <p class="card-text text-muted">Found an awesome AI or Machine Learning resource we missed? Let us know!</p>
+                        <a href="index.html#contact" class="btn fw-bold" style="background-color: #6610f2; color: white;">Suggest a Resource <i class="bi bi-arrow-right-short"></i></a> <!-- Indigo Button -->
+                    </div>
+                </div>
+
+            </div> <!-- /container -->
         </section>
-
-        <!-- Tools and Frameworks -->
-        <section id="tools" class="bg-light py-5">
-            <div class="container">
-                <h3>2. Key AI & ML Tools</h3>
-                <h6>Programming Languages</h6>
-                <ul>
-                    <li><a href="https://www.python.org/" target="_blank"><b>Python</b></a>: Primary language for AI/ML.</li>
-                    <li><a href="https://www.r-project.org/" target="_blank"><b>R</b></a>: Used for statistical analysis and ML.</li>
-                </ul>
-
-                <h6>ML Frameworks</h6>
-                <ul>
-                    <li><a href="https://www.tensorflow.org/" target="_blank"><b>TensorFlow</b></a>: Open-source deep learning framework.</li>
-                    <li><a href="https://pytorch.org/" target="_blank"><b>PyTorch</b></a>: Widely used for research and production.</li>
-                    <li><a href="https://scikit-learn.org/stable/" target="_blank"><b>Scikit-Learn</b></a>: Machine learning library for Python.</li>
-                </ul>
-
-                <h6>Data Science Tools</h6>
-                <ul>
-                    <li><a href="https://pandas.pydata.org/" target="_blank"><b>Pandas</b></a>: Data manipulation and analysis.</li>
-                    <li><a href="https://numpy.org/" target="_blank"><b>NumPy</b></a>: Numerical computing.</li>
-                    <li><a href="https://matplotlib.org/" target="_blank"><b>Matplotlib</b></a> & <a href="https://seaborn.pydata.org/" target="_blank"><b>Seaborn</b></a>: Data visualization.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Hands-On Practice Platforms -->
-        <section id="hands-on" class="py-5">
-            <div class="container">
-                <h3>3. Hands-On Practice Platforms</h3>
-                <h6>Online Learning Platforms</h6>
-                <ul>
-                    <li><a href="https://www.coursera.org/browse/data-science/machine-learning" target="_blank"><b>Coursera</b></a>: AI & ML courses by leading universities.</li>
-                    <li><a href="https://www.fast.ai/" target="_blank"><b>Fast.ai</b></a>: Free deep learning courses.</li>
-                    <li><a href="https://www.kaggle.com/" target="_blank"><b>Kaggle</b></a>: Competitions and datasets for ML practice.</li>
-                </ul>
-
-                <h6>Interactive Coding Platforms</h6>
-                <ul>
-                    <li><a href="https://colab.research.google.com/" target="_blank"><b>Google Colab</b></a>: Cloud-based Jupyter Notebooks.</li>
-                    <li><a href="https://www.datacamp.com/" target="_blank"><b>DataCamp</b></a>: Interactive ML exercises.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Real-Life Applications -->
-        <section id="real-life" class="bg-light py-5">
-            <div class="container">
-                <h3>4. Real-Life Applications of AI & ML</h3>
-                <h6>Healthcare</h6>
-                <ul>
-                    <li>Predicting diseases using ML models.</li>
-                    <li>Medical image analysis with deep learning.</li>
-                </ul>
-
-                <h6>Finance</h6>
-                <ul>
-                    <li>Fraud detection in transactions.</li>
-                    <li>Algorithmic trading.</li>
-                </ul>
-
-                <h6>Autonomous Systems</h6>
-                <ul>
-                    <li>Self-driving cars and robotics.</li>
-                    <li>AI-powered chatbots and virtual assistants.</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <div class="text-center py-4">
-            <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
-        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>© 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2024 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
-</body>
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Custom Search & Autocomplete JS (Same as Hub Page) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const suggestionsList = document.getElementById('suggestions');
+            const searchForm = document.getElementById('search-form');
+            const clearSearchButton = document.getElementById('clear-search-button');
+            const showAllButton = document.getElementById('show-all-button');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const resourceItems = document.querySelectorAll('.searchable-resource');
+            const mainAccordionElement = document.getElementById('aimlAccordion'); // Target the specific accordion
+
+            let resourcesData = [];
+            let currentSuggestionIndex = -1;
+
+            // --- 1. Prepare Data ---
+            function prepareResourceData() {
+                resourcesData = [];
+                 resourceItems.forEach(item => {
+                    const linkElement = item.querySelector('a');
+                    const cardTitleElement = item.querySelector('.card-title');
+                    let title = item.dataset.title || '';
+                    if (!title && linkElement) title = linkElement.textContent;
+                    if (!title && cardTitleElement) title = cardTitleElement.textContent;
+                    if (!title && item.nodeName === 'LI') title = item.textContent.split(':')[0].trim();
+
+                    const keywords = (item.dataset.keywords || '').toLowerCase();
+                    const id = item.id;
+
+                    const descriptionElement = item.querySelector('.text-muted');
+                    const cardTextElement = item.querySelector('.card-text');
+                    let descriptionText = '';
+                    if (descriptionElement) descriptionText = descriptionElement.textContent;
+                    else if (cardTextElement) descriptionText = cardTextElement.textContent;
+                    else if (item.nodeName === 'LI') descriptionText = item.textContent;
+
+                    if (title && id) {
+                        resourcesData.push({
+                            id: id,
+                            title: title.trim(),
+                            keywords: keywords,
+                            fullText: (title + ' ' + keywords + ' ' + descriptionText).toLowerCase().replace(/add description here/gi, '').trim()
+                        });
+                    } else {
+                        console.warn("Missing title or ID for item:", item);
+                    }
+                 });
+                 // console.log("Prepared AI/ML Data:", resourcesData.length);
+            }
+
+            // --- 2. Autocomplete ---
+             function highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                return text.replace(regex, `<span class="highlight">$1</span>`);
+            }
+
+            function showSuggestions(query) {
+                suggestionsList.innerHTML = '';
+                currentSuggestionIndex = -1;
+
+                if (!query) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                const lowerCaseQuery = query.toLowerCase();
+                const filtered = resourcesData.filter(resource =>
+                    resource.fullText.includes(lowerCaseQuery)
+                ).slice(0, 10);
+
+                if (filtered.length > 0) {
+                    filtered.forEach((resource, index) => {
+                        const li = document.createElement('li');
+                        li.dataset.resourceId = resource.id;
+                        li.dataset.resourceTitle = resource.title;
+                        li.innerHTML = highlightMatch(resource.title, query);
+
+                        li.addEventListener('click', () => {
+                            searchInput.value = resource.title;
+                            suggestionsList.style.display = 'none';
+                            filterResources(resource.title);
+                            scrollToResource(resource.id);
+                        });
+                        suggestionsList.appendChild(li);
+                    });
+                    suggestionsList.style.display = 'block';
+                } else {
+                    suggestionsList.style.display = 'none';
+                }
+            }
+
+             // --- 2a. Scroll ---
+            function scrollToResource(resourceId) {
+                const element = document.getElementById(resourceId);
+                if (!element) return;
+
+                let collapseElement = element.closest('.accordion-collapse');
+
+                if (collapseElement && mainAccordionElement) {
+                     const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+                     if (!collapseElement.classList.contains('show')) {
+                        bsCollapse.show();
+                        collapseElement.addEventListener('shown.bs.collapse', () => {
+                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                             element.style.transition = 'background-color 0.5s ease';
+                             element.style.backgroundColor = '#e0dff3'; // Light indigo highlight
+                             setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                        }, { once: true });
+                     } else {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          element.style.transition = 'background-color 0.5s ease';
+                          element.style.backgroundColor = '#e0dff3';
+                          setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                     }
+                } else {
+                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // --- 3. Filtering ---
+            function filterResources(query) {
+                const lowerCaseQuery = query.toLowerCase().trim();
+                let matchFound = false;
+
+                if (!lowerCaseQuery) {
+                    resourceItems.forEach(item => item.classList.remove('resource-hidden'));
+                    noResultsMessage.style.display = 'none';
+                    clearSearchButton.style.display = 'none';
+                    return;
+                }
+
+                clearSearchButton.style.display = 'inline-block';
+
+                resourceItems.forEach(item => {
+                    const resourceData = resourcesData.find(r => r.id === item.id);
+                    const textToSearch = resourceData ? resourceData.fullText : (item.textContent || '').toLowerCase();
+
+                    if (textToSearch.includes(lowerCaseQuery)) {
+                        item.classList.remove('resource-hidden');
+                        matchFound = true;
+                    } else {
+                        item.classList.add('resource-hidden');
+                    }
+                });
+
+                noResultsMessage.style.display = matchFound ? 'none' : 'block';
+            }
+
+            // --- 4. Event Listeners ---
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value;
+                showSuggestions(query);
+                clearSearchButton.style.display = query ? 'inline-block' : 'none';
+                if (!query) {
+                     filterResources('');
+                     noResultsMessage.style.display = 'none';
+                 }
+            });
+
+             searchInput.addEventListener('keydown', (e) => {
+                 const items = suggestionsList.querySelectorAll('li');
+                 if (items.length === 0 || suggestionsList.style.display === 'none') return;
+
+                 if (e.key === 'ArrowDown') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex + 1) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'ArrowUp') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex - 1 + items.length) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (currentSuggestionIndex > -1 && items[currentSuggestionIndex]) {
+                         items[currentSuggestionIndex].click();
+                      } else {
+                         searchForm.requestSubmit();
+                      }
+                 } else if (e.key === 'Escape') {
+                     suggestionsList.style.display = 'none';
+                 }
+             });
+
+            function updateSuggestionHighlight(items) {
+                 items.forEach((item, index) => {
+                     if (index === currentSuggestionIndex) {
+                         item.classList.add('active-suggestion');
+                         item.scrollIntoView({ block: 'nearest' });
+                     } else {
+                         item.classList.remove('active-suggestion');
+                     }
+                 });
+             }
+
+            document.addEventListener('click', (event) => {
+                const searchWrapper = document.getElementById('search-wrapper');
+                if (searchWrapper && !searchWrapper.contains(event.target)) {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+
+             searchForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const query = searchInput.value;
+                suggestionsList.style.display = 'none';
+                filterResources(query);
+             });
+
+             clearSearchButton.addEventListener('click', () => {
+                 searchInput.value = '';
+                 filterResources('');
+                 noResultsMessage.style.display = 'none';
+                 clearSearchButton.style.display = 'none';
+                 searchInput.focus();
+                 suggestionsList.style.display = 'none';
+             });
+
+             showAllButton.addEventListener('click', () => {
+                  searchInput.value = '';
+                  filterResources('');
+                  noResultsMessage.style.display = 'none';
+                  clearSearchButton.style.display = 'none';
+             });
+
+            // --- 5. Initial Setup ---
+            prepareResourceData();
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
 </html>
