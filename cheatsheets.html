@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- More descriptive Title -->
-    <title>The Ultimate Tech Resource Hub - BVB</title>
+    <title>BVB - Cheatsheets</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Your custom styles -->
@@ -69,6 +68,15 @@
              font-size: 0.85em;
              margin-left: 0.5rem;
         }
+        /* Sub-headings within sections */
+        h5.sub-section-title {
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #495057;
+            /* border-left: 3px solid #6c757d; */
+            /* padding-left: 0.5rem; */
+        }
         .placeholder-card {
             border-style: dashed;
             border-color: #adb5bd;
@@ -82,7 +90,7 @@
     <!-- Header (Keep as is) -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">BVB Tech Hub</a>
+            <a class="navbar-brand" href="index.html">BVB</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -102,14 +110,41 @@
     <main>
         <section id="resources" class="py-5">
             <div class="container">
-                <h2 class="text-center display-5 text-dark mb-4 fw-bold">The Ultimate Tech Resource Hub</h2>
-                <p class="lead text-center text-muted mb-5">Dive into curated links, tools, guides, and cheat sheets covering Cybersecurity, Development, DevOps, and more. Level up your skills!</p>
+                <h2 class="text-center display-5 text-dark mb-4 fw-bold">Cheatsheets </h2>
+                <p class="lead text-center text-muted mb-5">Dive into curated links, tools, guides, and cheat sheets covering Cybersecurity, Development, DevOps, Cloud, AI and more.</p>
 
                 <!-- ########## Red Team ########## -->
                 <h3 class="section-title"><i class="bi bi-fire me-2"></i>Red Team & Offensive Security</h3>
                 <p class="section-intro">Tools, techniques, and resources for penetration testing, ethical hacking, and simulating attacks.</p>
-                
-                <h5><i class="bi bi-journal-text me-2"></i>Guides & Reports</h5>
+
+                <h5 class="sub-section-title"><i class="bi bi-book-half me-2"></i>Learning, Notes & Roadmaps</h5>
+                <ul class="resource-list mb-4">
+                    <li class="resource-list-item"><a href="https://github.com/maisamnoyan/eJPT" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPT Notes (maisamnoyan)</a> <span class="text-muted">- ADD DESCRIPTION HERE</span></li>
+                    <li class="resource-list-item"><a href="https://github.com/syselement/ine-notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>INE Notes (syselement)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Likely security/pentesting notes for INE courses).</span></li>
+                    <li class="resource-list-item"><a href="https://github.com/nyxragon/ejpt-roadmap" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPT Roadmap (nyxragon)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Study plan/guide for eJPT).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/xalgord/ejPTv2-Preparation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPTv2 Preparation (xalgord)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources/notes for eJPTv2).</span></li>
+                    <li class="resource-list-item"><a href="https://github.com/tanc7/hacking-books" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Hacking Books Collection (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (List of recommended hacking books).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/nil0x42/awesome-hacker-note-taking" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Awesome Hacker Note-Taking</a> <span class="text-muted">- ADD DESCRIPTION HERE (Methods & tools for effective notes during engagements).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/Ignitetechnologies/Mindmap" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Security Mindmaps (Ignitetechnologies)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Visual mindmaps for security concepts/pentesting).</span></li>
+                </ul>
+                 <div class="row"> <!-- Cards for Learning Resources -->
+                      <!-- Offensive Resources Card -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-collection-fill me-1"></i>Offensive Resources (Zeyad-Azima)</h5>
+                                <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of various offensive security links).</p>
+                                <div>
+                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Collection</span>
+                                </div>
+                                <a href="https://github.com/Zeyad-Azima/Offensive-Resources" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div><!-- /row -->
+
+
+                <h5 class="sub-section-title"><i class="bi bi-journal-text me-2"></i>Guides & Reports</h5>
                 <ul class="resource-list mb-4">
                     <li class="resource-list-item"><a href="https://github.com/enaqx/awesome-pentest" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Awesome Pentest</a> <span class="text-muted">- Comprehensive list of pentesting resources.</span></li>
                     <li class="resource-list-item"><a href="https://github.com/juliocesarfort/public-pentesting-reports" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Public Pentesting Reports</a> <span class="text-muted">- Learn from real-world examples.</span></li>
@@ -119,7 +154,7 @@
                      <li class="resource-list-item"><a href="https://github.com/netbiosX/Checklists" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Red Teaming & Pentest Checklists</a> <span class="text-muted">- Checklists for various engagement types.</span></li>
                 </ul>
 
-                 <h5><i class="bi bi-lightning-charge-fill me-2"></i>Payloads & Cheatsheets</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-lightning-charge-fill me-2"></i>Payloads & Cheatsheets</h5>
                 <ul class="resource-list mb-4">
                      <li class="resource-list-item"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Payloads All The Things</a> <span class="text-muted">- Essential payloads and bypasses.</span></li>
                      <li class="resource-list-item"><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Cheat Sheets - Kitsun3Sec</a> <span class="text-muted">- Snippets and command references.</span></li>
@@ -129,8 +164,67 @@
                      <li class="resource-list-item"><a href="https://www.comparitech.com/net-admin/metasploit-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Metasploit Cheat Sheet</a> <span class="text-muted">- Quick reference for Metasploit.</span></li>
                 </ul>
 
-                <h5><i class="bi bi-tools me-2"></i>Tools & Frameworks</h5>
+                <h5 class="sub-section-title"><i class="bi bi-arrow-up-right-square-fill me-2"></i>Privilege Escalation</h5>
+                 <ul class="resource-list mb-4">
+                     <li class="resource-list-item"><a href="https://github.com/Ignitetechnologies/Privilege-Escalation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Privilege Escalation Techniques (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection of privesc methods/notes).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/TCM-Course-Resources/Windows-Privilege-Escalation-Resources" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>TCM Windows PrivEsc Resources</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources accompanying TCM Security course).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/tanc7/EasyPeasey" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>EasyPeasey Linux PrivEsc Script</a> <span class="text-muted">- ADD DESCRIPTION HERE (Automated script for Linux privesc checks).</span></li>
+                 </ul>
+
+                <h5 class="sub-section-title"><i class="bi bi-terminal-fill me-2"></i>Tools & Frameworks</h5>
                 <div class="row">
+                     <!-- Reverse Shell Generator Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-terminal-plus me-1"></i>Reverse Shell Generator</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Web-based generator for various reverse shell commands).</p>
+                                 <div>
+                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Payload</span><span class="badge bg-secondary">Tool</span>
+                                 </div>
+                                 <a href="https://github.com/0dayCTF/reverse-shell-generator" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                      <!-- RedTeam Tools (A-poc) Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-tools me-1"></i>RedTeam Tools (A-poc)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of various Red Team tools).</p>
+                                 <div>
+                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-secondary">Collection</span><span class="badge bg-secondary">Tool</span>
+                                 </div>
+                                 <a href="https://github.com/A-poc/RedTeam-Tools" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                      <!-- Impacket Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-bezier2 me-1"></i>Impacket</h5>
+                                 <p class="card-text flex-grow-1">Collection of Python classes for working with network protocols. Widely used in pentesting.</p>
+                                 <div>
+                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-primary">Python</span><span class="badge bg-warning text-dark">Network</span><span class="badge bg-secondary">Library</span>
+                                 </div>
+                                 <a href="https://github.com/fortra/impacket" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                    <!-- Pupy RAT Card -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-plug-fill me-1"></i>Pupy RAT</h5>
+                                <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Open source, cross-platform Remote Administration Tool).</p>
+                                <div>
+                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">C2</span><span class="badge bg-secondary">Tool</span>
+                                </div>
+                                <a href="https://github.com/tanc7/pupy" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
                     <!-- CrackMapExec Card -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
@@ -170,8 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Add cards for gwen001/pentest-tools, dloss/python-pentest-tools, JohnHammond, Chudry/Xerror, Reconator etc. -->
-                     <!-- pwndoc Card -->
+                    <!-- pwndoc Card -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column">
@@ -186,7 +279,29 @@
                     </div>
                 </div> <!-- /row -->
 
-                <h5><i class="bi bi-hdd-network-fill me-2"></i>Lab Environments</h5>
+                <h5 class="sub-section-title"><i class="bi bi-code-slash me-2"></i>Exploit Development</h5>
+                 <div class="row">
+                      <!-- Exploit Dev Tools Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-hammer me-1"></i>Exploit Development Tools (tanc7)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of tools useful for exploit development).</p>
+                                 <div>
+                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Exploit Dev</span><span class="badge bg-secondary">Collection</span><span class="badge bg-secondary">Tool</span>
+                                 </div>
+                                 <a href="https://github.com/tanc7/Exploit-Development-Tools" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div><!-- /row -->
+
+
+                <h5 class="sub-section-title"><i class="bi bi-hdd-network-fill me-2"></i>Labs & CTFs</h5>
+                 <ul class="resource-list mb-4">
+                     <li class="resource-list-item"><a href="https://github.com/Ignitetechnologies/Vulnhub-CTF-Writeups" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Vulnhub CTF Writeups (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection of writeups for Vulnhub machines).</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/Ignitetechnologies/CTF-Difficulty" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>CTF Difficulty Resources (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources related to CTF difficulties/types).</span></li>
+                 </ul>
                  <div class="row">
                      <!-- capsulecorp-pentest Card -->
                      <div class="col-md-6 col-lg-4">
@@ -204,11 +319,12 @@
                     <!-- Add cards for Sliim/pentest-env, Sliim/pentest-lab -->
                  </div> <!-- /row -->
 
+
                 <!-- ########## Blue Team ########## -->
                 <h3 class="section-title"><i class="bi bi-shield-shaded me-2"></i>Blue Team & Defensive Security</h3>
                 <p class="section-intro">Resources for threat detection, incident response, forensics, and securing systems.</p>
-                
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Guides & Cheatsheets</h5>
+
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Guides & Cheatsheets</h5>
                  <ul class="resource-list mb-4">
                      <li class="resource-list-item"><a href="https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Ultimate SANS Cheat Sheets</a> <span class="text-muted">- Gold standard sheets for DFIR, Security Essentials, etc.</span></li>
                      <li class="resource-list-item"><a href="https://cheatography.com/tag/security/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Cheatography Security Collection</a> <span class="text-muted">- Various defensive and general security topics.</span></li>
@@ -216,7 +332,7 @@
                      <!-- Add more specific Blue Team guides/sheets here -->
                  </ul>
 
-                 <h5><i class="bi bi-search me-2"></i>Tools & Platforms</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-search me-2"></i>Tools & Platforms</h5>
                 <div class="row">
                     <!-- CVE Search Card -->
                     <div class="col-md-6 col-lg-4">
@@ -247,7 +363,7 @@
                 <h3 class="section-title"><i class="bi bi-diagram-3-fill me-2"></i>Networking</h3>
                 <p class="section-intro">Understanding protocols, configuration, troubleshooting, and network analysis.</p>
 
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
                  <ul class="resource-list mb-4">
                     <li class="resource-list-item"><a href="https://cheatography.com/tag/network/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Cheatography Network Collection</a> <span class="text-muted">- 90+ sheets on various network topics.</span></li>
                     <li class="resource-list-item"><a href="https://www.packetlife.net/library/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> PacketLife Protocol Sheets</a> <span class="text-muted">- Excellent, detailed protocol references.</span></li>
@@ -256,20 +372,37 @@
                     <li class="resource-list-item"><a href="https://www.redhat.com/sysadmin/linux-networking-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Red Hat Linux Networking Sheet</a> <span class="text-muted">- Key Linux network commands reference.</span></li>
                     <li class="resource-list-item"><a href="https://ipcisco.com/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> ipCisco Cheat Sheets</a> <span class="text-muted">- Various networking command references.</span></li>
                  </ul>
-                 <!-- Add Networking tools cards if any -->
+
+                 <h5 class="sub-section-title"><i class="bi bi-hdd-network me-2"></i>Tools & Labs</h5>
+                 <div class="row">
+                      <!-- Cisco Images Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-hdd-rack-fill me-1"></i>Cisco Images for GNS3/EVE-NG</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of Cisco IOS/IOU images for network simulation).</p>
+                                 <div>
+                                     <span class="badge bg-primary">Networking</span><span class="badge bg-warning text-dark">Lab</span><span class="badge bg-info text-dark">Cisco</span><span class="badge bg-secondary">Resource</span>
+                                 </div>
+                                 <a href="https://github.com/bogdanbarbulescu/Cisco-Images-for-GNS3-and-EVE-NG" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Add other networking tools like Wireshark link if desired -->
+                 </div><!-- /row -->
 
 
                  <!-- ########## DevOps ########## -->
                 <h3 class="section-title"><i class="bi bi-gear-wide-connected me-2"></i>DevOps & Automation</h3>
                 <p class="section-intro">Tools and practices for automating infrastructure, CI/CD pipelines, configuration management, and deployment.</p>
 
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
                  <ul class="resource-list mb-4">
                      <li class="resource-list-item"><a href="https://www.edureka.co/blog/wp-content/uploads/2018/11/Ansible-Cheat_Sheet_Edureka.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Edureka Ansible Cheat Sheet (PDF)</a> <span class="text-muted">- Quick start for Ansible commands/modules.</span></li>
                       <li class="resource-list-item"><a href="https://reintech.io/blog/deploying-django-app-gunicorn-ubuntu" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Deploying Django w/ Gunicorn Guide</a> <span class="text-muted">- Practical deployment tutorial.</span></li>
                  </ul>
 
-                 <h5><i class="bi bi-tools me-2"></i>Tools & Platforms</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools & Platforms</h5>
                  <div class="row">
                     <!-- Salt Card -->
                     <div class="col-md-6 col-lg-4">
@@ -304,12 +437,15 @@
                 <!-- ########## Web App & API Security ########## -->
                 <h3 class="section-title"><i class="bi bi-shield-check me-2"></i>Web App & API Security</h3>
                 <p class="section-intro">Securing web applications and APIs against common vulnerabilities and attacks.</p>
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Payloads & Cheatsheets</h5>
+
+                 <h5 class="sub-section-title"><i class="bi bi-check2-square me-2"></i>Checklists & Cheatsheets</h5>
                  <ul class="resource-list mb-4">
-                     <li class="resource-list-item"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Payloads All The Things</a> <span class="text-muted">- Essential resource for web/API payloads & bypasses. (Also in Red Team)</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Payloads All The Things</a> <span class="text-muted">- Essential resource for web/API payloads & bypasses.</span></li>
+                     <li class="resource-list-item"><a href="https://github.com/Hari-prasaanth/Web-App-Pentest-Checklist" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Web App Pentest Checklist (Hari-prasaanth)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Comprehensive checklist for web app pentesting).</span></li>
                      <!-- Link to OWASP Top 10 Cheatsheet Series if possible -->
                  </ul>
-                 <h5><i class="bi bi-tools me-2"></i>Tools</h5>
+
+                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools</h5>
                   <div class="row">
                         <!-- Add cards for Burp Suite, OWASP ZAP, specific scanners if you have links -->
                         <div class="col-md-6 col-lg-4">
@@ -323,56 +459,120 @@
                   </div><!-- /row -->
 
 
-                <!-- ########## OSINT ########## -->
-                <h3 class="section-title"><i class="bi bi-binoculars me-2"></i>OSINT (Open Source Intelligence)</h3>
-                <p class="section-intro">Gathering information from publicly available sources for investigation or reconnaissance.</p>
+                <!-- ########## Mobile Security ########## -->
+                <h3 class="section-title"><i class="bi bi-phone-fill me-2"></i>Mobile Security</h3>
+                <p class="section-intro">Resources for securing mobile applications (Android/iOS) and mobile penetration testing.</p>
+
+                 <h5 class="sub-section-title"><i class="bi bi-list-stars me-2"></i>Awesome Lists & Collections</h5>
                  <div class="row">
+                    <!-- Awesome Mobile Security Card -->
                      <div class="col-md-6 col-lg-4">
-                         <div class="card h-100 placeholder-card">
-                             <div class="card-body text-center d-flex flex-column justify-content-center">
-                                 <h5 class="card-title text-muted"><i class="bi bi-search me-1"></i>Resources Coming Soon</h5>
-                                 <p class="card-text text-muted">Awesome OSINT tools and guides will be added here.</p>
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-star-fill me-1"></i>Awesome Mobile Security</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of mobile security resources, tools, and papers).</p>
+                                 <div>
+                                     <span class="badge bg-warning text-dark">Mobile Security</span><span class="badge bg-secondary">Collection</span>
+                                 </div>
+                                 <a href="https://github.com/vaib25vicky/awesome-mobile-security" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
                              </div>
                          </div>
                      </div>
-                     <!-- Add Reconator card here maybe? -->
-                      <!-- Reconator Card -->
-                     <!-- <div class="col-md-6 col-lg-4">
+                 </div><!-- /row -->
+
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets</h5>
+                 <ul class="resource-list mb-4">
+                    <li class="resource-list-item"><a href="https://github.com/tanc7/MobileApp-Pentest-Cheatsheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Mobile App Pentest Cheatsheet (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Cheatsheet for mobile application pentesting).</span></li>
+                 </ul>
+
+                 <!-- Add Tools section if you find mobile specific tools like Frida, Objection etc. -->
+
+
+                <!-- ########## OSINT ########## -->
+                <h3 class="section-title"><i class="bi bi-binoculars me-2"></i>OSINT (Open Source Intelligence)</h3>
+                <p class="section-intro">Gathering information from publicly available sources for investigation or reconnaissance.</p>
+
+                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools & Libraries</h5>
+                 <div class="row">
+                     <!-- Search Query Parser Card -->
+                     <div class="col-md-6 col-lg-4">
                          <div class="card h-100">
                               <div class="card-body d-flex flex-column">
-                                 <h5 class="card-title"><i class="bi bi-broadcast-pin me-1"></i>Reconator</h5>
-                                 <p class="card-text flex-grow-1">Automated Reconnaissance tool for Pentesting & Bug Bounty, often involves OSINT.</p>
+                                 <h5 class="card-title"><i class="bi bi-search-heart me-1"></i>Search Query Parser</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Library for parsing search engine query strings, useful for OSINT automation).</p>
                                  <div>
-                                     <span class="badge bg-warning text-dark">OSINT</span><span class="badge bg-danger">Red Team</span><span class="badge bg-info text-dark">Recon</span><span class="badge bg-secondary">Tool</span>
+                                     <span class="badge bg-info text-dark">OSINT</span><span class="badge bg-primary">Development</span><span class="badge bg-secondary">Library</span>
                                  </div>
-                                 <a href="https://github.com/gokulapap/Reconator" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                                 <a href="https://github.com/Hacker0x01/search-query-parser" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
                              </div>
                          </div>
-                     </div> -->
+                     </div>
+                     <!-- Reconator Card? (Already in Red Team section, decide if duplication needed) -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100 placeholder-card">
+                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                 <h5 class="card-title text-muted"><i class="bi bi-search me-1"></i>More Resources Coming</h5>
+                                 <p class="card-text text-muted">Adding more OSINT frameworks and specific tool links here.</p>
+                             </div>
+                         </div>
+                     </div>
                  </div><!-- /row -->
 
 
                  <!-- ########## Cloud Security ########## -->
                 <h3 class="section-title"><i class="bi bi-cloud-check-fill me-2"></i>Cloud Security</h3>
                 <p class="section-intro">Securing cloud environments (AWS, Azure, GCP), configurations, and services.</p>
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets</h5>
+
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets</h5>
                  <ul class="resource-list mb-4">
                     <li><a href="https://www.interviewbit.com/aws-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>AWS Cheat Sheet - InterviewBit</a></li>
                     <li><a href="https://github.com/milanm/azure-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Azure Cheat Sheet - milanm</a></li>
                     <li><a href="https://cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i>Google Cloud (gcloud) Cheat Sheet (PDF)</a></li>
                     <li><a href="https://assets.ubuntu.com/v1/2950553c-OpenStack%20cheat%20sheet%20-%20revised%20v3.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i>OpenStack Cheat Sheet - Ubuntu (PDF)</a></li>
                  </ul>
-                 <!-- Add Cloud Security tools cards if any (e.g., Prowler, Cloudsploit) -->
+
+                 <h5 class="sub-section-title"><i class="bi bi-fire me-2"></i>Cloud Labs & Red Teaming</h5>
+                 <div class="row">
+                     <!-- AWS RedTeam ADLab Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-cloud-arrow-down-fill me-1"></i>AWS RedTeam AD Lab (tanc7)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Setup for an AWS lab environment focused on Active Directory attacks).</p>
+                                 <div>
+                                     <span class="badge bg-warning text-dark">Cloud Security</span><span class="badge bg-danger">Red Team</span><span class="badge bg-info text-dark">Lab</span><span class="badge bg-secondary">AWS</span>
+                                 </div>
+                                 <a href="https://github.com/tanc7/AWS-RedTeam-ADLab" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Add Cloud Security tools cards if any (e.g., Prowler, Cloudsploit) -->
+                 </div><!-- /row -->
 
 
                 <!-- ########## IoT and Hardware Hacking ########## -->
                 <h3 class="section-title"><i class="bi bi-cpu-fill me-2"></i>IoT and Hardware Hacking</h3>
                  <p class="section-intro">Resources related to the security of Internet of Things devices and hardware analysis.</p>
+
+                 <h5 class="sub-section-title"><i class="bi bi-bug-fill me-2"></i>Labs & Learning Platforms</h5>
                  <div class="row">
+                      <!-- IoTGoat Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-router-fill me-1"></i>OWASP IoTGoat</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Deliberately insecure firmware for learning IoT security testing).</p>
+                                 <div>
+                                     <span class="badge bg-primary">IoT Security</span><span class="badge bg-warning text-dark">Learning</span><span class="badge bg-info text-dark">Lab</span><span class="badge bg-secondary">OWASP</span>
+                                 </div>
+                                 <a href="https://github.com/OWASP/IoTGoat" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
                      <div class="col-md-6 col-lg-4">
                          <div class="card h-100 placeholder-card">
                              <div class="card-body text-center d-flex flex-column justify-content-center">
-                                 <h5 class="card-title text-muted"><i class="bi bi-plug me-1"></i>Resources Coming Soon</h5>
+                                 <h5 class="card-title text-muted"><i class="bi bi-plug me-1"></i>More Resources Coming</h5>
                                  <p class="card-text text-muted">Adding links for IoT security and hardware hacking tools/guides.</p>
                              </div>
                          </div>
@@ -383,23 +583,48 @@
                  <!-- ########## AI and Machine Learning ########## -->
                 <h3 class="section-title"><i class="bi bi-robot me-2"></i>AI and Machine Learning</h3>
                 <p class="section-intro">Libraries, platforms, and resources for developing and understanding AI/ML models.</p>
+
+                 <h5 class="sub-section-title"><i class="bi bi-list-stars me-2"></i>Awesome Lists & Collections</h5>
+                 <div class="row">
+                    <!-- Awesome AI Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-star-fill me-1"></i>Awesome Artificial Intelligence</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of AI courses, books, tools, and frameworks).</p>
+                                 <div>
+                                     <span class="badge bg-success">AI/ML</span><span class="badge bg-secondary">Collection</span>
+                                 </div>
+                                 <a href="https://github.com/owainlewis/awesome-artificial-intelligence" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
+                 </div><!-- /row -->
+
+                 <h5 class="sub-section-title"><i class="bi bi-book me-2"></i>Learning Resources & Notes</h5>
+                  <ul class="resource-list mb-4">
+                      <li class="resource-list-item"><a href="https://github.com/ashishpatel26/Andrew-NG-Notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Andrew NG Course Notes</a> <span class="text-muted">- ADD DESCRIPTION HERE (Notes for Andrew Ng's popular ML/DL courses).</span></li>
+                      <li class="resource-list-item"><a href="https://github.com/rcalix1/Deep-learning-ML-and-tensorflow" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Deep Learning, ML & TensorFlow Resources</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection focused on DL/ML/TensorFlow).</span></li>
+                  </ul>
+
+                 <!-- Could add Python Data Science lib card here? -->
                  <div class="row">
                      <div class="col-md-6 col-lg-4">
                          <div class="card h-100 placeholder-card">
                              <div class="card-body text-center d-flex flex-column justify-content-center">
-                                 <h5 class="card-title text-muted"><i class="bi bi-graph-up me-1"></i>Resources Coming Soon</h5>
-                                 <p class="card-text text-muted">Curating links for AI/ML frameworks, datasets, and learning resources.</p>
+                                 <h5 class="card-title text-muted"><i class="bi bi-graph-up me-1"></i>More Tools Coming</h5>
+                                 <p class="card-text text-muted">Curating links for AI/ML frameworks, libraries, and datasets.</p>
                              </div>
                          </div>
                      </div>
-                     <!-- Could add Python Data Science lib here? -->
                  </div><!-- /row -->
 
 
                 <!-- ########## Software Development ########## -->
                  <h3 class="section-title"><i class="bi bi-code-square me-2"></i>Software Development</h3>
                 <p class="section-intro">Tools, frameworks, libraries, and best practices for building software.</p>
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Core Concepts</h5>
+
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Core Concepts</h5>
                  <ul class="resource-list mb-4">
                     <li class="resource-list-item"><a href="https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Python 3 Memento (PDF)</a> <span class="text-muted">- Concise Python 3 syntax.</span></li>
                     <li class="resource-list-item"><a href="https://github.com/gto76/python-cheatsheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Python Cheatsheet - gto76</a> <span class="text-muted">- Comprehensive Python reference.</span></li>
@@ -410,9 +635,52 @@
                      <li class="resource-list-item"><a href="https://vuejs.org/v2/guide/syntax.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Vue.js Syntax (v2 Guide)</a> <span class="text-muted">- Reference for Vue 2 syntax.</span></li>
                  </ul>
 
-                 <h5><i class="bi bi-box me-2"></i>Frameworks & Libraries</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-book-half me-2"></i>Learning & Notes</h5>
+                 <ul class="resource-list mb-4">
+                      <li class="resource-list-item"><a href="https://github.com/tanc7/CodeAcademyNotes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>CodeAcademy Notes (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Notes from CodeAcademy courses).</span></li>
+                 </ul>
+                 <div class="row"> <!-- Learning Cards -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-mortarboard me-1"></i>Awesome for Beginners</h5>
+                                <p class="card-text flex-grow-1">Find open-source projects that are welcoming to new contributors.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Open Source</span><span class="badge bg-warning text-dark">Beginner</span>
+                                </div>
+                                <a href="https://github.com/MunGell/awesome-for-beginners" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-lightbulb-fill me-1"></i>Awesome App Ideas</h5>
+                                <p class="card-text flex-grow-1">A curated list of application ideas for practice or portfolio building.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span><span class="badge bg-warning text-dark">Ideas</span>
+                                </div>
+                                <a href="https://github.com/tastejs/awesome-app-ideas" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                 </div><!-- /row -->
+
+                 <h5 class="sub-section-title"><i class="bi bi-box me-2"></i>Frameworks & Libraries (Python)</h5>
                  <div class="row">
-                     <!-- Python Libraries -->
+                      <!-- Python for Security Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-shield-lock-fill me-1"></i>Python for Security (CyberSecurityUP)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Resources/code for using Python in cybersecurity tasks).</p>
+                                 <div>
+                                     <span class="badge bg-primary">Python</span><span class="badge bg-danger">Security</span><span class="badge bg-primary">Learning</span>
+                                 </div>
+                                 <a href="https://github.com/CyberSecurityUP/Python-for-Security" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
                      <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                              <div class="card-body d-flex flex-column">
@@ -449,8 +717,10 @@
                             </div>
                         </div>
                     </div>
+                 </div><!-- /row -->
 
-                     <!-- JS Ecosystem -->
+                 <h5 class="sub-section-title"><i class="bi bi-box me-2"></i>Frameworks & Libraries (JavaScript Ecosystem)</h5>
+                 <div class="row">
                      <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                             <div class="card-body d-flex flex-column">
@@ -490,8 +760,21 @@
                     <!-- Add cards for Ember, Meteor, NativeScript, p5.js -->
                  </div><!-- /row -->
 
-                 <h5><i class="bi bi-check2-square me-2"></i>Testing & Utility Tools</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-check2-square me-2"></i>Testing & Utility Tools</h5>
                  <div class="row">
+                     <!-- CustomTools Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-tools me-1"></i>CustomTools (bogdanbarbulescu)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Your collection of custom scripts/tools - specify purpose).</p>
+                                 <div>
+                                     <span class="badge bg-warning text-dark">Utility</span><span class="badge bg-secondary">Tool</span> <!-- Add more specific badges -->
+                                 </div>
+                                 <a href="https://github.com/bogdanbarbulescu/CustomTools" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
                      <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                              <div class="card-body d-flex flex-column">
@@ -530,39 +813,12 @@
                     </div>
                  </div><!-- /row -->
 
-                 <h5><i class="bi bi-lightbulb me-2"></i>Ideas & Project Starters</h5>
-                 <div class="row">
-                      <div class="col-md-6 col-lg-4">
-                        <div class="card h-100">
-                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><i class="bi bi-mortarboard me-1"></i>Awesome for Beginners</h5>
-                                <p class="card-text flex-grow-1">Find open-source projects that are welcoming to new contributors.</p>
-                                <div>
-                                     <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Open Source</span><span class="badge bg-warning text-dark">Beginner</span>
-                                </div>
-                                <a href="https://github.com/MunGell/awesome-for-beginners" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                      <div class="col-md-6 col-lg-4">
-                        <div class="card h-100">
-                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><i class="bi bi-lightbulb-fill me-1"></i>Awesome App Ideas</h5>
-                                <p class="card-text flex-grow-1">A curated list of application ideas for practice or portfolio building.</p>
-                                <div>
-                                     <span class="badge bg-primary">Learning</span><span class="badge bg-warning text-dark">Ideas</span>
-                                </div>
-                                <a href="https://github.com/tastejs/awesome-app-ideas" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                 </div><!-- /row -->
 
                 <!-- ########## SysAdmin ########## -->
                 <h3 class="section-title"><i class="bi bi-hdd-stack-fill me-2"></i>System Administration</h3>
                 <p class="section-intro">Managing operating systems, servers, and infrastructure.</p>
 
-                 <h5><i class="bi bi-journal-bookmark-fill me-2"></i>OS Cheatsheets & Commands</h5>
+                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>OS Cheatsheets & Commands</h5>
                  <ul class="resource-list mb-4">
                     <li class="resource-list-item"><i class="bi bi-windows"></i><strong> Windows:</strong></li>
                         <ul>
@@ -577,7 +833,7 @@
                         </ul>
                  </ul>
 
-                <h5><i class="bi bi-server me-2"></i>Management & Self-Hosting</h5>
+                <h5 class="sub-section-title"><i class="bi bi-server me-2"></i>Management & Self-Hosting</h5>
                 <div class="row">
                      <!-- Awesome Self-Hosted Card -->
                     <div class="col-md-6 col-lg-4">
@@ -622,10 +878,40 @@
                 </div><!-- /row -->
 
 
+                <!-- ########## Blockchain ########## -->
+                <h3 class="section-title"><i class="bi bi-link me-2"></i>Blockchain & Web3</h3>
+                 <p class="section-intro">Resources related to blockchain technology, cryptocurrencies, smart contracts, and Web3 development.</p>
+                 <div class="row">
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100 placeholder-card">
+                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                 <h5 class="card-title text-muted"><i class="bi bi-currency-bitcoin me-1"></i>Resources Coming Soon</h5>
+                                 <p class="card-text text-muted">Adding links for Blockchain/Web3 development, security, and learning resources.</p>
+                             </div>
+                         </div>
+                     </div>
+                 </div><!-- /row -->
+
+
                 <!-- ########## General Learning & Meta Resources ########## -->
                 <h3 class="section-title"><i class="bi bi-stars me-2"></i>General Learning & Meta Resources</h3>
-                <p class="section-intro">Broad learning platforms, resource collections, and helpful conceptual explanations.</p>
-                <div class="row">
+                <p class="section-intro">Broad learning platforms, resource collections, helpful conceptual explanations, and meta-lists.</p>
+
+                <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Mega Lists & Cheatsheet Collections</h5>
+                 <div class="row">
+                      <!-- Awesome Cheatsheets Card -->
+                     <div class="col-md-6 col-lg-4">
+                         <div class="card h-100">
+                              <div class="card-body d-flex flex-column">
+                                 <h5 class="card-title"><i class="bi bi-journals me-1"></i>Awesome Cheatsheets (LeCoupa)</h5>
+                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (HUGE collection of cheatsheets for popular languages, frameworks, and tools).</p>
+                                 <div>
+                                     <span class="badge bg-primary">Cheatsheet</span><span class="badge bg-secondary">Collection</span><span class="badge bg-info text-dark">Meta</span>
+                                 </div>
+                                 <a href="https://github.com/LeCoupa/awesome-cheatsheets" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                             </div>
+                         </div>
+                     </div>
                       <!-- Awesome Lists Meta Card -->
                      <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
@@ -639,6 +925,24 @@
                             </div>
                         </div>
                     </div>
+                     <!-- Useful Repositories Card -->
+                     <div class="col-md-6 col-lg-4">
+                        <div class="card h-100">
+                             <div class="card-body d-flex flex-column">
+                                <h5 class="card-title"><i class="bi bi-collection-fill me-1"></i>Collection of Useful Repositories</h5>
+                                <p class="card-text flex-grow-1">Another curated collection of useful GitHub repositories for learning various topics.</p>
+                                <div>
+                                     <span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Meta</span>
+                                </div>
+                                <a href="https://github.com/Aatmaj-Zephyr/A-collection-of-useful-repositories" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- /row -->
+
+
+                <h5 class="sub-section-title"><i class="bi bi-lightbulb me-2"></i>Concepts & Platforms</h5>
+                <div class="row">
                     <!-- Awesome ELI5 Card -->
                      <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
@@ -675,19 +979,6 @@
                                      <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Students</span>
                                 </div>
                                 <a href="https://github.com/dipakkr/A-to-Z-Resources-for-Students" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
-                            </div>
-                        </div>
-                    </div>
-                     <!-- Useful Repositories Card -->
-                     <div class="col-md-6 col-lg-4">
-                        <div class="card h-100">
-                             <div class="card-body d-flex flex-column">
-                                <h5 class="card-title"><i class="bi bi-collection-fill me-1"></i>Collection of Useful Repositories</h5>
-                                <p class="card-text flex-grow-1">Another curated collection of useful GitHub repositories for learning various topics.</p>
-                                <div>
-                                     <span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Meta</span>
-                                </div>
-                                <a href="https://github.com/Aatmaj-Zephyr/A-collection-of-useful-repositories" class="btn btn-outline-primary mt-3 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View on GitHub</a>
                             </div>
                         </div>
                     </div>
