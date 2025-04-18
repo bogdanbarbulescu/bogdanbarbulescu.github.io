@@ -1,20 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DevOps Learning Resources</title>
+    <!-- Updated Title -->
+    <title>BVB - DevOps Learning Resources</title>
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <!-- Your custom styles (optional) -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        /* Custom styles matching the Hub Theme */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+            border: none; /* Cleaner look */
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.07); /* Subtle shadow */
+            background-color: #fff; /* White cards */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+        }
+        .card-title {
+            font-weight: 600; /* Slightly bolder */
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+        .card-body {
+             min-height: 180px; /* Give cards a consistent minimum height */
+             display: flex;
+             flex-direction: column;
+        }
+        .card-text {
+            color: #495057;
+            font-size: 0.9rem;
+            flex-grow: 1; /* Allow text to take available space */
+        }
+        .card-link i, .resource-list-item i {
+            margin-right: 0.4rem;
+            vertical-align: middle; /* Align icons better */
+        }
+        .badge {
+             margin-right: 0.3rem;
+             margin-bottom: 0.5rem;
+             font-size: 0.75em;
+             padding: 0.3em 0.6em; /* Adjust padding */
+             display: inline-block; /* Ensure wrapping */
+        }
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 1rem; /* Space between accordion items */
+            border: none;
+            border-radius: 0.375rem; /* Bootstrap default */
+             box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+             background-color: #fff;
+        }
+        .accordion-header {
+            border-top-left-radius: 0.375rem;
+            border-top-right-radius: 0.375rem;
+        }
+        .accordion-button {
+             font-weight: 700;
+             font-size: 1.2rem;
+             color: #343a40;
+             background-color: #e9ecef; /* Light header */
+             border-top-left-radius: calc(0.375rem - 1px); /* Match item radius */
+             border-top-right-radius: calc(0.375rem - 1px);
+             border-bottom: 1px solid rgba(0,0,0,.08); /* Subtle separator */
+        }
+        /* DevOps Theme Colors (Purple/Indigo) */
+        .accordion-button:not(.collapsed) {
+            color: #4f1a84; /* Darker Purple when open */
+            background-color: #e2d9f3; /* Lighter Purple when open */
+            box-shadow: none; /* Remove default BS shadow */
+            border-bottom: 1px solid #d0bfff;
+        }
+         .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(102, 16, 242, 0.25); /* Indigo focus */
+            z-index: 3; /* Ensure focus outline is visible */
+        }
+        .accordion-body {
+            padding: 1.5rem; /* More padding inside */
+        }
+
+        .section-intro {
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        /* Style for resource lists within sections */
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .resource-list-item {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: list-item; /* Default display for JS */
+            transition: opacity 0.3s ease-out;
+            padding: 0.25rem 0; /* Small padding */
+        }
+        .resource-list-item strong { /* Style bold text in lists */
+            font-weight: 600;
+            color: #495057;
+        }
+        .resource-list-item a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500; /* Slightly bolder links */
+        }
+         .resource-list-item a:hover {
+            text-decoration: underline;
+         }
+        .resource-list-item .text-muted {
+             font-size: 0.85em;
+             margin-left: 0.5rem;
+             display: inline; /* Keep on same line */
+             color: #6c757d !important;
+        }
+        /* Sub-headings within sections */
+        h5.sub-section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #495057;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #dee2e6; /* Subtle separator */
+        }
+        h5.sub-section-title:first-of-type {
+            margin-top: 0.5rem; /* Less margin for first sub-heading */
+        }
+        .placeholder-card {
+            border: 2px dashed #adb5bd;
+            background-color: #f1f3f5;
+        }
+        /* Search Styles */
+        #search-wrapper {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        #suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 250px; /* Slightly taller */
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            border-bottom-left-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+        }
+        #suggestions li {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        #suggestions li:hover, #suggestions li.active-suggestion { /* Style for hover and keyboard navigation */
+            background-color: #e9ecef;
+        }
+        /* Class to hide items during search */
+        .resource-hidden {
+             display: none !important; /* Override card/list display */
+        }
+        .card.resource-hidden {
+             /* Ensure cards fully hide if using display:none */
+             padding: 0;
+             border: none;
+             margin-bottom: 0;
+             height: 0;
+             overflow: hidden;
+        }
+         /* Highlight search term */
+        .highlight {
+            background-color: #e2d9f3; /* Light purple highlight */
+            font-weight: bold;
+            padding: 0.1em 0;
+        }
+        /* Style for no results message */
+        #no-results-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
 </head>
+
 <body>
 
     <!-- Header -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="index.html">BVB</a>
+            <a class="navbar-brand fw-bold" href="index.html">BVB</a> <!-- Changed Brand -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -23,6 +218,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <!-- Link to main resources page -->
+                    <li class="nav-item"><a class="nav-link" href="main_hub_page.html">All Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
@@ -30,101 +227,702 @@
     </nav>
 
     <!-- Main Content -->
-    <main>
-        <section id="overview" class="py-5">
+    <main class="py-5">
+        <section id="devops-resources">
             <div class="container">
-                <h2 class="text-center text-dark mb-4">DevOps Learning Resources</h2>
-                <p class="lead text-center">Explore essential DevOps concepts, tools, and best practices for continuous integration and delivery, infrastructure as code, and more.</p>
+                <h2 class="text-center display-5 text-dark mb-3 fw-bold"><i class="bi bi-gear-wide-connected me-2" style="color: #6f42c1;"></i>DevOps Resource Hub</h2> <!-- Purple Icon -->
+                <p class="lead text-center text-muted mb-5">Explore essential DevOps concepts, tools, and best practices for CI/CD, IaC, automation, and collaboration.</p>
 
-                <!-- Overview and Fundamentals -->
-                <h3>1. Overview and Fundamentals</h3>
-                <p><strong>What is DevOps?</strong></p>
-                <p>DevOps is a set of practices that combine software development (Dev) and IT operations (Ops) to shorten the development lifecycle and provide continuous delivery of high-quality software.</p>
-                <ul>
-                    <li>Key concepts: CI/CD, automation, and collaboration.</li>
-                    <li>Core principles: Culture, Automation, Measurement, and Sharing (CAMS).</li>
-                    <li>Agile and Lean methodologies.</li>
-                </ul>
-            </div>
+                 <!-- Search Bar -->
+                <div id="search-wrapper">
+                    <form id="search-form" role="search" autocomplete="off">
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                            <input type="search" class="form-control" id="search-input" placeholder="Search DevOps resources..." aria-label="Search" aria-describedby="search-icon">
+                            <button class="btn btn-outline-primary" type="submit" id="search-button" style="--bs-btn-border-color: #6f42c1; --bs-btn-hover-bg: #6f42c1; --bs-btn-hover-border-color: #6f42c1; --bs-btn-active-bg: #5a349a; --bs-btn-active-border-color: #5a349a; --bs-btn-color: #6f42c1; --bs-btn-hover-color: #fff; --bs-btn-active-color: #fff;">Search</button> <!-- Purple Outline Button -->
+                            <button class="btn btn-outline-secondary" type="button" id="clear-search-button" title="Clear Search" style="display: none;"><i class="bi bi-x-lg"></i></button>
+                        </div>
+                    </form>
+                     <ul id="suggestions"></ul>
+                </div>
+                 <!-- End Search Bar -->
+
+                <!-- Message for No Search Results -->
+                <div id="no-results-message">
+                    <p class="fs-5"><i class="bi bi-emoji-frown me-2"></i>No resources found matching your search term.</p>
+                    <button class="btn btn-sm btn-outline-secondary" id="show-all-button">Show All Resources</button>
+                </div>
+
+                <!-- Accordion for DevOps Sections -->
+                <div class="accordion" id="devopsAccordion">
+
+                    <!-- Accordion Item: Overview and Fundamentals -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFundamentals">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFundamentals" aria-expanded="true" aria-controls="collapseFundamentals">
+                                <i class="bi bi-info-circle-fill me-2"></i>Overview & Fundamentals
+                            </button>
+                        </h2>
+                        <div id="collapseFundamentals" class="accordion-collapse collapse show" aria-labelledby="headingFundamentals" data-bs-parent="#devopsAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Understanding the core philosophy, principles, and goals of DevOps.</p>
+                                <p><strong>What is DevOps?</strong> DevOps is a set of practices, cultural philosophies, and tools that increases an organization's ability to deliver applications and services at high velocity: evolving and improving products at a faster pace than organizations using traditional software development and infrastructure management processes.</p>
+                                <h5 class="sub-section-title mt-4"><i class="bi bi-key-fill me-2"></i>Core Concepts & Principles</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-cicd" data-title="DevOps CI/CD Concept" data-keywords="devops, concept, ci/cd, continuous integration, continuous delivery, continuous deployment, automation, pipeline"><strong>CI/CD:</strong> Continuous Integration, Continuous Delivery, and Continuous Deployment - automating the build, test, and deployment pipeline.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-automation" data-title="DevOps Automation Concept" data-keywords="devops, concept, automation, infrastructure, testing, deployment, efficiency"><strong>Automation:</strong> Automating repetitive tasks in development, testing, deployment, and infrastructure management.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-collaboration" data-title="DevOps Collaboration & Culture Concept" data-keywords="devops, concept, collaboration, culture, communication, shared responsibility, dev, ops"><strong>Collaboration & Culture:</strong> Breaking down silos between Development (Dev) and Operations (Ops) teams, fostering shared responsibility and communication.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-cams" data-title="DevOps CAMS Principles" data-keywords="devops, concept, cams, culture, automation, measurement, sharing, principles"><strong>CAMS Principles:</strong> Culture, Automation, Measurement, and Sharing as core tenets of DevOps.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-iac" data-title="DevOps Infrastructure as Code (IaC) Concept" data-keywords="devops, concept, iac, infrastructure as code, automation, configuration management, provisioning"><strong>Infrastructure as Code (IaC):</strong> Managing and provisioning infrastructure through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-monitoring" data-title="DevOps Monitoring & Logging Concept" data-keywords="devops, concept, monitoring, logging, feedback, performance, observability, measurement"><strong>Monitoring & Logging:</strong> Continuously monitoring application and infrastructure performance to ensure availability and gain feedback.</li>
+                                    <li class="resource-list-item searchable-resource" id="devops-concept-agile-lean" data-title="DevOps Agile & Lean Methodologies" data-keywords="devops, concept, agile, lean, methodology, iterative development, value stream, waste reduction"><strong>Agile & Lean:</strong> Often incorporates principles from Agile software development and Lean manufacturing to improve workflow and efficiency.</li>
+                                </ul>
+                                <!-- Add links to fundamental resources/cheatsheets here -->
+                                <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Fundamental Cheatsheets & Guides</h5>
+                                 <ul class="resource-list mb-4">
+                                     <li class="resource-list-item searchable-resource" id="resource-ansible-sheet-edureka-devops" data-title="Edureka Ansible Cheat Sheet PDF" data-keywords="ansible, devops, automation, configuration management, cheatsheet, reference, pdf, playbook"><a href="https://www.edureka.co/blog/wp-content/uploads/2018/11/Ansible-Cheat_Sheet_Edureka.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Edureka Ansible Cheat Sheet (PDF)</a> <span class="text-muted">- Quick start for Ansible commands/modules.</span></li>
+                                      <li class="resource-list-item searchable-resource" id="resource-django-deploy-guide-devops" data-title="Deploying Django w/ Gunicorn Guide Reintech" data-keywords="django, python, deployment, gunicorn, ubuntu, guide, tutorial, devops, web app, nginx"><a href="https://reintech.io/blog/deploying-django-app-gunicorn-ubuntu" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Deploying Django w/ Gunicorn Guide</a> <span class="text-muted">- Practical deployment tutorial example.</span></li>
+                                      <!-- Add general DevOps cheatsheet links if found -->
+                                      <li class="resource-list-item searchable-resource" id="devops-cheatsheet-placeholder" data-title="General DevOps Cheatsheet Placeholder" data-keywords="devops, cheatsheet, reference, concepts, tools, principles"><i>Placeholder: Link to a good general DevOps cheatsheet.</i></li>
+                                 </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Essential Tools -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTools">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTools" aria-expanded="false" aria-controls="collapseTools">
+                                <i class="bi bi-tools me-2"></i>Essential Tools by Category
+                            </button>
+                        </h2>
+                        <div id="collapseTools" class="accordion-collapse collapse" aria-labelledby="headingTools" data-bs-parent="#devopsAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Key tools used across the DevOps lifecycle for various functions.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-git me-1"></i>Version Control Systems (VCS)</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-git">
+                                        <div class="card h-100" data-title="Git Distributed Version Control" data-keywords="git, vcs, version control, source code management, distributed, tool, command line">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-git me-1"></i>Git</h5>
+                                                <p class="card-text flex-grow-1">The ubiquitous distributed version control system, foundational for modern software development and DevOps.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">VCS</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://git-scm.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-github">
+                                        <div class="card h-100" data-title="GitHub Platform" data-keywords="github, git, vcs, hosting, collaboration, ci/cd, actions, platform, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-github me-1"></i>GitHub</h5>
+                                                <p class="card-text flex-grow-1">Popular web-based hosting service for Git repositories, offering collaboration features, CI/CD (Actions), and more.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">VCS</span><span class="badge bg-info text-dark">Hosting</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://github.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-gitlab">
+                                        <div class="card h-100" data-title="GitLab Platform" data-keywords="gitlab, git, vcs, hosting, collaboration, ci/cd, devops platform, tool, self-hosted">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-gitlab me-1"></i>GitLab</h5>
+                                                <p class="card-text flex-grow-1">A complete DevOps platform delivered as a single application, including Git repository management, CI/CD, security scanning.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">VCS</span><span class="badge bg-success">DevOps Platform</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://about.gitlab.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-arrow-repeat me-1"></i>CI/CD Pipelines</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-jenkins">
+                                        <div class="card h-100" data-title="Jenkins Automation Server" data-keywords="jenkins, ci/cd, continuous integration, continuous delivery, automation server, pipeline, open source, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-person-gear me-1"></i>Jenkins</h5>
+                                                <p class="card-text flex-grow-1">Leading open source automation server, widely used for building, testing, and deploying software (CI/CD).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">CI/CD</span><span class="badge bg-warning text-dark">Automation</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://www.jenkins.io/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-circleci">
+                                        <div class="card h-100" data-title="CircleCI CI/CD Platform" data-keywords="circleci, ci/cd, continuous integration, continuous delivery, pipeline, cloud, saas, tool, platform">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-record-circle-fill me-1"></i>CircleCI</h5>
+                                                <p class="card-text flex-grow-1">Cloud-based CI/CD platform known for speed, flexibility, and ease of use.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">CI/CD</span><span class="badge bg-info text-dark">Cloud</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://circleci.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-gitlab-ci">
+                                        <div class="card h-100" data-title="GitLab CI/CD" data-keywords="gitlab ci, ci/cd, continuous integration, continuous delivery, pipeline, integrated, devops platform, tool">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-gitlab me-1"></i>GitLab CI/CD</h5>
+                                                <p class="card-text flex-grow-1">Integrated CI/CD capabilities within the GitLab platform, simplifying the DevOps toolchain.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">CI/CD</span><span class="badge bg-success">DevOps Platform</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://docs.gitlab.com/ee/ci/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Docs</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add GitHub Actions Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-github-actions">
+                                         <div class="card h-100 placeholder-card" data-title="GitHub Actions CI/CD" data-keywords="github actions, ci/cd, continuous integration, continuous delivery, pipeline, workflow, automation, tool, platform">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-github me-1"></i>GitHub Actions</h5>
+                                                 <p class="card-text text-muted">Automate workflows directly within GitHub repositories.</p>
+                                                 <a href="https://github.com/features/actions" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-file-code-fill me-1"></i>Infrastructure as Code (IaC)</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-terraform">
+                                        <div class="card h-100" data-title="Terraform IaC Tool" data-keywords="terraform, iac, infrastructure as code, provisioning, automation, hashicorp, tool, cloud, multi-cloud">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-box-seam-fill me-1"></i>Terraform</h5>
+                                                <p class="card-text flex-grow-1">Open-source IaC tool by HashiCorp for building, changing, and versioning infrastructure safely and efficiently.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">IaC</span><span class="badge bg-warning text-dark">Provisioning</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://www.terraform.io/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-cloudformation">
+                                        <div class="card h-100" data-title="AWS CloudFormation" data-keywords="cloudformation, aws, iac, infrastructure as code, provisioning, automation, tool, cloud, amazon web services">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-stack-overflow me-1"></i>CloudFormation</h5>
+                                                <p class="card-text flex-grow-1">AWS service for modeling and setting up Amazon Web Services resources using templates (IaC).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">IaC</span><span class="badge bg-warning text-dark">AWS</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://aws.amazon.com/cloudformation/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-ansible-iac">
+                                        <div class="card h-100" data-title="Ansible Configuration Management & IaC" data-keywords="ansible, iac, infrastructure as code, configuration management, automation, tool, playbook, devops">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-play-btn-fill me-1"></i>Ansible</h5>
+                                                <p class="card-text flex-grow-1">Primarily a configuration management tool, but also widely used for infrastructure provisioning and application deployment (IaC).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">IaC</span><span class="badge bg-info text-dark">Config Mgmt</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://www.ansible.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Salt Card -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-saltstack-devops">
+                                        <div class="card h-100" data-title="Salt SaltStack Automation" data-keywords="salt, saltstack, devops, automation, configuration management, infrastructure, tool, python, remote execution, iac">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-layers-fill me-1"></i>Salt (SaltStack)</h5>
+                                                <p class="card-text flex-grow-1">Automation and configuration management software, also capable of infrastructure provisioning.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">DevOps</span><span class="badge bg-warning text-dark">Automation</span><span class="badge bg-info text-dark">Config Mgmt</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/saltstack/salt" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Pulumi Placeholder -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-pulumi">
+                                         <div class="card h-100 placeholder-card" data-title="Pulumi IaC with Code" data-keywords="pulumi, iac, infrastructure as code, programming language, python, typescript, go, tool">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-code-slash me-1"></i>Pulumi</h5>
+                                                 <p class="card-text text-muted">IaC using familiar programming languages (Python, TS, Go, etc.).</p>
+                                                 <a href="https://www.pulumi.com/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+
+                                <h5 class="sub-section-title"><i class="bi bi-speedometer2 me-1"></i>Monitoring & Observability</h5>
+                                <div class="row">
+                                     <!-- Add Predator Card -->
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-predator-loadtest-devops">
+                                        <div class="card h-100" data-title="Predator Load Testing Zooz" data-keywords="predator, load testing, performance, api, tool, devops, stress testing, open source, monitoring">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-speedometer2 me-1"></i>Predator Load Testing</h5>
+                                                <p class="card-text flex-grow-1">Open-source platform for load testing APIs effectively, crucial for performance monitoring.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-success">DevOps</span><span class="badge bg-warning text-dark">Testing</span><span class="badge bg-info text-dark">Monitoring</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/Zooz/predator" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Prometheus/Grafana Placeholders -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-prometheus">
+                                         <div class="card h-100 placeholder-card" data-title="Prometheus Monitoring System" data-keywords="prometheus, monitoring, metrics, time series, alerting, open source, tool, observability">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-graph-up me-1"></i>Prometheus</h5>
+                                                 <p class="card-text text-muted">Open-source systems monitoring and alerting toolkit.</p>
+                                                 <a href="https://prometheus.io/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-tool-grafana">
+                                         <div class="card h-100 placeholder-card" data-title="Grafana Visualization Platform" data-keywords="grafana, visualization, dashboard, monitoring, metrics, observability, tool, open source">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-bar-chart-line-fill me-1"></i>Grafana</h5>
+                                                 <p class="card-text text-muted">Open source platform for monitoring and observability (dashboards).</p>
+                                                 <a href="https://grafana.com/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+
+                                <!-- Add Containerization (Docker, K8s) section if desired -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Cloud Providers -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingCloud">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCloud" aria-expanded="false" aria-controls="collapseCloud">
+                                <i class="bi bi-cloud-fill me-2"></i>Cloud Platforms
+                            </button>
+                        </h2>
+                        <div id="collapseCloud" class="accordion-collapse collapse" aria-labelledby="headingCloud" data-bs-parent="#devopsAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Major cloud providers offering services crucial for DevOps practices.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cloud-aws">
+                                        <div class="card h-100" data-title="Amazon Web Services (AWS)" data-keywords="aws, amazon web services, cloud, provider, infrastructure, services, devops">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-cloud-fill me-1" style="color: #FF9900;"></i>AWS</h5>
+                                                <p class="card-text flex-grow-1">Amazon Web Services offers a broad set of global cloud-based products including compute, storage, databases, analytics, networking, mobile, developer tools, management tools, IoT, security and enterprise applications.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-warning text-dark">Cloud</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://aws.amazon.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cloud-azure">
+                                        <div class="card h-100" data-title="Microsoft Azure" data-keywords="azure, microsoft azure, cloud, provider, infrastructure, services, devops">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-cloud-fill me-1" style="color: #0078D4;"></i>Microsoft Azure</h5>
+                                                <p class="card-text flex-grow-1">Microsoft's cloud computing service for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Cloud</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://azure.microsoft.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cloud-gcp">
+                                        <div class="card h-100" data-title="Google Cloud Platform (GCP)" data-keywords="gcp, google cloud platform, cloud, provider, infrastructure, services, devops, kubernetes, gke">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-cloud-fill me-1" style="color: #4285F4;"></i>Google Cloud Platform</h5>
+                                                <p class="card-text flex-grow-1">A suite of cloud computing services offered by Google, running on the same infrastructure that Google uses internally for its end-user products.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Cloud</span><span class="badge bg-secondary">Platform</span>
+                                                    <a href="https://cloud.google.com/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Certifications -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingCertifications">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCertifications" aria-expanded="false" aria-controls="collapseCertifications">
+                                <i class="bi bi-patch-check-fill me-2"></i>Certifications
+                            </button>
+                        </h2>
+                        <div id="collapseCertifications" class="accordion-collapse collapse" aria-labelledby="headingCertifications" data-bs-parent="#devopsAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Popular certifications relevant to DevOps roles and practices.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-aws-practitioner">
+                                        <div class="card h-100" data-title="AWS Certified Cloud Practitioner" data-keywords="aws, certification, cloud practitioner, entry-level, foundational, cloud concepts">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-cloud-check me-1"></i>AWS Cloud Practitioner</h5>
+                                                <p class="card-text flex-grow-1">Validates foundational, high-level understanding of AWS Cloud, services, and terminology. Good starting point.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Entry-Level</span><span class="badge bg-warning text-dark">AWS</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://aws.amazon.com/certification/certified-cloud-practitioner/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-cka">
+                                        <div class="card h-100" data-title="Certified Kubernetes Administrator (CKA)" data-keywords="kubernetes, cka, certification, administrator, intermediate, cncf, containers, orchestration">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-boxes me-1"></i>Kubernetes Admin (CKA)</h5>
+                                                <p class="card-text flex-grow-1">Validates the skills required to perform the responsibilities of a Kubernetes administrator.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Intermediate</span><span class="badge bg-info text-dark">Kubernetes</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://www.cncf.io/certification/cka/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-aws-devops-pro">
+                                        <div class="card h-100" data-title="AWS Certified DevOps Engineer – Professional" data-keywords="aws, certification, devops engineer, professional, advanced, ci/cd, automation, monitoring">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-person-workspace me-1"></i>AWS DevOps Pro</h5>
+                                                <p class="card-text flex-grow-1">Validates technical expertise in provisioning, operating, and managing distributed application systems on the AWS platform.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Advanced</span><span class="badge bg-warning text-dark">AWS</span><span class="badge bg-secondary">Certification</span>
+                                                    <a href="https://aws.amazon.com/certification/certified-devops-engineer-professional/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add Azure/GCP DevOps Cert Placeholders -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-azure-devops">
+                                         <div class="card h-100 placeholder-card" data-title="Azure DevOps Engineer Expert Placeholder" data-keywords="azure, certification, devops engineer, expert, advanced, microsoft">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-microsoft me-1"></i>Azure DevOps Expert</h5>
+                                                 <p class="card-text text-muted">Microsoft certification for Azure DevOps solutions.</p>
+                                                  <a href="https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cert-gcp-devops">
+                                         <div class="card h-100 placeholder-card" data-title="GCP Professional Cloud DevOps Engineer Placeholder" data-keywords="gcp, google cloud, certification, devops engineer, professional, advanced">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-google me-1"></i>GCP DevOps Engineer</h5>
+                                                 <p class="card-text text-muted">Google Cloud certification for DevOps engineers.</p>
+                                                  <a href="https://cloud.google.com/certification/cloud-devops-engineer" class="btn btn-sm btn-outline-secondary mt-2" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Learn More</a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Accordion Item: Recommended Books -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBooks">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBooks" aria-expanded="false" aria-controls="collapseBooks">
+                                <i class="bi bi-book-fill me-2"></i>Recommended Books
+                            </button>
+                        </h2>
+                        <div id="collapseBooks" class="accordion-collapse collapse" aria-labelledby="headingBooks" data-bs-parent="#devopsAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Influential books covering DevOps culture, practices, and technical implementation.</p>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-phoenix">
+                                        <div class="card h-100" data-title="The Phoenix Project Book" data-keywords="book, devops, the phoenix project, gene kim, novel, culture, beginner, introduction">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-book me-1"></i>The Phoenix Project</h5>
+                                                <p class="card-text flex-grow-1">A novel about IT, DevOps, and helping your business win. Excellent introduction to the 'why' of DevOps.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">Beginner</span><span class="badge bg-info text-dark">Culture</span><span class="badge bg-secondary">Book</span>
+                                                    <!-- No direct link, maybe Amazon/Goodreads search -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-handbook">
+                                        <div class="card h-100" data-title="The DevOps Handbook Book" data-keywords="book, devops, the devops handbook, gene kim, practices, intermediate, guide, implementation">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-book-half me-1"></i>The DevOps Handbook</h5>
+                                                <p class="card-text flex-grow-1">How to Create World-Class Agility, Reliability, & Security in Technology Organizations. Focuses on practical implementation.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Intermediate</span><span class="badge bg-warning text-dark">Practices</span><span class="badge bg-secondary">Book</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-book-sre">
+                                        <div class="card h-100" data-title="Site Reliability Engineering (SRE) Book Google" data-keywords="book, devops, sre, site reliability engineering, google, advanced, operations, reliability">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-journal-code me-1"></i>Site Reliability Engineering</h5>
+                                                <p class="card-text flex-grow-1">How Google Runs Production Systems. Deep dive into the principles and practices of SRE, closely related to DevOps.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Advanced</span><span class="badge bg-info text-dark">SRE</span><span class="badge bg-secondary">Book</span>
+                                                     <a href="https://sre.google/sre-book/table-of-contents/" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Read Online</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- /#devopsAccordion -->
+
+                <!-- Suggestion Box / Contribution CTA -->
+                <div class="card text-center mt-5 border-0 shadow-sm" style="background-color: #e9ecef;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold">Contribute to this Hub!</h5>
+                        <p class="card-text text-muted">Found an awesome DevOps resource we missed? Let us know!</p>
+                        <a href="index.html#contact" class="btn fw-bold" style="background-color: #6f42c1; color: white;">Suggest a Resource <i class="bi bi-arrow-right-short"></i></a> <!-- Purple Button -->
+                    </div>
+                </div>
+
+            </div> <!-- /container -->
         </section>
-
-        <!-- Tools -->
-        <section id="tools" class="bg-light py-5">
-            <div class="container">
-                <h3>2. Essential Tools for DevOps</h3>
-                <h4>Version Control</h4>
-                <ul>
-                    <li>Git</li>
-                    <li>GitHub</li>
-                    <li>GitLab</li>
-                </ul>
-
-                <h4>CI/CD Pipelines</h4>
-                <ul>
-                    <li>Jenkins</li>
-                    <li>CircleCI</li>
-                    <li>GitLab CI</li>
-                </ul>
-
-                <h4>Infrastructure as Code (IaC)</h4>
-                <ul>
-                    <li>Terraform</li>
-                    <li>CloudFormation</li>
-                    <li>Ansible</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Cloud Providers -->
-        <section id="cloud" class="py-5">
-            <div class="container">
-                <h3>3. Cloud Providers</h3>
-                <p>Cloud platforms play a significant role in modern DevOps practices:</p>
-                <ul>
-                    <li>AWS</li>
-                    <li>Microsoft Azure</li>
-                    <li>Google Cloud Platform (GCP)</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Certifications -->
-        <section id="certifications" class="bg-light py-5">
-            <div class="container">
-                <h3>4. Certifications</h3>
-                <ul>
-                    <li><strong>Entry-Level:</strong> AWS Certified Cloud Practitioner</li>
-                    <li><strong>Intermediate:</strong> Kubernetes Administrator (CKA)</li>
-                    <li><strong>Advanced:</strong> AWS Certified DevOps Engineer – Professional</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Recommended Books -->
-        <section id="books" class="py-5">
-            <div class="container">
-                <h3>5. Recommended Books</h3>
-                <ul>
-                    <li><strong>Beginner:</strong> "The Phoenix Project" by Gene Kim</li>
-                    <li><strong>Intermediate:</strong> "The DevOps Handbook" by Gene Kim</li>
-                    <li><strong>Advanced:</strong> "Site Reliability Engineering" by Google</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <div class="text-center py-4">
-            <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
-        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>&copy; 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2024 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Search & Autocomplete JS (Same as Hub Page) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const suggestionsList = document.getElementById('suggestions');
+            const searchForm = document.getElementById('search-form');
+            const clearSearchButton = document.getElementById('clear-search-button');
+            const showAllButton = document.getElementById('show-all-button');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const resourceItems = document.querySelectorAll('.searchable-resource');
+            const mainAccordionElement = document.getElementById('devopsAccordion'); // Target the specific accordion
+
+            let resourcesData = [];
+            let currentSuggestionIndex = -1;
+
+            // --- 1. Prepare Data ---
+            function prepareResourceData() {
+                resourcesData = [];
+                 resourceItems.forEach(item => {
+                    const linkElement = item.querySelector('a');
+                    const cardTitleElement = item.querySelector('.card-title');
+                    let title = item.dataset.title || '';
+                    if (!title && linkElement) title = linkElement.textContent;
+                    if (!title && cardTitleElement) title = cardTitleElement.textContent;
+                    if (!title && item.nodeName === 'LI') title = item.textContent.split(':')[0].trim();
+
+                    const keywords = (item.dataset.keywords || '').toLowerCase();
+                    const id = item.id;
+
+                    const descriptionElement = item.querySelector('.text-muted');
+                    const cardTextElement = item.querySelector('.card-text');
+                    let descriptionText = '';
+                    if (descriptionElement) descriptionText = descriptionElement.textContent;
+                    else if (cardTextElement) descriptionText = cardTextElement.textContent;
+                    else if (item.nodeName === 'LI') descriptionText = item.textContent;
+
+                    if (title && id) {
+                        resourcesData.push({
+                            id: id,
+                            title: title.trim(),
+                            keywords: keywords,
+                            fullText: (title + ' ' + keywords + ' ' + descriptionText).toLowerCase().replace(/add description here/gi, '').trim()
+                        });
+                    } else {
+                        console.warn("Missing title or ID for item:", item);
+                    }
+                 });
+                 // console.log("Prepared DevOps Data:", resourcesData.length);
+            }
+
+            // --- 2. Autocomplete ---
+             function highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi');
+                return text.replace(regex, `<span class="highlight">$1</span>`);
+            }
+
+            function showSuggestions(query) {
+                suggestionsList.innerHTML = '';
+                currentSuggestionIndex = -1;
+
+                if (!query) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                const lowerCaseQuery = query.toLowerCase();
+                const filtered = resourcesData.filter(resource =>
+                    resource.fullText.includes(lowerCaseQuery)
+                ).slice(0, 10);
+
+                if (filtered.length > 0) {
+                    filtered.forEach((resource, index) => {
+                        const li = document.createElement('li');
+                        li.dataset.resourceId = resource.id;
+                        li.dataset.resourceTitle = resource.title;
+                        li.innerHTML = highlightMatch(resource.title, query);
+
+                        li.addEventListener('click', () => {
+                            searchInput.value = resource.title;
+                            suggestionsList.style.display = 'none';
+                            filterResources(resource.title);
+                            scrollToResource(resource.id);
+                        });
+                        suggestionsList.appendChild(li);
+                    });
+                    suggestionsList.style.display = 'block';
+                } else {
+                    suggestionsList.style.display = 'none';
+                }
+            }
+
+             // --- 2a. Scroll ---
+            function scrollToResource(resourceId) {
+                const element = document.getElementById(resourceId);
+                if (!element) return;
+
+                let collapseElement = element.closest('.accordion-collapse');
+
+                if (collapseElement && mainAccordionElement) {
+                     const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+                     if (!collapseElement.classList.contains('show')) {
+                        bsCollapse.show();
+                        collapseElement.addEventListener('shown.bs.collapse', () => {
+                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                             element.style.transition = 'background-color 0.5s ease';
+                             element.style.backgroundColor = '#e2d9f3'; // Light purple highlight
+                             setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                        }, { once: true });
+                     } else {
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          element.style.transition = 'background-color 0.5s ease';
+                          element.style.backgroundColor = '#e2d9f3';
+                          setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                     }
+                } else {
+                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            // --- 3. Filtering ---
+            function filterResources(query) {
+                const lowerCaseQuery = query.toLowerCase().trim();
+                let matchFound = false;
+
+                if (!lowerCaseQuery) {
+                    resourceItems.forEach(item => item.classList.remove('resource-hidden'));
+                    noResultsMessage.style.display = 'none';
+                    clearSearchButton.style.display = 'none';
+                    return;
+                }
+
+                clearSearchButton.style.display = 'inline-block';
+
+                resourceItems.forEach(item => {
+                    const resourceData = resourcesData.find(r => r.id === item.id);
+                    const textToSearch = resourceData ? resourceData.fullText : (item.textContent || '').toLowerCase();
+
+                    if (textToSearch.includes(lowerCaseQuery)) {
+                        item.classList.remove('resource-hidden');
+                        matchFound = true;
+                    } else {
+                        item.classList.add('resource-hidden');
+                    }
+                });
+
+                noResultsMessage.style.display = matchFound ? 'none' : 'block';
+            }
+
+            // --- 4. Event Listeners ---
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value;
+                showSuggestions(query);
+                clearSearchButton.style.display = query ? 'inline-block' : 'none';
+                if (!query) {
+                     filterResources('');
+                     noResultsMessage.style.display = 'none';
+                 }
+            });
+
+             searchInput.addEventListener('keydown', (e) => {
+                 const items = suggestionsList.querySelectorAll('li');
+                 if (items.length === 0 || suggestionsList.style.display === 'none') return;
+
+                 if (e.key === 'ArrowDown') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex + 1) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'ArrowUp') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex - 1 + items.length) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'Enter') {
+                      e.preventDefault();
+                      if (currentSuggestionIndex > -1 && items[currentSuggestionIndex]) {
+                         items[currentSuggestionIndex].click();
+                      } else {
+                         searchForm.requestSubmit();
+                      }
+                 } else if (e.key === 'Escape') {
+                     suggestionsList.style.display = 'none';
+                 }
+             });
+
+            function updateSuggestionHighlight(items) {
+                 items.forEach((item, index) => {
+                     if (index === currentSuggestionIndex) {
+                         item.classList.add('active-suggestion');
+                         item.scrollIntoView({ block: 'nearest' });
+                     } else {
+                         item.classList.remove('active-suggestion');
+                     }
+                 });
+             }
+
+            document.addEventListener('click', (event) => {
+                const searchWrapper = document.getElementById('search-wrapper');
+                if (searchWrapper && !searchWrapper.contains(event.target)) {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+
+             searchForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const query = searchInput.value;
+                suggestionsList.style.display = 'none';
+                filterResources(query);
+             });
+
+             clearSearchButton.addEventListener('click', () => {
+                 searchInput.value = '';
+                 filterResources('');
+                 noResultsMessage.style.display = 'none';
+                 clearSearchButton.style.display = 'none';
+                 searchInput.focus();
+                 suggestionsList.style.display = 'none';
+             });
+
+             showAllButton.addEventListener('click', () => {
+                  searchInput.value = '';
+                  filterResources('');
+                  noResultsMessage.style.display = 'none';
+                  clearSearchButton.style.display = 'none';
+             });
+
+            // --- 5. Initial Setup ---
+            prepareResourceData();
+
+        }); // End DOMContentLoaded
+    </script>
+
 </body>
 </html>

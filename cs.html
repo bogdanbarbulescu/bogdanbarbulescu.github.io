@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The Ultimate Tech Resource Hub - BVB</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        /* Custom styles for better spacing and visual appeal */
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .card {
+            margin-bottom: 1.5rem;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+            border: none; /* Cleaner look */
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.07); /* Subtle shadow */
+            background-color: #fff; /* White cards */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.12);
+        }
+        .card-title {
+            font-weight: 600; /* Slightly bolder */
+            font-size: 1.1rem;
+            color: #343a40;
+        }
+        .card-body {
+             min-height: 180px; /* Give cards a consistent minimum height */
+             display: flex;
+             flex-direction: column;
+        }
+        .card-text {
+            color: #495057;
+            font-size: 0.9rem;
+        }
+        .card-link i, .resource-list-item i {
+            margin-right: 0.4rem;
+            vertical-align: middle; /* Align icons better */
+        }
+        .badge {
+             margin-right: 0.3rem;
+             margin-bottom: 0.5rem;
+             font-size: 0.75em;
+             padding: 0.3em 0.6em; /* Adjust padding */
+             display: inline-block; /* Ensure wrapping */
+        }
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 1rem; /* Space between accordion items */
+            border: none;
+            border-radius: 0.375rem; /* Bootstrap default */
+             box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+             background-color: #fff;
+        }
+        .accordion-header {
+            border-top-left-radius: 0.375rem;
+            border-top-right-radius: 0.375rem;
+        }
+        .accordion-button {
+             font-weight: 700;
+             font-size: 1.2rem;
+             color: #343a40;
+             background-color: #e9ecef; /* Light header */
+             border-top-left-radius: calc(0.375rem - 1px); /* Match item radius */
+             border-top-right-radius: calc(0.375rem - 1px);
+             border-bottom: 1px solid rgba(0,0,0,.08); /* Subtle separator */
+        }
+        .accordion-button:not(.collapsed) {
+            color: #056480; /* Darker cyan when open */
+            background-color: #e0f7ff; /* Lighter blue/cyan when open */
+            box-shadow: none; /* Remove default BS shadow */
+            border-bottom: 1px solid #ade8f4;
+        }
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 202, 240, 0.25); /* Info color focus */
+            z-index: 3; /* Ensure focus outline is visible */
+        }
+        .accordion-body {
+            padding: 1.5rem; /* More padding inside */
+        }
+
+        .section-intro {
+            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            color: #6c757d;
+            font-size: 0.95rem;
+        }
+        /* Style for resource lists within sections */
+        .resource-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .resource-list-item {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: list-item; /* Default display for JS */
+            transition: opacity 0.3s ease-out;
+            padding: 0.25rem 0; /* Small padding */
+        }
+        .resource-list-item a {
+            text-decoration: none;
+            color: #0d6efd;
+            font-weight: 500; /* Slightly bolder links */
+        }
+         .resource-list-item a:hover {
+            text-decoration: underline;
+         }
+        .resource-list-item .text-muted {
+             font-size: 0.85em;
+             margin-left: 0.5rem;
+             display: inline; /* Keep on same line */
+             color: #6c757d !important;
+        }
+        /* Sub-headings within sections */
+        h5.sub-section-title {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #495057;
+            padding-bottom: 0.3rem;
+            border-bottom: 1px solid #dee2e6; /* Subtle separator */
+        }
+        h5.sub-section-title:first-of-type {
+            margin-top: 0.5rem; /* Less margin for first sub-heading */
+        }
+        .placeholder-card {
+            border: 2px dashed #adb5bd;
+            background-color: #f1f3f5;
+        }
+        /* Search Styles */
+        #search-wrapper {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        #suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border: 1px solid #ced4da;
+            border-top: none;
+            max-height: 250px; /* Slightly taller */
+            overflow-y: auto;
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15);
+            border-bottom-left-radius: 0.375rem;
+            border-bottom-right-radius: 0.375rem;
+        }
+        #suggestions li {
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        #suggestions li:hover, #suggestions li.active-suggestion { /* Style for hover and keyboard navigation */
+            background-color: #e9ecef;
+        }
+        /* Class to hide items during search */
+        .resource-hidden {
+             display: none !important; /* Override card/list display */
+        }
+        .card.resource-hidden {
+             /* Ensure cards fully hide if using display:none */
+             padding: 0;
+             border: none;
+             margin-bottom: 0;
+             height: 0;
+             overflow: hidden;
+        }
+         /* Highlight search term */
+        .highlight {
+            background-color: #fff3cd; /* Bootstrap warning light */
+            font-weight: bold;
+            padding: 0.1em 0;
+        }
+        /* Style for no results message */
+        #no-results-message {
+            display: none; /* Hidden by default */
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">BVB Tech Hub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-5">
+        <section id="resources">
+            <div class="container">
+                <h2 class="text-center display-5 text-dark mb-3 fw-bold">The Ultimate Tech Resource Hub</h2>
+                <p class="lead text-center text-muted mb-5">Explore curated tools, guides, and cheat sheets across Cybersecurity, Development, Cloud, AI, and more.</p>
+
+                 <!-- Search Bar -->
+                <div id="search-wrapper">
+                    <form id="search-form" role="search" autocomplete="off"> <!-- Disable browser autocomplete -->
+                        <div class="input-group input-group-lg">
+                            <span class="input-group-text" id="search-icon"><i class="bi bi-search"></i></span>
+                            <input type="search" class="form-control" id="search-input" placeholder="Search resources (e.g., Python, Nmap, AWS)..." aria-label="Search" aria-describedby="search-icon">
+                            <button class="btn btn-outline-primary" type="submit" id="search-button">Search</button>
+                            <button class="btn btn-outline-secondary" type="button" id="clear-search-button" title="Clear Search" style="display: none;"><i class="bi bi-x-lg"></i></button> <!-- Clear button -->
+                        </div>
+                    </form>
+                     <ul id="suggestions"></ul> <!-- Autocomplete suggestions -->
+                </div>
+                 <!-- End Search Bar -->
+
+                <!-- Message for No Search Results -->
+                <div id="no-results-message">
+                    <p class="fs-5"><i class="bi bi-emoji-frown me-2"></i>No resources found matching your search term.</p>
+                    <button class="btn btn-sm btn-outline-secondary" id="show-all-button">Show All Resources</button>
+                </div>
+
+                <!-- Main Accordion -->
+                <div class="accordion" id="resourceAccordion">
+
+                    <!-- ########## Red Team Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingRedTeam">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRedTeam" aria-expanded="true" aria-controls="collapseRedTeam">
+                                <i class="bi bi-fire me-2"></i>Red Team & Offensive Security
+                            </button>
+                        </h2>
+                        <div id="collapseRedTeam" class="accordion-collapse collapse show" aria-labelledby="headingRedTeam" data-bs-parent="#resourceAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Tools, techniques, and resources for penetration testing, ethical hacking, and simulating attacks.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-book-half me-2"></i>Learning, Notes & Roadmaps</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-ejpt-notes-maisam" data-title="eJPT Notes maisamnoyan" data-keywords="ejpt, notes, learning, pentest, certification, elearnsecurity"><a href="https://github.com/maisamnoyan/eJPT" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPT Notes (maisamnoyan)</a> <span class="text-muted">- ADD DESCRIPTION HERE</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-ine-notes-sysel" data-title="INE Notes syselement" data-keywords="ine, notes, learning, pentest, security, cybersecurity, course"><a href="https://github.com/syselement/ine-notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>INE Notes (syselement)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Likely security/pentesting notes for INE courses).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-ejpt-roadmap-nyx" data-title="eJPT Roadmap nyxragon" data-keywords="ejpt, roadmap, learning, pentest, certification, guide, study plan"><a href="https://github.com/nyxragon/ejpt-roadmap" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPT Roadmap (nyxragon)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Study plan/guide for eJPT).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-ejptv2-prep-xal" data-title="eJPTv2 Preparation xalgord" data-keywords="ejpt, ejptv2, learning, pentest, certification, notes, preparation"><a href="https://github.com/xalgord/ejPTv2-Preparation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>eJPTv2 Preparation (xalgord)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources/notes for eJPTv2).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-hacking-books-tanc7" data-title="Hacking Books Collection tanc7" data-keywords="hacking, books, learning, security, pentest, reference, reading list"><a href="https://github.com/tanc7/hacking-books" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Hacking Books Collection (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (List of recommended hacking books).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-hacker-notes-nil" data-title="Awesome Hacker Note-Taking nil0x42" data-keywords="hacking, notes, note taking, organization, tools, pentest, obsidian, methodology"><a href="https://github.com/nil0x42/awesome-hacker-note-taking" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Awesome Hacker Note-Taking</a> <span class="text-muted">- ADD DESCRIPTION HERE (Methods & tools for effective notes during engagements).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-mindmaps-ignite" data-title="Security Mindmaps Ignitetechnologies" data-keywords="mindmap, security, pentest, learning, visual, cheatsheet, methodology"><a href="https://github.com/Ignitetechnologies/Mindmap" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Security Mindmaps (Ignitetechnologies)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Visual mindmaps for security concepts/pentesting).</span></li>
+                                </ul>
+                                 <div class="row"> <!-- Cards for Learning Resources -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-offensive-zeyad">
+                                        <div class="card h-100" data-title="Offensive Resources Zeyad-Azima" data-keywords="red team, offensive, security, learning, collection, links, awesome list">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-collection-fill me-1"></i>Offensive Resources (Zeyad-Azima)</h5>
+                                                <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of various offensive security links).</p>
+                                                <div class="mt-auto pt-2"> <!-- Push badges and button to bottom -->
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Collection</span>
+                                                    <a href="https://github.com/Zeyad-Azima/Offensive-Resources" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div><!-- /row -->
+
+
+                                <h5 class="sub-section-title"><i class="bi bi-journal-text me-2"></i>Guides, Reports & Methodologies</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-awesome-pentest" data-title="Awesome Pentest enaqx" data-keywords="pentest, security, red team, awesome list, collection, guide, tools, resources"><a href="https://github.com/enaqx/awesome-pentest" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Awesome Pentest</a> <span class="text-muted">- Comprehensive list of pentesting resources, tools, and guides.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-public-reports" data-title="Public Pentesting Reports juliocesarfort" data-keywords="pentest, report, security, learning, example, red team, disclosure"><a href="https://github.com/juliocesarfort/public-pentesting-reports" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Public Pentesting Reports</a> <span class="text-muted">- Learn from real-world penetration test reports.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-owasp-guide-voorivex" data-title="OWASP Pentest Guide Voorivex" data-keywords="pentest, owasp, guide, security, methodology, checklist, testing"><a href="https://github.com/Voorivex/pentest-guide" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>OWASP Pentest Guide - Voorivex</a> <span class="text-muted">- Structured guide based on OWASP, including test cases.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-everything" data-title="Pentest Everything Notes The-Viper-One" data-keywords="pentest, notes, oscp, ad, active directory, writeup, guide, learning, cheatsheet, crte, ejpt"><a href="https://github.com/The-Viper-One/Pentest-Everything" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Everything Notes</a> <span class="text-muted">- Extensive notes, writeups (OSCP, AD, CRTE, eJPT etc.).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-bookmarks-jhaddix" data-title="JHaddix Pentest Bookmarks" data-keywords="pentest, bookmarks, collection, links, security, reference, tools, resources"><a href="https://github.com/jhaddix/pentest-bookmarks/blob/master/wiki/BookmarksList.wiki" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>JHaddix Pentest Bookmarks</a> <span class="text-muted">- Massive curated bookmark list for pentesters.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-checklists-netbiosx" data-title="Red Teaming Pentest Checklists netbiosX" data-keywords="pentest, checklist, red team, methodology, guide, engagement"><a href="https://github.com/netbiosX/Checklists" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Red Teaming & Pentest Checklists</a> <span class="text-muted">- Checklists for various engagement types.</span></li>
+                                </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-lightning-charge-fill me-2"></i>Payloads & Cheatsheets</h5>
+                                <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-payloads-all-things" data-title="Payloads All The Things swisskyrepo" data-keywords="payload, security, web app, api, pentest, ctf, bypass, cheatsheet, injection"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Payloads All The Things</a> <span class="text-muted">- Essential payloads and bypasses for Web App Sec, Pentest, CTF.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-sheets-kitsune" data-title="Pentest Cheat Sheets Kitsun3Sec" data-keywords="pentest, cheatsheet, snippets, commands, reference, code"><a href="https://github.com/Kitsun3Sec/Pentest-Cheat-Sheets" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Cheat Sheets - Kitsun3Sec</a> <span class="text-muted">- Snippets and command references.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-sheets-tib3rius" data-title="Pentest Cheatsheets Tib3rius" data-keywords="pentest, cheatsheet, reference, security, commands"><a href="https://github.com/Tib3rius/Pentest-Cheatsheets" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Cheatsheets - Tib3rius</a> <span class="text-muted">- Focused pentesting references.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-notes-sofiane" data-title="Pentest Notes Collection SofianeHamlaoui" data-keywords="pentest, notes, cheatsheet, collection, reference, aggregation"><a href="https://github.com/SofianeHamlaoui/Pentest-Notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Notes Collection</a> <span class="text-muted">- Aggregated notes and sheets from multiple repos.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-pentest-comp-adon90" data-title="Pentest Compilation adon90" data-keywords="pentest, commands, tips, scripts, cheatsheet, reference, oscp, vulnhub, htb"><a href="https://github.com/adon90/pentest_compilation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Pentest Compilation - adon90</a> <span class="text-muted">- Commands, tips, scripts from real scenarios & CTFs.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-metasploit-sheet-comp" data-title="Metasploit Cheat Sheet Comparitech" data-keywords="metasploit, msfconsole, pentest, cheatsheet, commands, reference, exploit"><a href="https://www.comparitech.com/net-admin/metasploit-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Metasploit Cheat Sheet</a> <span class="text-muted">- Quick reference for common Metasploit commands.</span></li>
+                                </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-arrow-up-right-square-fill me-2"></i>Privilege Escalation</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-privesc-ignite" data-title="Privilege Escalation Techniques Ignitetechnologies" data-keywords="privilege escalation, privesc, hacking, linux, windows, techniques, notes, cheatsheet"><a href="https://github.com/Ignitetechnologies/Privilege-Escalation" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Privilege Escalation Techniques (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection of privesc methods/notes).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-privesc-tcm-win" data-title="TCM Windows Privilege Escalation Resources" data-keywords="privilege escalation, privesc, windows, tcm security, learning, resources, course"><a href="https://github.com/TCM-Course-Resources/Windows-Privilege-Escalation-Resources" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>TCM Windows PrivEsc Resources</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources accompanying TCM Security course).</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-easypeasey-tanc7" data-title="EasyPeasey Linux PrivEsc Script tanc7" data-keywords="privilege escalation, privesc, linux, script, automation, tool, enumeration"><a href="https://github.com/tanc7/EasyPeasey" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>EasyPeasey Linux PrivEsc Script</a> <span class="text-muted">- ADD DESCRIPTION HERE (Automated script for Linux privesc checks).</span></li>
+                                 </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-terminal-fill me-2"></i>Tools & Frameworks</h5>
+                                <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-revshell-gen">
+                                         <div class="card h-100" data-title="Reverse Shell Generator 0dayCTF" data-keywords="reverse shell, payload, generator, pentest, ctf, tool, web">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-terminal-plus me-1"></i>Reverse Shell Generator</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Web-based generator for various reverse shell commands).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Payload</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/0dayCTF/reverse-shell-generator" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-redteam-tools-apoc">
+                                         <div class="card h-100" data-title="RedTeam Tools A-poc" data-keywords="red team, tools, collection, security, offensive, hacking">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-tools me-1"></i>RedTeam Tools (A-poc)</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of various Red Team tools).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-secondary">Collection</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/A-poc/RedTeam-Tools" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-impacket">
+                                         <div class="card h-100" data-title="Impacket fortra" data-keywords="impacket, python, network, protocols, smb, kerberos, dcerpc, pentest, library, windows, ad">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-bezier2 me-1"></i>Impacket</h5>
+                                                 <p class="card-text flex-grow-1">Collection of Python classes for working with network protocols. Widely used in pentesting.</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-primary">Python</span><span class="badge bg-warning text-dark">Network</span><span class="badge bg-secondary">Library</span>
+                                                     <a href="https://github.com/fortra/impacket" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-pupy-rat">
+                                        <div class="card h-100" data-title="Pupy RAT tanc7" data-keywords="pupy, rat, c2, command control, remote access, tool, red team, payload, post exploitation">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-plug-fill me-1"></i>Pupy RAT</h5>
+                                                <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Open source, cross-platform Remote Administration Tool).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">C2</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/tanc7/pupy" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-crackmapexec">
+                                        <div class="card h-100" data-title="CrackMapExec byt3bl33d3r" data-keywords="crackmapexec, cme, pentest, network, windows, active directory, ad, tool, smb, winrm">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-person-bounding-box me-1"></i>CrackMapExec</h5>
+                                                <p class="card-text flex-grow-1">Swiss army knife for pentesting networks, especially Windows/AD environments.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Network</span><span class="badge bg-info text-dark">Windows</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/byt3bl33d3r/CrackMapExec" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-evil-winrm">
+                                        <div class="card h-100" data-title="Evil-WinRM Hackplayers" data-keywords="evil-winrm, winrm, windows, powershell, remote access, tool, pentest, shell">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-terminal-dash me-1"></i>Evil-WinRM</h5>
+                                                <p class="card-text flex-grow-1">The ultimate WinRM shell for hacking/pentesting Windows environments.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-info text-dark">Windows</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/Hackplayers/evil-winrm" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-linux-smart-enum">
+                                        <div class="card h-100" data-title="Linux Smart Enumeration diego-treitos" data-keywords="linux, enumeration, privesc, pentest, ctf, script, tool, recon">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-binoculars-fill me-1"></i>Linux Smart Enumeration</h5>
+                                                <p class="card-text flex-grow-1">Linux enumeration tool for pentesting and CTFs with verbosity levels.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-info text-dark">Linux</span><span class="badge bg-warning text-dark">Enumeration</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/diego-treitos/linux-smart-enumeration" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-pwndoc">
+                                        <div class="card h-100" data-title="pwndoc Pentest Report Generator" data-keywords="pwndoc, pentest, report, reporting, tool, collaboration, documentation">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-file-earmark-text me-1"></i>pwndoc</h5>
+                                                <p class="card-text flex-grow-1">Collaborative pentest reporting application. Generate professional reports easily.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Reporting</span> <span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/pwndoc/pwndoc" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <!-- Add cards for gwen001/pentest-tools, dloss/python-pentest-tools, JohnHammond, Chudry/Xerror, Reconator etc. -->
+                                </div> <!-- /row -->
+
+                                <h5 class="sub-section-title"><i class="bi bi-code-slash me-2"></i>Exploit Development</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-exploit-dev-tools">
+                                         <div class="card h-100" data-title="Exploit Development Tools tanc7" data-keywords="exploit development, exploit, tools, collection, security, red team, reversing, shellcode">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-hammer me-1"></i>Exploit Development Tools (tanc7)</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of tools useful for exploit development).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-danger">Red Team</span><span class="badge bg-warning text-dark">Exploit Dev</span><span class="badge bg-secondary">Collection</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/tanc7/Exploit-Development-Tools" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div><!-- /row -->
+
+                                <h5 class="sub-section-title"><i class="bi bi-hdd-network-fill me-2"></i>Labs & CTFs</h5>
+                                 <ul class="resource-list mb-4">
+                                     <li class="resource-list-item searchable-resource" id="resource-vulnhub-writeups-ignite" data-title="Vulnhub CTF Writeups Ignitetechnologies" data-keywords="vulnhub, ctf, writeup, walkthrough, learning, pentest, practice"><a href="https://github.com/Ignitetechnologies/Vulnhub-CTF-Writeups" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Vulnhub CTF Writeups (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection of writeups for Vulnhub machines).</span></li>
+                                     <li class="resource-list-item searchable-resource" id="resource-ctf-difficulty-ignite" data-title="CTF Difficulty Resources Ignitetechnologies" data-keywords="ctf, difficulty, learning, resources, guide, capture the flag"><a href="https://github.com/Ignitetechnologies/CTF-Difficulty" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>CTF Difficulty Resources (Ignite)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Resources related to CTF difficulties/types).</span></li>
+                                 </ul>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-capsulecorp-lab">
+                                        <div class="card h-100" data-title="Capsulecorp Pentest Env R3dy" data-keywords="pentest, lab, environment, vagrant, virtualbox, internal network, practice, learning">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-box-seam me-1"></i>Capsulecorp Pentest Env</h5>
+                                                <p class="card-text flex-grow-1">Vagrant/VirtualBox environment for internal network penetration testing practice.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-danger">Red Team</span><span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Lab</span><span class="badge bg-secondary">Vagrant</span>
+                                                    <a href="https://github.com/R3dy/capsulecorp-pentest" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add cards for Sliim/pentest-env, Sliim/pentest-lab -->
+                                 </div> <!-- /row -->
+                            </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Blue Team Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBlueTeam">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBlueTeam" aria-expanded="false" aria-controls="collapseBlueTeam">
+                                <i class="bi bi-shield-shaded me-2"></i>Blue Team & Defensive Security
+                            </button>
+                        </h2>
+                        <div id="collapseBlueTeam" class="accordion-collapse collapse" aria-labelledby="headingBlueTeam" data-bs-parent="#resourceAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Resources for threat detection, incident response, forensics, and securing systems.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Guides & Cheatsheets</h5>
+                                 <ul class="resource-list mb-4">
+                                     <li class="resource-list-item searchable-resource" id="resource-sans-sheets" data-title="Ultimate SANS Cheat Sheets" data-keywords="sans, cheatsheet, security, blue team, dfir, incident response, forensics, reference, defense"><a href="https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Ultimate SANS Cheat Sheets</a> <span class="text-muted">- Gold standard sheets for DFIR, Security Essentials, etc.</span></li>
+                                     <li class="resource-list-item searchable-resource" id="resource-cheatography-security" data-title="Cheatography Security Collection" data-keywords="cheatsheet, security, collection, reference, blue team, defense, general"><a href="https://cheatography.com/tag/security/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Cheatography Security Collection</a> <span class="text-muted">- Various defensive and general security topics.</span></li>
+                                     <li class="resource-list-item searchable-resource" id="resource-win-audit-policy" data-title="Windows Security Audit Policy Cheatsheet Microsoft" data-keywords="windows, security, audit, policy, cheatsheet, blue team, logging, configuration"><a href="https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/audit-policy-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-microsoft"></i>Windows Security Audit Policy</a> <span class="text-muted">- Reference for configuring Windows auditing effectively.</span></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-search me-2"></i>Tools & Platforms</h5>
+                                <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cve-search">
+                                        <div class="card h-100" data-title="cve-search vulnerability database" data-keywords="cve, vulnerability, search, database, tool, blue team, threat intelligence, management">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-search me-1"></i>cve-search</h5>
+                                                <p class="card-text flex-grow-1">Tool to perform local searches for known vulnerabilities (CVEs). Essential for vuln management.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-info text-dark">Blue Team</span><span class="badge bg-warning text-dark">Vulnerability Management</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/cve-search/cve-search" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-blue-team-placeholder">
+                                         <div class="card h-100 placeholder-card" data-title="Blue Team Tools Placeholder" data-keywords="blue team, defensive security, tools, siem, forensics, threat hunting, incident response">
+                                             <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                 <h5 class="card-title text-muted"><i class="bi bi-binoculars me-1"></i>More Tools Coming</h5>
+                                                 <p class="card-text text-muted">Looking for great Blue Team tools (SIEM, Forensics, etc.) to add here!</p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div> <!-- /row -->
+                            </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Networking Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNetworking">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNetworking" aria-expanded="false" aria-controls="collapseNetworking">
+                                <i class="bi bi-diagram-3-fill me-2"></i>Networking
+                             </button>
+                        </h2>
+                        <div id="collapseNetworking" class="accordion-collapse collapse" aria-labelledby="headingNetworking" data-bs-parent="#resourceAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Understanding protocols, configuration, troubleshooting, and network analysis.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-cheatography-network" data-title="Cheatography Network Collection" data-keywords="network, networking, cheatsheet, reference, protocols, commands, configuration"><a href="https://cheatography.com/tag/network/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Cheatography Network Collection</a> <span class="text-muted">- 90+ sheets on various network topics.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-packetlife-sheets" data-title="PacketLife Protocol Cheat Sheets" data-keywords="network, protocol, cheatsheet, reference, tcp, ip, udp, packetlife, detailed"><a href="https://www.packetlife.net/library/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> PacketLife Protocol Sheets</a> <span class="text-muted">- Excellent, detailed protocol references.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-subnetting-guide" data-title="Practical Subnetting Guide PracticalNetworking" data-keywords="network, subnetting, subnet, ip address, guide, learning, calculation"><a href="https://www.practicalnetworking.net/stand-alone/subnetting-guide/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Practical Subnetting Guide</a> <span class="text-muted">- Master subnetting with this clear guide.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-wireshark-sheet-stationx" data-title="StationX Wireshark Cheat Sheet" data-keywords="wireshark, network, analysis, packet capture, cheatsheet, filters, tool, troubleshooting"><a href="https://www.stationx.net/wireshark-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> StationX Wireshark Sheet</a> <span class="text-muted">- Essential filters and tips for Wireshark.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-linux-net-sheet-redhat" data-title="Red Hat Linux Networking Cheat Sheet" data-keywords="linux, networking, commands, cheatsheet, red hat, reference, sysadmin"><a href="https://www.redhat.com/sysadmin/linux-networking-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Red Hat Linux Networking Sheet</a> <span class="text-muted">- Key Linux network commands reference.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-ipcisco-sheets" data-title="ipCisco Cheat Sheets" data-keywords="network, cisco, commands, cheatsheet, reference, configuration, routing, switching"><a href="https://ipcisco.com/cheat-sheets/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> ipCisco Cheat Sheets</a> <span class="text-muted">- Various networking command references.</span></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-hdd-network me-2"></i>Tools & Labs</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cisco-images">
+                                         <div class="card h-100" data-title="Cisco Images for GNS3/EVE-NG bogdanbarbulescu" data-keywords="cisco, gns3, eve-ng, network, simulation, lab, ios, iou, images, practice">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-hdd-rack-fill me-1"></i>Cisco Images for GNS3/EVE-NG</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Collection of Cisco IOS/IOU images for network simulation).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Networking</span><span class="badge bg-warning text-dark">Lab</span><span class="badge bg-info text-dark">Cisco</span><span class="badge bg-secondary">Resource</span>
+                                                     <a href="https://github.com/bogdanbarbulescu/Cisco-Images-for-GNS3-and-EVE-NG" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <!-- Add other networking tools like Wireshark link if desired -->
+                                 </div><!-- /row -->
+                            </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## DevOps Accordion Item ########## -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingDevOps">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDevOps" aria-expanded="false" aria-controls="collapseDevOps">
+                                <i class="bi bi-gear-wide-connected me-2"></i>DevOps & Automation
+                            </button>
+                        </h2>
+                        <div id="collapseDevOps" class="accordion-collapse collapse" aria-labelledby="headingDevOps" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                <p class="section-intro">Tools and practices for automating infrastructure, CI/CD pipelines, configuration management, and deployment.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Guides</h5>
+                                 <ul class="resource-list mb-4">
+                                     <li class="resource-list-item searchable-resource" id="resource-ansible-sheet-edureka" data-title="Edureka Ansible Cheat Sheet PDF" data-keywords="ansible, devops, automation, configuration management, cheatsheet, reference, pdf"><a href="https://www.edureka.co/blog/wp-content/uploads/2018/11/Ansible-Cheat_Sheet_Edureka.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Edureka Ansible Cheat Sheet (PDF)</a> <span class="text-muted">- Quick start for Ansible commands/modules.</span></li>
+                                      <li class="resource-list-item searchable-resource" id="resource-django-deploy-guide" data-title="Deploying Django w/ Gunicorn Guide Reintech" data-keywords="django, python, deployment, gunicorn, ubuntu, guide, tutorial, devops, web app"><a href="https://reintech.io/blog/deploying-django-app-gunicorn-ubuntu" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>Deploying Django w/ Gunicorn Guide</a> <span class="text-muted">- Practical deployment tutorial.</span></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools & Platforms</h5>
+                                 <div class="row">
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-saltstack">
+                                        <div class="card h-100" data-title="Salt SaltStack" data-keywords="salt, saltstack, devops, automation, configuration management, infrastructure, tool, python">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-layers-fill me-1"></i>Salt (SaltStack)</h5>
+                                                <p class="card-text flex-grow-1">Powerful software for automating the management and configuration of any infrastructure.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">DevOps</span><span class="badge bg-warning text-dark">Automation</span><span class="badge bg-info text-dark">Config Mgmt</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/saltstack/salt" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-predator-loadtest">
+                                        <div class="card h-100" data-title="Predator Load Testing Zooz" data-keywords="predator, load testing, performance, api, tool, devops, stress testing">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-speedometer2 me-1"></i>Predator Load Testing</h5>
+                                                <p class="card-text flex-grow-1">Open-source platform for load testing APIs effectively.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-success">DevOps</span><span class="badge bg-warning text-dark">Testing</span><span class="badge bg-info text-dark">API</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/Zooz/predator" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add Ansible tool card if desired (link to docs/repo) -->
+                                 </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Web App & API Security Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingWebAppApiSec">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWebAppApiSec" aria-expanded="false" aria-controls="collapseWebAppApiSec">
+                                <i class="bi bi-shield-check me-2"></i>Web App & API Security
+                             </button>
+                        </h2>
+                        <div id="collapseWebAppApiSec" class="accordion-collapse collapse" aria-labelledby="headingWebAppApiSec" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Securing web applications and APIs against common vulnerabilities and attacks.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-check2-square me-2"></i>Checklists & Cheatsheets</h5>
+                                 <ul class="resource-list mb-4">
+                                     <li class="resource-list-item searchable-resource" id="resource-payloads-all-things-web" data-title="Payloads All The Things swisskyrepo (Web Focus)" data-keywords="payload, security, web app, api, pentest, ctf, bypass, cheatsheet, injection, xss, sqli"><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Payloads All The Things</a> <span class="text-muted">- Essential resource for web/API payloads & bypasses.</span></li>
+                                     <li class="resource-list-item searchable-resource" id="resource-webapp-checklist-hari" data-title="Web App Pentest Checklist Hari-prasaanth" data-keywords="web application, web app, pentest, security, checklist, methodology, owasp"><a href="https://github.com/Hari-prasaanth/Web-App-Pentest-Checklist" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Web App Pentest Checklist (Hari-prasaanth)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Comprehensive checklist for web app pentesting).</span></li>
+                                     <!-- Link to OWASP Top 10 Cheatsheet Series if possible -->
+                                     <li class="resource-list-item searchable-resource" id="resource-owasp-top10-placeholder" data-title="OWASP Top 10 Resources Placeholder" data-keywords="owasp, top 10, web application, security, vulnerabilities, guide, reference"><i class="bi bi-link-45deg"></i>OWASP Top 10 Resources <span class="text-muted">- (Find official OWASP link/cheatsheets).</span></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools</h5>
+                                  <div class="row">
+                                        <div class="col-md-6 col-lg-4 searchable-resource" id="resource-webapp-tools-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="Web App Security Tools Placeholder" data-keywords="web application, security, tools, scanner, proxy, burp suite, owasp zap">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-tools me-1"></i>Tools Coming Soon</h5>
+                                                     <p class="card-text text-muted">Looking for key Web App/API security tools (scanners, proxies) like Burp Suite, OWASP ZAP.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                  </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Mobile Security Accordion Item ########## -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingMobileSec">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMobileSec" aria-expanded="false" aria-controls="collapseMobileSec">
+                                 <i class="bi bi-phone-fill me-2"></i>Mobile Security
+                             </button>
+                         </h2>
+                         <div id="collapseMobileSec" class="accordion-collapse collapse" aria-labelledby="headingMobileSec" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Resources for securing mobile applications (Android/iOS) and mobile penetration testing.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-list-stars me-2"></i>Awesome Lists & Collections</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-mobile-sec">
+                                         <div class="card h-100" data-title="Awesome Mobile Security vaib25vicky" data-keywords="mobile security, android, ios, pentest, awesome list, collection, tools, resources">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-star-fill me-1"></i>Awesome Mobile Security</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of mobile security resources, tools, and papers).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-warning text-dark">Mobile Security</span><span class="badge bg-secondary">Collection</span>
+                                                      <a href="https://github.com/vaib25vicky/awesome-mobile-security" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div><!-- /row -->
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-mobile-pentest-sheet-tanc7" data-title="Mobile App Pentest Cheatsheet tanc7" data-keywords="mobile security, android, ios, pentest, cheatsheet, methodology, checklist"><a href="https://github.com/tanc7/MobileApp-Pentest-Cheatsheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Mobile App Pentest Cheatsheet (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Cheatsheet for mobile application pentesting).</span></li>
+                                 </ul>
+
+                                 <!-- Add Tools section if you find mobile specific tools like Frida, Objection etc. -->
+                                  <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools</h5>
+                                  <div class="row">
+                                       <div class="col-md-6 col-lg-4 searchable-resource" id="resource-mobile-tools-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="Mobile Security Tools Placeholder" data-keywords="mobile security, tools, frida, objection, analysis, reversing, android, ios">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-tools me-1"></i>Tools Coming Soon</h5>
+                                                     <p class="card-text text-muted">Adding links for tools like Frida, Objection, Drozer etc.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                  </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                         </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## OSINT Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOSINT">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOSINT" aria-expanded="false" aria-controls="collapseOSINT">
+                                 <i class="bi bi-binoculars me-2"></i>OSINT (Open Source Intelligence)
+                             </button>
+                        </h2>
+                        <div id="collapseOSINT" class="accordion-collapse collapse" aria-labelledby="headingOSINT" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Gathering information from publicly available sources for investigation or reconnaissance.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-tools me-2"></i>Tools & Libraries</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-search-query-parser">
+                                         <div class="card h-100" data-title="Search Query Parser Hacker0x01" data-keywords="osint, search engine, query parsing, library, automation, recon">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-search-heart me-1"></i>Search Query Parser</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Library for parsing search engine query strings, useful for OSINT automation).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">OSINT</span><span class="badge bg-primary">Development</span><span class="badge bg-secondary">Library</span>
+                                                      <a href="https://github.com/Hacker0x01/search-query-parser" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <!-- Reconator Card? (Already in Red Team section, decide if duplication needed) -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-osint-tools-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="OSINT Tools Placeholder" data-keywords="osint, open source intelligence, tools, frameworks, maltego, recon-ng, theharvester">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-search me-1"></i>More Resources Coming</h5>
+                                                     <p class="card-text text-muted">Adding more OSINT frameworks (like Maltego, Recon-ng) and specific tool links here.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                 </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Cloud Security Accordion Item ########## -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingCloudSec">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCloudSec" aria-expanded="false" aria-controls="collapseCloudSec">
+                                <i class="bi bi-cloud-check-fill me-2"></i>Cloud Security
+                            </button>
+                         </h2>
+                         <div id="collapseCloudSec" class="accordion-collapse collapse" aria-labelledby="headingCloudSec" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Securing cloud environments (AWS, Azure, GCP), configurations, and services.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-aws-sheet-ib" data-title="AWS Cheat Sheet InterviewBit" data-keywords="aws, cloud, security, cheatsheet, amazon web services, reference"><a href="https://www.interviewbit.com/aws-cheat-sheet/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i>AWS Cheat Sheet - InterviewBit</a></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-azure-sheet-milanm" data-title="Azure Cheat Sheet milanm" data-keywords="azure, cloud, security, cheatsheet, microsoft azure, reference"><a href="https://github.com/milanm/azure-cheat-sheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Azure Cheat Sheet - milanm</a></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-gcp-sheet-pdf" data-title="Google Cloud (gcloud) Cheat Sheet PDF" data-keywords="gcp, google cloud, gcloud, cheatsheet, pdf, reference, cli"><a href="https://cloud.google.com/static/sdk/docs/images/gcloud-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i>Google Cloud (gcloud) Cheat Sheet (PDF)</a></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-openstack-sheet-pdf" data-title="OpenStack Cheat Sheet Ubuntu PDF" data-keywords="openstack, cloud, cheatsheet, pdf, reference, ubuntu"><a href="https://assets.ubuntu.com/v1/2950553c-OpenStack%20cheat%20sheet%20-%20revised%20v3.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i>OpenStack Cheat Sheet - Ubuntu (PDF)</a></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-fire me-2"></i>Cloud Labs & Red Teaming</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-aws-redteam-lab-tanc7">
+                                         <div class="card h-100" data-title="AWS RedTeam AD Lab tanc7" data-keywords="aws, cloud security, red team, active directory, ad, lab, environment, practice">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-cloud-arrow-down-fill me-1"></i>AWS RedTeam AD Lab (tanc7)</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Setup for an AWS lab environment focused on Active Directory attacks).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-warning text-dark">Cloud Security</span><span class="badge bg-danger">Red Team</span><span class="badge bg-info text-dark">Lab</span><span class="badge bg-secondary">AWS</span>
+                                                     <a href="https://github.com/tanc7/AWS-RedTeam-ADLab" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <!-- Add Cloud Security tools cards if any (e.g., Prowler, Cloudsploit) -->
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cloud-tools-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="Cloud Security Tools Placeholder" data-keywords="cloud security, tools, aws, azure, gcp, prowler, cloudsploit, configuration audit">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-tools me-1"></i>Tools Coming Soon</h5>
+                                                     <p class="card-text text-muted">Adding links for cloud security tools like Prowler, Cloudsploit etc.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                 </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                         </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## IoT and Hardware Hacking Accordion Item ########## -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingIoTSec">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIoTSec" aria-expanded="false" aria-controls="collapseIoTSec">
+                                 <i class="bi bi-cpu-fill me-2"></i>IoT and Hardware Hacking
+                             </button>
+                         </h2>
+                         <div id="collapseIoTSec" class="accordion-collapse collapse" aria-labelledby="headingIoTSec" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Resources related to the security of Internet of Things devices and hardware analysis.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-bug-fill me-2"></i>Labs & Learning Platforms</h5>
+                                 <div class="row">
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-iotgoat">
+                                         <div class="card h-100" data-title="OWASP IoTGoat" data-keywords="iot, internet of things, security, lab, learning, vulnerable, firmware, owasp, practice">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-router-fill me-1"></i>OWASP IoTGoat</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Deliberately insecure firmware for learning IoT security testing).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">IoT Security</span><span class="badge bg-warning text-dark">Learning</span><span class="badge bg-info text-dark">Lab</span><span class="badge bg-secondary">OWASP</span>
+                                                     <a href="https://github.com/OWASP/IoTGoat" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-iot-hw-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="IoT Hardware Hacking Placeholder" data-keywords="iot, internet of things, hardware hacking, security, tools, resources, firmware analysis, jtag, uart">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-plug me-1"></i>More Resources Coming</h5>
+                                                     <p class="card-text text-muted">Adding links for IoT security and hardware hacking tools/guides.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                 </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                         </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## AI and Machine Learning Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingAIML">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAIML" aria-expanded="false" aria-controls="collapseAIML">
+                                <i class="bi bi-robot me-2"></i>AI and Machine Learning
+                            </button>
+                        </h2>
+                        <div id="collapseAIML" class="accordion-collapse collapse" aria-labelledby="headingAIML" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Libraries, platforms, and resources for developing and understanding AI/ML models.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-list-stars me-2"></i>Awesome Lists & Collections</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-ai">
+                                         <div class="card h-100" data-title="Awesome Artificial Intelligence owainlewis" data-keywords="ai, artificial intelligence, machine learning, ml, deep learning, awesome list, collection, resources, tools, frameworks">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-star-fill me-1"></i>Awesome Artificial Intelligence</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Curated list of AI courses, books, tools, and frameworks).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-success">AI/ML</span><span class="badge bg-secondary">Collection</span>
+                                                      <a href="https://github.com/owainlewis/awesome-artificial-intelligence" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div><!-- /row -->
+
+                                 <h5 class="sub-section-title"><i class="bi bi-book me-2"></i>Learning Resources & Notes</h5>
+                                  <ul class="resource-list mb-4">
+                                      <li class="resource-list-item searchable-resource" id="resource-andrew-ng-notes" data-title="Andrew NG Course Notes ashishpatel26" data-keywords="ai, machine learning, ml, deep learning, andrew ng, coursera, notes, learning"><a href="https://github.com/ashishpatel26/Andrew-NG-Notes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Andrew NG Course Notes</a> <span class="text-muted">- ADD DESCRIPTION HERE (Notes for Andrew Ng's popular ML/DL courses).</span></li>
+                                      <li class="resource-list-item searchable-resource" id="resource-dl-ml-tf-rcalix1" data-title="Deep Learning ML TensorFlow Resources rcalix1" data-keywords="ai, machine learning, ml, deep learning, tensorflow, resources, learning, collection"><a href="https://github.com/rcalix1/Deep-learning-ML-and-tensorflow" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>Deep Learning, ML & TensorFlow Resources</a> <span class="text-muted">- ADD DESCRIPTION HERE (Collection focused on DL/ML/TensorFlow).</span></li>
+                                  </ul>
+
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-aiml-tools-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="AI ML Tools Placeholder" data-keywords="ai, machine learning, ml, tools, frameworks, libraries, pytorch, tensorflow, scikit-learn">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-graph-up me-1"></i>More Tools Coming</h5>
+                                                     <p class="card-text text-muted">Curating links for AI/ML frameworks (PyTorch, TensorFlow), libraries, and datasets.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     <!-- Could add Python Data Science lib card here? -->
+                                 </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Software Development Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSoftwareDev">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSoftwareDev" aria-expanded="false" aria-controls="collapseSoftwareDev">
+                                <i class="bi bi-code-square me-2"></i>Software Development
+                            </button>
+                        </h2>
+                        <div id="collapseSoftwareDev" class="accordion-collapse collapse" aria-labelledby="headingSoftwareDev" data-bs-parent="#resourceAccordion">
+                            <div class="accordion-body">
+                                <p class="section-intro">Tools, frameworks, libraries, and best practices for building software.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Cheatsheets & Core Concepts</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item searchable-resource" id="resource-python3-memento" data-title="Python 3 Memento PDF" data-keywords="python, python3, cheatsheet, reference, syntax, pdf"><a href="https://perso.limsi.fr/pointal/_media/python:cours:mementopython3-english.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Python 3 Memento (PDF)</a> <span class="text-muted">- Concise Python 3 syntax.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-python-sheet-gto76" data-title="Python Cheat Sheet gto76" data-keywords="python, cheatsheet, reference, syntax, comprehensive"><a href="https://github.com/gto76/python-cheatsheet" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> Python Cheatsheet - gto76</a> <span class="text-muted">- Comprehensive Python reference.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-js-sheet-html" data-title="JavaScript Cheat Sheet HTMLCheatSheet" data-keywords="javascript, js, cheatsheet, reference, syntax, web development"><a href="https://htmlcheatsheet.com/js/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> JavaScript Cheat Sheet</a> <span class="text-muted">- Quick JS syntax/functions.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-html-css-sheet" data-title="HTML CSS Cheat Sheet HTMLCheatSheet" data-keywords="html, css, cheatsheet, reference, web development, frontend"><a href="https://htmlcheatsheet.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> HTML/CSS Cheat Sheet</a> <span class="text-muted">- Core web frontend reference.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-git-sheet-pdf" data-title="Git Cheat Sheet GitHub PDF" data-keywords="git, github, version control, commands, cheatsheet, reference, pdf"><a href="https://training.github.com/downloads/github-git-cheat-sheet.pdf" target="_blank" rel="noopener noreferrer"><i class="bi bi-file-earmark-pdf"></i> Git Cheat Sheet (PDF)</a> <span class="text-muted">- Essential Git commands.</span></li>
+                                    <li class="resource-list-item searchable-resource" id="resource-react-docs" data-title="React Docs Learn" data-keywords="react, javascript, frontend, library, documentation, learning, tutorial"><a href="https://react.dev/learn" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> React Docs (Learn)</a> <span class="text-muted">- Official learning path for React.</span></li>
+                                     <li class="resource-list-item searchable-resource" id="resource-vue-syntax" data-title="Vue.js Syntax v2 Guide" data-keywords="vue, vuejs, javascript, frontend, framework, reference, syntax"><a href="https://vuejs.org/v2/guide/syntax.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Vue.js Syntax (v2 Guide)</a> <span class="text-muted">- Reference for Vue 2 syntax.</span></li>
+                                 </ul>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-book-half me-2"></i>Learning & Notes</h5>
+                                 <ul class="resource-list mb-4">
+                                      <li class="resource-list-item searchable-resource" id="resource-codeacademy-notes-tanc7" data-title="CodeAcademy Notes tanc7" data-keywords="codeacademy, learning, notes, programming, development"><a href="https://github.com/tanc7/CodeAcademyNotes" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i>CodeAcademy Notes (tanc7)</a> <span class="text-muted">- ADD DESCRIPTION HERE (Notes from CodeAcademy courses).</span></li>
+                                 </ul>
+                                 <div class="row"> <!-- Learning Cards -->
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-for-beginners">
+                                        <div class="card h-100" data-title="Awesome for Beginners MunGell" data-keywords="learning, beginner, open source, contribution, projects, development">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-mortarboard me-1"></i>Awesome for Beginners</h5>
+                                                <p class="card-text flex-grow-1">Find open-source projects that are welcoming to new contributors.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Open Source</span><span class="badge bg-warning text-dark">Beginner</span>
+                                                     <a href="https://github.com/MunGell/awesome-for-beginners" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-app-ideas">
+                                        <div class="card h-100" data-title="Awesome App Ideas tastejs" data-keywords="learning, ideas, projects, development, practice, portfolio">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-lightbulb-fill me-1"></i>Awesome App Ideas</h5>
+                                                <p class="card-text flex-grow-1">A curated list of application ideas for practice or portfolio building.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span><span class="badge bg-warning text-dark">Ideas</span>
+                                                      <a href="https://github.com/tastejs/awesome-app-ideas" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div><!-- /row -->
+
+                                 <h5 class="sub-section-title"><i class="bi bi-box me-2"></i>Frameworks & Libraries (Python)</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-python-for-security">
+                                         <div class="card h-100" data-title="Python for Security CyberSecurityUP" data-keywords="python, security, cybersecurity, scripting, learning, resources, automation">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-shield-lock-fill me-1"></i>Python for Security (CyberSecurityUP)</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Resources/code for using Python in cybersecurity tasks).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Python</span><span class="badge bg-danger">Security</span><span class="badge bg-primary">Learning</span>
+                                                      <a href="https://github.com/CyberSecurityUP/Python-for-Security" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-python-datascience-lib">
+                                        <div class="card h-100" data-title="Python Data Science Library data-8" data-keywords="python, data science, library, learning, introductory, pandas, numpy">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bar-chart-line-fill me-1"></i>Python Data Science Lib</h5>
+                                                <p class="card-text flex-grow-1">A Python library designed for introductory data science courses (from data-8).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Python</span><span class="badge bg-warning text-dark">Data Science</span><span class="badge bg-secondary">Library</span>
+                                                    <a href="https://github.com/data-8/datascience" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-h2o-wave">
+                                        <div class="card h-100" data-title="H2O Wave Python R" data-keywords="python, r, web app, dashboard, realtime, framework, visualization, h2oai">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-display me-1"></i>H2O Wave (Python/R)</h5>
+                                                <p class="card-text flex-grow-1">Build realtime Web Apps and Dashboards quickly using Python or R.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Python</span><span class="badge bg-info text-dark">R</span><span class="badge bg-warning text-dark">Web App</span><span class="badge bg-secondary">Framework</span>
+                                                    <a href="https://github.com/h2oai/wave" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-scrapy">
+                                        <div class="card h-100" data-title="Scrapy Python Web Scraping" data-keywords="scrapy, python, web scraping, crawling, framework, data extraction">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-bug me-1"></i>Scrapy (Python)</h5>
+                                                <p class="card-text flex-grow-1">Fast, high-level web crawling and scraping framework for Python.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-primary">Python</span><span class="badge bg-warning text-dark">Web Scraping</span><span class="badge bg-secondary">Framework</span>
+                                                    <a href="https://github.com/scrapy/scrapy" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div><!-- /row -->
+
+                                 <h5 class="sub-section-title"><i class="bi bi-box me-2"></i>Frameworks & Libraries (JavaScript Ecosystem)</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-electron">
+                                        <div class="card h-100" data-title="Electron JS Desktop Apps" data-keywords="electron, javascript, desktop app, framework, cross-platform, html, css">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-display me-1"></i>Electron</h5>
+                                                <p class="card-text flex-grow-1">Build cross-platform desktop applications using JavaScript, HTML, and CSS.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Desktop App</span><span class="badge bg-secondary">Framework</span>
+                                                     <a href="https://github.com/electron/electron" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-gatsby">
+                                        <div class="card h-100" data-title="Gatsby React Framework" data-keywords="gatsby, react, javascript, framework, static site generator, web development, performance">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-file-richtext me-1"></i>Gatsby</h5>
+                                                <p class="card-text flex-grow-1">React-based framework for performance, scalability and security (Static Sites++).</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-primary">React</span><span class="badge bg-warning text-dark">Web Dev</span><span class="badge bg-secondary">Framework</span>
+                                                     <a href="https://github.com/gatsbyjs/gatsby" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-mui">
+                                        <div class="card h-100" data-title="Material UI MUI Core React" data-keywords="mui, material ui, react, javascript, ui components, library, design system, frontend">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-columns-gap me-1"></i>Material UI (MUI Core)</h5>
+                                                <p class="card-text flex-grow-1">Popular React UI component library implementing Material Design.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-primary">React</span><span class="badge bg-warning text-dark">UI/UX</span><span class="badge bg-secondary">Library</span>
+                                                     <a href="https://github.com/mui/material-ui" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-emberjs">
+                                        <div class="card h-100" data-title="Ember.js JavaScript Framework" data-keywords="emberjs, ember, javascript, framework, web development, frontend, ambitious web apps">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-app-indicator me-1"></i>Ember.js</h5>
+                                                <p class="card-text flex-grow-1">A productive JavaScript framework for creating ambitious web applications.</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Web Dev</span><span class="badge bg-secondary">Framework</span>
+                                                     <a href="https://github.com/emberjs/ember.js" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-meteor">
+                                        <div class="card h-100" data-title="Meteor JavaScript App Platform" data-keywords="meteor, javascript, framework, platform, full stack, web development, realtime">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-rocket-takeoff-fill me-1"></i>Meteor</h5>
+                                                <p class="card-text flex-grow-1">A full-stack JavaScript platform for developing modern web and mobile applications.</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Full Stack</span><span class="badge bg-secondary">Platform</span>
+                                                     <a href="https://github.com/meteor/meteor" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-nativescript">
+                                        <div class="card h-100" data-title="NativeScript Mobile Apps" data-keywords="nativescript, javascript, typescript, mobile app, native, ios, android, framework, angular, vue, react">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-phone me-1"></i>NativeScript</h5>
+                                                <p class="card-text flex-grow-1">Build truly native mobile apps with JavaScript, TypeScript, or Angular/Vue/React.</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Mobile App</span><span class="badge bg-secondary">Framework</span>
+                                                     <a href="https://github.com/NativeScript/NativeScript" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 searchable-resource" id="resource-p5js">
+                                        <div class="card h-100" data-title="p5.js Creative Coding Library" data-keywords="p5js, javascript, creative coding, visualization, art, library, processing">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-palette-fill me-1"></i>p5.js</h5>
+                                                <p class="card-text flex-grow-1">A JS library for creative coding, focusing on making coding accessible for artists, designers.</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-primary">Creative Coding</span><span class="badge bg-secondary">Library</span>
+                                                     <a href="https://github.com/processing/p5.js" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                 </div><!-- /row -->
+
+                                 <h5 class="sub-section-title"><i class="bi bi-check2-square me-2"></i>Testing & Utility Tools</h5>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-custom-tools-bvb">
+                                         <div class="card h-100" data-title="CustomTools bogdanbarbulescu" data-keywords="custom tools, scripts, utility, personal, development">
+                                              <div class="card-body d-flex flex-column">
+                                                 <h5 class="card-title"><i class="bi bi-tools me-1"></i>CustomTools (bogdanbarbulescu)</h5>
+                                                 <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (Your collection of custom scripts/tools - specify purpose).</p>
+                                                 <div class="mt-auto pt-2">
+                                                     <span class="badge bg-warning text-dark">Utility</span><span class="badge bg-secondary">Tool</span> <!-- Add more specific badges -->
+                                                      <a href="https://github.com/bogdanbarbulescu/CustomTools" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-cypress-testing">
+                                        <div class="card h-100" data-title="Cypress Testing Framework" data-keywords="cypress, testing, e2e, end-to-end, javascript, web development, tool, framework">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-clipboard-check me-1"></i>Cypress</h5>
+                                                <p class="card-text flex-grow-1">Fast, easy, and reliable end-to-end testing for anything that runs in a browser.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-success">Testing</span><span class="badge bg-warning text-dark">Web Dev</span><span class="badge bg-secondary">Tool</span>
+                                                    <a href="https://github.com/cypress-io/cypress" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-hyper-terminal">
+                                        <div class="card h-100" data-title="Hyper Terminal vercel" data-keywords="hyper, terminal, emulator, javascript, web technologies, tool, development">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-terminal me-1"></i>Hyper Terminal</h5>
+                                                <p class="card-text flex-grow-1">A beautiful and extensible terminal emulator built on web technologies.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Development</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/vercel/hyper" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-json-editor">
+                                        <div class="card h-100" data-title="JSON Editor json-editor" data-keywords="json, editor, schema, javascript, tool, web development, utility">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-pencil-square me-1"></i>JSON Editor</h5>
+                                                <p class="card-text flex-grow-1">A web-based editor for JSON data, using JSON Schema for validation.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-info text-dark">JavaScript</span><span class="badge bg-warning text-dark">Utility</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/json-editor/json-editor" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div><!-- /row -->
+                            </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## SysAdmin Accordion Item ########## -->
+                    <div class="accordion-item">
+                         <h2 class="accordion-header" id="headingSysAdmin">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSysAdmin" aria-expanded="false" aria-controls="collapseSysAdmin">
+                                 <i class="bi bi-hdd-stack-fill me-2"></i>System Administration
+                             </button>
+                         </h2>
+                         <div id="collapseSysAdmin" class="accordion-collapse collapse" aria-labelledby="headingSysAdmin" data-bs-parent="#resourceAccordion">
+                             <div class="accordion-body">
+                                 <p class="section-intro">Managing operating systems, servers, and infrastructure.</p>
+
+                                 <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>OS Cheatsheets & Commands</h5>
+                                 <ul class="resource-list mb-4">
+                                    <li class="resource-list-item"><i class="bi bi-windows me-1"></i><strong> Windows:</strong></li>
+                                        <ul style="padding-left: 20px;"> <!-- Indent Windows commands -->
+                                            <li class="resource-list-item searchable-resource" id="resource-windows-cmd-ss64" data-title="Windows Command Prompt CMD SS64" data-keywords="windows, cmd, command prompt, cheatsheet, reference, commands, sysadmin"><a href="https://ss64.com/nt/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Windows CMD Reference (SS64)</a> <span class="text-muted">- Excellent command prompt reference.</span></li>
+                                            <li class="resource-list-item searchable-resource" id="resource-powershell-nirsoft" data-title="PowerShell Core Commands NirSoft" data-keywords="windows, powershell, commands, cheatsheet, reference, sysadmin, scripting"><a href="https://www.nirsoft.net/articles/shell_command_cheat_sheet.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> PowerShell Core Commands (NirSoft)</a> <span class="text-muted">- Useful PowerShell reference.</span></li>
+                                        </ul>
+                                     <li class="resource-list-item mt-2"><i class="bi bi-ubuntu me-1"></i><strong> Linux:</strong></li>
+                                         <ul style="padding-left: 20px;"> <!-- Indent Linux commands -->
+                                            <li class="resource-list-item searchable-resource" id="resource-bash-manual" data-title="Bash Reference Manual GNU" data-keywords="linux, bash, shell, scripting, commands, reference, manual, sysadmin"><a href="https://www.gnu.org/software/bash/manual/bash.html" target="_blank" rel="noopener noreferrer"><i class="bi bi-book"></i> Bash Reference Manual</a> <span class="text-muted">- The definitive guide for Bash scripting.</span></li>
+                                            <li class="resource-list-item searchable-resource" id="resource-linux-50-commands" data-title="50 Essential Linux Commands TheGeekStuff" data-keywords="linux, commands, cheatsheet, reference, learning, beginner, sysadmin"><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> 50 Essential Linux Commands</a> <span class="text-muted">- Great starting point for Linux CLI.</span></li>
+                                            <li class="resource-list-item searchable-resource" id="resource-explainshell" data-title="Explain Shell Command" data-keywords="linux, shell, command, explain, learning, tool, utility, bash, zsh"><a href="https://explainshell.com/" target="_blank" rel="noopener noreferrer"><i class="bi bi-link-45deg"></i> Explain Shell</a> <span class="text-muted">- Paste a command and see what each part does!</span></li>
+                                        </ul>
+                                 </ul>
+
+                                <h5 class="sub-section-title"><i class="bi bi-server me-2"></i>Management & Self-Hosting</h5>
+                                <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-selfhosted">
+                                        <div class="card h-100" data-title="Awesome Self-Hosted" data-keywords="self-hosted, selfhosting, software, services, open source, sysadmin, devops, collection">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-server me-1"></i>Awesome Self-Hosted</h5>
+                                                <p class="card-text flex-grow-1">Discover free software network services and web applications you can host yourself.</p>
+                                                <div class="mt-auto pt-2">
+                                                    <span class="badge bg-success">SysAdmin</span><span class="badge bg-warning text-dark">Self-Hosting</span><span class="badge bg-info text-dark">Software</span>
+                                                    <a href="https://github.com/awesome-selfhosted/awesome-selfhosted" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-md-page">
+                                        <div class="card h-100" data-title="md-page Markdown to Webpage" data-keywords="markdown, webpage, static site, tool, utility, simple, sysadmin">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-file-earmark-richtext me-1"></i>md-page</h5>
+                                                <p class="card-text flex-grow-1">Quickly create a single webpage directly from a Markdown file.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-success">SysAdmin</span><span class="badge bg-warning text-dark">Utility</span><span class="badge bg-info text-dark">Web</span><span class="badge bg-secondary">Tool</span>
+                                                     <a href="https://github.com/oscarmorrison/md-page" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-decap-cms">
+                                        <div class="card h-100" data-title="Decap CMS Git-based CMS" data-keywords="decap cms, netlify cms, git, cms, content management, static site generator, sysadmin, web dev">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-git me-1"></i>Decap CMS</h5>
+                                                <p class="card-text flex-grow-1">A Git-based CMS for Static Site Generators (formerly Netlify CMS).</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-success">SysAdmin</span><span class="badge bg-warning text-dark">Web Dev</span><span class="badge bg-info text-dark">CMS</span><span class="badge bg-secondary">Tool</span>
+                                                      <a href="https://github.com/decaporg/decap-cms" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                             </div>
+                                         </div>
+                                    </div>
+                                    <!-- Add Salt card here too maybe, if not solely in DevOps -->
+                                </div><!-- /row -->
+                             </div> <!-- /accordion-body -->
+                         </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## Blockchain Accordion Item ########## -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingBlockchain">
+                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBlockchain" aria-expanded="false" aria-controls="collapseBlockchain">
+                                 <i class="bi bi-link-45deg me-2"></i>Blockchain & Web3 <!-- Changed icon -->
+                             </button>
+                         </h2>
+                         <div id="collapseBlockchain" class="accordion-collapse collapse" aria-labelledby="headingBlockchain" data-bs-parent="#resourceAccordion">
+                              <div class="accordion-body">
+                                 <p class="section-intro">Resources related to blockchain technology, cryptocurrencies, smart contracts, and Web3 development.</p>
+                                 <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-blockchain-placeholder">
+                                             <div class="card h-100 placeholder-card" data-title="Blockchain Web3 Placeholder" data-keywords="blockchain, web3, cryptocurrency, crypto, smart contract, ethereum, solidity, resources">
+                                                 <div class="card-body text-center d-flex flex-column justify-content-center">
+                                                     <h5 class="card-title text-muted"><i class="bi bi-currency-bitcoin me-1"></i>Resources Coming Soon</h5>
+                                                     <p class="card-text text-muted">Adding links for Blockchain/Web3 development, security, and learning resources.</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                 </div><!-- /row -->
+                              </div> <!-- /accordion-body -->
+                         </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+                    <!-- ########## General Learning Accordion Item ########## -->
+                     <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingGeneralLearning">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneralLearning" aria-expanded="false" aria-controls="collapseGeneralLearning">
+                                <i class="bi bi-stars me-2"></i>General Learning & Meta Resources
+                            </button>
+                        </h2>
+                        <div id="collapseGeneralLearning" class="accordion-collapse collapse" aria-labelledby="headingGeneralLearning" data-bs-parent="#resourceAccordion">
+                            <div class="accordion-body">
+                                 <p class="section-intro">Broad learning platforms, resource collections, helpful conceptual explanations, and meta-lists.</p>
+
+                                <h5 class="sub-section-title"><i class="bi bi-journal-bookmark-fill me-2"></i>Mega Lists & Cheatsheet Collections</h5>
+                                 <div class="row">
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-cheatsheets">
+                                          <div class="card h-100" data-title="Awesome Cheatsheets LeCoupa" data-keywords="cheatsheet, collection, reference, programming, language, framework, tool, meta, general">
+                                               <div class="card-body d-flex flex-column">
+                                                  <h5 class="card-title"><i class="bi bi-journals me-1"></i>Awesome Cheatsheets (LeCoupa)</h5>
+                                                  <p class="card-text flex-grow-1">ADD DESCRIPTION HERE (HUGE collection of cheatsheets for popular languages, frameworks, and tools).</p>
+                                                  <div class="mt-auto pt-2">
+                                                      <span class="badge bg-primary">Cheatsheet</span><span class="badge bg-secondary">Collection</span><span class="badge bg-info text-dark">Meta</span>
+                                                       <a href="https://github.com/LeCoupa/awesome-cheatsheets" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-lists-meta">
+                                        <div class="card h-100" data-title="Awesome Lists Meta-List szabgab" data-keywords="awesome list, meta, collection, resources, discovery, github">
+                                            <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-list-stars me-1"></i>Awesome Lists Meta-List</h5>
+                                                <p class="card-text flex-grow-1">The ultimate starting point: A curated list of *all* the awesome lists on GitHub.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-secondary">Meta</span> <span class="badge bg-info text-dark">Discovery</span>
+                                                     <a href="https://github.com/szabgab/awesome-lists" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-useful-repos-aatmaj">
+                                        <div class="card h-100" data-title="Collection of Useful Repositories Aatmaj-Zephyr" data-keywords="learning, resources, collection, github, repositories, meta">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-collection-fill me-1"></i>Collection of Useful Repositories</h5>
+                                                <p class="card-text flex-grow-1">Another curated collection of useful GitHub repositories for learning various topics.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span><span class="badge bg-secondary">Meta</span>
+                                                      <a href="https://github.com/Aatmaj-Zephyr/A-collection-of-useful-repositories" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /row -->
+
+                                <h5 class="sub-section-title"><i class="bi bi-lightbulb me-2"></i>Concepts & Platforms</h5>
+                                <div class="row">
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-awesome-eli5">
+                                        <div class="card h-100" data-title="Awesome ELI5 swapagarwal" data-keywords="learning, concepts, explanation, eli5, beginner, simple">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-lightbulb me-1"></i>Awesome ELI5</h5>
+                                                <p class="card-text flex-grow-1">Technical concepts explained in simple, easy-to-understand ("Explain Like I'm 5") terms.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span> <span class="badge bg-info text-dark">Concepts</span>
+                                                     <a href="https://github.com/swapagarwal/awesome-eli5" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-oppia">
+                                        <div class="card h-100" data-title="Oppia Learning Platform" data-keywords="learning, education, platform, free, open source, online courses">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-mortarboard-fill me-1"></i>Oppia Learning Platform</h5>
+                                                <p class="card-text flex-grow-1">A free, open-source online learning platform aiming to make quality education accessible.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Education</span><span class="badge bg-secondary">Platform</span>
+                                                     <a href="https://github.com/oppia/oppia" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                     <div class="col-md-6 col-lg-4 searchable-resource" id="resource-student-resources-dipakkr">
+                                        <div class="card h-100" data-title="A-to-Z Resources for Students dipakkr" data-keywords="learning, resources, students, college, collection, tech">
+                                             <div class="card-body d-flex flex-column">
+                                                <h5 class="card-title"><i class="bi bi-book-half me-1"></i>A-to-Z Resources for Students</h5>
+                                                <p class="card-text flex-grow-1">Curated list of diverse resources valuable for college students in tech fields.</p>
+                                                <div class="mt-auto pt-2">
+                                                     <span class="badge bg-primary">Learning</span><span class="badge bg-info text-dark">Students</span>
+                                                      <a href="https://github.com/dipakkr/A-to-Z-Resources-for-Students" class="btn btn-sm btn-outline-primary mt-2 stretched-link" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> View</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /row -->
+                            </div> <!-- /accordion-body -->
+                        </div> <!-- /accordion-collapse -->
+                    </div> <!-- /accordion-item -->
+
+
+                </div> <!-- /#resourceAccordion -->
+
+
+                <!-- Suggestion Box / Contribution CTA (Keep outside accordion) -->
+                <div class="card text-center mt-5 border-0 shadow-sm" style="background-color: #e9ecef;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold">Help Improve This Hub!</h5>
+                        <p class="card-text text-muted">Found an awesome resource we missed? Spot an error? Have a suggestion? Let us know!</p>
+                        <a href="index.html#contact" class="btn btn-warning fw-bold">Suggest a Resource <i class="bi bi-arrow-right-short"></i></a>
+                        <!-- Or link to a GitHub issue tracker -->
+                    </div>
+                </div>
+
+            </div> <!-- /container -->
+        </section>
+
+        <!-- Call to Action -->
+        <div class="text-center py-4">
+           <a href="index.html" class="btn btn-outline-secondary">Back to Home</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">&copy; 2024 Bogdan Bărbulescu | All rights reserved.</p> <!-- Updated year -->
+    </footer>
+
+    <!-- Bootstrap JS Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Search & Autocomplete JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            const suggestionsList = document.getElementById('suggestions');
+            const searchForm = document.getElementById('search-form');
+            const clearSearchButton = document.getElementById('clear-search-button');
+            const showAllButton = document.getElementById('show-all-button');
+            const noResultsMessage = document.getElementById('no-results-message');
+            const resourceItems = document.querySelectorAll('.searchable-resource');
+            const resourceAccordion = new bootstrap.Collapse(document.getElementById('resourceAccordion'), { toggle: false }); // Get accordion instance if needed later, prevent auto-toggle
+
+            let resourcesData = [];
+            let currentSuggestionIndex = -1; // For keyboard navigation
+
+            // --- 1. Prepare Data for Autocomplete & Search ---
+            function prepareResourceData() {
+                resourcesData = []; // Clear previous data
+                 resourceItems.forEach(item => {
+                    // Find the best title source (link text or card title)
+                    const linkElement = item.querySelector('a');
+                    const cardTitleElement = item.querySelector('.card-title');
+                    let title = item.dataset.title || ''; // Use data-title first
+                    if (!title && linkElement) title = linkElement.textContent;
+                    if (!title && cardTitleElement) title = cardTitleElement.textContent;
+
+                    const keywords = (item.dataset.keywords || '').toLowerCase();
+                    const id = item.id;
+
+                    // Extract description text safely
+                    const descriptionElement = item.querySelector('.text-muted');
+                    const cardTextElement = item.querySelector('.card-text');
+                    let descriptionText = '';
+                    if (descriptionElement) descriptionText = descriptionElement.textContent;
+                    else if (cardTextElement) descriptionText = cardTextElement.textContent;
+
+                    if (title && id) {
+                        resourcesData.push({
+                            id: id,
+                            title: title.trim(),
+                            keywords: keywords,
+                            fullText: (title + ' ' + keywords + ' ' + descriptionText).toLowerCase().replace(/add description here/gi, '').trim() // Include description, remove placeholder
+                        });
+                    } else {
+                        console.warn("Missing title or ID for item:", item);
+                    }
+                 });
+                // console.log("Prepared resource data:", resourcesData.length);
+            }
+
+            // --- 2. Autocomplete Logic ---
+             function highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')})`, 'gi'); // Escape regex chars
+                return text.replace(regex, `<span class="highlight">$1</span>`);
+            }
+
+            function showSuggestions(query) {
+                suggestionsList.innerHTML = ''; // Clear old suggestions
+                currentSuggestionIndex = -1; // Reset keyboard nav index
+
+                if (!query) {
+                    suggestionsList.style.display = 'none';
+                    return;
+                }
+
+                const lowerCaseQuery = query.toLowerCase();
+                const filtered = resourcesData.filter(resource =>
+                    resource.fullText.includes(lowerCaseQuery) // Search full text
+                ).slice(0, 10); // Limit suggestions
+
+                if (filtered.length > 0) {
+                    filtered.forEach((resource, index) => {
+                        const li = document.createElement('li');
+                        li.dataset.resourceId = resource.id; // Store id
+                        li.dataset.resourceTitle = resource.title; // Store original title
+                        li.innerHTML = highlightMatch(resource.title, query); // Highlight title
+
+                        li.addEventListener('click', () => {
+                            searchInput.value = resource.title; // Set input to full title
+                            suggestionsList.style.display = 'none';
+                            filterResources(resource.title); // Trigger filter
+                            scrollToResource(resource.id); // Scroll to item
+                        });
+                        suggestionsList.appendChild(li);
+                    });
+                    suggestionsList.style.display = 'block';
+                } else {
+                    suggestionsList.style.display = 'none';
+                }
+            }
+
+             // --- 2a. Scroll to Resource ---
+            function scrollToResource(resourceId) {
+                const element = document.getElementById(resourceId);
+                if (!element) return;
+
+                // Find the parent accordion collapse element
+                let collapseElement = element.closest('.accordion-collapse');
+
+                if (collapseElement) {
+                     // Check if it's already open
+                     const bsCollapse = bootstrap.Collapse.getInstance(collapseElement) || new bootstrap.Collapse(collapseElement, { toggle: false });
+
+                     // Open the accordion if it's closed
+                     if (!collapseElement.classList.contains('show')) {
+                        bsCollapse.show();
+                        // Wait for accordion to finish opening before scrolling
+                        collapseElement.addEventListener('shown.bs.collapse', () => {
+                             element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                             // Optional: briefly highlight the element
+                             element.style.transition = 'background-color 0.5s ease';
+                             element.style.backgroundColor = '#fff3cd'; // Light yellow highlight
+                             setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                        }, { once: true }); // Use once: true to only fire once per show
+                     } else {
+                          // If already open, scroll immediately
+                          element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          element.style.transition = 'background-color 0.5s ease';
+                          element.style.backgroundColor = '#fff3cd';
+                          setTimeout(() => { element.style.backgroundColor = ''; }, 1500);
+                     }
+                } else {
+                     // If not in an accordion (e.g., suggestion box), just scroll
+                     element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+
+            // --- 3. Filtering Logic ---
+            function filterResources(query) {
+                const lowerCaseQuery = query.toLowerCase().trim();
+                let matchFound = false;
+
+                if (!lowerCaseQuery) { // If query is empty, show all
+                    resourceItems.forEach(item => item.classList.remove('resource-hidden'));
+                    noResultsMessage.style.display = 'none';
+                    clearSearchButton.style.display = 'none';
+                    return; // Exit early
+                }
+
+                // Show clear button when there's a query
+                clearSearchButton.style.display = 'inline-block';
+
+                resourceItems.forEach(item => {
+                    const resourceData = resourcesData.find(r => r.id === item.id);
+                    const textToSearch = resourceData ? resourceData.fullText : (item.textContent || '').toLowerCase();
+
+                    if (textToSearch.includes(lowerCaseQuery)) {
+                        item.classList.remove('resource-hidden');
+                        matchFound = true;
+                    } else {
+                        item.classList.add('resource-hidden');
+                    }
+                });
+
+                // Show/hide "no results" message
+                noResultsMessage.style.display = matchFound ? 'none' : 'block';
+            }
+
+            // --- 4. Event Listeners ---
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value;
+                showSuggestions(query);
+                // Show clear button dynamically based on input presence
+                clearSearchButton.style.display = query ? 'inline-block' : 'none';
+                // If input is cleared, show all resources
+                if (!query) {
+                     filterResources(''); // Show all
+                     noResultsMessage.style.display = 'none';
+                 }
+            });
+
+             // Keyboard navigation for suggestions
+             searchInput.addEventListener('keydown', (e) => {
+                 const items = suggestionsList.querySelectorAll('li');
+                 if (items.length === 0 || suggestionsList.style.display === 'none') return;
+
+                 if (e.key === 'ArrowDown') {
+                     e.preventDefault(); // Prevent cursor moving in input
+                     currentSuggestionIndex = (currentSuggestionIndex + 1) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'ArrowUp') {
+                     e.preventDefault();
+                     currentSuggestionIndex = (currentSuggestionIndex - 1 + items.length) % items.length;
+                     updateSuggestionHighlight(items);
+                 } else if (e.key === 'Enter') {
+                      e.preventDefault(); // Prevent form submission if suggestion selected
+                      if (currentSuggestionIndex > -1 && items[currentSuggestionIndex]) {
+                         items[currentSuggestionIndex].click(); // Simulate click on highlighted suggestion
+                      } else {
+                         // If no suggestion selected, perform standard search
+                         searchForm.requestSubmit(); // Programmatically submit form
+                      }
+                 } else if (e.key === 'Escape') {
+                     suggestionsList.style.display = 'none';
+                 }
+             });
+
+            function updateSuggestionHighlight(items) {
+                 items.forEach((item, index) => {
+                     if (index === currentSuggestionIndex) {
+                         item.classList.add('active-suggestion');
+                         // Optionally scroll suggestion into view within the suggestion box
+                         item.scrollIntoView({ block: 'nearest' });
+                     } else {
+                         item.classList.remove('active-suggestion');
+                     }
+                 });
+             }
+
+            // Hide suggestions when clicking outside search area
+            document.addEventListener('click', (event) => {
+                const searchWrapper = document.getElementById('search-wrapper');
+                if (searchWrapper && !searchWrapper.contains(event.target)) {
+                    suggestionsList.style.display = 'none';
+                }
+            });
+
+             // Handle form submission (Enter key without suggestion or button click)
+             searchForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent page reload
+                const query = searchInput.value;
+                suggestionsList.style.display = 'none'; // Hide suggestions
+                filterResources(query);
+                // Optional: If there's only one exact match, scroll to it? Might be complex.
+             });
+
+             // Clear Search Button
+             clearSearchButton.addEventListener('click', () => {
+                 searchInput.value = '';
+                 filterResources(''); // Show all
+                 noResultsMessage.style.display = 'none';
+                 clearSearchButton.style.display = 'none';
+                 searchInput.focus();
+                 suggestionsList.style.display = 'none';
+             });
+
+             // Show All Button (in no-results message)
+             showAllButton.addEventListener('click', () => {
+                  searchInput.value = '';
+                  filterResources('');
+                  noResultsMessage.style.display = 'none';
+                  clearSearchButton.style.display = 'none';
+             });
+
+
+            // --- 5. Initial Setup ---
+            prepareResourceData(); // Prepare data on load
+
+        }); // End DOMContentLoaded
+    </script>
+
+</body>
+</html>
