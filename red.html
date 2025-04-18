@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Updated Title -->
-    <title>BVB - Red Team Learning Resources</title>
+    <title>Red Team Learning Resources</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CSS -->
@@ -205,20 +205,26 @@
 
 <body>
 
-    <!-- Header -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top shadow-sm">
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top"> <!-- Added sticky-top -->
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">BVB</a> <!-- Changed Brand -->
+            <!-- Make sure this link points to your actual homepage -->
+            <a class="navbar-brand" href="index.html">
+                <!-- Use path to your specific BVB logo -->
+                <!-- IMPORTANT: Use a WHITE version of the logo for dark navbars -->
+                <img src="images/logo.png" alt="BVB Logo" height="35"> BVB
+                <!-- Adjust height (e.g., 30, 35, 40) and path as needed -->
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                 <!-- Update nav links to point to correct sections/pages -->
                 <ul class="navbar-nav ms-auto">
+                    <!-- Assuming these sections are on index.html -->
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
-                    <!-- Link to main resources page -->
-                    <li class="nav-item"><a class="nav-link" href="main_hub_page.html">All Resources</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
