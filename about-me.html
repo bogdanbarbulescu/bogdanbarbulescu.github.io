@@ -38,140 +38,100 @@
             background-size: cover;
             background-position: center center;
             background-attachment: fixed;
-            color: white; /* Text color for header content */
+            color: white;
             position: relative;
-            /* Adjust height as needed, vh might cause issues with sticky nav overlap */
-            /* Consider min-height instead or padding */
-            min-height: 60vh; /* Example using min-height */
-            display: flex; /* Use flexbox for vertical centering */
-            align-items: center; /* Center content vertically */
-            justify-content: center; /* Center content horizontally */
-            padding: 5rem 0; /* Add padding */
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 0;
         }
-         /* Header Overlay (Optional, improves text readability) */
         header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5); /* Adjust darkness */
-            z-index: 1;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); z-index: 1;
         }
-        header .container {
-            position: relative; /* Ensure container content is above overlay */
-            z-index: 2;
-        }
+        header .container { position: relative; z-index: 2; }
 
+        /* --- Carousel Styling (Theme-Aware & Revised Image Handling) --- */
 
-        /* --- Carousel Styling (Theme-Aware) --- */
-        .carousel-item img {
-            max-height: 500px;
-            object-fit: cover;
-            width: 100%;
-            border-radius: 10px;
-            padding: 15px; /* Padding for the 'frame' */
-             /* Default light background */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Adjusted shadow */
+        /* Style the carousel item (parent) for the frame effect */
+        .carousel-item {
+            padding: 15px; /* Padding creates the frame */
             transition: background-color 0.3s ease;
+             border-radius: 15px; /* Rounded corners for the container/frame */
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
-        [data-bs-theme="light"] .carousel-item img {
+        [data-bs-theme="light"] .carousel-item {
             background-color: #ffffff; /* White frame in light mode */
         }
-        [data-bs-theme="dark"] .carousel-item img {
+        [data-bs-theme="dark"] .carousel-item {
             background-color: #495057; /* Darker frame in dark mode */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Darker shadow */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
+        /* Style the image itself */
+        .carousel-item img {
+            max-height: 470px; /* Adjust max-height considering parent padding */
+            object-fit: contain; /* CHANGE: Show full image, preserve aspect ratio */
+            width: 100%; /* Fill width within the padded parent */
+            display: block; /* Remove extra space below image */
+            margin: 0 auto; /* Center if image is narrower than container */
+            border-radius: 5px; /* Optional: slightly rounded corners on the image itself */
+            /* Removed padding, background-color, box-shadow from img - now on parent */
+        }
 
+        /* Rest of Carousel Indicator/Control Styles (remain the same) */
         .carousel-indicators {
-            position: absolute;
-            bottom: 15px; /* Adjusted position */
-            left: 50%;
-            transform: translateX(-50%);
-            margin: 0; /* Reset margin */
-            padding: 0; /* Reset padding */
-            list-style: none; /* Remove list bullets */
+            position: absolute; bottom: 15px; left: 50%; transform: translateX(-50%);
+            margin: 0; padding: 0; list-style: none;
         }
-
-        .carousel-indicators [data-bs-target] { /* Target the button element */
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white default */
-            border-radius: 50%;
-            width: 10px; /* Slightly smaller */
-            height: 10px;
-            margin: 0 4px; /* Adjusted spacing */
-            border: 1px solid transparent; /* Add border for definition */
-            opacity: 0.7;
-            transition: opacity 0.3s ease, background-color 0.3s ease;
+        .carousel-indicators [data-bs-target] {
+            background-color: rgba(255, 255, 255, 0.5); border-radius: 50%;
+            width: 10px; height: 10px; margin: 0 4px; border: 1px solid transparent;
+            opacity: 0.7; transition: opacity 0.3s ease, background-color 0.3s ease;
         }
-
          [data-bs-theme="dark"] .carousel-indicators [data-bs-target] {
-            background-color: rgba(0, 0, 0, 0.4); /* Darker indicators in dark mode */
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        .carousel-indicators .active { background-color: #ffc107; opacity: 1; }
+         [data-bs-theme="dark"] .carousel-indicators .active { background-color: #ffca2c; }
 
-
-        .carousel-indicators .active {
-            background-color: #ffc107; /* Keep gold for active */
-            opacity: 1;
-        }
-         [data-bs-theme="dark"] .carousel-indicators .active {
-            background-color: #ffca2c; /* Slightly lighter gold for dark */
-        }
-
-
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            background-color: rgba(0, 0, 0, 0.4); /* Base background */
-            border-radius: 50%;
-            padding: 12px; /* Adjusted padding */
-            background-size: 50% 50%; /* Control icon size */
-            transition: background-color 0.3s ease;
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.4); border-radius: 50%;
+            padding: 12px; background-size: 50% 50%; transition: background-color 0.3s ease;
         }
          [data-bs-theme="dark"] .carousel-control-prev-icon,
          [data-bs-theme="dark"] .carousel-control-next-icon {
-             background-color: rgba(255, 255, 255, 0.2); /* Lighter controls in dark */
+             background-color: rgba(255, 255, 255, 0.2);
         }
-
-        .carousel-control-prev-icon:hover,
-        .carousel-control-next-icon:hover {
+        .carousel-control-prev-icon:hover, .carousel-control-next-icon:hover {
             background-color: rgba(0, 0, 0, 0.6);
         }
          [data-bs-theme="dark"] .carousel-control-prev-icon:hover,
          [data-bs-theme="dark"] .carousel-control-next-icon:hover {
              background-color: rgba(255, 255, 255, 0.4);
         }
+        /* --- End Carousel Styling --- */
 
         /* --- Certification Badge Styling --- */
         .certification-badge img {
-            max-width: 120px; /* Fixed max width for consistency */
-            height: auto; /* Maintain aspect ratio */
-            display: block; /* Center using margin */
-            margin: 0 auto 1rem auto; /* Center horizontally, add bottom margin */
+            max-width: 120px; height: auto; display: block;
+            margin: 0 auto 1rem auto;
         }
-        .certification-badge {
-            text-align: center; /* Center text below badge */
-        }
+        .certification-badge { text-align: center; }
 
         /* --- Sticky Footer Helper --- */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        main { /* Wrap main content in a <main> tag if possible */
-            flex-grow: 1;
-        }
-        footer {
-            flex-shrink: 0; /* Prevent footer from shrinking */
-        }
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        main { flex-grow: 1; }
+        footer { flex-shrink: 0; }
 
     </style>
 
 </head>
 
-<body class="d-flex flex-column min-vh-100"> <!-- Flex classes for sticky footer -->
+<body class="d-flex flex-column min-vh-100">
 
     <!-- Navbar -->
-    <!-- Added sticky-top -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -182,7 +142,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Added mb classes -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
@@ -199,7 +159,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="text-center py-5"> <!-- Removed text-light, handled by header style -->
+    <header class="text-center py-5">
         <div class="container">
             <h1 class="display-4">About Me</h1>
             <p class="lead">A glimpse into my skills, experiences, and passions.</p>
@@ -208,24 +168,23 @@
 
     <!-- Wrap content sections in <main> for sticky footer -->
     <main>
-        <section id="about" class="section py-5"> <!-- Use py-5 for padding -->
+        <section id="about" class="section py-5">
             <div class="container">
                 <h2 class="text-center mb-4">Introduction</h2>
                 <p class="text-center col-md-8 mx-auto">Hi, I'm Bogdan, a network engineer from Romania. With over 8 years of experience in
                     both academia and the industry, I've honed a strong understanding of network security, ethical hacking,
                     and front-end development. My portfolio reflects my technical expertise, the challenges I've overcome,
-                    and my passion for creating secure and scalable systems.</p> <!-- Centered column -->
+                    and my passion for creating secure and scalable systems.</p>
             </div>
         </section>
 
         <section id="skills" class="section py-5">
             <div class="container">
-                <!-- Removed text-dark, color will adapt via styles.css -->
                 <h2 class="text-center mb-4">Skills</h2>
-                <div class="row text-center"> <!-- Center text in columns -->
-                    <div class="col-lg-4 col-md-6 mb-4"> <!-- Adjusted columns for better spacing -->
+                <div class="row text-center">
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <h5>Networking</h5>
-                        <ul class="list-unstyled"> <!-- Use list-unstyled -->
+                        <ul class="list-unstyled">
                             <li>Network Configuration (Routers/Switches)</li>
                             <li>TCP/IP, DNS, DHCP, VPNs</li>
                             <li>Network Monitoring & Troubleshooting</li>
@@ -241,12 +200,12 @@
                             <li>Security Information and Event Management (SIEM)</li>
                         </ul>
                     </div>
-                    <div class="col-lg-4 col-md-6 mb-4"> <!-- Changed to md-6 for consistency on medium screens -->
+                    <div class="col-lg-4 col-md-6 mb-4">
                         <h5>Web Development</h5>
                         <ul class="list-unstyled">
                             <li>HTML5, CSS3, JavaScript (ES6+)</li>
                             <li>Bootstrap 5</li>
-                            <li>Frontend Framework Basics (e.g., React/Vue concepts)</li>
+                            <li>Frontend Framework Basics</li>
                             <li>API Integration (REST)</li>
                         </ul>
                     </div>
@@ -260,9 +219,9 @@
                  <p class="text-center col-md-8 mx-auto mb-4">When I'm not immersed in technology, I enjoy hiking, practicing photography, and exploring the beauty of
                     nature. Capturing landscapes and natural scenes through my lens is a passion. Check out <b><a href="https://instagram.com/bogdanbarbulescu" target="_blank">my photography work</a></b>.</p>
 
-
                 <!-- Carousel for Hobbies Images -->
-                <div id="hobbiesCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel"> <!-- Added shadow -->
+                <!-- Added shadow-lg for more depth -->
+                <div id="hobbiesCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel">
                     <!-- Indicators -->
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#hobbiesCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -278,35 +237,36 @@
                     </div>
                     <!-- Slides -->
                     <div class="carousel-inner">
+                        <!-- .carousel-item now has padding/background for frame effect -->
                         <div class="carousel-item active">
-                            <img src="images/nature1.webp" class="d-block w-100" alt="Nature 1">
+                            <img src="images/nature1.webp" class="d-block" alt="Nature 1"> <!-- Removed w-100, width controlled by CSS -->
                         </div>
                         <div class="carousel-item">
-                            <img src="images/nature2.webp" class="d-block w-100" alt="Nature 2">
+                            <img src="images/nature2.webp" class="d-block" alt="Nature 2">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/nature3.webp" class="d-block w-100" alt="Nature 3">
+                            <img src="images/nature3.webp" class="d-block" alt="Nature 3">
                         </div>
                          <div class="carousel-item">
-                            <img src="images/nature4.jpg" class="d-block w-100" alt="Nature 4">
+                            <img src="images/nature4.jpg" class="d-block" alt="Nature 4">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/nature5.jpg" class="d-block w-100" alt="Nature 5">
+                            <img src="images/nature5.jpg" class="d-block" alt="Nature 5">
                         </div>
                         <div class="carousel-item">
-                            <img src="images/nature6.webp" class="d-block w-100" alt="Nature 6">
+                            <img src="images/nature6.webp" class="d-block" alt="Nature 6">
                         </div>
                          <div class="carousel-item">
-                            <img src="images/nature7.webp" class="d-block w-100" alt="Nature 7">
+                            <img src="images/nature7.webp" class="d-block" alt="Nature 7">
                         </div>
                          <div class="carousel-item">
-                            <img src="images/nature8.webp" class="d-block w-100" alt="Nature 8">
+                            <img src="images/nature8.webp" class="d-block" alt="Nature 8">
                         </div>
                          <div class="carousel-item">
-                            <img src="images/nature9.webp" class="d-block w-100" alt="Nature 9">
+                            <img src="images/nature9.webp" class="d-block" alt="Nature 9">
                         </div>
                          <div class="carousel-item">
-                            <img src="images/nature10.webp" class="d-block w-100" alt="Nature 10">
+                            <img src="images/nature10.webp" class="d-block" alt="Nature 10">
                         </div>
                     </div>
                     <!-- Controls -->
@@ -326,10 +286,9 @@
 
         <section id="certifications" class="section py-5">
             <div class="container">
-                 <!-- Removed text-dark -->
-                <h2 class="text-center mb-5">Certifications & Credentials</h2> <!-- Increased bottom margin -->
-                <div class="row justify-content-center"> <!-- Center the row content -->
-                    <div class="col-md-4 mb-4 certification-badge"> <!-- Adjusted columns -->
+                <h2 class="text-center mb-5">Certifications & Credentials</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-4 certification-badge">
                         <img src="images/badge2.png" alt="CompTIA Security+ Certificate">
                         <h5 class="mt-3">CompTIA Security+</h5>
                         <p class="text-muted"><small>Validates baseline skills necessary to perform core security functions.</small></p>
@@ -351,12 +310,12 @@
         <!-- Contact section stays dark by default -->
         <section id="contact" class="py-5 bg-dark text-light text-center">
             <div class="container">
-                <h2 class="mb-4">Connect With Me</h2> <!-- Changed heading -->
+                <h2 class="mb-4">Connect With Me</h2>
                 <p>Feel free to reach out or follow my work on social media.</p>
-                <div class="social-icons mt-4"> <!-- Added margin top -->
+                <div class="social-icons mt-4">
                     <a href="https://github.com/bogdanbarbulescu" target="_blank" class="text-light me-3 social-icon-link"
                         aria-label="GitHub">
-                        <i class="bi bi-github fs-2"></i> <!-- Increased size -->
+                        <i class="bi bi-github fs-2"></i>
                     </a>
                     <a href="https://www.linkedin.com/in/bogdan-barbulescu/" target="_blank" class="text-light me-3 social-icon-link" aria-label="LinkedIn">
                         <i class="bi bi-linkedin fs-2"></i>
@@ -373,14 +332,12 @@
     </main> <!-- End main content wrapper -->
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
+    <footer class="bg-dark text-light text-center py-3 mt-auto"> <!-- mt-auto works with flex body -->
         <p class="mb-0">© 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
-    <!-- Bootstrap Bundle JS (includes Popper) -->
+    <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Icons JS (if needed for dynamic icon manipulation, usually CSS is enough) -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script> -->
 
     <!-- Theme Toggle Script -->
     <script>
@@ -415,23 +372,12 @@
 
     <!-- Image Protection Script -->
     <script>
-        // Disable right-click on the page
         document.addEventListener('contextmenu', event => event.preventDefault());
-
-        // Disable dragging of images
         document.addEventListener('dragstart', event => {
-            if (event.target.tagName === 'IMG') {
-                event.preventDefault();
-            }
+            if (event.target.tagName === 'IMG') { event.preventDefault(); }
         });
-
-        // Disable image saving via keyboard shortcuts (e.g., Ctrl+S)
-        // Note: This is not foolproof and can be bypassed.
         document.addEventListener('keydown', event => {
-            if ((event.ctrlKey || event.metaKey) && event.key === 's') {
-                event.preventDefault();
-                // console.log('Save shortcut disabled.'); // Optional feedback
-            }
+            if ((event.ctrlKey || event.metaKey) && event.key === 's') { event.preventDefault(); }
         });
     </script>
 </body>
