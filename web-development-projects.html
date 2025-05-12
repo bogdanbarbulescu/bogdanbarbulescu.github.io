@@ -1,353 +1,387 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- Add data-bs-theme="light" initially -->
+<html lang="en" data-bs-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Projects</title>
+    <title>Web Development Projects | Bogdan Barbulescu</title> <!-- Added name for consistency -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Make sure styles.css doesn't conflict -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Added BS Icons -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link the main stylesheet with theme rules -->
+
     <style>
+        /* --- Theme Toggle Button Styles (copied from index.html setup) --- */
+        /* Can be moved to styles.css if preferred */
+        .theme-toggle-btn {
+            cursor: pointer;
+            font-size: 1.4rem; /* Adjust size as needed */
+            line-height: 1; /* Prevent extra spacing */
+            background: none;
+            border: none;
+            padding: 0.375rem 0.75rem; /* Align with nav-link padding */
+            color: rgba(255, 255, 255, 0.55); /* Match nav-link color (for dark navbar) */
+            transition: color .15s ease-in-out;
+        }
+        .theme-toggle-btn:hover,
+        .theme-toggle-btn:focus {
+            color: rgba(255, 255, 255, 0.75); /* Match nav-link hover */
+            outline: none;
+            box-shadow: none;
+        }
+
+        /* Hide one icon based on theme */
+        [data-bs-theme="light"] .theme-toggle-btn .bi-sun-fill { display: none; }
+        [data-bs-theme="dark"] .theme-toggle-btn .bi-moon-stars-fill { display: none; }
+
+        /* Adjust toggle color for light navbar if needed */
+        .navbar-light .theme-toggle-btn {
+             color: rgba(0, 0, 0, 0.55);
+        }
+        .navbar-light .theme-toggle-btn:hover,
+        .navbar-light .theme-toggle-btn:focus {
+             color: rgba(0, 0, 0, 0.7);
+        }
+        /* --- End Theme Toggle Button Styles --- */
+
+
         /* Optional: Add some basic styling if styles.css is missing or doesn't style cards well */
         .card-img-top {
             aspect-ratio: 16 / 9;
             /* Maintain aspect ratio for the placeholder */
             object-fit: cover;
             /* Cover the area, might crop the image */
-            background-color: #eee;
-            /* Background color if image fails */
+             /* Let styles.css handle background */
+        }
+        /* Ensure button stays at bottom in flex column */
+        .card-body .btn {
+             /* mt-auto in HTML handles this now */
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
+    <!-- Header / Navbar -->
+    <!-- Keeping navbar-dark / bg-dark for consistency unless theme logic changes it -->
     <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <!-- Use path to your specific BVB logo -->
-                <!-- IMPORTANT: Use a WHITE version of the logo for dark navbars -->
                 <img src="images/logo.png" alt="BVB Logo" height="35"> BVB
-                <!-- Adjust height (e.g., 30, 35, 40) and path as needed -->
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                 <!-- Navigation Links -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Added mb-2 mb-lg-0 -->
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
+                 <!-- Theme Toggle Button -->
+                <div class="d-flex align-items-center ms-lg-2"> <!-- Use flex for alignment, add margin -->
+                     <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme">
+                        <i class="bi bi-moon-stars-fill"></i> <!-- Moon icon for switching to dark -->
+                        <i class="bi bi-sun-fill"></i>       <!-- Sun icon for switching to light -->
+                    </button>
+                </div>
+                 <!-- End Theme Toggle Button -->
             </div>
         </div>
     </nav>
 
     <!-- Web Development Projects Section -->
-    <section id="web-development" class="py-5">
+    <!-- Add 'section' class if you use the alternating background from styles.css -->
+    <section id="web-development" class="py-5 section"> <!-- Added 'section' class -->
         <div class="container">
-            <h2 class="text-center text-dark mb-4">Web Development Projects</h2>
-            <p class="lead text-center">Here are some of the web development projects I've worked on.</p>
-            <div class="row"> <!-- Removed row-cols-* classes -->
-          
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+             <!-- Removed text-dark, color will adapt via data-bs-theme and styles.css -->
+            <h2 class="text-center mb-4">Web Development Projects</h2>
+            <!-- Removed text-center from lead paragraph, let body inherit -->
+            <p class="lead text-center mb-4">Here are some of the web development projects I've worked on.</p> <!-- Added mb-4 -->
+
+            <div class="row">
+                <!-- Project Cards -->
+                <!-- Bootstrap cards will adapt based on data-bs-theme -->
+
+                <div class="col-md-4 mb-4"> <!-- Increased bottom margin -->
+                    <div class="card h-100 shadow-sm"> <!-- Added shadow-sm for subtle depth -->
                         <img src="images/portfolio.jpg" alt="Photography Portfolio Project" class="card-img-top"
                             loading="lazy">
-                        <div class="card-body d-flex flex-column"> <!-- Added flex classes for footer button -->
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Photography Portfolio</h5>
                             <p class="card-text">My photography portfolio website displaying my best landscape and
                                 nature photography.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, Bootstrap</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, Bootstrap</small></p> <!-- Use small/text-muted -->
                             <a href="https://bogdanbarbulescu.github.io/photo" target="_blank"
-                                class="btn btn-warning mt-auto">View</a> <!-- Added mt-auto -->
+                                class="btn btn-warning mt-auto">View Project</a> <!-- Added 'Project' -->
                         </div>
                     </div>
                 </div>
 
-             
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/llm.jpg" alt="LLM Prompt Lib Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">LLM Prompt Lib</h5>
-                            <p class="card-text">A Web App with ready to use prompts</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, AJAX.</p>
+                            <p class="card-text">A Web App with ready-to-use prompts for Large Language Models.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, AJAX</small></p>
                             <a href="https://bogdanbarbulescu.github.io/prompt/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/codeglow.jpg" alt="GlowGen " class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">GlowGen</h5>
-                            <p class="card-text">A Web App for editing frontend components</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <p class="card-text">A Web App for generating and previewing frontend components.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/codeglow/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-            
-                <!--
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/od.jpg" alt="Object Detection with TensorFlow.js Project" class="card-img-top" loading="lazy">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Object Detection with TensorFlow.js</h5>
-                            <p class="card-text">An AI-powered web app that performs real-time object detection using TensorFlow.js, allowing users to analyze images.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, TensorFlow.js</p>
-                            <a href="https://bogdanbarbulescu.github.io/smartcam/" target="_blank" class="btn btn-warning mt-auto">View</a>
-                        </div>
-                    </div>
-                </div>
-            -->
-
-               
-                <!--
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                         <img src="images/weather.jpg" alt="Weather Web App Project" class="card-img-top" loading="lazy">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Weather Web App</h5>
-                            <p class="card-text">A weather application that uses public APIs to provide real-time weather updates, forecasts, and location-based weather information.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, OpenWeather API</p>
-                            <a href="https://bogdanbarbulescu.github.io/weather/" target="_blank" class="btn btn-warning mt-auto">View</a>
-                        </div>
-                    </div>
-                </div>
-            -->
-             
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/quiz.jpg" alt="Quizzes Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Quizzes</h5>
-                            <p class="card-text">Interactive quizzes designed to help users prepare for different
-                                certification exams, with single-choice questions and scoring.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript</p>
+                            <p class="card-text">Interactive quizzes for certification preparation with scoring.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/quiz/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-              
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/gym.jpg" alt="Gym Log Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Gym Log</h5>
-                            <p class="card-text">A Web App to take workout notes and monitor progress</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <p class="card-text">A Web App to take workout notes and monitor fitness progress.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/workout/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-              
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/dorking.jpg" alt="Google Dorking Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Google Dorking</h5>
-                            <p class="card-text">A useful tool</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <h5 class="card-title">Google Dorking Helper</h5>
+                            <p class="card-text">A tool to assist in constructing advanced Google search queries (dorks).</p>
+                             <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/dorking/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-               
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/flight.jpg" alt="Google Dorking Project" class="card-img-top" loading="lazy">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="images/flight.jpg" alt="Flight Simulator Project" class="card-img-top" loading="lazy"> <!-- Corrected alt text -->
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Flight Simulator</h5>
-                            <p class="card-text">Commercial flight simulator with predefined routes</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <h5 class="card-title">Flight Simulator Interface</h5>
+                            <p class="card-text">A basic commercial flight simulator interface with predefined routes.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/flight/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-
-             
-                <!--
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/ml.jpg" alt="Data Science Web App Project" class="card-img-top" loading="lazy">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Data Science Web App</h5>
-                            <p class="card-text">A web application showcasing data analysis and visualization techniques, providing interactive charts and predictive analytics.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, Chart.js</p>
-                            <a href="https://bogdanbarbulescu.github.io/datascience/" target="_blank" class="btn btn-warning mt-auto">View</a>
-                        </div>
-                    </div>
-                </div>
-            -->
-
-               
-                <!--
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/romania.jpg" alt="Romania SVG Map Project" class="card-img-top" loading="lazy">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Romania SVG Map</h5>
-                            <p class="card-text">An interactive SVG map of Romania, allowing users to click on counties to get detailed information and visualizations.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, SVG</p>
-                            <a href="https://bogdanbarbulescu.github.io/map/" target="_blank" class="btn btn-warning mt-auto">View</a>
-                        </div>
-                    </div>
-                </div>
-            -->
-               
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/diagram.jpg" alt="Network Topology Project" class="card-img-top"
                             loading="lazy">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Network Topology</h5>
-                            <p class="card-text">A web application that visualizes and simulates network topologies,
-                                showcasing connections and interactions between devices.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, D3.js</p>
+                            <h5 class="card-title">Network Topology Visualizer</h5>
+                            <p class="card-text">Visualizes network topologies and device interactions.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, D3.js</small></p>
                             <a href="https://bogdanbarbulescu.github.io/network/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
-              
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/md.jpg" alt="Markdown to HTML Converter Project" class="card-img-top"
                             loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Markdown to HTML Converter</h5>
-                            <p class="card-text">A web application that visualizes and converts Markdown to HTML.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <p class="card-text">A simple web tool to convert Markdown text into HTML.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/converter/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
-              
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/web-editor.jpg" alt="Web Editor Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Web Editor</h5>
-                            <p class="card-text">A web application that visualizes and renders HTML, CSS and JS code.
-                            </p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <h5 class="card-title">Live Web Editor</h5>
+                            <p class="card-text">An online editor to write and preview HTML, CSS, and JS code.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/web/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/web-editor.jpg" alt="Web Editor Project" class="card-img-top" loading="lazy">
+                 <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <!-- Assume same image or use a placeholder -->
+                        <img src="images/diff.jpg" alt="Text Difference Checker Project" class="card-img-top" loading="lazy"> <!-- Placeholder image -->
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Text Difference</h5>
-                            <p class="card-text">A web application that finds differences between two texts.
-                            </p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <h5 class="card-title">Text Difference Checker</h5>
+                            <p class="card-text">A web application that finds and highlights differences between two texts.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/diff/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/web-editor.jpg" alt="Virtual Synthesizer Project" class="card-img-top" loading="lazy">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                         <img src="images/synth.jpg" alt="Virtual Synthesizer Project" class="card-img-top" loading="lazy"> <!-- Placeholder image -->
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Virtual Synthesizer</h5>
-                            <p class="card-text">A web application for playing music on a virtual keyboards.
-                            </p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <p class="card-text">A web application for playing musical notes on a virtual keyboard.</p>
+                             <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/virtual/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
-              
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/learn-it.jpg" alt="Learning Platform Project" class="card-img-top"
                             loading="lazy">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Learning Platform</h5>
-                            <p class="card-text">A learning platform for IT topics.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
+                            <h5 class="card-title">IT Learning Platform Concept</h5>
+                            <p class="card-text">A conceptual design for a learning platform focused on IT topics.</p>
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JavaScript</small></p>
                             <a href="https://bogdanbarbulescu.github.io/learning-platform/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
-             
-                <!--
-                 <div class="col-md-4 mb-3">
-                    <div class="card h-100">
-                        <img src="images/blog.jpg" alt="Blog Project" class="card-img-top" loading="lazy">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Blog</h5>
-                            <p class="card-text">A blog suing dynamic content loading.</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript.</p>
-                            <a href="https://bogdanbarbulescu.github.io/blog-test/" target="_blank" class="btn btn-warning mt-auto">View</a>
-                        </div>
-                    </div>
-                </div>
-            -->
-
-             
-                <div class="col-md-4 mb-3">
-                    <div class="card h-100">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/ejpt.jpg" alt="eJPT Cheatsheets Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">eJPT Cheatsheets</h5>
-                            <p class="card-text">A Web App with useful eJPT commands</p>
-                            <p><strong>Technologies Used:</strong> HTML, CSS, JavaScript, AJAX.</p>
+                            <h5 class="card-title">eJPT Cheatsheets App</h5>
+                            <p class="card-text">A Web App providing quick access to useful eJPT commands.</p>
+                             <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, AJAX</small></p>
                             <a href="https://bogdanbarbulescu.github.io/ejpt-webapp/" target="_blank"
-                                class="btn btn-warning mt-auto">View</a>
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Add other commented-out projects here if desired, following the same structure -->
 
             </div> <!-- End row -->
 
             <!-- Call to Action -->
             <div class="row">
-                <div class="col-md-12 text-center mt-4">
-                    <!-- Changed button style back to outline-warning to match original -->
-                    <a href="index.html" class="btn btn-outline-warning">Back to Home</a>
+                <div class="col-12 text-center mt-4"> <!-- Use col-12 for full width -->
+                    <a href="index.html" class="btn btn-outline-warning btn-lg">Back to Home</a> <!-- Made button larger -->
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3">
-        <p>© 2025 Bogdan Bărbulescu | All rights reserved.</p>
+    <footer class="bg-dark text-light text-center py-3 mt-auto"> <!-- Added mt-auto -->
+        <p class="mb-0">© 2025 Bogdan Bărbulescu | All rights reserved.</p> <!-- Removed default margin -->
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- Theme Toggle Script (Copied from index.html) -->
+    <script>
+      (() => {
+        'use strict'
+
+        const getStoredTheme = () => localStorage.getItem('theme')
+        const setStoredTheme = theme => localStorage.setItem('theme', theme)
+
+        const getPreferredTheme = () => {
+          const storedTheme = getStoredTheme()
+          if (storedTheme) {
+            return storedTheme
+          }
+          // Use system preference as fallback
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+
+        const setTheme = theme => {
+          // Set the data-bs-theme attribute on the <html> element
+          document.documentElement.setAttribute('data-bs-theme', theme)
+
+          // Optional: Update aria-pressed state for accessibility if needed on the button
+          const toggleButton = document.getElementById('theme-toggle');
+          if (toggleButton) {
+              // Example: toggleButton.setAttribute('aria-pressed', theme === 'dark');
+          }
+
+           // Optional: If you need to change specific classes beyond data-bs-theme
+           // (e.g., forcing navbar to switch light/dark)
+           /*
+           const navbar = document.querySelector('.navbar');
+           if (theme === 'dark') {
+                navbar?.classList.replace('navbar-light', 'navbar-dark');
+                navbar?.classList.replace('bg-light', 'bg-dark');
+           } else {
+                navbar?.classList.replace('navbar-dark', 'navbar-light');
+                navbar?.classList.replace('bg-dark', 'bg-light');
+           }
+           */
+        }
+
+        // Set the theme on initial load
+        setTheme(getPreferredTheme())
+
+        // Add event listener to the toggle button
+        const themeToggleBtn = document.getElementById('theme-toggle')
+        if (themeToggleBtn) {
+          themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme'); // Read current theme directly
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            setStoredTheme(newTheme);
+            setTheme(newTheme);
+          })
+        }
+
+        // Optional: Update theme if system preference changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+          const storedTheme = getStoredTheme()
+           // Only update if no theme is explicitly stored (respect user choice)
+          if (!storedTheme) {
+            setTheme(getPreferredTheme())
+          }
+        })
+      })()
+    </script>
+
 </body>
 
 </html>
