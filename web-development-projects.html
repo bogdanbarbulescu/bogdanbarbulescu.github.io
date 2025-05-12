@@ -6,66 +6,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Projects | Bogdan Barbulescu</title> <!-- Added name for consistency -->
+    <title>Web Development Projects | Bogdan Barbulescu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Added BS Icons -->
-    <link rel="stylesheet" href="styles.css"> <!-- Link the main stylesheet with theme rules -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Link the main stylesheet which contains theme rules AND card hover effects -->
+    <link rel="stylesheet" href="styles.css">
 
     <style>
         /* --- Theme Toggle Button Styles (copied from index.html setup) --- */
-        /* Can be moved to styles.css if preferred */
+        /* These styles handle the appearance of the theme toggle button */
         .theme-toggle-btn {
             cursor: pointer;
-            font-size: 1.4rem; /* Adjust size as needed */
-            line-height: 1; /* Prevent extra spacing */
+            font-size: 1.4rem;
+            line-height: 1;
             background: none;
             border: none;
-            padding: 0.375rem 0.75rem; /* Align with nav-link padding */
-            color: rgba(255, 255, 255, 0.55); /* Match nav-link color (for dark navbar) */
+            padding: 0.375rem 0.75rem;
+            color: rgba(255, 255, 255, 0.55); /* Default for dark navbar */
             transition: color .15s ease-in-out;
         }
         .theme-toggle-btn:hover,
         .theme-toggle-btn:focus {
-            color: rgba(255, 255, 255, 0.75); /* Match nav-link hover */
+            color: rgba(255, 255, 255, 0.75);
             outline: none;
             box-shadow: none;
         }
-
-        /* Hide one icon based on theme */
         [data-bs-theme="light"] .theme-toggle-btn .bi-sun-fill { display: none; }
         [data-bs-theme="dark"] .theme-toggle-btn .bi-moon-stars-fill { display: none; }
-
-        /* Adjust toggle color for light navbar if needed */
-        .navbar-light .theme-toggle-btn {
-             color: rgba(0, 0, 0, 0.55);
-        }
+        .navbar-light .theme-toggle-btn { color: rgba(0, 0, 0, 0.55); }
         .navbar-light .theme-toggle-btn:hover,
-        .navbar-light .theme-toggle-btn:focus {
-             color: rgba(0, 0, 0, 0.7);
-        }
+        .navbar-light .theme-toggle-btn:focus { color: rgba(0, 0, 0, 0.7); }
         /* --- End Theme Toggle Button Styles --- */
 
-
-        /* Optional: Add some basic styling if styles.css is missing or doesn't style cards well */
+        /* Card image styling */
         .card-img-top {
             aspect-ratio: 16 / 9;
-            /* Maintain aspect ratio for the placeholder */
             object-fit: cover;
-            /* Cover the area, might crop the image */
-             /* Let styles.css handle background */
         }
-        /* Ensure button stays at bottom in flex column */
-        .card-body .btn {
-             /* mt-auto in HTML handles this now */
+        /* Ensure body takes minimum height for sticky footer */
+        body {
+             display: flex;
+             flex-direction: column;
+             min-height: 100vh;
+        }
+        /* Make main content area grow */
+        #web-development {
+             flex-grow: 1;
         }
     </style>
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100"> <!-- Flex classes help with sticky footer -->
 
     <!-- Header / Navbar -->
-    <!-- Keeping navbar-dark / bg-dark for consistency unless theme logic changes it -->
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <!-- Added 'sticky-top' class for the sticky effect -->
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="images/logo.png" alt="BVB Logo" height="35"> BVB
@@ -76,16 +71,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                  <!-- Navigation Links -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- Added mb-2 mb-lg-0 -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
                 </ul>
                  <!-- Theme Toggle Button -->
-                <div class="d-flex align-items-center ms-lg-2"> <!-- Use flex for alignment, add margin -->
+                <div class="d-flex align-items-center ms-lg-2">
                      <button id="theme-toggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme">
-                        <i class="bi bi-moon-stars-fill"></i> <!-- Moon icon for switching to dark -->
-                        <i class="bi bi-sun-fill"></i>       <!-- Sun icon for switching to light -->
+                        <i class="bi bi-moon-stars-fill"></i> <!-- Moon icon -->
+                        <i class="bi bi-sun-fill"></i>       <!-- Sun icon -->
                     </button>
                 </div>
                  <!-- End Theme Toggle Button -->
@@ -94,29 +89,27 @@
     </nav>
 
     <!-- Web Development Projects Section -->
-    <!-- Add 'section' class if you use the alternating background from styles.css -->
-    <section id="web-development" class="py-5 section"> <!-- Added 'section' class -->
+    <section id="web-development" class="py-5 section">
         <div class="container">
-             <!-- Removed text-dark, color will adapt via data-bs-theme and styles.css -->
             <h2 class="text-center mb-4">Web Development Projects</h2>
-            <!-- Removed text-center from lead paragraph, let body inherit -->
-            <p class="lead text-center mb-4">Here are some of the web development projects I've worked on.</p> <!-- Added mb-4 -->
+            <p class="lead text-center mb-4">Here are some of the web development projects I've worked on.</p>
 
             <div class="row">
                 <!-- Project Cards -->
-                <!-- Bootstrap cards will adapt based on data-bs-theme -->
+                <!-- Added 'shadow-sm' class to each card for a base shadow. -->
+                <!-- The hover effect (increased shadow/lift) is applied via CSS in styles.css -->
 
-                <div class="col-md-4 mb-4"> <!-- Increased bottom margin -->
-                    <div class="card h-100 shadow-sm"> <!-- Added shadow-sm for subtle depth -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
                         <img src="images/portfolio.jpg" alt="Photography Portfolio Project" class="card-img-top"
                             loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Photography Portfolio</h5>
                             <p class="card-text">My photography portfolio website displaying my best landscape and
                                 nature photography.</p>
-                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, Bootstrap</small></p> <!-- Use small/text-muted -->
+                            <p><small class="text-muted"><strong>Technologies:</strong> HTML, CSS, JS, Bootstrap</small></p>
                             <a href="https://bogdanbarbulescu.github.io/photo" target="_blank"
-                                class="btn btn-warning mt-auto">View Project</a> <!-- Added 'Project' -->
+                                class="btn btn-warning mt-auto">View Project</a>
                         </div>
                     </div>
                 </div>
@@ -188,7 +181,7 @@
 
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                        <img src="images/flight.jpg" alt="Flight Simulator Project" class="card-img-top" loading="lazy"> <!-- Corrected alt text -->
+                        <img src="images/flight.jpg" alt="Flight Simulator Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Flight Simulator Interface</h5>
                             <p class="card-text">A basic commercial flight simulator interface with predefined routes.</p>
@@ -242,8 +235,7 @@
 
                  <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                        <!-- Assume same image or use a placeholder -->
-                        <img src="images/diff.jpg" alt="Text Difference Checker Project" class="card-img-top" loading="lazy"> <!-- Placeholder image -->
+                        <img src="images/diff.jpg" alt="Text Difference Checker Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Text Difference Checker</h5>
                             <p class="card-text">A web application that finds and highlights differences between two texts.</p>
@@ -256,7 +248,7 @@
 
                 <div class="col-md-4 mb-4">
                     <div class="card h-100 shadow-sm">
-                         <img src="images/synth.jpg" alt="Virtual Synthesizer Project" class="card-img-top" loading="lazy"> <!-- Placeholder image -->
+                         <img src="images/synth.jpg" alt="Virtual Synthesizer Project" class="card-img-top" loading="lazy">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">Virtual Synthesizer</h5>
                             <p class="card-text">A web application for playing musical notes on a virtual keyboard.</p>
@@ -294,94 +286,57 @@
                     </div>
                 </div>
 
-                <!-- Add other commented-out projects here if desired, following the same structure -->
-
             </div> <!-- End row -->
 
             <!-- Call to Action -->
             <div class="row">
-                <div class="col-12 text-center mt-4"> <!-- Use col-12 for full width -->
-                    <a href="index.html" class="btn btn-outline-warning btn-lg">Back to Home</a> <!-- Made button larger -->
+                <div class="col-12 text-center mt-4">
+                    <a href="index.html" class="btn btn-outline-warning btn-lg">Back to Home</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light text-center py-3 mt-auto"> <!-- Added mt-auto -->
-        <p class="mb-0">© 2025 Bogdan Bărbulescu | All rights reserved.</p> <!-- Removed default margin -->
+    <!-- mt-auto pushes footer down -->
+    <footer class="bg-dark text-light text-center py-3 mt-auto">
+        <p class="mb-0">© 2025 Bogdan Bărbulescu | All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 
-    <!-- Theme Toggle Script (Copied from index.html) -->
+    <!-- Theme Toggle Script -->
     <script>
       (() => {
         'use strict'
-
         const getStoredTheme = () => localStorage.getItem('theme')
         const setStoredTheme = theme => localStorage.setItem('theme', theme)
-
         const getPreferredTheme = () => {
           const storedTheme = getStoredTheme()
-          if (storedTheme) {
-            return storedTheme
-          }
-          // Use system preference as fallback
+          if (storedTheme) { return storedTheme }
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
         }
-
         const setTheme = theme => {
-          // Set the data-bs-theme attribute on the <html> element
           document.documentElement.setAttribute('data-bs-theme', theme)
-
-          // Optional: Update aria-pressed state for accessibility if needed on the button
-          const toggleButton = document.getElementById('theme-toggle');
-          if (toggleButton) {
-              // Example: toggleButton.setAttribute('aria-pressed', theme === 'dark');
-          }
-
-           // Optional: If you need to change specific classes beyond data-bs-theme
-           // (e.g., forcing navbar to switch light/dark)
-           /*
-           const navbar = document.querySelector('.navbar');
-           if (theme === 'dark') {
-                navbar?.classList.replace('navbar-light', 'navbar-dark');
-                navbar?.classList.replace('bg-light', 'bg-dark');
-           } else {
-                navbar?.classList.replace('navbar-dark', 'navbar-light');
-                navbar?.classList.replace('bg-dark', 'bg-light');
-           }
-           */
         }
-
-        // Set the theme on initial load
-        setTheme(getPreferredTheme())
-
-        // Add event listener to the toggle button
+        setTheme(getPreferredTheme()) // Set theme on initial load
         const themeToggleBtn = document.getElementById('theme-toggle')
         if (themeToggleBtn) {
           themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = document.documentElement.getAttribute('data-bs-theme'); // Read current theme directly
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
             setStoredTheme(newTheme);
             setTheme(newTheme);
           })
         }
-
-        // Optional: Update theme if system preference changes
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
           const storedTheme = getStoredTheme()
-           // Only update if no theme is explicitly stored (respect user choice)
-          if (!storedTheme) {
-            setTheme(getPreferredTheme())
-          }
+          if (!storedTheme) { setTheme(getPreferredTheme()) }
         })
       })()
     </script>
 
 </body>
-
 </html>
