@@ -4,6 +4,8 @@ import { useProjects } from '../hooks/useProjects'
 import { learningTopics } from '../data/learning-topics'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
+import ToggleGroup from '../components/ui/ToggleGroup'
+import Pagination from '../components/ui/Pagination'
 
 const ITEMS_PER_PAGE_OPTIONS = [3, 6, 9]
 const DEFAULT_PER_PAGE = 6
@@ -62,30 +64,17 @@ export default function Projects() {
 
   return (
     <Section title="Projects">
-      <div className="flex flex-wrap gap-2 mb-8 border-b border-gray-200 dark:border-gray-700">
-        <button
-          type="button"
-          onClick={() => setActiveTab('web')}
-          className={`px-4 py-2 rounded-t font-medium transition ${
-            activeTab === 'web'
-              ? 'bg-accent text-gray-900'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-          }`}
-        >
-          Web
-        </button>
-        <button
-          type="button"
-          onClick={() => setActiveTab('learning')}
-          className={`px-4 py-2 rounded-t font-medium transition ${
-            activeTab === 'learning'
-              ? 'bg-accent text-gray-900'
-              : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-          }`}
-        >
-          Learning
-        </button>
-      </div>
+      <ToggleGroup
+        options={[
+          { value: 'web', label: 'Web' },
+          { value: 'learning', label: 'Learning' },
+        ]}
+        value={activeTab}
+        onChange={(value) => setActiveTab(value as 'web' | 'learning')}
+        variant="tab"
+        ariaLabel="Projects sections"
+        className="justify-start"
+      />
 
       {activeTab === 'web' && (
         <>
@@ -157,36 +146,11 @@ export default function Projects() {
                 ))}
               </div>
               {totalPages > 1 && (
-                <div className="flex flex-wrap justify-center gap-2 mt-8">
-                  <button
-                    type="button"
-                    onClick={() => setPage((p) => Math.max(1, p - 1))}
-                    disabled={currentPage === 1}
-                    className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50"
-                  >
-                    Previous
-                  </button>
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                    <button
-                      key={p}
-                      type="button"
-                      onClick={() => setPage(p)}
-                      className={`px-3 py-1.5 rounded border ${
-                        p === currentPage ? 'bg-accent border-accent' : 'border-gray-300 dark:border-gray-600'
-                      }`}
-                    >
-                      {p}
-                    </button>
-                  ))}
-                  <button
-                    type="button"
-                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                    disabled={currentPage === totalPages}
-                    className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50"
-                  >
-                    Next
-                  </button>
-                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={setPage}
+                />
               )}
             </>
           )}
