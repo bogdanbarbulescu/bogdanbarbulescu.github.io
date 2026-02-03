@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useProjects } from '../hooks/useProjects'
 import { learningTopics } from '../data/learning-topics'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
 import ToggleGroup from '../components/ui/ToggleGroup'
 import Pagination from '../components/ui/Pagination'
+import BackLink from '../components/ui/BackLink'
+import { LoadingSection, ErrorSection } from '../components/ui/QueryState'
 
 const ITEMS_PER_PAGE_OPTIONS = [3, 6, 9]
 const DEFAULT_PER_PAGE = 6
@@ -48,18 +49,10 @@ export default function Projects() {
   )
 
   if (loading) {
-    return (
-      <Section title="Projects">
-        <p className="text-center text-gray-500">Loading…</p>
-      </Section>
-    )
+    return <LoadingSection title="Projects" />
   }
   if (error) {
-    return (
-      <Section title="Projects">
-        <p className="text-center text-red-600 dark:text-red-400">Failed to load projects.</p>
-      </Section>
-    )
+    return <ErrorSection title="Projects" message="Failed to load projects." />
   }
 
   return (
@@ -173,12 +166,7 @@ export default function Projects() {
       )}
 
       <div className="text-center mt-12">
-        <Link
-          to="/"
-          className="inline-flex items-center rounded-lg border-2 border-accent px-4 py-2 text-accent font-medium hover:bg-accent hover:text-gray-900 transition"
-        >
-          Back to Home
-        </Link>
+        <BackLink to="/">Back to Home</BackLink>
       </div>
     </Section>
   )

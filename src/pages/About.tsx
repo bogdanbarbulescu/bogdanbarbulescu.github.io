@@ -132,7 +132,7 @@ export default function About() {
   return (
     <>
       <header
-        className="relative bg-cover bg-center text-white min-h-[40vh] flex items-center justify-center py-12 px-4"
+        className="relative bg-cover bg-center text-white min-h-[50vh] flex items-center justify-center py-16 px-4"
         style={{ backgroundImage: "url('/images/about.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/50" aria-hidden="true" />

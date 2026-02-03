@@ -1,6 +1,7 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { learningTopics } from '../data/learning-topics'
 import Section from '../components/ui/Section'
+import BackLink from '../components/ui/BackLink'
 
 export default function LearningTopic() {
   const { topic } = useParams<{ topic: string }>()
@@ -10,9 +11,9 @@ export default function LearningTopic() {
     return (
       <Section title="Learning">
         <p className="text-gray-500">No topic specified.</p>
-        <Link to="/projects" className="text-accent hover:underline mt-4 inline-block">
-          ← Back to Projects
-        </Link>
+        <div className="mt-4">
+          <BackLink to="/projects">Back to Projects</BackLink>
+        </div>
       </Section>
     )
   }
@@ -21,9 +22,9 @@ export default function LearningTopic() {
     return (
       <Section title="Learning">
         <p className="text-gray-500">Topic not found.</p>
-        <Link to="/projects" className="text-accent hover:underline mt-4 inline-block">
-          ← Back to Projects
-        </Link>
+        <div className="mt-4">
+          <BackLink to="/projects">Back to Projects</BackLink>
+        </div>
       </Section>
     )
   }
@@ -49,12 +50,7 @@ export default function LearningTopic() {
             </p>
           </div>
           <div className="mt-8">
-            <Link
-              to="/projects"
-              className="inline-flex items-center rounded-lg border-2 border-accent px-4 py-2 text-accent font-medium hover:bg-accent hover:text-gray-900 transition"
-            >
-              ← Back to Projects
-            </Link>
+            <BackLink to="/projects">Back to Projects</BackLink>
           </div>
         </div>
       </Section>

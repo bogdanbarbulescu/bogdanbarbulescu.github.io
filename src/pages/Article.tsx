@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useBlogData } from '../hooks/useBlogData'
 import { parseMarkdown } from '../lib/markdown'
+import BackLink from '../components/ui/BackLink'
 
 export default function Article() {
   const { id } = useParams<{ id: string }>()
@@ -31,9 +32,9 @@ export default function Article() {
     return (
       <div className="container mx-auto px-4 py-8">
         <p className="text-red-600 dark:text-red-400">No article selected.</p>
-        <Link to="/blog" className="text-accent hover:underline mt-4 inline-block">
-          ← Back to Blog
-        </Link>
+        <div className="mt-4">
+          <BackLink to="/blog">Back to Blog</BackLink>
+        </div>
       </div>
     )
   }
@@ -42,9 +43,9 @@ export default function Article() {
     return (
       <div className="container mx-auto px-4 py-8">
         <p className="text-red-600 dark:text-red-400">{loadError}</p>
-        <Link to="/blog" className="text-accent hover:underline mt-4 inline-block">
-          ← Back to Blog
-        </Link>
+        <div className="mt-4">
+          <BackLink to="/blog">Back to Blog</BackLink>
+        </div>
       </div>
     )
   }
@@ -61,12 +62,9 @@ export default function Article() {
 
   return (
     <article className="container mx-auto px-4 py-8 max-w-3xl">
-      <Link
-        to="/blog"
-        className="inline-flex items-center text-accent hover:underline mb-6 font-medium"
-      >
-        ← Back to Blog
-      </Link>
+      <div className="mb-6">
+        <BackLink to="/blog">Back to Blog</BackLink>
+      </div>
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{meta.title}</h1>
       <div
         className="article-body prose dark:prose-invert max-w-none"

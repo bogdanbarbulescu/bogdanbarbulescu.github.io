@@ -1,10 +1,11 @@
 import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useBlogData } from '../hooks/useBlogData'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
 import ToggleGroup from '../components/ui/ToggleGroup'
 import Pagination from '../components/ui/Pagination'
+import BackLink from '../components/ui/BackLink'
+import { LoadingSection, ErrorSection } from '../components/ui/QueryState'
 
 const ROWS_PER_PAGE = 6
 
@@ -43,18 +44,10 @@ export default function Blog() {
   ]
 
   if (loading) {
-    return (
-      <Section title="Blog">
-        <p className="text-center text-gray-500">Loading…</p>
-      </Section>
-    )
+    return <LoadingSection title="Blog" />
   }
   if (error) {
-    return (
-      <Section title="Blog">
-        <p className="text-center text-red-600 dark:text-red-400">Failed to load blog data.</p>
-      </Section>
-    )
+    return <ErrorSection title="Blog" message="Failed to load blog data." />
   }
 
   return (
@@ -89,12 +82,7 @@ export default function Blog() {
       )}
 
       <div className="text-center mt-8">
-        <Link
-          to="/"
-          className="inline-flex items-center rounded-lg border-2 border-accent px-4 py-2 text-accent font-medium hover:bg-accent hover:text-gray-900 transition"
-        >
-          Back to Home
-        </Link>
+        <BackLink to="/">Back to Home</BackLink>
       </div>
     </Section>
   )
