@@ -22,7 +22,8 @@ export function useProjects(): { data: ProjectEntry[]; loading: boolean; error: 
       setData(cached)
       return
     }
-    fetch('/data/projects.json')
+    const base = import.meta.env.BASE_URL ?? '/'
+    fetch(`${base}data/projects.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()

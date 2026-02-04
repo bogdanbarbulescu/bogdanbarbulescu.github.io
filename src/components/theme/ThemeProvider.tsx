@@ -12,33 +12,79 @@ export function useTheme() {
 
 const STORAGE_KEY = 'theme'
 
+function isBrowser() {
+  return typeof window !== 'undefined' && typeof document !== 'undefined'
+}
+
 function getStoredTheme(): Theme | null {
-  const stored = localStorage.getItem(STORAGE_KEY)
-  if (stored === 'light' || stored === 'dark') return stored
+  if (!isBrowser()) return null
+  try {
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+    if (stored === 'light' || stored === 'dark') return stored
+  } catch {
+    // Storage might be unavailable (e.g. privacy mode); fall back to system/default theme
+  }
   return null
 }
 
 function getPreferredTheme(): Theme {
   const stored = getStoredTheme()
   if (stored) return stored
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+
+  if (isBrowser()) {
+    try {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    } catch {
+      // matchMedia may throw in very old / unusual environments; ignore and use default below
+    }
+  }
+
+  return 'light'
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => getPreferredTheme())
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem(STORAGE_KEY, theme)
+    if (!isBrowser()) return
+    try {
+      document.documentElement.classList.toggle('dark', theme === 'dark')
+      window.localStorage.setItem(STORAGE_KEY, theme)
+    } catch {
+      // Ignore storage/write errors; theme will still apply for this session
+    }
   }, [theme])
 
   useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    if (!isBrowser()) return
+
+    let mq: MediaQueryList
     const handler = () => {
-      if (!getStoredTheme()) setThemeState(mq.matches ? 'dark' : 'light')
+      const stored = getStoredTheme()
+      if (!stored) {
+        try {
+          setThemeState(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+        } catch {
+          // Ignore; keep current theme
+        }
+      }
     }
-    mq.addEventListener('change', handler)
-    return () => mq.removeEventListener('change', handler)
+
+    try {
+      mq = window.matchMedia('(prefers-color-scheme: dark)')
+      mq.addEventListener('change', handler)
+    } catch {
+      // matchMedia may not be supported; ignore dynamic system theme changes
+      return
+    }
+
+    return () => {
+      try {
+        mq.removeEventListener('change', handler)
+      } catch {
+        // Ignore cleanup errors
+      }
+    }
   }, [])
 
   const setTheme = (t: Theme) => setThemeState(t)

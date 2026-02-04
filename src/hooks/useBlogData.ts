@@ -20,7 +20,8 @@ export function useBlogData(): { data: BlogEntry[]; loading: boolean; error: Err
       setData(cached)
       return
     }
-    fetch('/data/blog-data.json')
+    const base = import.meta.env.BASE_URL ?? '/'
+    fetch(`${base}data/blog-data.json`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.json()

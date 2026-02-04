@@ -19,7 +19,8 @@ export default function Article() {
     }
     setLoadError(null)
     setMdContent(null)
-    fetch(`/articles/${id}.md`)
+    const base = import.meta.env.BASE_URL ?? '/'
+    fetch(`${base}articles/${id}.md`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.text()
