@@ -4,9 +4,9 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=bogdanbarbulescu&label=Profile%20views&color=0e75b6&style=flat" alt="bogdanbarbulescu" /> </p>
 
-- 👨‍💻 **Portfolio (SPA):** [https://bogdanbarbulescu.github.io](https://bogdanbarbulescu.github.io) — Home, About, Projects (Web + Learning), Blog, Contact
-- 📄 **About / experience:** [https://bogdanbarbulescu.github.io/#/about](https://bogdanbarbulescu.github.io/#/about)
-- 🏅 **Certifications:** [CompTIA Security+](https://www.credly.com/badges/60d7a784-4c3b-46f8-b0f3-524ba67af221), [Microsoft Certified: Azure Fundamentals](https://www.credly.com/badges/394cdaf5-322b-41e2-a1c6-9f62fd2b03e4), [Fortinet NSE 1–3](https://www.credly.com/earner/earned/badge/23dd7251-11d3-4143-8667-4d8f8ed16b62)
+- **Portfolio (SPA):** [bogdanbarbulescu.github.io](https://bogdanbarbulescu.github.io) — Home, About, Projects (Web + Learning), Blog, Contact
+- **About:** [bogdanbarbulescu.github.io/#/about](https://bogdanbarbulescu.github.io/#/about)
+- **Certifications:** [CompTIA Security+](https://www.credly.com/badges/60d7a784-4c3b-46f8-b0f3-524ba67af221), [Microsoft Certified: Azure Fundamentals](https://www.credly.com/badges/394cdaf5-322b-41e2-a1c6-9f62fd2b03e4), [Fortinet NSE 1–3](https://www.credly.com/earner/earned/badge/23dd7251-11d3-4143-8667-4d8f8ed16b62)
 
 <h3 align="left">Connect with me</h3>
 <p align="left">
@@ -26,41 +26,63 @@
 
 ## Portfolio repo (React SPA)
 
-This repository is a **React + Vite + TypeScript** single-page application (SPA) for the portfolio site, with Tailwind CSS and client-side routing (HashRouter for GitHub Pages).
+React + Vite + TypeScript single-page application for the portfolio, with **Tailwind CSS**, **React Router (HashRouter)** for GitHub Pages, light/dark theme, and markdown-driven Blog and Learning sections.
 
-### How to run locally
+### Tech stack
+
+| Category   | Stack |
+|-----------|--------|
+| Framework | React 18, Vite 5 |
+| Language  | TypeScript 5 |
+| Styling   | Tailwind CSS 3 |
+| Routing   | React Router 6 (HashRouter) |
+| Content   | Marked + DOMPurify, Highlight.js |
+
+### Run locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). Use the in-app links; routes use the hash (`#/`, `#/about`, `#/blog`, etc.).
+Open [http://localhost:5173](http://localhost:5173). Routes use the hash (`#/`, `#/about`, `#/blog`, etc.).
 
-### How to build and preview
+### Build and preview
 
 ```bash
 npm run build
 npm run preview
 ```
 
-- `npm run build` runs a prebuild step that copies `articles/*.md` and `images/` into `public/`, then builds the app into `dist/`.
-- `npm run preview` serves the `dist/` folder locally so you can test the production build.
+- **Prebuild:** Copies `articles/*.md` from repo root into `public/articles/` and `images/` into `public/images/`.
+- **Build:** TypeScript compile + Vite build → `dist/`.
+- **Preview:** Serves `dist/` locally to test the production build.
 
-### How to extend
+### Lint
 
-- **New project (Web):** Add an entry to `public/data/projects.json` (same shape as existing items). The Projects → Web list and filters will pick it up.
-- **New blog article:** Add `articles/articleN.md` and a corresponding entry in `public/data/blog-data.json` with `"id": "articleN"` and the same fields as existing entries. Link from the Blog page to `#/blog/articleN`.
-- **New learning topic:** Add a row to `src/data/learning-topics.ts` and, if needed, add content for the `/learning/:topic` route in `src/pages/LearningTopic.tsx`.
-- **New top-level page:** Add a route in `src/App.tsx`, create a component under `src/pages/`, and add a nav link in `src/components/layout/Navbar.tsx`.
+```bash
+npm run lint
+```
+
+---
+
+### How to extend content
+
+| Content            | Where to add | Notes |
+|--------------------|--------------|--------|
+| **Web project**    | `public/data/projects.json` | Same shape as existing entries. Projects → Web list and filters pick it up. |
+| **Blog article**   | Add `articles/articleN.md` (repo root) + entry in `public/data/blog-data.json` with `"id": "articleN"`. | Prebuild copies articles to `public/articles/`. Link: `#/blog/articleN`. |
+| **Learning topic** | `src/data/learning-topics.ts` | Add `{ id, title, description, image }`. Image path is under `public/images/` (e.g. `/images/foo.jpg`). |
+| **Learning resource** | `public/data/learning-data.json` + `public/learning/<topicId>/<resourceId>.md` | In `learning-data.json`, add an object under the topic key (e.g. `"red"`) with `id`, `title`, `description`, optional `section`. Create the markdown file at `public/learning/<topicId>/<resourceId>.md`. URL: `#/learning/<topicId>/<resourceId>`. |
+| **New top-level page** | `src/App.tsx` (route) + `src/pages/` (component) + `src/components/layout/Navbar.tsx` (link) | Add route, page component, and nav link. |
+
+---
 
 ### Deploy to GitHub Pages
 
-A GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the app and deploys the `dist/` folder to GitHub Pages on every push to `main`.
+The workflow in `.github/workflows/deploy.yml` builds the app and deploys `dist/` to GitHub Pages on every push to `main`.
 
-1. In the repo **Settings → Pages**, set **Source** to **GitHub Actions**.
-2. Push to `main`; the workflow will build and deploy. The site will be available at `https://<username>.github.io` (or your custom domain).
+1. **Settings → Pages** → set **Source** to **GitHub Actions**.
+2. Push to `main`; the site will be at `https://<username>.github.io` (or your custom domain).
 
-You can also build and deploy manually: run `npm run build` and upload the contents of `dist/` to your hosting.
-
-The app uses **HashRouter**, so the site works on GitHub Pages without a 404 fallback; the base URL is the repo root.
+**HashRouter** is used so the app works on GitHub Pages without a 404 fallback; the base URL is the repo root.

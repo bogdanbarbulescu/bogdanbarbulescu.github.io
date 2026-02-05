@@ -26,6 +26,7 @@ export interface CardLearningProps {
   description: string
   image: string
   href: string
+  state?: { tab?: string }
 }
 
 export type CardProps = CardProjectProps | CardBlogProps | CardLearningProps
@@ -43,7 +44,7 @@ export default function Card(props: CardProps) {
         <div className={cardImageWrapper}>
           <img
             src={image}
-            alt=""
+            alt={title}
             className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
             loading="lazy"
           />
@@ -114,13 +115,13 @@ export default function Card(props: CardProps) {
   }
 
   // learning
-  const { title, description, image, href } = props
+  const { title, description, image, href, state } = props
   return (
-    <Link to={href} className={`${cardWrapperClass} group`}>
+    <Link to={href} state={state} className={`${cardWrapperClass} group`}>
       <div className={cardImageWrapper}>
         <img
           src={image}
-          alt=""
+          alt={title}
           className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
           loading="lazy"
         />

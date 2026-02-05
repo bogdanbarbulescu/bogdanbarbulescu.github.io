@@ -8,6 +8,7 @@ import Blog from './pages/Blog'
 import Article from './pages/Article'
 import LearningTopic from './pages/LearningTopic'
 import LearningResource from './pages/LearningResource'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="learning/:topic" element={<LearningTopic />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<Article />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </HashRouter>

@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useBlogData } from '../hooks/useBlogData'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
 import ToggleGroup from '../components/ui/ToggleGroup'
@@ -10,7 +11,8 @@ import { LoadingSection, ErrorSection } from '../components/ui/QueryState'
 const ROWS_PER_PAGE = 6
 
 export default function Blog() {
-  const { data: entries, loading, error } = useBlogData()
+  useDocumentTitle('Blog')
+  const { data: entries, loading, error, refetch } = useBlogData()
   const [filter, setFilter] = useState<string>('all')
   const [page, setPage] = useState(1)
 
@@ -47,7 +49,13 @@ export default function Blog() {
     return <LoadingSection title="Blog" />
   }
   if (error) {
-    return <ErrorSection title="Blog" message="Failed to load blog data." />
+    return (
+      <ErrorSection
+        title="Blog"
+        message="Failed to load blog data."
+        onRetry={refetch}
+      />
+    )
   }
 
   return (
@@ -60,25 +68,26 @@ export default function Blog() {
         ariaLabel="Filter articles"
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {paginated.map((entry) => (
-          <Card
-            key={entry.id}
-            variant="blog"
-            title={entry.title}
-            description={entry.description}
-            tags={entry.tags}
-            href={`/blog/${entry.id}`}
-          />
-        ))}
-      </div>
-
-      {filtered.length === 0 && (
+      {filtered.length === 0 ? (
         <p className="text-center text-gray-500 py-8">No articles found for this filter.</p>
-      )}
-
-      {totalPages > 1 && (
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} />
+      ) : (
+        <>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {paginated.map((entry) => (
+              <Card
+                key={entry.id}
+                variant="blog"
+                title={entry.title}
+                description={entry.description}
+                tags={entry.tags}
+                href={`/blog/${entry.id}`}
+              />
+            ))}
+          </div>
+          {totalPages > 1 && (
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setPage} />
+          )}
+        </>
       )}
 
       <div className="text-center mt-8">

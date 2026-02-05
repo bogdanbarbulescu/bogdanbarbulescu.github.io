@@ -1,4 +1,5 @@
 import { marked } from 'marked'
+import DOMPurify from 'dompurify'
 import hljs from 'highlight.js'
 
 function highlightCode(code: string, lang: string | undefined): string {
@@ -28,5 +29,6 @@ marked.use({
 })
 
 export function parseMarkdown(md: string): string {
-  return marked.parse(md) as string
+  const raw = marked.parse(md) as string
+  return DOMPurify.sanitize(raw, { USE_PROFILES: { html: true } })
 }

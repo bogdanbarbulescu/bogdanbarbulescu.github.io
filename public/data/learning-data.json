@@ -74,5 +74,11 @@
   "osint": [],
   "cloud": [],
   "iot": [],
-  "ai": []
+  "ai": [
+    {
+      "id": "ai-ml-in-cybersecurity-path",
+      "title": "AI & ML in Cybersecurity: Learning Path",
+      "description": "Foundations, threat detection, and security automation—what to learn and in what order."
+    }
+  ]
 }

@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ThemeToggle from '../theme/ThemeToggle'
+import { useTheme } from '../theme/ThemeProvider'
 
 const navLinks: { label: string; path: string; scrollTo?: string }[] = [
   { label: 'Home', path: '/' },
@@ -17,9 +18,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const menuPanelRef = useRef<HTMLDivElement>(null)
 
+  const { theme } = useTheme()
   const isHome = location.pathname === '/'
   const useTransparent = isHome && !scrolled
+  const isDarkNav = useTransparent || theme === 'dark'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
@@ -27,6 +32,47 @@ export default function Navbar() {
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    if (!open) return
+    const panel = menuPanelRef.current
+    if (!panel) return
+    const focusable = panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+    const first = focusable[0]
+    if (first) first.focus()
+  }, [open])
+
+  useEffect(() => {
+    if (!open) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setOpen(false)
+        menuButtonRef.current?.focus()
+        return
+      }
+      if (e.key !== 'Tab' || !menuPanelRef.current?.contains(document.activeElement)) return
+      const focusable = Array.from(
+        menuPanelRef.current.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+      )
+      if (focusable.length === 0) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      const target = e.target as HTMLElement
+      if (e.shiftKey) {
+        if (target === first) {
+          e.preventDefault()
+          last.focus()
+        }
+      } else {
+        if (target === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [open])
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/'
@@ -46,15 +92,17 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`text-white sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-300 ${
         useTransparent
-          ? 'bg-transparent shadow-none'
-          : 'bg-surface-dark/95 backdrop-blur-md shadow-md'
+          ? 'bg-transparent shadow-none text-white'
+          : isDarkNav
+            ? 'bg-surface-dark/95 backdrop-blur-md shadow-md text-white'
+            : 'bg-white/95 dark:bg-surface-dark/95 backdrop-blur-md shadow-md text-gray-900 dark:text-white border-b border-gray-200 dark:border-white/10'
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
-          <Link to="/" className="flex items-center gap-2 font-semibold hover:opacity-90">
+          <Link to="/" className={`flex items-center gap-2 font-semibold hover:opacity-90 ${!useTransparent && theme === 'light' ? 'text-gray-900' : ''}`}>
             <img src="/images/logo.png" alt="BVB Logo" className="h-8 w-auto" />
             <span>BVB</span>
           </Link>
@@ -66,8 +114,9 @@ export default function Navbar() {
                 to={path}
                 onClick={(e) => { if (scrollTo) { e.preventDefault(); handleNavClick(path, scrollTo); } }}
                 className={`text-sm font-medium transition hover:text-accent ${
-                  isActive(path) ? 'text-accent' : 'text-gray-300'
+                  isActive(path) ? 'text-accent' : isDarkNav ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'
                 }`}
+                aria-current={isActive(path) ? 'page' : undefined}
               >
                 {label}
               </Link>
@@ -78,10 +127,13 @@ export default function Navbar() {
           <div className="flex items-center gap-2 md:hidden">
             <ThemeToggle />
             <button
+              ref={menuButtonRef}
               type="button"
               onClick={() => setOpen(!open)}
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+              className={`p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-gray-200 dark:hover:bg-white/10'}`}
               aria-label="Toggle menu"
+              aria-expanded={open}
+              aria-haspopup="true"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 {open ? (
@@ -95,7 +147,13 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="md:hidden py-3 border-t border-white/10">
+          <div
+            ref={menuPanelRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Main menu"
+            className={`md:hidden py-3 border-t ${isDarkNav ? 'border-white/10' : 'border-gray-200 dark:border-white/10'}`}
+          >
             <div className="flex flex-col gap-2">
               {navLinks.map(({ label, path, scrollTo }) => (
                 <Link
@@ -103,8 +161,13 @@ export default function Navbar() {
                   to={path}
                   onClick={() => (scrollTo ? handleNavClick(path, scrollTo) : setOpen(false))}
                   className={`px-3 py-2 rounded-lg text-sm font-medium ${
-                    isActive(path) ? 'bg-white/10 text-accent' : 'text-gray-300 hover:bg-white/10'
+                    isActive(path)
+                      ? 'bg-white/10 text-accent dark:bg-white/10'
+                      : isDarkNav
+                        ? 'text-gray-300 hover:bg-white/10'
+                        : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/10'
                   }`}
+                  aria-current={isActive(path) ? 'page' : undefined}
                 >
                   {label}
                 </Link>

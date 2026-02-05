@@ -11,7 +11,7 @@ export default function Contact() {
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Contact Me</h2>
         <p className="text-gray-300 mb-6 max-w-xl mx-auto">
-          Follow me on my social media profiles or send me a message directly.
+          Reach out via the links below or connect on social media.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           {socialLinks.map(({ href, label, icon }) => (

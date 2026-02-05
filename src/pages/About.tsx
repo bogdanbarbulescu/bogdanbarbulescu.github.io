@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Section from '../components/ui/Section'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import Contact from '../components/Contact'
 
 const natureImages = [
@@ -70,6 +71,8 @@ function Carousel() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) return
     const t = setInterval(() => setIndex((i) => (i + 1) % natureImages.length), 4000)
     return () => clearInterval(t)
   }, [])
@@ -129,6 +132,7 @@ function Carousel() {
 }
 
 export default function About() {
+  useDocumentTitle('About')
   return (
     <>
       <header

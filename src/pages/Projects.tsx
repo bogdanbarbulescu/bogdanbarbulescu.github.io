@@ -1,5 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useProjects } from '../hooks/useProjects'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { learningTopics } from '../data/learning-topics'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
@@ -12,8 +14,15 @@ const ITEMS_PER_PAGE_OPTIONS = [3, 6, 9]
 const DEFAULT_PER_PAGE = 6
 
 export default function Projects() {
-  const { data: projects, loading, error } = useProjects()
-  const [activeTab, setActiveTab] = useState<'web' | 'learning'>('web')
+  useDocumentTitle('Projects')
+  const location = useLocation()
+  const { data: projects, loading, error, refetch } = useProjects()
+  const initialTab = (location.state as { tab?: 'web' | 'learning' } | null)?.tab ?? 'web'
+  const [activeTab, setActiveTab] = useState<'web' | 'learning'>(initialTab)
+  useEffect(() => {
+    const tab = (location.state as { tab?: 'web' | 'learning' } | null)?.tab
+    if (tab === 'web' || tab === 'learning') setActiveTab(tab)
+  }, [location.state])
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState<string>('all')
   const [page, setPage] = useState(1)
@@ -52,7 +61,13 @@ export default function Projects() {
     return <LoadingSection title="Projects" />
   }
   if (error) {
-    return <ErrorSection title="Projects" message="Failed to load projects." />
+    return (
+      <ErrorSection
+        title="Projects"
+        message="Failed to load projects."
+        onRetry={refetch}
+      />
+    )
   }
 
   return (
@@ -72,7 +87,11 @@ export default function Projects() {
       {activeTab === 'web' && (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <label htmlFor="projects-search" className="sr-only">
+              Search projects
+            </label>
             <input
+              id="projects-search"
               type="search"
               placeholder="Search projects..."
               value={search}
@@ -82,7 +101,11 @@ export default function Projects() {
               }}
               className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-card-dark px-4 py-2.5 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-shadow"
             />
+            <label htmlFor="projects-category" className="sr-only">
+              Filter by category
+            </label>
             <select
+              id="projects-category"
               value={category}
               onChange={(e) => {
                 setCategory(e.target.value)
@@ -97,7 +120,11 @@ export default function Projects() {
                 </option>
               ))}
             </select>
+            <label htmlFor="projects-per-page" className="sr-only">
+              Items per page
+            </label>
             <select
+              id="projects-per-page"
               value={perPage === 'all' ? 'all' : perPage}
               onChange={(e) => {
                 const v = e.target.value

@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import Section from '../components/ui/Section'
 import Card from '../components/ui/Card'
 import Contact from '../components/Contact'
@@ -20,6 +21,7 @@ const hubCards = [
       'Collection of essential resources for mastering Networking, Security Certifications and more.',
     image: '/images/learning.png',
     href: '/projects',
+    state: { tab: 'learning' as const },
   },
   {
     variant: 'learning' as const,
@@ -31,6 +33,7 @@ const hubCards = [
 ]
 
 export default function Home() {
+  useDocumentTitle(null)
   const location = useLocation()
   const scrollTo = (location.state as { scrollTo?: string } | null)?.scrollTo
 
@@ -66,12 +69,13 @@ export default function Home() {
             >
               View My Work
             </button>
-            <a
-              href="#contact"
+            <Link
+              to="/"
+              state={{ scrollTo: 'contact' }}
               className="inline-flex items-center justify-center rounded-lg border-2 border-white/60 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
             >
               Get in Touch
-            </a>
+            </Link>
           </div>
         </div>
       </header>

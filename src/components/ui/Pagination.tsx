@@ -38,6 +38,7 @@ export default function Pagination({
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
         className={`${baseButton} ${inactiveButton} ${disabledButton}`}
+        aria-label="Previous page"
       >
         Previous
       </button>
@@ -64,6 +65,7 @@ export default function Pagination({
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
         className={`${baseButton} ${inactiveButton} ${disabledButton}`}
+        aria-label="Next page"
       >
         Next
       </button>
