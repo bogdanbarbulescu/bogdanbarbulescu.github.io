@@ -7,7 +7,7 @@ const socialLinks = [
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-12 md:py-16 bg-gray-900 text-gray-100">
+    <section id="contact" className="py-12 md:py-16 bg-surface-dark text-gray-100">
       <div className="container mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-bold mb-4">Contact Me</h2>
         <p className="text-gray-300 mb-6 max-w-xl mx-auto">

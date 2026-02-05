@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ThemeToggle from '../theme/ThemeToggle'
 
@@ -10,10 +10,23 @@ const navLinks: { label: string; path: string; scrollTo?: string }[] = [
   { label: 'Contact', path: '/', scrollTo: 'contact' },
 ]
 
+const SCROLL_THRESHOLD = 48
+
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
   const navigate = useNavigate()
+
+  const isHome = location.pathname === '/'
+  const useTransparent = isHome && !scrolled
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > SCROLL_THRESHOLD)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/'
@@ -32,7 +45,13 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="bg-gray-900 text-white sticky top-0 z-50 shadow-md">
+    <nav
+      className={`text-white sticky top-0 z-50 transition-all duration-300 ${
+        useTransparent
+          ? 'bg-transparent shadow-none'
+          : 'bg-surface-dark/95 backdrop-blur-md shadow-md'
+      }`}
+    >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-14">
           <Link to="/" className="flex items-center gap-2 font-semibold hover:opacity-90">
@@ -61,7 +80,7 @@ export default function Navbar() {
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="p-2 rounded-lg hover:bg-gray-800"
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,7 +95,7 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="md:hidden py-3 border-t border-gray-800">
+          <div className="md:hidden py-3 border-t border-white/10">
             <div className="flex flex-col gap-2">
               {navLinks.map(({ label, path, scrollTo }) => (
                 <Link
@@ -84,7 +103,7 @@ export default function Navbar() {
                   to={path}
                   onClick={() => (scrollTo ? handleNavClick(path, scrollTo) : setOpen(false))}
                   className={`px-3 py-2 rounded-lg text-sm font-medium ${
-                    isActive(path) ? 'bg-gray-800 text-accent' : 'text-gray-300 hover:bg-gray-800'
+                    isActive(path) ? 'bg-white/10 text-accent' : 'text-gray-300 hover:bg-white/10'
                   }`}
                 >
                   {label}

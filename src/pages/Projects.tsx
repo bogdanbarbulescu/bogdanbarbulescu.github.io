@@ -56,7 +56,7 @@ export default function Projects() {
   }
 
   return (
-    <Section title="Projects">
+    <Section eyebrow="Work" title="Projects">
       <ToggleGroup
         options={[
           { value: 'web', label: 'Web' },
@@ -80,7 +80,7 @@ export default function Projects() {
                 setSearch(e.target.value)
                 setPage(1)
               }}
-              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-card-dark px-4 py-2.5 text-gray-900 dark:text-white placeholder:text-gray-500 dark:placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-shadow"
             />
             <select
               value={category}
@@ -88,7 +88,7 @@ export default function Projects() {
                 setCategory(e.target.value)
                 setPage(1)
               }}
-              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-card-dark px-4 py-2.5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-shadow"
             >
               <option value="all">All Categories</option>
               {categories.map((c) => (
@@ -104,7 +104,7 @@ export default function Projects() {
                 setPerPage(v === 'all' ? 'all' : Number(v))
                 setPage(1)
               }}
-              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 px-3 py-2 text-gray-900 dark:text-white"
+              className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-card-dark px-4 py-2.5 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-shadow"
             >
               {ITEMS_PER_PAGE_OPTIONS.map((n) => (
                 <option key={n} value={n}>

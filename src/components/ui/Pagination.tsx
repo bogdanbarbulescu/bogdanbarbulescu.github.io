@@ -22,6 +22,12 @@ export default function Pagination({
 
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
 
+  const baseButton =
+    'px-3 py-2 rounded-lg border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark'
+  const inactiveButton =
+    'border-gray-300 dark:border-white/10 bg-white dark:bg-surface-card-dark text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-white/5'
+  const disabledButton = 'disabled:opacity-50 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent'
+
   return (
     <div
       className={`flex flex-wrap justify-center items-center gap-2 mt-8 ${className}`.trim()}
@@ -31,7 +37,7 @@ export default function Pagination({
         type="button"
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent"
+        className={`${baseButton} ${inactiveButton} ${disabledButton}`}
       >
         Previous
       </button>
@@ -42,10 +48,10 @@ export default function Pagination({
             key={page}
             type="button"
             onClick={() => goToPage(page)}
-            className={`px-3 py-1.5 rounded border ${
+            className={`${baseButton} ${
               isActive
                 ? 'bg-accent border-accent text-gray-900'
-                : 'border-gray-300 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-800'
+                : inactiveButton
             }`}
             aria-current={isActive ? 'page' : undefined}
           >
@@ -57,7 +63,7 @@ export default function Pagination({
         type="button"
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-3 py-1.5 rounded border border-gray-300 dark:border-gray-600 disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:hover:bg-transparent disabled:dark:hover:bg-transparent"
+        className={`${baseButton} ${inactiveButton} ${disabledButton}`}
       >
         Next
       </button>

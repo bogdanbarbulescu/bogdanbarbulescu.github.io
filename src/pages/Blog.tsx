@@ -51,7 +51,7 @@ export default function Blog() {
   }
 
   return (
-    <Section title="Blog">
+    <Section eyebrow="Writing" title="Blog">
       <ToggleGroup
         options={filterOptions}
         value={filter}

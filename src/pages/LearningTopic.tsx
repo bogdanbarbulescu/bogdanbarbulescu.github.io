@@ -56,7 +56,7 @@ export default function LearningTopic() {
   if (dataLoading) {
     return (
       <>
-        <header className="bg-gray-900 text-white py-12 px-4">
+        <header className="bg-surface-dark text-white py-12 px-4">
           <div className="container mx-auto max-w-3xl text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{topicMeta.title}</h1>
             <p className="text-gray-300">{topicMeta.description}</p>
@@ -74,7 +74,7 @@ export default function LearningTopic() {
   if (dataError) {
     return (
       <>
-        <header className="bg-gray-900 text-white py-12 px-4">
+        <header className="bg-surface-dark text-white py-12 px-4">
           <div className="container mx-auto max-w-3xl text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-2">{topicMeta.title}</h1>
             <p className="text-gray-300">{topicMeta.description}</p>
@@ -96,7 +96,7 @@ export default function LearningTopic() {
 
   return (
     <>
-      <header className="bg-gray-900 text-white py-12 px-4">
+      <header className="bg-surface-dark text-white py-12 px-4">
         <div className="container mx-auto max-w-3xl text-center">
           <h1 className="text-3xl md:text-4xl font-bold mb-2">{topicMeta.title}</h1>
           <p className="text-gray-300">{topicMeta.description}</p>

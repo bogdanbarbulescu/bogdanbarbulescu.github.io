@@ -26,17 +26,17 @@ export default function ToggleGroup({
 
   const containerBase =
     'flex flex-wrap justify-center gap-2 mb-8' +
-    (isPill ? '' : ' border-b border-gray-200 dark:border-gray-700')
+    (isPill ? '' : ' border-b border-gray-200 dark:border-white/10')
 
   const baseButton =
-    'px-4 py-2 text-sm font-medium transition focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-900'
+    'px-4 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark'
 
   const activeButton = isPill
-    ? 'bg-accent text-gray-900 rounded-full'
+    ? 'bg-accent text-gray-900 rounded-full shadow-sm'
     : 'bg-accent text-gray-900 rounded-t'
 
   const inactiveButton =
-    'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 ' +
+    'bg-gray-100 dark:bg-white/5 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/10 ' +
     (isPill ? 'rounded-full' : 'rounded-t')
 
   return (

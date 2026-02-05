@@ -66,9 +66,16 @@ export default function Article() {
       <div className="mb-6">
         <BackLink to="/blog">Back to Blog</BackLink>
       </div>
-      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{meta.title}</h1>
+      <div className="border-l-4 border-accent pl-4 mb-4">
+        <h1 className="font-display font-bold text-display-sm md:text-display-md text-gray-900 dark:text-white mb-2">
+          {meta.title}
+        </h1>
+        <p className="text-small text-gray-500 dark:text-gray-400">
+          {meta.category ?? 'Article'}
+        </p>
+      </div>
       <div
-        className="article-body prose dark:prose-invert max-w-none"
+        className="article-body prose dark:prose-invert max-w-none text-body"
         dangerouslySetInnerHTML={{ __html: html }}
       />
       <p className="mt-8 text-gray-600 dark:text-gray-400">
@@ -76,7 +83,7 @@ export default function Article() {
         {meta.tags.map((tag) => (
           <span
             key={tag}
-            className="inline-block mr-2 px-2 py-0.5 rounded bg-gray-200 dark:bg-gray-600 text-sm"
+            className="inline-block mr-2 px-2.5 py-1 rounded-full bg-accent/15 dark:bg-accent/20 text-gray-700 dark:text-gray-300 border border-accent/20 dark:border-accent/30 text-small"
           >
             {tag}
           </span>

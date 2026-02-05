@@ -24,8 +24,10 @@ export default function LearningResource() {
     }
     setLoadError(null)
     setMdContent(null)
-    const base = import.meta.env.BASE_URL ?? '/'
-    fetch(`${base}learning/${topic}/${resourceId}.md`)
+    const base = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '') || ''
+    const path = `${base ? base + '/' : ''}learning/${topic}/${resourceId}.md`
+    const url = new URL(path, window.location.origin).href
+    fetch(url)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.text()

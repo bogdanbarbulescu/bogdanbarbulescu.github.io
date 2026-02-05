@@ -132,18 +132,23 @@ export default function About() {
   return (
     <>
       <header
-        className="relative bg-cover bg-center text-white min-h-[50vh] flex items-center justify-center py-16 px-4"
+        className="relative bg-cover bg-center text-white min-h-[45vh] flex items-center justify-center py-16 px-4"
         style={{ backgroundImage: "url('/images/about.jpg')" }}
       >
-        <div className="absolute inset-0 bg-black/50" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/55 to-black/75"
+          aria-hidden="true"
+        />
         <div className="relative z-10 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-2">About Me</h1>
+          <h1 className="font-display font-bold text-display-md md:text-display-lg tracking-tight mb-2">
+            About Me
+          </h1>
           <p className="text-lg text-gray-200">A glimpse into my skills, experiences, and passions.</p>
         </div>
       </header>
 
-      <Section id="about" title="Introduction">
-        <p className="text-center max-w-2xl mx-auto text-gray-600 dark:text-gray-300">
+      <Section id="about" eyebrow="Introduction" title="Introduction">
+        <p className="text-center max-w-prose mx-auto text-gray-600 dark:text-gray-300 text-body">
           Hi, I'm Bogdan, a network engineer from Romania. With over 8 years of experience in both
           academia and the industry, I've honed a strong understanding of network security, ethical
           hacking, and front-end development. My portfolio reflects my technical expertise, the
@@ -151,7 +156,7 @@ export default function About() {
         </p>
       </Section>
 
-      <Section id="skills" title="Skills">
+      <Section id="skills" eyebrow="Expertise" title="Skills">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
           {skills.map(({ title, items }) => (
             <div key={title}>
@@ -166,8 +171,8 @@ export default function About() {
         </div>
       </Section>
 
-      <Section id="hobbies" title="Hobbies & Photography">
-        <p className="text-center max-w-2xl mx-auto text-gray-600 dark:text-gray-300 mb-6">
+      <Section id="hobbies" eyebrow="Beyond tech" title="Hobbies & Photography">
+        <p className="text-center max-w-prose mx-auto text-gray-600 dark:text-gray-300 mb-6 text-body">
           When I'm not immersed in technology, I enjoy hiking, practicing photography, and
           exploring the beauty of nature. Capturing landscapes and natural scenes through my lens
           is a passion. Check out{' '}
@@ -184,7 +189,7 @@ export default function About() {
         <Carousel />
       </Section>
 
-      <Section id="certifications" title="Certifications & Credentials">
+      <Section id="certifications" eyebrow="Credentials" title="Certifications & Credentials">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
           {certifications.map(({ image, alt, title, description }) => (
             <div key={title} className="text-center max-w-[200px]">
