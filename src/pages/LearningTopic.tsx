@@ -1,15 +1,35 @@
+import { useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { learningTopics } from '../data/learning-topics'
-import { useLearningData } from '../hooks/useLearningData'
+import { useLearningData, type LearningResourceMeta } from '../hooks/useLearningData'
 import Section from '../components/ui/Section'
 import BackLink from '../components/ui/BackLink'
 import { accentButtonClass } from '../components/ui/tokens'
+
+const SECTION_ORDER = ['Getting started', 'Roadmaps', 'Reference', 'Career']
+
+function groupBySection(resources: LearningResourceMeta[]): Map<string, LearningResourceMeta[]> {
+  const map = new Map<string, LearningResourceMeta[]>()
+  const hasSection = resources.some((r) => r.section)
+  if (!hasSection) {
+    return map
+  }
+  for (const section of SECTION_ORDER) {
+    const items = resources.filter((r) => r.section === section)
+    if (items.length > 0) map.set(section, items)
+  }
+  const other = resources.filter((r) => r.section && !SECTION_ORDER.includes(r.section))
+  if (other.length > 0) map.set('Other', other)
+  return map
+}
 
 export default function LearningTopic() {
   const { topic } = useParams<{ topic: string }>()
   const { data: learningData, loading: dataLoading, error: dataError } = useLearningData()
   const topicMeta = topic ? learningTopics.find((t) => t.id === topic) : null
   const resources = topic ? learningData[topic] ?? [] : []
+  const bySection = useMemo(() => groupBySection(resources), [resources])
+  const hasSections = bySection.size > 0
 
   if (!topic) {
     return (
@@ -89,32 +109,66 @@ export default function LearningTopic() {
           </div>
 
           {hasResources ? (
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Guides &amp; resources
-              </h2>
-              <ul className="space-y-3">
-                {resources.map((resource) => (
-                  <li key={resource.id}>
-                    <Link
-                      to={`/learning/${topic}/${resource.id}`}
-                      className="block rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm hover:shadow-md transition-shadow"
-                    >
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                        {resource.title}
-                      </h3>
-                      {resource.description && (
-                        <p className="text-sm text-gray-600 dark:text-gray-300">
-                          {resource.description}
-                        </p>
-                      )}
-                      <span className={`mt-2 inline-block ${accentButtonClass}`}>
-                        Read
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+            <div className="space-y-8">
+              {hasSections ? (
+                Array.from(bySection.entries()).map(([sectionName, sectionResources]) => (
+                  <div key={sectionName} className="space-y-3">
+                    <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                      {sectionName}
+                    </h2>
+                    <ul className="space-y-3">
+                      {sectionResources.map((resource) => (
+                        <li key={resource.id}>
+                          <Link
+                            to={`/learning/${topic}/${resource.id}`}
+                            className="block rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm hover:shadow-md transition-shadow"
+                          >
+                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                              {resource.title}
+                            </h3>
+                            {resource.description && (
+                              <p className="text-sm text-gray-600 dark:text-gray-300">
+                                {resource.description}
+                              </p>
+                            )}
+                            <span className={`mt-2 inline-block ${accentButtonClass}`}>
+                              Read
+                            </span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))
+              ) : (
+                <>
+                  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Guides &amp; resources
+                  </h2>
+                  <ul className="space-y-3">
+                    {resources.map((resource) => (
+                      <li key={resource.id}>
+                        <Link
+                          to={`/learning/${topic}/${resource.id}`}
+                          className="block rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm hover:shadow-md transition-shadow"
+                        >
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                            {resource.title}
+                          </h3>
+                          {resource.description && (
+                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                              {resource.description}
+                            </p>
+                          )}
+                          <span className={`mt-2 inline-block ${accentButtonClass}`}>
+                            Read
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           ) : (
             <p className="text-gray-600 dark:text-gray-300">

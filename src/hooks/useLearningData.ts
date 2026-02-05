@@ -4,6 +4,7 @@ export interface LearningResourceMeta {
   id: string
   title: string
   description?: string
+  section?: string
 }
 
 export type LearningData = Record<string, LearningResourceMeta[]>

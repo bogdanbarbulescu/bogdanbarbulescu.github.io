@@ -1,14 +1,70 @@
 {
   "red": [
     {
+      "id": "red-team-glossary",
+      "title": "Red Team Glossary & Terminology",
+      "description": "Look up DA, C2, Kerberoasting, ATT&CK, EDR, OPSEC, and more.",
+      "section": "Getting started"
+    },
+    {
+      "id": "red-team-faq",
+      "title": "Red Team FAQ & Common Misconceptions",
+      "description": "Do I need a degree? How long until a job? Red or blue first? Short answers.",
+      "section": "Getting started"
+    },
+    {
+      "id": "red-team-vs-pentest-vs-blue",
+      "title": "Red Team, Pentest & Blue Team: Roles and Expectations",
+      "description": "Clear comparison of objectives, scope, deliverables, and day-to-day.",
+      "section": "Getting started"
+    },
+    {
+      "id": "where-to-practice-red-team",
+      "title": "Where to Practice: Labs & Platforms",
+      "description": "TryHackMe, HTB, Pro Labs, CRTO lab, custom AD—when to use each stage.",
+      "section": "Getting started"
+    },
+    {
       "id": "beginner-red-team-roadmap",
       "title": "Beginner Red Team Learning Map",
-      "description": "6–12 month roadmap for junior red team foundations."
+      "description": "6–12 month roadmap for junior red team foundations.",
+      "section": "Roadmaps"
     },
     {
       "id": "intermediate-red-team-roadmap",
       "title": "Intermediate Red Team Learning Map",
-      "description": "Next steps after foundations: deeper AD, operational tooling, OPSEC, and cert readiness (OSCP/CRTO)."
+      "description": "Next steps after foundations: deeper AD, operational tooling, OPSEC, and cert readiness (OSCP/CRTO).",
+      "section": "Roadmaps"
+    },
+    {
+      "id": "advanced-red-team-roadmap",
+      "title": "Advanced Red Team Learning Map",
+      "description": "Leading engagements, adversary emulation at scale, evasion and EDR, initial access, and lead/principal readiness.",
+      "section": "Roadmaps"
+    },
+    {
+      "id": "red-team-techniques-overview",
+      "title": "Key Techniques: A Map of the Attack Lifecycle",
+      "description": "Initial access to exfiltration—high-level map with short explanations.",
+      "section": "Reference"
+    },
+    {
+      "id": "ethics-and-rules-of-engagement",
+      "title": "Ethics & Rules of Engagement",
+      "description": "Why red team has boundaries; legal and RoE in plain language.",
+      "section": "Reference"
+    },
+    {
+      "id": "red-team-reading-list",
+      "title": "Further Reading & Resources",
+      "description": "Books, blogs, vendor reports, conferences, and courses.",
+      "section": "Reference"
+    },
+    {
+      "id": "red-team-certifications-and-career",
+      "title": "Certifications & Career in Red Team",
+      "description": "Certs, typical roles, what to expect, and how to get the first job.",
+      "section": "Career"
     }
   ],
   "blue": [],
