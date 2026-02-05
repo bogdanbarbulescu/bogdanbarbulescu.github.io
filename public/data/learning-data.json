@@ -1,0 +1,22 @@
+{
+  "red": [
+    {
+      "id": "beginner-red-team-roadmap",
+      "title": "Beginner Red Team Learning Map",
+      "description": "6–12 month roadmap for junior red team foundations."
+    },
+    {
+      "id": "intermediate-red-team-roadmap",
+      "title": "Intermediate Red Team Learning Map",
+      "description": "Next steps after foundations: deeper AD, operational tooling, OPSEC, and cert readiness (OSCP/CRTO)."
+    }
+  ],
+  "blue": [],
+  "networking": [],
+  "devops": [],
+  "web-app-sec": [],
+  "osint": [],
+  "cloud": [],
+  "iot": [],
+  "ai": []
+}

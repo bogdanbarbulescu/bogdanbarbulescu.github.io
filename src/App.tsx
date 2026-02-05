@@ -7,6 +7,7 @@ import Projects from './pages/Projects'
 import Blog from './pages/Blog'
 import Article from './pages/Article'
 import LearningTopic from './pages/LearningTopic'
+import LearningResource from './pages/LearningResource'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="projects" element={<Projects />} />
+            <Route path="learning/:topic/:resourceId" element={<LearningResource />} />
             <Route path="learning/:topic" element={<LearningTopic />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/:id" element={<Article />} />

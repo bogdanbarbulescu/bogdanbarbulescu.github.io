@@ -47,3 +47,132 @@
 .article-body a {
   @apply text-accent hover:underline;
 }
+
+/* Learning resource: terminal-style layout (scoped) */
+.learning-resource-layout {
+  @apply min-h-screen overflow-y-auto bg-slate-900 text-slate-300 antialiased;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.learning-resource-layout h1,
+.learning-resource-layout h2,
+.learning-resource-layout h3 {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  @apply font-bold text-white;
+}
+
+/* Article title (h1 in content) */
+.learning-article h1 {
+  @apply mt-8 mb-4 font-mono text-2xl font-bold text-white;
+}
+.learning-article h1:first-child {
+  @apply mt-0;
+}
+/* Section headers: left accent border */
+.learning-article h2,
+.learning-article h3 {
+  border-left: 4px solid rgb(16 185 129); /* emerald-500 */
+  @apply pl-4 font-mono font-bold text-white uppercase tracking-wide;
+}
+.learning-article h2 {
+  @apply mt-10 mb-4 text-2xl;
+}
+.learning-article h3 {
+  @apply mt-6 mb-3 text-lg;
+}
+.learning-article h2:first-child,
+.learning-article h3:first-child {
+  @apply mt-0;
+}
+
+/* Terminal-style code blocks */
+.learning-article pre {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  @apply my-4 overflow-x-auto rounded-lg p-4 text-sm shadow;
+}
+.learning-article pre code {
+  @apply bg-transparent p-0 text-slate-200;
+}
+.learning-article :not(pre) > code {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  @apply rounded px-1.5 py-0.5 text-sm text-slate-200;
+}
+
+/* Lists */
+.learning-article ul,
+.learning-article ol {
+  @apply my-4 space-y-2 pl-6;
+}
+.learning-article ul {
+  list-style-type: disc;
+}
+.learning-article li::marker {
+  @apply text-emerald-500;
+}
+
+/* Links */
+.learning-article a {
+  @apply text-emerald-400 underline decoration-emerald-400/50 hover:decoration-emerald-400;
+}
+
+/* Paragraphs */
+.learning-article p {
+  @apply my-3 leading-relaxed text-slate-300;
+}
+
+/* Tables (terminal style) */
+.learning-article table {
+  @apply min-w-full border-collapse;
+}
+.learning-article th,
+.learning-article td {
+  border: 1px solid #334155;
+  @apply px-3 py-2 text-left text-slate-300;
+}
+.learning-article th {
+  background-color: #1e293b;
+  @apply font-semibold text-white;
+}
+.learning-article tr:nth-child(even) {
+  background-color: rgba(30, 41, 59, 0.5);
+}
+
+/* Blockquote callouts */
+.learning-article blockquote {
+  @apply my-4 border-l-4 border-slate-500 bg-slate-800/50 py-2 pl-4 pr-4;
+}
+.learning-article blockquote.callout-note {
+  border-left-color: rgb(16 185 129);
+  @apply bg-emerald-900/20;
+}
+.learning-article blockquote.callout-warning {
+  border-left-color: rgb(245 158 11);
+  @apply bg-amber-900/20;
+}
+.learning-article blockquote.callout-danger {
+  border-left-color: rgb(239 68 68);
+  @apply bg-red-900/20;
+}
+
+/* Custom scrollbar for learning layout */
+.learning-resource-layout::-webkit-scrollbar {
+  width: 8px;
+}
+.learning-resource-layout::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+.learning-resource-layout::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+.learning-resource-layout::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Back link in learning layout (only the back link, not article links) */
+.learning-resource-layout main > div:first-child a,
+.learning-resource-layout article > div:first-child a {
+  @apply border-emerald-500 text-emerald-400 hover:border-emerald-500 hover:bg-emerald-500 hover:text-slate-900;
+}
