@@ -67,7 +67,18 @@
       "section": "Career"
     }
   ],
-  "blue": [],
+  "blue": [
+    {"id":"blue-team-glossary","title":"Blue Team Glossary & Terminology","description":"Look up SIEM, EDR, Sigma, ATT&CK, alert triage, threat hunting, and more.","section":"Getting started"},
+    {"id":"blue-team-faq","title":"Blue Team FAQ & Common Misconceptions","description":"Do I need a degree? How long until a job? Blue or red first? Short answers.","section":"Getting started"},
+    {"id":"blue-team-roles-and-expectations","title":"Blue Team: Roles and Expectations","description":"SOC, detection engineer, incident responder, threat hunter—day-to-day and who it fits.","section":"Getting started"},
+    {"id":"where-to-practice-blue-team","title":"Where to Practice: Labs & Environments","description":"Detection labs, Splunk BOTS, Blue Team Labs, AD+SIEM lab—when to use each stage.","section":"Getting started"},
+    {"id":"beginner-blue-team-roadmap","title":"Beginner Blue Team Learning Map","description":"6–12 month roadmap for junior blue team foundations: logs, triage, SIEM, IR basics.","section":"Roadmaps"},
+    {"id":"intermediate-blue-team-roadmap","title":"Intermediate Blue Team Learning Map","description":"Detection engineering, Sigma, EDR, threat hunting, playbooks, and purple team collaboration.","section":"Roadmaps"},
+    {"id":"advanced-blue-team-roadmap","title":"Advanced Blue Team Learning Map","description":"IR leadership, detection program ownership, MTTD/MTTR, purple team design, lead readiness.","section":"Roadmaps"},
+    {"id":"blue-team-detection-and-visibility-overview","title":"Detection & Visibility: A Map for Defenders","description":"What defenders see across the attack lifecycle; log sources, SIEM/EDR, and visibility gaps.","section":"Reference"},
+    {"id":"blue-team-reading-list","title":"Further Reading & Resources","description":"Books, blogs, vendor docs, conferences, and courses for blue team and defense.","section":"Reference"},
+    {"id":"blue-team-certifications-and-career","title":"Certifications & Career in Blue Team","description":"Certs, typical roles, what to expect, and how to get the first job.","section":"Career"}
+  ],
   "networking": [
     {"id":"networking-glossary","title":"Networking Glossary & Terminology","description":"Look up TCP/IP, BGP, VLAN, SD-WAN, and more.","section":"Getting started"},
     {"id":"networking-faq","title":"Networking FAQ","description":"Do I need a degree? How long until a job? NOC vs design vs security? Short answers.","section":"Getting started"},
@@ -80,7 +91,18 @@
     {"id":"networking-reading-list","title":"Further Reading & Resources","description":"Books, standards, vendor docs, and courses for going deeper.","section":"Reference"},
     {"id":"networking-certifications-and-career","title":"Certifications & Career in Networking","description":"Certs, typical roles, what to expect, and how to get the first job.","section":"Career"}
   ],
-  "devops": [],
+  "devops": [
+    {"id":"devops-glossary","title":"DevOps Glossary & Terminology","description":"Look up CI/CD, IaC, containers, observability, and more.","section":"Getting started"},
+    {"id":"devops-faq","title":"DevOps FAQ","description":"Do I need a dev background? How long to first role? DevOps vs SRE? Short answers.","section":"Getting started"},
+    {"id":"devops-roles-and-expectations","title":"DevOps, SRE & Platform: Roles and Expectations","description":"Clear comparison of DevOps engineer, SRE, platform engineer, and build/release roles.","section":"Getting started"},
+    {"id":"where-to-practice-devops","title":"Where to Practice: Labs & Environments","description":"Docker, Minikube/Kind, cloud free tiers, GitHub Actions, Terraform—when to use each.","section":"Getting started"},
+    {"id":"beginner-devops-roadmap","title":"Beginner DevOps Learning Map","description":"6–12 month roadmap for Linux, scripting, Git, CI, and containers.","section":"Roadmaps"},
+    {"id":"intermediate-devops-roadmap","title":"Intermediate DevOps Learning Map","description":"Kubernetes, IaC, pipeline design, observability, and cert readiness (CKA, Terraform).","section":"Roadmaps"},
+    {"id":"advanced-devops-roadmap","title":"Advanced DevOps Learning Map","description":"K8s at scale, multi-cloud, SRE practices, platform engineering, and lead readiness.","section":"Roadmaps"},
+    {"id":"devops-toolchain-overview","title":"Toolchain: A Map of the Pipeline","description":"Source → build → test → artifact → deploy → run; key tools in one place.","section":"Reference"},
+    {"id":"devops-reading-list","title":"Further Reading & Resources","description":"Books, docs, and courses: Phoenix Project, K8s/CNCF, Terraform, cloud learning.","section":"Reference"},
+    {"id":"devops-certifications-and-career","title":"Certifications & Career in DevOps","description":"CKA/CKAD, Terraform, cloud certs, typical roles, and how to get the first job.","section":"Career"}
+  ],
   "web-app-sec": [],
   "osint": [],
   "cloud": [],
