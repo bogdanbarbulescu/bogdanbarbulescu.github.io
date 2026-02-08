@@ -24,7 +24,7 @@ export function useProjects(): {
   data: ProjectEntry[]
   loading: boolean
   error: Error | null
-  refetch: () => void
+  refetch: () => Promise<void>
 } {
   const [data, setData] = useState<ProjectEntry[]>(cached ?? [])
   const [loading, setLoading] = useState(!cached)
@@ -33,12 +33,15 @@ export function useProjects(): {
   const refetch = () => {
     setLoading(true)
     setError(null)
-    fetchProjects()
+    return fetchProjects()
       .then((json: ProjectEntry[]) => {
         cached = json
         setData(json)
       })
-      .catch((e) => setError(e instanceof Error ? e : new Error(String(e))))
+      .catch((e) => {
+        setError(e instanceof Error ? e : new Error(String(e)))
+        throw e
+      })
       .finally(() => setLoading(false))
   }
 

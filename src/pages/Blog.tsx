@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { useBlogData } from '../hooks/useBlogData'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
+import { useToast } from '../components/ui/ToastContext'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
 import ToggleGroup from '../components/ui/ToggleGroup'
@@ -12,9 +13,14 @@ const ROWS_PER_PAGE = 6
 
 export default function Blog() {
   useDocumentTitle('Blog')
+  const { toast } = useToast()
   const { data: entries, loading, error, refetch } = useBlogData()
   const [filter, setFilter] = useState<string>('all')
   const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    if (error) toast('Failed to load blog data.', 'error')
+  }, [error, toast])
 
   const allTags = useMemo(() => {
     const set = new Set<string>()
@@ -53,7 +59,7 @@ export default function Blog() {
       <ErrorSection
         title="Blog"
         message="Failed to load blog data."
-        onRetry={refetch}
+        onRetry={() => refetch().then(() => toast('Blog loaded.', 'success')).catch(() => {})}
       />
     )
   }

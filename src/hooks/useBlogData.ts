@@ -22,7 +22,7 @@ export function useBlogData(): {
   data: BlogEntry[]
   loading: boolean
   error: Error | null
-  refetch: () => void
+  refetch: () => Promise<void>
 } {
   const [data, setData] = useState<BlogEntry[]>(cached ?? [])
   const [loading, setLoading] = useState(!cached)
@@ -31,12 +31,15 @@ export function useBlogData(): {
   const refetch = () => {
     setLoading(true)
     setError(null)
-    fetchBlogData()
+    return fetchBlogData()
       .then((json: BlogEntry[]) => {
         cached = json
         setData(json)
       })
-      .catch((e) => setError(e instanceof Error ? e : new Error(String(e))))
+      .catch((e) => {
+        setError(e instanceof Error ? e : new Error(String(e)))
+        throw e
+      })
       .finally(() => setLoading(false))
   }
 

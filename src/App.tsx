@@ -1,5 +1,7 @@
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './components/theme/ThemeProvider'
+import { ToastProvider } from './components/ui/ToastContext'
+import ErrorBoundary from './components/ErrorBoundary'
 import Layout from './components/layout/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -13,8 +15,10 @@ import NotFound from './pages/NotFound'
 function App() {
   return (
     <ThemeProvider>
-      <HashRouter>
-        <Routes>
+      <ErrorBoundary>
+        <ToastProvider>
+          <HashRouter>
+            <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
@@ -27,6 +31,8 @@ function App() {
           </Route>
         </Routes>
       </HashRouter>
+        </ToastProvider>
+      </ErrorBoundary>
     </ThemeProvider>
   )
 }

@@ -4,6 +4,7 @@ import { useBlogData } from '../hooks/useBlogData'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { parseMarkdown } from '../lib/markdown'
 import BackLink from '../components/ui/BackLink'
+import Breadcrumbs from '../components/ui/Breadcrumbs'
 import Spinner from '../components/ui/Spinner'
 
 export default function Article() {
@@ -89,7 +90,13 @@ export default function Article() {
 
   return (
     <article className="container mx-auto px-4 py-8 max-w-3xl">
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col gap-3">
+        <Breadcrumbs
+          items={[
+            { label: 'Blog', path: '/blog' },
+            { label: articleMeta.title },
+          ]}
+        />
         <BackLink to="/blog">Back to Blog</BackLink>
       </div>
       <div className="border-l-4 border-accent pl-4 mb-4">

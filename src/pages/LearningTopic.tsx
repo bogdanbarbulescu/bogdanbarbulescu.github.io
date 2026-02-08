@@ -5,6 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { useLearningData, type LearningResourceMeta } from '../hooks/useLearningData'
 import Section from '../components/ui/Section'
 import BackLink from '../components/ui/BackLink'
+import Breadcrumbs from '../components/ui/Breadcrumbs'
 import { accentButtonClass } from '../components/ui/tokens'
 
 const SECTION_ORDER = ['Getting started', 'Roadmaps', 'Reference', 'Career']
@@ -28,7 +29,10 @@ export default function LearningTopic() {
   const { topic } = useParams<{ topic: string }>()
   const { data: learningData, loading: dataLoading, error: dataError } = useLearningData()
   const topicMeta = topic ? learningTopics.find((t) => t.id === topic) : null
-  const resources = topic ? learningData[topic] ?? [] : []
+  const resources = useMemo(
+    () => (topic ? learningData[topic] ?? [] : []),
+    [topic, learningData]
+  )
   useDocumentTitle(topicMeta ? `${topicMeta.title} · Learning` : 'Learning')
   const bySection = useMemo(() => groupBySection(resources), [resources])
   const hasSections = bySection.size > 0
@@ -106,7 +110,13 @@ export default function LearningTopic() {
       </header>
       <Section>
         <div className="max-w-3xl mx-auto">
-          <div className="mb-6">
+          <div className="mb-6 flex flex-col gap-3">
+            <Breadcrumbs
+              items={[
+                { label: 'Projects', path: '/projects' },
+                { label: topicMeta.title },
+              ]}
+            />
             <BackLink to="/projects">Back to Projects</BackLink>
           </div>
 
@@ -174,7 +184,7 @@ export default function LearningTopic() {
             </div>
           ) : (
             <p className="text-gray-600 dark:text-gray-300">
-              More guides and resources will be added here.
+              Guides and resources for this topic are in the works. Check back later or explore other learning topics from the Projects page.
             </p>
           )}
         </div>

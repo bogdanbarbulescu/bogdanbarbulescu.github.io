@@ -3,10 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ThemeToggle from '../theme/ThemeToggle'
 import { useTheme } from '../theme/ThemeProvider'
 
-const navLinks: { label: string; path: string; scrollTo?: string }[] = [
+const navLinks: { label: string; path: string; scrollTo?: string; state?: { tab: string } }[] = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Projects', path: '/projects' },
+  { label: 'Learning', path: '/projects', state: { tab: 'learning' } },
   { label: 'Blog', path: '/blog' },
   { label: 'Contact', path: '/', scrollTo: 'contact' },
 ]
@@ -74,8 +75,13 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', handleKeyDown)
   }, [open])
 
-  const isActive = (path: string) => {
-    if (path === '/') return location.pathname === '/'
+  const isActive = (path: string, state?: { tab?: string }, scrollTo?: string) => {
+    if (path === '/') {
+      const locState = location.state as { tab?: string; scrollTo?: string } | null
+      if (scrollTo) return location.pathname === '/' && locState?.scrollTo === scrollTo
+      return location.pathname === '/' && !locState?.scrollTo
+    }
+    if (state?.tab) return location.pathname === path && (location.state as { tab?: string } | null)?.tab === state.tab
     return location.pathname.startsWith(path)
   }
 
@@ -108,15 +114,16 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center gap-6">
-            {navLinks.map(({ label, path, scrollTo }) => (
+            {navLinks.map(({ label, path, scrollTo, state }) => (
               <Link
-                key={path + (scrollTo ?? '')}
+                key={path + (scrollTo ?? '') + (state?.tab ?? '')}
                 to={path}
+                state={state ?? (scrollTo ? { scrollTo } : undefined)}
                 onClick={(e) => { if (scrollTo) { e.preventDefault(); handleNavClick(path, scrollTo); } }}
                 className={`text-sm font-medium transition hover:text-accent ${
-                  isActive(path) ? 'text-accent' : isDarkNav ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'
+                  isActive(path, state, scrollTo) ? 'text-accent' : isDarkNav ? 'text-gray-300' : 'text-gray-600 dark:text-gray-300'
                 }`}
-                aria-current={isActive(path) ? 'page' : undefined}
+                aria-current={isActive(path, state, scrollTo) ? 'page' : undefined}
               >
                 {label}
               </Link>
@@ -130,7 +137,7 @@ export default function Navbar() {
               ref={menuButtonRef}
               type="button"
               onClick={() => setOpen(!open)}
-              className={`p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-gray-200 dark:hover:bg-white/10'}`}
+              className={`min-w-[44px] min-h-[44px] flex items-center justify-center p-2 rounded-lg transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark ${isDarkNav ? 'hover:bg-white/10' : 'hover:bg-gray-200 dark:hover:bg-white/10'}`}
               aria-label="Toggle menu"
               aria-expanded={open}
               aria-haspopup="true"
@@ -155,19 +162,20 @@ export default function Navbar() {
             className={`md:hidden py-3 border-t ${isDarkNav ? 'border-white/10' : 'border-gray-200 dark:border-white/10'}`}
           >
             <div className="flex flex-col gap-2">
-              {navLinks.map(({ label, path, scrollTo }) => (
+              {navLinks.map(({ label, path, scrollTo, state }) => (
                 <Link
-                  key={path + (scrollTo ?? '')}
+                  key={path + (scrollTo ?? '') + (state?.tab ?? '')}
                   to={path}
+                  state={state ?? (scrollTo ? { scrollTo } : undefined)}
                   onClick={() => (scrollTo ? handleNavClick(path, scrollTo) : setOpen(false))}
                   className={`px-3 py-2 rounded-lg text-sm font-medium ${
-                    isActive(path)
+                    isActive(path, state, scrollTo)
                       ? 'bg-white/10 text-accent dark:bg-white/10'
                       : isDarkNav
                         ? 'text-gray-300 hover:bg-white/10'
                         : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-white/10'
                   }`}
-                  aria-current={isActive(path) ? 'page' : undefined}
+                  aria-current={isActive(path, state, scrollTo) ? 'page' : undefined}
                 >
                   {label}
                 </Link>

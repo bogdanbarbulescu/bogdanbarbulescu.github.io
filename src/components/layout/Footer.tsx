@@ -5,6 +5,7 @@ const footerLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
   { label: 'Projects', path: '/projects' },
+  { label: 'Learning', path: '/projects', state: { tab: 'learning' } },
   { label: 'Blog', path: '/blog' },
 ]
 
@@ -25,10 +26,11 @@ export default function Footer() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center gap-6 text-center">
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-1">
-            {footerLinks.map(({ label, path }) => (
+            {footerLinks.map(({ label, path, state }) => (
               <Link
-                key={path}
+                key={path + (state?.tab ?? '')}
                 to={path}
+                state={state}
                 className={`${linkClass} focus-visible:ring-offset-surface-light dark:focus-visible:ring-offset-surface-dark`}
               >
                 {label}

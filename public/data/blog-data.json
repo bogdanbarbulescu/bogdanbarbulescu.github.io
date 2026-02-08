@@ -1,14 +1,14 @@
 [
-  { "id": "article1", "title": "How I Earned My CompTIA Security+ Certification", "description": "Defensive security strategies, monitoring, analysis, and incident response tools.", "category": "Certification", "tags": ["CompTIA", "Certification"] },
-  { "id": "article2", "title": "HTB Object Writeup", "description": "A comprehensive walkthrough of the HTB 'Object' machine.", "category": "CTF", "tags": ["HTB", "CTF"] },
-  { "id": "article3", "title": "Metasploit Cheatsheet", "description": "A list of useful commands for Metasploit.", "category": "CTF", "tags": ["Cheat Sheet"] },
-  { "id": "article4", "title": "MITRE ATT&CK Tactics", "description": "A High-Level Overview.", "category": "Article", "tags": ["Article"] },
-  { "id": "article5", "title": "Cyber Threat Intelligence (CTI) Integration: Beyond the IoC Feed", "description": "A practical approach", "category": "Article", "tags": ["Article"] },
-  { "id": "article6", "title": "Purple Teaming Exercises: Collaborative Defense Improvement", "description": "The Benefits of Collaboration", "category": "Article", "tags": ["Purple Teaming"] },
-  { "id": "article7", "title": "Red Team vs Blue Team: Roles and Responsibilities", "description": "Understanding how offensive and defensive teams collaborate in modern security programs.", "category": "Article", "tags": ["Red Team", "Blue Team"] },
-  { "id": "article8", "title": "Building a Home Lab for Offensive Security", "description": "A practical guide to setting up a safe environment for learning offensive techniques.", "category": "Article", "tags": ["Lab", "Offensive Security"] },
-  { "id": "article9", "title": "From Alerts to Action: Improving SOC Workflows", "description": "Turning noisy alerts into actionable detections and response playbooks.", "category": "Article", "tags": ["SOC", "Detection Engineering"] },
-  { "id": "article10", "title": "Social Engineering: The Psychology of Deception", "description": "How to defend yourself", "category": "Article", "tags": ["Article"] },
-  { "id": "article11", "title": "Things We'll Keep Ignoring in Security", "description": "Briefing Document: 'Five Things We Are Going to Continue to Ignore in 2025 | John Strand'", "category": "Article", "tags": ["Article"] },
-  { "id": "article12", "title": "Google Dork Cheatsheet", "description": "Awesome commands", "category": "Article", "tags": ["Cheat Sheet"] }
+  {"id":"article1","title":"How I Earned My CompTIA Security+ Certification","description":"My path to passing the Security+ exam: study approach, resources, and takeaways for anyone considering the certification.","category":"Certification","tags":["CompTIA","Certification"]},
+  {"id":"article2","title":"HTB Object Writeup","description":"A comprehensive walkthrough of the HTB 'Object' machine.","category":"CTF","tags":["HTB","CTF"]},
+  {"id":"article3","title":"Metasploit Cheatsheet","description":"A list of useful commands for Metasploit.","category":"CTF","tags":["Cheat Sheet"]},
+  {"id":"article4","title":"MITRE ATT&CK Tactics","description":"A high-level overview of MITRE ATT&CK tactics and how to use the framework for threat modeling and detection.","category":"Article","tags":["Article"]},
+  {"id":"article5","title":"Cyber Threat Intelligence (CTI) Integration: Beyond the IoC Feed","description":"Practical ways to integrate CTI into security operations beyond simple indicator feeds.","category":"Article","tags":["Article"]},
+  {"id":"article6","title":"Purple Teaming Exercises: Collaborative Defense Improvement","description":"Why and how to run purple team exercises so red and blue teams improve defenses together.","category":"Article","tags":["Purple Teaming"]},
+  {"id":"article7","title":"Red Team vs Blue Team: Roles and Responsibilities","description":"How offensive and defensive teams differ and collaborate in modern security programs.","category":"Article","tags":["Red Team","Blue Team"]},
+  {"id":"article8","title":"Building a Home Lab for Offensive Security","description":"A practical guide to setting up a safe environment for learning offensive techniques.","category":"Article","tags":["Lab","Offensive Security"]},
+  {"id":"article9","title":"From Alerts to Action: Improving SOC Workflows","description":"Turning noisy alerts into actionable detections and response playbooks.","category":"Article","tags":["SOC","Detection Engineering"]},
+  {"id":"article10","title":"Social Engineering: The Psychology of Deception","description":"How social engineering works and how to defend yourself and your organization.","category":"Article","tags":["Article"]},
+  {"id":"article11","title":"Things We'll Keep Ignoring in Security","description":"Briefing: Five Things We Are Going to Continue to Ignore in 2025 (John Strand).","category":"Article","tags":["Article"]},
+  {"id":"article12","title":"Google Dork Cheatsheet","description":"A curated set of Google dork commands for recon and security research.","category":"Article","tags":["Cheat Sheet"]}
 ]

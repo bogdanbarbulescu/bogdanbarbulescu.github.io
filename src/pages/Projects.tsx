@@ -2,13 +2,14 @@ import { useState, useMemo, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { useProjects } from '../hooks/useProjects'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
-import { learningTopics } from '../data/learning-topics'
+import { useToast } from '../components/ui/ToastContext'
 import Card from '../components/ui/Card'
 import Section from '../components/ui/Section'
 import ToggleGroup from '../components/ui/ToggleGroup'
 import Pagination from '../components/ui/Pagination'
 import BackLink from '../components/ui/BackLink'
 import { LoadingSection, ErrorSection } from '../components/ui/QueryState'
+import { learningTopics } from '../data/learning-topics'
 
 const ITEMS_PER_PAGE_OPTIONS = [3, 6, 9]
 const DEFAULT_PER_PAGE = 6
@@ -16,7 +17,12 @@ const DEFAULT_PER_PAGE = 6
 export default function Projects() {
   useDocumentTitle('Projects')
   const location = useLocation()
+  const { toast } = useToast()
   const { data: projects, loading, error, refetch } = useProjects()
+
+  useEffect(() => {
+    if (error) toast('Failed to load projects.', 'error')
+  }, [error, toast])
   const initialTab = (location.state as { tab?: 'web' | 'learning' } | null)?.tab ?? 'web'
   const [activeTab, setActiveTab] = useState<'web' | 'learning'>(initialTab)
   useEffect(() => {
@@ -65,7 +71,7 @@ export default function Projects() {
       <ErrorSection
         title="Projects"
         message="Failed to load projects."
-        onRetry={refetch}
+        onRetry={() => refetch().then(() => toast('Projects loaded.', 'success')).catch(() => {})}
       />
     )
   }

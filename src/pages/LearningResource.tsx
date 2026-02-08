@@ -5,6 +5,7 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { useLearningData } from '../hooks/useLearningData'
 import Section from '../components/ui/Section'
 import BackLink from '../components/ui/BackLink'
+import Breadcrumbs from '../components/ui/Breadcrumbs'
 import Spinner from '../components/ui/Spinner'
 import { parseMarkdown } from '../lib/markdown'
 
@@ -29,14 +30,13 @@ export default function LearningResource() {
     setMdContent(null)
     const base = import.meta.env.BASE_URL ?? '/'
     const path = (base.endsWith('/') ? base : base + '/') + 'learning/' + topic + '/' + resourceId + '.md'
-    const url = window.location.origin + (path.startsWith('/') ? path : '/' + path)
-    fetch(url)
+    fetch(path)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`)
         return r.text()
       })
       .then((text) => setMdContent(text))
-      .catch(() => setLoadError(`Failed to load resource: ${url}`))
+      .catch(() => setLoadError('Failed to load resource.'))
   }, [topic, resourceId])
 
   if (!topic || !resourceId) {
@@ -140,7 +140,31 @@ export default function LearningResource() {
     )
   }
 
-  const html = parseMarkdown(mdContent)
+  let html: string
+  try {
+    html = parseMarkdown(mdContent)
+  } catch {
+    return (
+      <div className="learning-resource-layout">
+        {learningNavBar}
+        <header className="max-w-5xl mx-auto px-4 py-16 text-center">
+          <h1 className="font-mono text-3xl md:text-4xl font-bold text-white mb-2">
+            {resourceMeta.title}
+          </h1>
+          {resourceMeta.description && (
+            <p className="text-slate-400">{resourceMeta.description}</p>
+          )}
+        </header>
+        <div className="max-w-4xl mx-auto px-4 pb-20">
+          <p className="text-red-400">Failed to render content.</p>
+          <div className="mt-4">
+            <BackLink to={`/learning/${topic}`}>Back to {topicMeta.title}</BackLink>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="learning-resource-layout">
       {learningNavBar}
@@ -153,7 +177,14 @@ export default function LearningResource() {
         )}
       </header>
       <main className="max-w-4xl mx-auto px-4 pb-20">
-        <div className="mb-6 mt-4">
+        <div className="mb-6 mt-4 flex flex-col gap-3">
+          <Breadcrumbs
+            items={[
+              { label: 'Projects', path: '/projects' },
+              { label: topicMeta.title, path: `/learning/${topic}` },
+              { label: resourceMeta.title },
+            ]}
+          />
           <BackLink to={`/learning/${topic}`}>Back to {topicMeta.title}</BackLink>
         </div>
         <div

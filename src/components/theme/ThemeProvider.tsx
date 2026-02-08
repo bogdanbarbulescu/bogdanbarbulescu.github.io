@@ -4,6 +4,7 @@ type Theme = 'light' | 'dark'
 
 const ThemeContext = createContext<{ theme: Theme; setTheme: (t: Theme) => void } | null>(null)
 
+/* eslint-disable react-refresh/only-export-components -- useTheme is the context consumer, kept with provider */
 export function useTheme() {
   const ctx = useContext(ThemeContext)
   if (!ctx) throw new Error('useTheme must be used within ThemeProvider')
