@@ -104,7 +104,14 @@
     {"id":"devops-certifications-and-career","title":"Certifications & Career in DevOps","description":"CKA/CKAD, Terraform, cloud certs, typical roles, and how to get the first job.","section":"Career"}
   ],
   "web-app-sec": [],
-  "osint": [],
+  "osint": [
+    {
+      "id": "osint-learning-path",
+      "title": "OSINT Learning Path",
+      "description": "Foundations, methodology, tools, and ethics—what to learn and in what order for open-source intelligence.",
+      "section": "Learning path"
+    }
+  ],
   "cloud": [],
   "iot": [],
   "ai": [
