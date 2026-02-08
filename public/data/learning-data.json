@@ -68,7 +68,18 @@
     }
   ],
   "blue": [],
-  "networking": [],
+  "networking": [
+    {"id":"networking-glossary","title":"Networking Glossary & Terminology","description":"Look up TCP/IP, BGP, VLAN, SD-WAN, and more.","section":"Getting started"},
+    {"id":"networking-faq","title":"Networking FAQ","description":"Do I need a degree? How long until a job? NOC vs design vs security? Short answers.","section":"Getting started"},
+    {"id":"networking-roles-and-expectations","title":"Roles in Networking: NOC, Design, Security","description":"Clear comparison of NOC, network design, and network security roles and day-to-day work.","section":"Getting started"},
+    {"id":"where-to-practice-networking","title":"Where to Practice: Labs & Simulators","description":"Packet Tracer, GNS3, EVE-NG, CML—when to use each and how to build a lab.","section":"Getting started"},
+    {"id":"beginner-networking-roadmap","title":"Beginner Networking Learning Map","description":"6–12 month roadmap for networking foundations: TCP/IP, switching, routing, and basics.","section":"Roadmaps"},
+    {"id":"intermediate-networking-roadmap","title":"Intermediate Networking Learning Map","description":"Next steps: enterprise protocols, design basics, automation intro, and cert readiness (CCNA/equivalent).","section":"Roadmaps"},
+    {"id":"advanced-networking-roadmap","title":"Advanced Networking Learning Map","description":"Design at scale, automation, cloud networking, and lead/architect readiness.","section":"Roadmaps"},
+    {"id":"networking-protocols-overview","title":"Key Protocols: A Quick Reference","description":"TCP/IP, routing protocols, and key L2/L3 concepts in one place.","section":"Reference"},
+    {"id":"networking-reading-list","title":"Further Reading & Resources","description":"Books, standards, vendor docs, and courses for going deeper.","section":"Reference"},
+    {"id":"networking-certifications-and-career","title":"Certifications & Career in Networking","description":"Certs, typical roles, what to expect, and how to get the first job.","section":"Career"}
+  ],
   "devops": [],
   "web-app-sec": [],
   "osint": [],
